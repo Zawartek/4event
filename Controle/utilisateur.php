@@ -28,10 +28,12 @@ function ident () {
 		}
 	}
 	*/
-	accueil();
+       accueil();
 }
 function accueil(){
 	$_SESSION['page'] = 'accueil';
-	require("./Vue/accueil.php");
+        
+	$nexturl = "./Vue/accueil.php";
+	header ("Location:" . $nexturl);
 }
 ?>
