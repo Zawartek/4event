@@ -18,19 +18,24 @@ and open the template in the editor.
         
         <div id="content">
             Content
-            <form>
+            <form id="formInscription">
                 <fieldset>
                     
                     <label id="lblPrenom">
-                        Nom : 
+                        Prénom : 
                     </label>
                     <input id="valPrenom" type="text" maxlength="25">
-                    
+                    <br>
                     <label id="lblNom">
                         Nom : 
                     </label>
                     <input id="valNom" type="text" maxlength="25">
-                    
+                    <br>
+                    <label id="lblMdp">
+                        Mot de passe : 
+                    </label>
+                    <input id="valMdp" type="password" maxlength="25">
+                   
                 </fieldset>
             </form>
         </div>
