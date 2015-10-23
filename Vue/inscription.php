@@ -11,11 +11,7 @@ and open the template in the editor.
         <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
     </head>
     <body>
-        <div id="header">
-            <?php
-            require("./header.php");
-            ?>
-        </div>
+        <?php require("/header.php"); ?>
         
         <div id="content">
             Content
