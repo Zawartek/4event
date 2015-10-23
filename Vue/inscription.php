@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Inscription</title>
+        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
     </head>
     <body>
         <div id="header">
@@ -35,9 +36,11 @@ and open the template in the editor.
                         Mot de passe : 
                     </label>
                     <input id="valMdp" type="password" maxlength="25">
-                   
+                    <br>
+                    <input id="inscrire" type="submit" value="s'inscrire">
                 </fieldset>
             </form>
+            blabla
         </div>
         
         <div id="footer">
