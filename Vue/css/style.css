@@ -9,6 +9,8 @@
     clear : both;
 }
 
+/* Inscription */
+
 #formInscription{
     margin : 10%;
     width : 700px;
@@ -22,6 +24,8 @@ label {
     width : 100px
 }
     
+/* Datepicker */
+
 .ui-widget
 {
     font-size: 0.8em !important;
@@ -112,6 +116,7 @@ label {
     margin : 10px 50px 10px 50px;
 }
 
+/* Header */
 .logo-reseau
 {
     height: 30px;
@@ -133,4 +138,22 @@ label {
 .text-orange
 {
     color: #FF7E00;
+}
+
+/* Accueil */
+
+#slider {
+    margin: 20px 50px 0px 50px;
+}
+
+#barreRecherche {
+    text-align: center;
+    padding-top : 5px;
+    padding-bottom : 5px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#trierPar {
+    margin: 10px 50px 10px 50px;
+    float : right;
 }
