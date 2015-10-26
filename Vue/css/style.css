@@ -21,16 +21,6 @@ fieldset {
 label {
     width : 100px
 }
-
-#agenda {
-    float : left;
-    width:45%;
-}
-
-#commentaires {
-    float : left;
-    width:45%;
-}
     
 .ui-widget
 {
@@ -41,4 +31,83 @@ label {
 {
     text-align: center;
     width: 200px;
+}
+/* Page profil */
+
+#photoProfil {
+    width : 180px;
+    height: 180px;
+    margin : 10px;
+    float : left;
+}
+
+#infosProfil {
+    float : left;
+}
+
+.titre {
+    text-align: center;
+    border : solid 1px black;
+    padding : 10px;
+}
+
+#infosComplementaires {
+    margin-bottom: 10px;
+    
+}
+#agenda {
+    padding : 20px;
+    width:45%;
+    float : left;
+}
+
+#commentaires {
+    border-left: solid 1px black;
+    padding : 20px;
+    width:45%;
+    float : left;
+}
+
+.eventProfil {
+    margin-top : 10px;
+    padding-left : 20px;
+}
+    
+.comsProfil {
+    margin-top : 10px;
+    padding-left : 20px;
+}
+
+/* page Event */
+
+#profilEvent {
+    border : solid 1px black;
+    margin : 10px;
+    float : left;
+    padding : 1%;
+    width : 60%;
+}
+
+#infosEvent {
+    margin : 10px;
+    float : left;
+    padding : 1%;
+}
+
+#infosOrganisateur {
+    border : solid 1px black;
+    padding : 8px;
+}
+
+#participationEvent {
+    margin-top: 5px;
+    border : solid 1px black;
+    padding : 8px;
+}
+
+.cadre {
+    border : solid 1px black;
+    padding : 8px 30px 8px 30px;
+    
+    margin : 10px 50px 10px 50px;
 }
