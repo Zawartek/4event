@@ -111,3 +111,26 @@ label {
     
     margin : 10px 50px 10px 50px;
 }
+
+.logo-reseau
+{
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.btn-header
+{
+    font-weight: bold;
+}
+
+.btn-orange
+{
+    background-color: #FF7E00;
+    border-color: #FF7E00;
+}
+
+.text-orange
+{
+    color: #FF7E00;
+}
