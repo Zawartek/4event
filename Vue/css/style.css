@@ -157,3 +157,32 @@ label {
     margin: 10px 50px 10px 50px;
     float : right;
 }
+
+/* Back office */
+#menuAdmin {
+    text-align: center;
+}
+
+#listeUtilisateur {
+    margin-left: 30%;
+    margin-right: 30%;
+    
+}
+
+#tableUtilisateur {
+    width : 100%;
+    margin-left: 25%; 
+}
+
+#tableLabel {
+    width : 12%;
+}
+
+#tableValeur {
+    width : 30%;
+    text-align: right;
+}
+
+#boutons {
+    text-align: center;
+}
