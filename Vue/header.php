@@ -4,7 +4,7 @@
     <img src="img/logo.png" height="70px" style="margin-right: 50px;">
     <a href="#"><img class="logo-reseau" src="img/facebook.png" alt="facebook"></a>
     <a href="#"><img class="logo-reseau" src="img/twitter.png" alt="twitter"></a>
-    <a href="#"><img class="logo-reseau" src="img/google+.png" alt="google+"></a>
+    <a href="#"><img class="logo-reseau" src="img/googleplus.png" alt="google+"></a>
     <a style="margin-left: 30px;" class="btn btn-primary btn-header btn-orange" href="accueil.php" role="button">Connexion</a>
     <a class="btn btn-link btn-header text-orange" href="./inscription.php" role="button">Inscription</a>
 </div>
