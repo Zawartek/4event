@@ -28,7 +28,7 @@ label {
 
 .ui-widget
 {
-    font-size: 0.8em !important;
+    font-size: 0.9em !important;
 }
 
 .date
@@ -185,4 +185,10 @@ label {
 
 #boutons {
     text-align: center;
+}
+
+#theme
+{
+    width: 200px;
+    text-align: left;
 }

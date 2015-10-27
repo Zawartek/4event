@@ -17,8 +17,8 @@ and open the template in the editor.
         <script type="text/javascript">
             $(function ()
             {
-                $("#datepicker").datepicker($.datepicker.regional["fr"]);
-                $("#datepicker").datepicker('setDate' , new Date());
+                $("#date").datepicker($.datepicker.regional["fr"]);
+                $("#date").datepicker('setDate' , new Date());
             });
         </script>
     </head>
@@ -31,21 +31,18 @@ and open the template in the editor.
                 
                 <?php include('slider/slider.html'); ?>
                 
-                <div id="barreRecherche">
-                    <select name="theme">
+                <form id="barreRecherche" method="post" action="#">
+                    <select id="theme" name="theme">
                         <?php
-                        for($i=0; $i<5; $i++){
-                        ?>
-                        <option>
-                            Test
-                        </option>
+                        for($i=0; $i<5; $i++)
+                        { ?>
+                        <option>Test</option>
                         <?php
-                        }
-                        ?>
+                        } ?>
                     </select>
-                    <input type="text" id="datepicker" class="date" onload="this.value(Date());">
-                    <button>Rechercher</button>
-                </div>
+                    <input type="text" id="date" name="btn date" class="date" onload="this.value(Date());">
+                    <input type="submit" id="valider" class="btn btn-primary btn-orange" value="Rechercher">
+                </form>
             </div>
                 <select id="trierPar">
                     <option>Trier par</option>
