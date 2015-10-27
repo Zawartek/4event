@@ -12,7 +12,7 @@ and open the template in the editor.
         
     </head>
     <body>
-        <?php require("/header.php"); ?>
+        <?php require("./header.php"); ?>
         
         <div id="content">
             <div id="profil">

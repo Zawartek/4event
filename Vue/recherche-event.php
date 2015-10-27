@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Recherche Evénément</title>
     </head>
     <body>
-        <?php require("/header.php"); ?>
+        <?php require("./header.php"); ?>
         
         <div id="content">
             Content

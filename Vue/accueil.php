@@ -22,7 +22,8 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <?php require("/header.php"); ?>
+        
+        <?php require("./header.php"); ?>
         
         <div id="content">
             <div id="slider">
