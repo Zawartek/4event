@@ -84,5 +84,8 @@ and open the template in the editor.
         <div id="footer">
             
         </div>
+        <div id="footer">
+            
+        </div>
     </body>
 </html>
