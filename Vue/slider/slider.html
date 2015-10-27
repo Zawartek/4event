@@ -3,58 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body style="padding:0px; margin:0px; background-color:#fff;">
-
-    <!-- #region Jssor Slider Begin -->
-
-    <!-- Jssor Slider is free under MIT license. -->
-    <!-- Development Reference http://www.jssor.com/development. -->
-    <!-- Jssor Slider Maker Start At $5 http://www.jssor.com/slider-maker. -->
-
-    <!-- This demo works with jquery library -->
-
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
-    <!-- use jssor.slider.debug.js instead for release -->
-    <script>
-        jQuery(document).ready(function ($) {
-            
-            var jssor_1_options = {
-              $AutoPlay: true,
-              $SlideDuration: 800,
-              $SlideEasing: $Jease$.$OutQuint,
-              $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$
-              },
-              $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$
-              }
-            };
-            
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-            
-            //responsive code begin
-            //you can remove responsive code if you don't want the slider scales while window resizes
-            function ScaleSlider() {
-                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-                if (refSize) {
-                    refSize = Math.min(refSize, 1080);
-                    jssor_1_slider.$ScaleWidth(refSize);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            ScaleSlider();
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
-            //responsive code end
-        });
-    </script>
-
     <style>
         
         /* jssor slider bullet navigator skin 05 css */
@@ -108,6 +56,56 @@
         .jssora22l.jssora22ldn { background-position: -250px -31px; }
         .jssora22r.jssora22rdn { background-position: -310px -31px; }
     </style>
+</head>
+<body style="padding:0px; margin:0px; background-color:#fff;">
+
+    <!-- #region Jssor Slider Begin -->
+
+    <!-- Jssor Slider is free under MIT license. -->
+    <!-- Development Reference http://www.jssor.com/development. -->
+    <!-- Jssor Slider Maker Start At $5 http://www.jssor.com/slider-maker. -->
+
+    <!-- This demo works with jquery library -->
+    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
+    <!-- use jssor.slider.debug.js instead for release -->
+    <script>
+        jQuery(document).ready(function ($) {
+            
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $SlideDuration: 800,
+              $SlideEasing: $Jease$.$OutQuint,
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+              }
+            };
+            
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 1080);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+        });
+    </script>
+
+ 
 
 
     <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden; visibility: hidden;">
