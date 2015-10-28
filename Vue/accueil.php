@@ -23,16 +23,13 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        
-        <?php require("./header.php"); ?>
-        
         <div id="content">
+            <?php require("./header.php"); ?>
             <div id="slider">
-                
                 <?php include('slider/slider.html'); ?>
                 
                 <form id="barreRecherche" method="post" action="#">
-                    <select id="theme" name="theme">
+                    <select id="theme" name="theme" class="btn">
                         <?php
                         for($i=0; $i<5; $i++)
                         { ?>
@@ -40,7 +37,7 @@ and open the template in the editor.
                         <?php
                         } ?>
                     </select>
-                    <input type="text" id="date" name="btn date" class="date" onload="this.value(Date());">
+                    <input type="text" id="date" name="date" class="btn date" onload="this.value(Date());">
                     <input type="submit" id="valider" class="btn btn-primary btn-orange" value="Rechercher">
                 </form>
             </div>
@@ -57,6 +54,7 @@ and open the template in the editor.
                         ?>
                     
                 </select>
+            
                 <div id="clear"></div>
                 
                 <div class="cadre" style='height: 120px;'>
