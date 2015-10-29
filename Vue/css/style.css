@@ -1,8 +1,11 @@
 #content {
     width : 900px;
-    margin-left : 10%;
-    border : solid 1px black;
-    
+    margin: auto;
+}
+
+#header
+{
+    margin: 5px 0px;
 }
 
 #clear {
@@ -23,7 +26,7 @@ fieldset {
 label {
     width : 100px
 }
-    
+
 /* Datepicker */
 
 .ui-widget
@@ -57,7 +60,7 @@ label {
 
 #infosComplementaires {
     margin-bottom: 10px;
-    
+
 }
 #agenda {
     padding : 20px;
@@ -76,7 +79,7 @@ label {
     margin-top : 10px;
     padding-left : 20px;
 }
-    
+
 .comsProfil {
     margin-top : 10px;
     padding-left : 20px;
@@ -112,14 +115,14 @@ label {
 .cadre {
     border : solid 1px black;
     padding : 8px 30px 8px 30px;
-    
+
     margin : 10px 50px 10px 50px;
 }
 
 /* Header */
 .logo-reseau
 {
-    height: 30px;
+    height: 28px;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -143,14 +146,13 @@ label {
 /* Accueil */
 
 #slider {
-    margin: 20px 50px 0px 50px;
 }
 
 #barreRecherche {
     text-align: center;
     padding-top : 5px;
     padding-bottom : 5px;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 #trierPar {
@@ -173,7 +175,7 @@ label {
 
 #tableUtilisateur {
     width : 100%;
-    margin-left: 25%; 
+    margin-left: 25%;
 }
 
 #tableFAQ {
