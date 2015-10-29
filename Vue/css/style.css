@@ -165,12 +165,19 @@ label {
 
 #listeUtilisateur {
     margin-left: 30%;
-    margin-right: 30%;
-    
+}
+
+#listeFAQ {
+    margin-left: 35%;
 }
 
 #tableUtilisateur {
     width : 100%;
+    margin-left: 25%; 
+}
+
+#tableFAQ {
+    width : 70%;
     margin-left: 25%; 
 }
 
