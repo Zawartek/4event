@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Gestion des utilisteurs</title>
+        <title>Gestion de la FAQ</title>
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
@@ -15,14 +15,14 @@ and open the template in the editor.
         <?php 
             require './menuAdmin.php';
         ?>
-        <div id="listeUtilisateur">
-        <label>Liste des utilisateurs : </label>
+        <div id="listeFAQ">
+        <label>Liste des FAQ : </label>
         <select>
-            <option>Création d'un nouvel utilisateur</option>
+            <option>Création d'une nouvelle FAQ</option>
             <?php
             for ($i = 0; $i<10; $i++){
             echo '<option>' .
-                'Utilisateur' . $i .
+                'FAQ ' . $i .
             '</option>';
             }
             ?>
@@ -30,45 +30,26 @@ and open the template in the editor.
         </div>
         
         <form class="cadre">
-            <table id="tableUtilisateur">
+            <table id="tableFAQ">
                 <tr>
                     <th id="tableLabel"></th>
                     <th id="tableValeur"></th>
                 </tr>
                 <tr>
                     <td>
-                        <label>Mail :</label>
+                        
+            <label>Titre :</label>
                     </td>
                     <td>
-                        <input type="text" name="mail" value="testMail"/>
-                    </td>
-                    <td>
-                        <button>rechercher</button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        <label>Nom :</label>
-                    </td>
-                    <td>
-                        <input type="text" name="nom" value="testNom"/>
+            <input type="text" name="titre" value="testPrenom"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label>Prenom :</label>
+                        <label>Description :</label>
                     </td>
                     <td>
-                        <input type="text" name="prenom" value="testPrenom"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Ville :</label>
-                    </td>
-                    <td>
-                        <input type="text" name="ville" value="testVille"/>
+                        <textarea name="description" rows="5" style="width:100%;"></textarea>
                     </td>
                 </tr>
             </table>
