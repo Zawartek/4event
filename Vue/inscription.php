@@ -8,39 +8,35 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Inscription</title>
-        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
+        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css">
     </head>
     <body>
-        <?php require("./header.php"); ?>
-        
+
+
         <div id="content">
-            Content
+            <?php require("./header.php"); ?>
             <form id="formInscription">
                 <fieldset>
-                    
                     <label id="lblPrenom">
-                        Prénom : 
+                        Prénom :
                     </label>
                     <input id="valPrenom" type="text" maxlength="25">
                     <br>
                     <label id="lblNom">
-                        Nom : 
+                        Nom :
                     </label>
                     <input id="valNom" type="text" maxlength="25">
                     <br>
                     <label id="lblMdp">
-                        Mot de passe : 
+                        Mot de passe :
                     </label>
                     <input id="valMdp" type="password" maxlength="25">
                     <br>
                     <input id="inscrire" type="submit" value="s'inscrire">
                 </fieldset>
             </form>
-            blabla
         </div>
-        
-        <div id="footer">
-            
-        </div>
+
+        <div id="footer"></div>
     </body>
 </html>

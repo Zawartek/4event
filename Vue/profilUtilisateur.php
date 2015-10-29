@@ -9,12 +9,10 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>profil utilisateur</title>
         <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
-        
     </head>
     <body>
-        <?php require("./header.php"); ?>
-        
         <div id="content">
+            <?php require("./header.php"); ?>
             <div id="profil">
                 <img id="photoProfil" src="./img/default-user.png" />
                 <div id="infosProfil">

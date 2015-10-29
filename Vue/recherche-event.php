@@ -8,11 +8,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Recherche Evénément</title>
+        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
     </head>
     <body>
-        <?php require("./header.php"); ?>
-        
         <div id="content">
+            <?php require("./header.php"); ?>
             Content
         </div>
         

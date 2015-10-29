@@ -8,13 +8,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>page événement</title>
-        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
-        
+        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css">
     </head>
     <body>
-        <?php require("./header.php"); ?>
-        
         <div id="content">
+            <?php require("./header.php"); ?>
             <div id="profilEvent">
                 <img id="photoProfil" src="./img/default-event.png" />
                 <div id="infosProfil">
@@ -51,44 +49,44 @@ and open the template in the editor.
                         ----------------------------------------------------------------------------------------------------------------
                         ----------------------------------------------------------------------------------------------------------------<br>
                     </p>
-                        
+
                 </div>
-                
+
                 <div id="billeterie" class="cadre">
                     <h1>Lien vers la billeterie</h1>
                     <p>
                         -------------------------------------------------
                     </p>
                 </div>
-               
+
                 <div id="commentairesEvent" class="cadre">
                     <h1>Commentaires</h1>
                     <p>
-                    <?php
-                    for ($i = 0 ; $i<5 ; $i++){
-                        ?>
-                    <p class="cadre">
-                        Commentaire---------------------------------------------
-                        --------------------------------------------------------
+                        <?php
+                        for ($i = 0; $i < 5; $i++) {
+                            ?>
+                        <p class="cadre">
+                            Commentaire---------------------------------------------
+                            --------------------------------------------------------
+                            <br>
+                            --------------------------------------------------------
+                            --------------------------------------------------------
+                            --------------------------------------------------------
+                            <br>
+                            <a href=""> lire la suite</a>
+                        </p>
                         <br>
-                        --------------------------------------------------------
-                        --------------------------------------------------------
-                        --------------------------------------------------------
-                        <br>
-                    <a href=""> lire la suite</a>
-                    </p>
-                    <br>
-                    <?php
+                        <?php
                     }
                     ?>
                     </p>
                 </div>
                 <div id="clear"></div>
             </div>
-        </div>    
-        
+        </div>
+
         <div id="footer">
-            
+
         </div>
     </body>
 </html>
