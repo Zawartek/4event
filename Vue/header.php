@@ -5,6 +5,6 @@
     <a href="#"><img class="logo-reseau" src="img/facebook.png" alt="facebook"></a>
     <a href="#"><img class="logo-reseau" src="img/twitter.png" alt="twitter"></a>
     <a href="#"><img class="logo-reseau" src="img/googleplus.png" alt="google+"></a>
-    <a style="margin-left: 380px;" class="btn btn-primary btn-header btn-orange" href="accueil.php" role="button">Connexion</a>
-    <a class="btn btn-link btn-header text-orange" href="./inscription.php" role="button">Inscription</a>
+    <a style="margin-left: 380px;" class="bold btn btn-orange" href="accueil.php" role="button">Connexion</a>
+    <a class="bold btn btn-link text-orange" href="./inscription.php" role="button">Inscription</a>
 </div>

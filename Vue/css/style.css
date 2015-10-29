@@ -36,6 +36,9 @@ label {
 
 .date
 {
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 6px 3px;
     text-align: center;
     width: 200px;
 }
@@ -115,8 +118,7 @@ label {
 .cadre {
     border : solid 1px black;
     padding : 8px 30px 8px 30px;
-
-    margin : 10px 50px 10px 50px;
+    margin : 0px 50px 15px 50px;
 }
 
 /* Header */
@@ -127,7 +129,7 @@ label {
     margin-right: 5px;
 }
 
-.btn-header
+.bold
 {
     font-weight: bold;
 }
@@ -136,11 +138,23 @@ label {
 {
     background-color: #FF7E00;
     border-color: #FF7E00;
+    color: white;
+}
+.btn-orange:hover
+{
+    background-color: #FA6400;
+    border-color: #FA6400;
+    color: white;
 }
 
 .text-orange
 {
     color: #FF7E00;
+}
+
+.text-orange:hover
+{
+    color: #FA6400;
 }
 
 /* Accueil */
@@ -156,8 +170,9 @@ label {
 }
 
 #trierPar {
-    margin: 10px 50px 10px 50px;
-    float : right;
+    margin: 15px 50px;
+    float: right;
+    width: 100px;
 }
 
 /* Back office */
@@ -192,5 +207,12 @@ label {
 #theme
 {
     width: 200px;
+}
+
+.select
+{
+    border: 1px solid gray;
+    border-radius: 4px;
     text-align: left;
+    padding: 6px 3px;
 }

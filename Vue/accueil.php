@@ -29,7 +29,7 @@ and open the template in the editor.
                 <?php include('slider/slider.html'); ?>
                 
                 <form id="barreRecherche" method="post" action="#">
-                    <select id="theme" name="theme" class="btn">
+                    <select id="theme" name="theme" class="select">
                         <?php
                         for($i=0; $i<5; $i++)
                         { ?>
@@ -37,27 +37,25 @@ and open the template in the editor.
                         <?php
                         } ?>
                     </select>
-                    <input type="text" id="date" name="date" class="btn date" onload="this.value(Date());">
-                    <input type="submit" id="valider" class="btn btn-primary btn-orange" value="Rechercher">
+                    <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
+                    <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
                 </form>
             </div>
-                <select id="trierPar">
+                <select id="trierPar" name="trierPar" class="select">
                     <option>Trier par</option>
                     <?php
-                        for($i=0; $i<5; $i++){
-                            ?>
+                    for($i=0; $i<5; $i++)
+                    { ?>
                         <option>
                             Test
                         </option>
-                        <?php
-                        }
-                        ?>
-                    
+                    <?php
+                    } ?>
                 </select>
             
                 <div id="clear"></div>
                 
-                <div class="cadre" style='height: 120px;'>
+                <div class="cadre" style="height: 120px;">
                     <div style="float:left; background-image: url('./img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 150px; height : 100px;"> Nom de l'évenement</div>
                     <div style="float:left; width : 70%;">Descritpion------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
