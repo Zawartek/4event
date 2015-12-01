@@ -5,9 +5,8 @@
 */
 
 function ident () {
-    echo 'test ident';
     require_once ("./Modele/utilisateurs.php");
-    echo 'test';
+    
     accueil();
 }
 

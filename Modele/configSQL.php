@@ -1,6 +1,5 @@
 ﻿<?php
 
- //chez vous
     $host="127.0.0.1";
     $user='4event';
     $pass='4event';

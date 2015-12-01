@@ -8,23 +8,36 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>page événement</title>
-        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css">
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
+        
+
     </head>
     <body>
         <div id="content">
-            <?php require("./header.php"); ?>
+            <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
-                <img id="photoProfil" src="./img/default-event.png" />
+                <img id="photoProfil" src="./Vue/img/default-event.png" />
                 <div id="infosProfil">
-                    <p>Nom événement</p>
-                    <p>Lieu : </p>
-                    <p>Description : </p>
+                    <p>
+                        <?php echo $event["evenement_titre"]; ?>
+                    </p>
+                    <p>
+                        Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
+                    </p>
+                    <p>
+                        Description : 
+                        <?php echo $event["evenement_description"];?>
+                    </p>
                 </div>
             </div>
             <div id="infosEvent">
                 <div id="infosOrganisateur">
-                    <p>Organisateur : </p>
-                    <p>Nombres d'événements organisés : </p>
+                    <p>
+                        Organisateur : <?php echo $event["utilisateur_nom"];?>
+                    </p>
+                    <p>
+                        Nombres d'événements organisés : 
+                    </p>
                     <a href=''>profil</a>
                 </div>
                 <div id="participationEvent">
@@ -36,8 +49,7 @@ and open the template in the editor.
             <br>
             <div id="infosComplementaires">
                 <div id="infosLieu" class="cadre">
-                    <div id="map"></div>
-                    <p>Lieu : </p>
+                    
                 </div>
                 <div id ="descriptionEvent" class="cadre">
                     <h1>Description</h1>
@@ -55,7 +67,7 @@ and open the template in the editor.
                 <div id="billeterie" class="cadre">
                     <h1>Lien vers la billeterie</h1>
                     <p>
-                        -------------------------------------------------
+                        <?php echo $event["evenement_site_web"];?>
                     </p>
                 </div>
 
