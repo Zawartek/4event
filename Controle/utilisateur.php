@@ -5,35 +5,46 @@
 */
 
 function ident () {
-	/*
-	require_once ("./modele/utilisateurBD.php");
-	$ident=isset($_POST['ident'])?trim($_POST['ident']):'';
-	$num=isset($_POST['mdp'])?trim($_POST['mdp']):'';
-	$msg="";
-	$_SESSION['page'] = 'accueil';
-	$P=array();
-	if (count($_POST)==0){
-		$_SESSION['profilU'] = $P;
-		require("./Vue/accueil.php");
-	}
-	else {
-		if(verif_bd($ident, $num, $P)) {
-			$_SESSION['profilU'] = $P;
-			$_SESSION['typeUti'] = $P['type'];
-			require("./Vue/accueil.php");
-		}
-		else {
-			$_SESSION['profilU'] = $P;
-			require("./Vue/accueil.php");
-		}
-	}
-	*/
-       accueil();
+    echo 'test ident';
+    require_once ("./Modele/utilisateurs.php");
+    echo 'test';
+    accueil();
 }
+
 function accueil(){
 	$_SESSION['page'] = 'accueil';
-        
 	$nexturl = "./Vue/accueil.php";
 	header ("Location:" . $nexturl);
+}
+
+// Controleur pour gérer le formulaire de connexion des utilisateurs
+function connexion(){
+    if(isset($_GET['cible']) && $_GET['cible']=="verif") { // L'utilisateur vient de valider le formulaire de connexion
+        if(!empty($_POST['identifiant']) && !empty($_POST['mdp'])){ // L'utilisateur a rempli tous les champs du formulaire
+            include("./Modele/utilisateurs.php");
+            
+
+            $reponse = mdp($db,$_POST['identifiant']);
+            
+            if($reponse->rowcount()==0){  // L'utilisateur n'a pas été trouvé dans la base de données
+                $erreur = "Utilisateur inconnu";
+                //include("Vue/connexion_erreur.php");
+            } else { // utilisateur trouvé dans la base de données
+                $ligne = $reponse->fetch();
+                if(md5($_POST['mdp'])!=$ligne['mdp']){ // Le mot de passe entré ne correspond pas à celui stocké dans la base de données
+                    $erreur = "Mot de passe incorrect";
+                    //include("Vue/connexion_erreur.php");
+                } else { // mot de passe correct, on affiche la page d'accueil
+                    $_SESSION["userID"] = $ligne['id'];
+                    //include("Vue/accueil.php");
+                }
+            }
+        } else { // L'utilisateur n'a pas rempli tous les champs du formulaire
+            $erreur = "Veuillez remplir tous les champs";
+            //include("Vue/connexion_erreur.php");
+        }
+    } else { // La page de connexion par défaut
+        echo 'test';
+    }
 }
 ?>

@@ -1,15 +1,11 @@
 ﻿<?php
 
  //chez vous
-$hote="localhost";   		
-$login="root";  		
-$pass=""; 			
-$bd='4event'; //ici la base a comme nom $login 
+    $host="127.0.0.1";
+    $user='4event';
+    $pass='4event';
+    $dbname="4event";
 
-
-$link = mysqli_connect($hote, $login, $pass) 
-		or die ("erreur de connexion :" . mysql_error()); 
-mysqli_select_db($link, $bd) 
-		or die (htmlentities("erreur d'accès à la base :") . $bd);
-
+    $db = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$pass");
+    $db->query("SET NAMES UTF8");
 ?>
