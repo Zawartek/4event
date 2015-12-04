@@ -7,12 +7,20 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <title>page événement</title>
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
-        
-
+        <?php include ('./Vue/map/getlatlng.php');?>
+        <script type="text/javascript">
+            function loadMap(){
+                initialize();
+            }
+            function centerMap(){
+                document.getElementById("description").text(geocode());
+            }
+        </script>
     </head>
-    <body>
+    <body onload="loadMap()">
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
@@ -22,11 +30,11 @@ and open the template in the editor.
                         <?php echo $event["evenement_titre"]; ?>
                     </p>
                     <p>
-                        Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
+                        Lieu : <span id="adress"><?php echo $event["adresse"]; ?></span>
                     </p>
-                    <p>
+                    <p id="description">
                         Description : 
-                        <?php echo $event["evenement_description"];?>
+                        <?php //echo $event["evenement_description"];?>
                     </p>
                 </div>
             </div>
@@ -49,7 +57,11 @@ and open the template in the editor.
             <br>
             <div id="infosComplementaires">
                 <div id="infosLieu" class="cadre">
-                    
+                    <div id="map">
+                        <div id="map_canvas" style="width:100%; height:400px"></div>
+                        <div id="crosshair"></div>
+                        <input type='button' onclick="centerMap()" value='visualiser'/>
+                    </div>
                 </div>
                 <div id ="descriptionEvent" class="cadre">
                     <h1>Description</h1>

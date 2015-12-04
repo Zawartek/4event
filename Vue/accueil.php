@@ -56,11 +56,15 @@ and open the template in the editor.
             <div id="clear"></div>
 
             <div class="cadre" style="height: 120px;">
-                <div style="float:left; background-image: url('./img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 150px; height : 100px;"> Nom de l'évenement</div>
+                <div style="float:left; background-image: url('../Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 150px; height : 100px;"> Nom de l'évenement</div>
                 <div style="float:left; width : 70%;">Descritpion------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
-                    <button>voir l'événement</button></div>
+                    <form>
+                        <input type='hidden' name='controle' value='evenement'/>
+                        <input type='hidden' name='action' value='afficherPageEvent'/>
+                        <input type="submit" value="voir l'événement"/>
+                    </form>
                 <div id="clear"></div>
             </div>
 
@@ -70,7 +74,7 @@ and open the template in the editor.
                     -----------------------------------------------------------------------------------------------
                     <button>voir l'événement</button>
                 </div>
-                <div style="float:left; background-image: url('./img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 20%; height : 100px;"> Nom de l'évenement</div>
+                <div style="float:left; background-image: url('../Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 20%; height : 100px;"> Nom de l'évenement</div>
                 <div id="clear"></div>
             </div>
         </div>
