@@ -68,7 +68,10 @@ and open the template in the editor.
                 <div id="clear"></div>
             </div>
 
-            <div class="cadre" >
+           
+        </div>
+            
+             <div class="cadre" >
                 <div style="float:left; width : 80%;">Descritpion------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
@@ -77,7 +80,7 @@ and open the template in the editor.
                 <div style="float:left; background-image: url('../Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 20%; height : 100px;"> Nom de l'évenement</div>
                 <div id="clear"></div>
             </div>
-        </div>
-        <div id="footer"></div>
+             <?php include('./footer.php'); ?>
+        
     </body>
 </html>

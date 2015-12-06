@@ -13,6 +13,48 @@
 }
 
 /* Inscription */
+.tete
+{
+    width : 350px;
+    margin: auto;
+    border: 2px solid #C0C0C0;
+    
+}
+
+
+
+.inscription
+{
+    padding: 15px;
+    width: 360px;
+    margin: auto;
+    border: 2px solid #C0C0C0;
+    border-radius: 10px;
+    background-color: #C0C0C0;
+    box-shadow: 2px 2px 20px #C0C0C0;
+}
+
+
+.inscription input[type=text], input[type=date], input[type=password], input[type=email]
+{
+    width: 170px;
+}
+
+.inscription label
+{
+    width: 150px;
+}
+
+.inputp
+{
+    height: 25px;
+    width: auto;
+    margin: 0px 10px;
+    padding-left: 14px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #f9f9f9;
+
+}
 
 #formInscription{
     margin : 10%;
@@ -131,7 +173,7 @@ label {
 
 .bold
 {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .btn-orange
@@ -195,7 +237,7 @@ label {
 
 #tableFAQ {
     width : 70%;
-    margin-left: 25%; 
+    margin-left: 25%;
 }
 
 #tableLabel {
@@ -222,4 +264,21 @@ label {
     border-radius: 4px;
     text-align: left;
     padding: 6px 3px;
+}
+
+.cadrePrincipale
+{
+    margin-top: 10px;
+
+    background-color: #E6E6E6;
+    border: 1px solid #E6E6E6;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #E6E6E6;
+}
+
+h2
+{
+    text-align: center;
 }
