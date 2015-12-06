@@ -1,4 +1,5 @@
-#content {
+#content
+{
     width : 900px;
     margin: auto;
 }
@@ -8,7 +9,8 @@
     margin: 5px 0px;
 }
 
-#clear {
+#clear
+{
     clear : both;
 }
 
@@ -18,12 +20,10 @@
     width : 350px;
     margin: auto;
     border: 2px solid #C0C0C0;
-    
+
 }
 
-
-
-.inscription
+.inscription, .connexion
 {
     padding: 15px;
     width: 360px;
@@ -34,10 +34,10 @@
     box-shadow: 2px 2px 20px #C0C0C0;
 }
 
-
 .inscription input[type=text], input[type=date], input[type=password], input[type=email]
 {
     width: 170px;
+    padding-left: 10px;
 }
 
 .inscription label
@@ -53,24 +53,20 @@
     padding-left: 14px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #f9f9f9;
-
 }
 
-#formInscription{
+#formInscription
+{
     margin : 10%;
     width : 700px;
 }
 
-fieldset {
+fieldset
+{
     padding : 30px;
 }
 
-label {
-    width : 100px
-}
-
 /* Datepicker */
-
 .ui-widget
 {
     font-size: 0.9em !important;
@@ -84,55 +80,63 @@ label {
     text-align: center;
     width: 200px;
 }
-/* Page profil */
 
-#photoProfil {
+/* Page profil */
+#photoProfil
+{
     width : 180px;
     height: 180px;
     margin : 10px;
     float : left;
 }
 
-#infosProfil {
+#infosProfil
+{
     float : left;
 }
 
-.titre {
+.titre
+{
     text-align: center;
     border : solid 1px black;
     padding : 10px;
 }
 
-#infosComplementaires {
+#infosComplementaires
+{
     margin-bottom: 10px;
 
 }
-#agenda {
+#agenda
+{
     padding : 20px;
     width:45%;
     float : left;
 }
 
-#commentaires {
+#commentaires
+{
     border-left: solid 1px black;
     padding : 20px;
     width:45%;
     float : left;
 }
 
-.eventProfil {
+.eventProfil
+{
     margin-top : 10px;
     padding-left : 20px;
 }
 
-.comsProfil {
+.comsProfil
+{
     margin-top : 10px;
     padding-left : 20px;
 }
 
 /* page Event */
-
-#profilEvent {
+#profilEvent
+{
     border : solid 1px black;
     margin : 10px;
     float : left;
@@ -140,24 +144,28 @@ label {
     width : 60%;
 }
 
-#infosEvent {
+#infosEvent
+{
     margin : 10px;
     float : left;
     padding : 1%;
 }
 
-#infosOrganisateur {
+#infosOrganisateur
+{
     border : solid 1px black;
     padding : 8px;
 }
 
-#participationEvent {
+#participationEvent
+{
     margin-top: 5px;
     border : solid 1px black;
     padding : 8px;
 }
 
-.cadre {
+.cadre
+{
     border : solid 1px black;
     padding : 8px 30px 8px 30px;
     margin : 0px 50px 15px 50px;
@@ -168,6 +176,10 @@ label {
 {
     height: 28px;
     border-radius: 50%;
+}
+
+.lien-reseau
+{
     margin-right: 5px;
 }
 
@@ -200,56 +212,67 @@ label {
 }
 
 /* Accueil */
+#slider
+{
 
-#slider {
 }
 
-#barreRecherche {
+#barreRecherche
+{
     text-align: center;
     padding-top : 5px;
     padding-bottom : 5px;
     background-color: rgba(0, 0, 0, 0.5)
 }
 
-#trierPar {
+#trierPar
+{
     margin: 15px 50px;
     float: right;
     width: 100px;
 }
 
 /* Back office */
-#menuAdmin {
+#menuAdmin
+{
     text-align: center;
 }
 
-#listeUtilisateur {
+#listeUtilisateur
+{
     margin-left: 30%;
 }
 
-#listeFAQ {
+#listeFAQ
+{
     margin-left: 35%;
 }
 
-#tableUtilisateur {
+#tableUtilisateur
+{
     width : 100%;
     margin-left: 25%;
 }
 
-#tableFAQ {
+#tableFAQ
+{
     width : 70%;
     margin-left: 25%;
 }
 
-#tableLabel {
+#tableLabel
+{
     width : 12%;
 }
 
-#tableValeur {
+#tableValeur
+{
     width : 30%;
     text-align: right;
 }
 
-#boutons {
+#boutons
+{
     text-align: center;
 }
 

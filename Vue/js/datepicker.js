@@ -30,7 +30,7 @@
         dayNamesShort: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
         dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
         weekHeader: 'Sem.',
-        dateFormat: 'DD d MM yy', /* ou sinon : dd/mm/yy */
+        dateFormat: 'dd/mm/yy', /* dd/mm/yy ou DD d MM yy */
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,

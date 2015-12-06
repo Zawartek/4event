@@ -1,8 +1,8 @@
 ﻿<?php
 
     $host="127.0.0.1";
-    $user='4event';
-    $pass='4event';
+    $user='root';
+    $pass='';
     $dbname="4event";
 
     $db = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$pass");

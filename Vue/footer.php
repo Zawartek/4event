@@ -14,9 +14,9 @@ and open the template in the editor.
         <link href="./css/style.css" rel="stylesheet" media="all" type="text/css">
         <div id="footer">
             <img src="img/logo.png" height="70px" style="margin-left: 100px" style="margin-right: 600px;">
-            <a href="#"><img class="logo-reseau" src="img/facebook.png" alt="facebook"></a>
-            <a href="#"><img class="logo-reseau" src="img/twitter.png" alt="twitter"></a>
-            <a href="#"><img class="logo-reseau" src="img/googleplus.png" alt="google+"></a>
+            <a class="lien-reseau" href="#"><img class="logo-reseau" src="../Vue/img/facebook.png" alt="facebook"></a>
+            <a class="lien-reseau" href="#"><img class="logo-reseau" src="../Vue/img/twitter.png" alt="twitter"></a>
+            <a class="lien-reseau" href="#"><img class="logo-reseau" src="../Vue/img/googleplus.png" alt="google+"></a>
         </div>
     </body>
 </html>
