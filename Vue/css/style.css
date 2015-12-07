@@ -20,7 +20,6 @@
     width : 350px;
     margin: auto;
     border: 2px solid #C0C0C0;
-
 }
 
 .inscription, .connexion
@@ -90,8 +89,8 @@ fieldset
 /* Page profil */
 #photoProfil
 {
-    width : 180px;
-    height: 180px;
+    width : 150px;
+    height: 150px;
     margin : 10px;
     float : left;
 }
@@ -110,7 +109,8 @@ fieldset
 
 #infosComplementaires
 {
-    margin-bottom: 10px;
+    margin : 0px 0px 10px 0px;
+    width:100%;
 
 }
 #agenda
@@ -144,23 +144,30 @@ fieldset
 #profilEvent
 {
     border : solid 1px black;
-    margin : 10px;
+    margin : 10px 10px 10px 0px;
     float : left;
     padding : 1%;
-    width : 60%;
+    width : 65%;
 }
+
 
 #infosEvent
 {
-    margin : 10px;
     float : left;
     padding : 1%;
+    width : auto;
+    margin : 0px;
 }
 
 #infosOrganisateur
 {
     border : solid 1px black;
     padding : 8px;
+}
+
+#infosLieu
+{
+    height : 240px;
 }
 
 #participationEvent
@@ -174,7 +181,33 @@ fieldset
 {
     border : solid 1px black;
     padding : 8px 30px 8px 30px;
-    margin : 0px 50px 15px 50px;
+    margin : 0px 50px 15px 0px;
+}
+
+/* Map css */
+
+div#map {
+    position: relative;
+    width : 100%;
+    height : 100%;
+}
+  
+div#map_canvas {
+    width : 100%;
+    height : 200px;
+}
+
+div#crosshair {
+    position: absolute;
+    top: 192px;
+    height: 19px;
+    width: 19px;
+    left: 50%;
+    margin-left: -8px;
+    display: block;
+    background: url(./Vue/map/crosshair.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 /* Header */

@@ -5,17 +5,18 @@
 */
 
 function ident () {
-echo "test\n";
     require ("./Modele/utilisateurs.php");
-echo "test\n";
     
     accueil();
 }
 
 function accueil(){
 	$_SESSION['page'] = 'accueil';
-	$nexturl = "/Vue/accueil.php";
+        /*
+	$nexturl = "./Vue/accueil.php";
 	header ("Location:" . $nexturl);
+         */
+        include ("./Vue/accueil.php");
 }
 
 // Controleur pour gérer le formulaire de connexion des utilisateurs
@@ -45,7 +46,6 @@ function connexion(){
             //include("Vue/connexion_erreur.php");
         }
     } else { // La page de connexion par défaut
-        echo 'test';
     }
 }
 ?>
