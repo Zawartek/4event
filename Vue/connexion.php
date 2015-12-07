@@ -15,16 +15,23 @@
 
             <form method="post" action="inscriptionControler.php">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Connexion</h2>
-                
+
                 <label for="email">Se connecter avec Facebook</label>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a><br>
                 <label for="email">Se connecter avec Twitter</label>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
                 <label for="email">Se connecter avec Google +</label>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br><br>
 
-                <label for="email">Email :</label>
-                <input type="text" name="email" id="email"><br>
+                <div style="text-align: center;">
+                    <label for="email">Ou</label><br><br>
+                </div>
+
+                <label for="email" style="width: 150px;">Email :</label>
+                <input type="text" name="email" id="email" class="input"><br>
+
+                <label for="mdp" style="width: 150px;">Mot de passe :</label>
+                <input type="password" name="mdp" id="mdp" class="input"><br>
 
                 <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="Connexion">
             </form>

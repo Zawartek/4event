@@ -1,3 +1,33 @@
+<?php
+// Le champ "identifiant" ET le champ "password" sont remplis ?
+if (isset($_POST['login'])) {
+    // Neutralisation des éventuelles mauvaises intentions du visiteur.
+    $login = htmlspecialchars($_POST['login']);
+    $password = htmlspecialchars($_POST['password']);
+
+    if (($login != '') && ($password != '')) {
+        $password = md5($password);
+
+        $reponse = $bdd->query("SELECT * FROM joueur WHERE login='$login'");
+        while ($donnees = $reponse->fetch()) {
+            // Le champ "password" correspond à l'un de ces membres ?
+            if ($password == $donnees['password']) {
+                // Ouverture d'une session "membre"
+                $_SESSION['id_joueur'] = $donnees['id'];
+
+                // Redirection vers la page "village".
+                header('Location: ' . URL . '/index.php?page=village');
+                exit();
+            }
+        }
+
+        $message = 'L\'identifiant ou le mot de passe sont incorrects.';
+    } else {
+        $message = 'Certains champs sont vides.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -16,7 +46,7 @@ and open the template in the editor.
         <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
-            $(function ()
+            $(function()
             {
                 $("#date").datepicker($.datepicker.regional["fr"]);
                 $("#date").datepicker('setDate', new Date());
