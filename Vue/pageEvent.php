@@ -14,9 +14,7 @@ and open the template in the editor.
         <script type="text/javascript">
             function loadMap(){
                 initialize();
-            }
-            function centerMap(){
-                document.getElementById("description").text(geocode());
+                geocode("<?php echo $event["adresse"]; ?>");
             }
         </script>
     </head>
@@ -30,11 +28,11 @@ and open the template in the editor.
                         <?php echo $event["evenement_titre"]; ?>
                     </p>
                     <p>
-                        Lieu : <span id="adress"><?php echo $event["adresse"]; ?></span>
+                        Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
                     <p id="description">
                         Description : 
-                        <?php //echo $event["evenement_description"];?>
+                        <?php echo $event["evenement_description"];?>
                     </p>
                 </div>
             </div>
@@ -58,22 +56,13 @@ and open the template in the editor.
             <div id="infosComplementaires">
                 <div id="infosLieu" class="cadre">
                     <div id="map">
-                        <div id="map_canvas" style="width:100%; height:400px"></div>
+                        <div id="map_canvas"></div>
                         <div id="crosshair"></div>
-                        <input type='button' onclick="centerMap()" value='visualiser'/>
                     </div>
-                </div>
-                <div id ="descriptionEvent" class="cadre">
-                    <h1>Description</h1>
-                    <p>
-                        ----------------------------------------------------------------------------------------------------------------
-                        ----------------------------------------------------------------------------------------------------------------
-                        ----------------------------------------------------------------------------------------------------------------
-                        ----------------------------------------------------------------------------------------------------------------<br>
-                        ----------------------------------------------------------------------------------------------------------------
-                        ----------------------------------------------------------------------------------------------------------------<br>
-                    </p>
-
+                    <div class="hidden">
+                        <p id="formatedAddress"></p>
+                        <div id="zoom_level"></div>
+                    </div>
                 </div>
 
                 <div id="billeterie" class="cadre">
@@ -81,6 +70,14 @@ and open the template in the editor.
                     <p>
                         <?php echo $event["evenement_site_web"];?>
                     </p>
+                </div>
+                
+                <div id ="descriptionEvent" class="cadre">
+                    <h1>Description</h1>
+                    <p>
+                        <?php echo $event["evenement_description"];?>
+                    </p>
+
                 </div>
 
                 <div id="commentairesEvent" class="cadre">

@@ -1,25 +1,4 @@
-
-
-<style type="text/css">
-  div#map {
-    position: relative;
-    width : 100%;
-    height : 100%;
-  }
-
-  div#crosshair {
-    position: absolute;
-    top: 192px;
-    height: 19px;
-    width: 19px;
-    left: 50%;
-    margin-left: -8px;
-    display: block;
-    background: url(./Vue/map/crosshair.gif);
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-</style>
+<link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
   var map;
@@ -97,8 +76,8 @@
   }
 
 
-  function geocode() {
-    var address = document.getElementById("address").value;
+  function geocode(address) {
+        document.getElementById('formatedAddress').text =address;
     geocoder.geocode({
       'address': address,
       'partialmatch': true}, geocodeResult);
@@ -108,6 +87,7 @@
   function geocodeResult(results, status) {
     if (status == 'OK' && results.length > 0) {
       map.fitBounds(results[0].geometry.viewport);
+    addMarkerAtCenter();
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }
@@ -118,7 +98,7 @@
         position: map.getCenter(),
         map: map
     });
-
+/*
     var text = 'Lat/Lng: ' + getCenterLatLngText();
     if(currentReverseGeocodeResponse) {
       var addr = '';
@@ -131,7 +111,7 @@
     }
 
     var infowindow = new google.maps.InfoWindow({ content: text });
-
+*/
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map,marker);
     });

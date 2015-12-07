@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Inscription</title>
-        <link href="../Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
-        <link href="../Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
+        <link href="./Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
 
         <!-- appels pour datepicker -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="js/datepicker.js"></script>
+        <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
             $(function()
@@ -24,14 +24,14 @@
     <body>
         <div class="inscription" style="margin-top: 5%">
             <div style="background-color: white; height: 40px; width: 98px; border-radius: 10px;">
-                <img src="img/logo.png" height="40px">
+                <img src="./Vue/img/logo.png" height="40px">
             </div>
 
             <form method="post" action="inscriptionControler.php">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="img/facebook.png" alt="facebook"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="img/twitter.png" alt="twitter"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="img/googleplus.png" alt="google+"></a><br>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br>
 
                 <label for="nom">Nom :</label>
                 <input type="text" name="nom" id="nom" class="input"><br>

@@ -10,12 +10,16 @@
                 . ' u.utilisateur_id = e.evenement_utilisateur_id and '
                 . 'a.adresse_id = e.evenement_adresse_id';
         $reponse = $db->query($request);
-        $data = $reponse->fetch();
+        if ($reponse !=null){
+            $data = $reponse->fetch();
         
         $data['adresse'] = $data['adresse_numero_voie'] . ", "
                 . $data['adresse_code_postal'] . " " 
                 . $data['adresse_ville'];
-        
+        }
+        else {
+           // return null;
+        }
         // Recuperation de l'organisateur
         
         
