@@ -7,8 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Accueil</title> 
-        
+        <title>Accueil</title>
+
         <!-- appels pour datepicker -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -16,7 +16,7 @@ and open the template in the editor.
         <script src="js/datepicker.js"></script>
 
         <script type="text/javascript">
-            $(function()
+            $(function ()
             {
                 $("#date").datepicker($.datepicker.regional["fr"]);
                 $("#date").datepicker('setDate', new Date());
@@ -30,12 +30,12 @@ and open the template in the editor.
                 <?php include('slider/slider.html'); ?>
 
                 <form id="barreRecherche" method="post" action="#">
-                    <select id="theme" name="theme" class="select">
+                    <select id="choixTheme" name="choixTheme" class="input">
                         <?php
                         for ($i = 0; $i < 5; $i++) {
                             ?>
                             <option>Test</option>
-                            <?php }
+                        <?php }
                         ?>
                     </select>
                     <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
@@ -50,7 +50,7 @@ and open the template in the editor.
                     <option>
                         Test
                     </option>
-                    <?php }
+                <?php }
                 ?>
             </select>
 
@@ -66,13 +66,11 @@ and open the template in the editor.
                         <input type='hidden' name='action' value='afficherPageEvent'/>
                         <input type="submit" value="voir l'événement"/>
                     </form>
-                <div id="clear"></div>
+                    <div id="clear"></div>
+                </div>
             </div>
 
-           
-        </div>
-            
-             <div class="cadre" >
+            <div class="cadre" >
                 <div style="float:left; width : 80%;">Descritpion------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
                     -----------------------------------------------------------------------------------------------
@@ -81,7 +79,7 @@ and open the template in the editor.
                 <div style="float:left; background-image: url('../Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 20%; height : 100px;"> Nom de l'évenement</div>
                 <div id="clear"></div>
             </div>
-             <?php include('./footer.php'); ?>
-        
+            <?php include('./footer.php'); ?>
+        </div>
     </body>
 </html>

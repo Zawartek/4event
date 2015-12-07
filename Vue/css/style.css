@@ -34,7 +34,7 @@
     box-shadow: 2px 2px 20px #C0C0C0;
 }
 
-.inscription input[type=text], input[type=date], input[type=password], input[type=email]
+.inscription input[type=text], .inscription input[type=date], .inscription input[type=password], .inscription input[type=email]
 {
     width: 170px;
     padding-left: 10px;
@@ -45,14 +45,20 @@
     width: 150px;
 }
 
-.inputp
+#creationEvent input[type=text], #creationEvent input[type=date], #creationEvent input[type=email], #creationEvent select
 {
-    height: 25px;
-    width: auto;
-    margin: 0px 10px;
-    padding-left: 14px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #f9f9f9;
+    width: 180px;
+    margin-right: 20px;
+}
+
+#creationEvent label
+{
+    width: 140px;
+}
+
+#tabCreationEvent tr
+{
+    padding: 10px;
 }
 
 #formInscription
@@ -276,32 +282,26 @@ fieldset
     text-align: center;
 }
 
-#theme
+#choixTheme
 {
     width: 200px;
+    padding: 6px 3px;;
 }
 
-.select
+.input
 {
     border: 1px solid gray;
-    border-radius: 4px;
+    border-radius: 3px;
     text-align: left;
-    padding: 6px 3px;
-}
-
-.cadrePrincipale
-{
-    margin-top: 10px;
-
-    background-color: #E6E6E6;
-    border: 1px solid #E6E6E6;
-    border-radius: 6px;
-    line-height: 40px;
-    text-align: center;
-    box-shadow: 2px 2px 5px #E6E6E6;
+    padding: 2px 6px;
 }
 
 h2
 {
     text-align: center;
+}
+
+.text-area
+{
+    resize: none;
 }

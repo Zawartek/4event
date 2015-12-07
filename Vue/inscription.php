@@ -34,31 +34,31 @@
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="img/googleplus.png" alt="google+"></a><br>
 
                 <label for="nom">Nom :</label>
-                <input type="text" name="nom" id="nom"><br>
+                <input type="text" name="nom" id="nom" class="input"><br>
 
                 <label for="prenom">Prenom :</label>
-                <input type="text" name="prenom" id="prenom"><br>
+                <input type="text" name="prenom" id="prenom" class="input"><br>
 
                 <label for="email">Email :</label>
-                <input type="text" name="email" id="email"><br>
+                <input type="text" name="email" id="email" class="input"><br>
 
                 <label for="voie">Voie :</label>
-                <input type="text" name="voie" id="voie"><br>
+                <input type="text" name="voie" id="voie" class="input"><br>
 
                 <label for="codepostal">Code postal :</label>
-                <input type="text" name="codepostal" id="codepostal"><br>
+                <input type="text" name="codepostal" id="codepostal" class="input"><br>
 
                 <label for="ville">Ville :</label>
-                <input type="text" name="ville" id="ville"><br>
+                <input type="text" name="ville" id="ville" class="input"><br>
 
                 <label for="pays">Pays :</label>
-                <input type="text" name="pays" id="pays"><br>
+                <input type="text" name="pays" id="pays" class="input"><br>
 
                 <label for="datenaissance">Date de naissance :</label>
-                <input type="text" id="datenaissance" name="datenaissance" onload="this.value(Date());">
+                <input type="text" id="datenaissance" name="datenaissance" class="input" onload="this.value(Date());">
 
                 <label for="mdp">Mot de passe :</label>
-                <input type="password" name="mdp" id="mdp" required="required"><br>
+                <input type="password" name="mdp" id="mdp" class="input" required="required"><br>
 
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
                 <label for="femme" style="width: auto">Femme</label>
