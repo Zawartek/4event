@@ -6,7 +6,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript">
         $(function(){
-      var dialogInscription, dialogConnexion
+      var dialogInscription, dialogConnexion, dialogCreerEvent
       dialogInscription= $( "#dialog-inscription" ).dialog({
       autoOpen: false,
       height: 600,
@@ -30,11 +30,28 @@
         allFields.removeClass( "ui-state-error" );
       }
     });
+    
+      dialogCreerEvent= $( "#dialog-creerEvent" ).dialog({
+      autoOpen: false,
+      height: 700,
+      width: 920,
+      modal: true,
+      position : { my: "center", at: "top", of: window },
+      close: function() {
+        form[ 0 ].reset();
+        allFields.removeClass( "ui-state-error" );
+      }
+    });
+    
+    
     $( "#btnInscription" ).button().on( "click", function() {
       dialogInscription.dialog( "open" );
     });
     $( "#btnConnexion" ).button().on( "click", function() {
       dialogConnexion.dialog( "open" );
+    });
+    $( "#btnCreerEvent" ).button().on( "click", function() {
+      dialogCreerEvent.dialog( "open" );
     });
     });
     </script>
@@ -45,13 +62,19 @@
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
     <a id ="btnConnexion" style="margin-left: 380px;" class="bold btn btn-orange">Connexion</a>
     <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
+    <a id="btnCreerEvent" class="bold btn btn-link text-orange">+</a>
     
 <div id="users-contain" class="ui-widget">
 </div>
     <div id="dialog-connexion" title="Connexion d'un utilisateur">
         <?php include ('./Vue/connexion.php'); ?>
     </div>
+    
     <div id="dialog-inscription" title="Inscription d'un utilisateur">
         <?php include ('./Vue/inscription.php'); ?>
+    </div>
+    
+    <div id="dialog-creerEvent" title="Création d'un utilisateur">
+        <?php include ('./Vue/creationEvent.php'); ?>
     </div>
 </div>

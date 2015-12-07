@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Création</title>
-        <link href="../Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
-        <link href="../Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
+        <link href="./Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
 
         <!-- appels pour datepicker -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="js/datepicker.js"></script>
+        <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
             $(function ()
@@ -28,7 +28,7 @@
 
 
         <div id="content">
-            <?php require("./header.php"); ?>
+            <?php //require_once("./Vue/header.php"); ?>
 
             <form id="creationEvent" method="post" action="EvenementControler.php" style="margin: auto;">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Création Evénement</h2><br>
@@ -67,7 +67,7 @@
                         <td>
                             <select id="theme" name="theme" class="input">
                                 <?php
-                                require_once ('./../Modele/configSQL.php');
+                                require ('./Modele/configSQL.php');
 
                                 $sql = "SELECT * FROM `theme`";
                                 $reponse = $db->query($sql);
@@ -101,7 +101,7 @@
                         <td>
                             <select id="typePublic" name="typePublic" class="input">
                                 <?php
-                                require_once ('./../Modele/configSQL.php');
+                                require_once ('./Modele/configSQL.php');
 
                                 $sql = "SELECT * FROM `theme`";
                                 $reponse = $db->query($sql);
