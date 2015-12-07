@@ -13,11 +13,11 @@
         <script src="js/datepicker.js"></script>
 
         <script type="text/javascript">
-            $(function()
+            $(function ()
             {
                 $("#dateDebut").datepicker($.datepicker.regional["fr"]);
                 $("#dateDebut").datepicker('setDate', new Date());
-                
+
                 $("#dateFin").datepicker($.datepicker.regional["fr"]);
                 $("#dateFin").datepicker('setDate', new Date());
             });
@@ -25,15 +25,17 @@
     </head>
 
     <body>
+
+
         <div id="content">
             <?php require("./header.php"); ?>
 
-            <form id="creationEvent" method="post" action="inscriptionControler.php" style="margin: auto;">
+            <form id="creationEvent" method="post" action="EvenementControler.php" style="margin: auto;">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Création Evénement</h2><br>
 
                 <label for="titre">Titre :</label>
                 <input type="text" name="titre" id="titre" class="input"><br>
-                
+
                 <label for="description">Description :</label><br>
                 <textarea name="description" id="description" cols="120" rows="10" class="text-area"></textarea><br><br>
 
@@ -44,12 +46,16 @@
                         <td></td>
                         <td></td>
                     </tr>
+
                     <tr>
                         <td><label for="voie">Voie :</label></td>
                         <td><input type="text" name="voie" id="voie" class="input"></td>
                         <td><label for="codepostal">Code postal :</label></td>
                         <td><input type="text" name="codepostal" id="codepostal" class="input"></td>
+                    <br>
                     </tr>
+
+
                     <tr>
                         <td><label for="ville">Ville :</label></td>
                         <td><input type="text" name="ville" id="ville" class="input"></td>
@@ -58,7 +64,20 @@
                     </tr>
                     <tr>
                         <td><label for="theme">Thème :</label></td>
-                        <td><select id="theme" name="theme" class="input"></select></td>
+                        <td>
+                            <select id="theme" name="theme" class="input">
+                                <?php
+                                require_once ('./../Modele/configSQL.php');
+
+                                $sql = "SELECT * FROM `theme`";
+                                $reponse = $db->query($sql);
+
+                                while ($data = $reponse->fetch()) {
+                                    echo '<option value="' . $data["theme_id"] . '">' . $data["theme_nom"] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -66,20 +85,33 @@
                         <td><label for="dateDebut">Date début :</label></td>
                         <td><input type="text" id="dateDebut" name="dateDebut" class="input" onload="this.value(Date());"></td>
                         <td><label for="heureDebut">Heure début :</label></td>
-                        <td><input type="text" name="heureDebut" id="heureDebut" class="input"></td>
-                        
+                        <td><input type="time" name="heureDebut" id="heureDebut" class="input"></td>
+
                     </tr>
                     <tr>
                         <td><label for="dateFin">Date fin :</label></td>
                         <td><input type="text" id="dateFin" name="dateFin" class="input" onload="this.value(Date());"></td>
                         <td><label for="heureFin">Heure fin :</label></td>
-                        <td><input type="text" name="heureFin" id="heureFin" class="input"></td>
+                        <td><input type="time" name="heureFin" id="heureFin" class="input"></td>
                     </tr>
                     <tr>
                         <td><label for="maxParticipants">Max participants :</label></td>
                         <td><input type="text" name="maxParticipants" id="maxParticipants" class="input"></td>
                         <td><label for="typePublic">Type public :</label></td>
-                        <td><select id="typePublic" name="typePublic" class="input"></select></td>
+                        <td>
+                            <select id="typePublic" name="typePublic" class="input">
+                                <?php
+                                require_once ('./../Modele/configSQL.php');
+
+                                $sql = "SELECT * FROM `theme`";
+                                $reponse = $db->query($sql);
+
+                                while ($data = $reponse->fetch()) {
+                                    echo '<option value="' . $data["theme_id"] . '">' . $data["theme_nom"] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="siteWeb">Site Web :</label></td>
@@ -92,5 +124,9 @@
                 <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="S'Inscrire">
             </form>
         </div>
+
+
+
+
     </body>
 </html>

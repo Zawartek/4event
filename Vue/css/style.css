@@ -6,7 +6,7 @@
 
 #header
 {
-    margin: 5px 0px;
+    margin: 0px 0px 5px 0px;
 }
 
 #clear
@@ -45,7 +45,11 @@
     width: 150px;
 }
 
-#creationEvent input[type=text], #creationEvent input[type=date], #creationEvent input[type=email], #creationEvent select
+#creationEvent input[type=text],
+#creationEvent input[type=date],
+#creationEvent input[type=email],
+#creationEvent input[type=time],
+#creationEvent select
 {
     width: 180px;
     margin-right: 20px;
