@@ -7,12 +7,12 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <title>page événement</title>
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
-        <?php include ('./Vue/map/getlatlng.php');?>
+        <?php include ('./Vue/map/getlatlng.php'); ?>
         <script type="text/javascript">
-            function loadMap(){
+            function loadMap() {
                 initialize();
                 geocode("<?php echo $event["adresse"]; ?>");
             }
@@ -30,21 +30,18 @@ and open the template in the editor.
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
-                    <p id="description">
-                        Description : 
-                        <?php echo $event["evenement_description"];?>
-                    </p>
                 </div>
             </div>
             <div id="infosEvent">
                 <div id="infosOrganisateur">
                     <p>
-                        Organisateur : <?php echo $event["utilisateur_nom"];?>
+                        Organisateur : <?php echo $event["utilisateur_nom"]; ?>
                     </p>
                     <p>
                         Nombres d'événements organisés : 
+                        <?php echo $event["nbEvent"]; ?>
                     </p>
-                    <a href=''>profil</a>
+                    <a href='index.php?controle=utilisateur&action=afficherPageUti'>profil</a>
                 </div>
                 <div id="participationEvent">
                     <button>Participer</button>
@@ -53,8 +50,16 @@ and open the template in the editor.
             </div>
             <div id="clear"></div>
             <br>
-            <div id="infosComplementaires">
-                <div id="infosLieu" class="cadre">
+            <div id ="descriptionEvent">
+                <h1>Description</h1>
+                <p>
+                    <?php echo nl2br($event["evenement_description"]); ?>
+                </p>
+
+            </div>
+            <div id="infosComplementairesEvent">
+                <div id="infosLieu">
+                    <h1>Plan</h1>
                     <div id="map">
                         <div id="map_canvas"></div>
                         <div id="crosshair"></div>
@@ -64,46 +69,45 @@ and open the template in the editor.
                         <div id="zoom_level"></div>
                     </div>
                 </div>
+                <br>
+                <br>
 
-                <div id="billeterie" class="cadre">
-                    <h1>Lien vers la billeterie</h1>
-                    <p>
-                        <?php echo $event["evenement_site_web"];?>
-                    </p>
-                </div>
-                
-                <div id ="descriptionEvent" class="cadre">
-                    <h1>Description</h1>
-                    <p>
-                        <?php echo $event["evenement_description"];?>
-                    </p>
-
+                <div id="billeterie">
+                    <h1>Billeterie</h1>
+                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
+                        Site Web                       
+                    </a>
                 </div>
 
-                <div id="commentairesEvent" class="cadre">
-                    <h1>Commentaires</h1>
-                    <p>
-                        <?php
-                        for ($i = 0; $i < 5; $i++) {
-                            ?>
-                        <p class="cadre">
-                            Commentaire---------------------------------------------
-                            --------------------------------------------------------
-                            <br>
-                            --------------------------------------------------------
-                            --------------------------------------------------------
-                            --------------------------------------------------------
-                            <br>
-                            <a href=""> lire la suite</a>
-                        </p>
+            </div>
+            <div id="clear"></div> 
+
+            <div id="commentairesEvent" class="cadre">
+                <h1>Commentaires</h1>
+                <?php
+                if (isset($event['commentaires'][0])) {
+                    foreach ($event['commentaires'] as $com) {
+                        ?>
+                        <div class="cadre">
+                            <p>
+                                <?php echo nl2br($com['avis_contenu']); ?><br>
+                            </p>
+                            <p align="right">
+                                écrit par <?php
+                                echo $com['utilisateur_prenom'] .
+                                ' ' . $com['utilisateur_nom'];
+                                ?>
+                            </p>
+                        </div>
                         <br>
                         <?php
                     }
-                    ?>
-                    </p>
-                </div>
-                <div id="clear"></div>
+                } else {
+                    echo '<p> aucun commentaire n\'a été ajouté</p>';
+                }
+                ?>
             </div>
+            <div id="clear"></div>
         </div>
 
         <div id="footer">

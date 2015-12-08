@@ -8,18 +8,18 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>profil utilisateur</title>
-        <link href="./css/style.css" rel="stylesheet" media="all" type="text/css"> 
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css"> 
     </head>
     <body>
         <div id="content">
-            <?php require("./header.php"); ?>
+            <?php require("./Vue/header.php"); ?>
             <div id="profil">
-                <img id="photoProfil" src="./img/default-user.png" />
+                <img id="photoProfil" src="./Vue/img/default-user.png" />
                 <div id="infosProfil">
-                    <p>Prenom NOM</p>
-                    <p>Ville</p>
-                    <p>Evenements inscrits : </p>
-                    <p>Evenements organisés : </p>
+                    <p><?php echo $uti['utilisateur_prenom'] . " " . $uti['utilisateur_nom'] ?></p>
+                    <p><?php echo $uti['adresse_ville'] ?></p>
+                    <p>Evenements inscrits : <?php echo $uti['nbEventInscrit'] ?></p>
+                    <p>Evenements organisés : <?php echo $uti['nbEventOrga'] ?></p>
                 </div>
                 <div id="clear"></div>
             </div>

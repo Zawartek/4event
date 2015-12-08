@@ -169,9 +169,28 @@ fieldset
     padding : 8px;
 }
 
+#descriptionEvent
+{
+    border : solid 1px black;
+    margin : 10px 10px 10px 0px;
+    float : left;
+    padding : 1%;
+    width : 65%;
+}
+
+#infosComplementairesEvent
+{
+    float : left;
+    padding : 1%;
+    width : 27%;
+    margin : 8px 0px 8px 8px;
+    border : solid 1px black;
+}
+
 #infosLieu
 {
-    height : 240px;
+    height : 200px;
+    
 }
 
 #participationEvent
@@ -197,7 +216,7 @@ div#map {
 }
   
 div#map_canvas {
-    width : 100%;
+    width : 200px;
     height : 200px;
 }
 

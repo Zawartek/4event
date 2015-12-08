@@ -19,6 +19,14 @@ function accueil() {
     include ("./Vue/accueil.php");
 }
 
+function afficherPageUti(){
+    require_once './Modele/utilisateurs.php';
+    $_SESSION['page'] = 'pageUti';
+    $idUti = 1;
+    $uti = infosUti($db, $idUti);
+    include ("./Vue/profilUtilisateur.php");
+}
+
 // Controleur pour gérer le formulaire de connexion des utilisateurs
 function connexion() {
     if (isset($_GET['cible']) && $_GET['cible'] == "verif") { // L'utilisateur vient de valider le formulaire de connexion

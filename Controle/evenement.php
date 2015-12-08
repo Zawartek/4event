@@ -8,7 +8,7 @@
 
 function afficherPageEvent(){
     require_once './Modele/evenements.php';
-    $idEvent = 1;
+    $idEvent = 2;
     $event = infosEvent($db, $idEvent);
     if ($event ==null)
     {
