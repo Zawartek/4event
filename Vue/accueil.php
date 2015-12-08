@@ -56,6 +56,10 @@ and open the template in the editor.
     <body>
         <div id="content">
             <?php require("./Vue/header.php"); ?>
+            <div>
+                <h1 style=" text-align: center;">Le site de partage d'événements</h1>
+            </div>
+           
             <div id="slider">
                 <?php include('./Vue/slider/slider.html'); ?>
 
