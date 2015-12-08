@@ -27,7 +27,7 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="inscriptionControler.php">
+            <form method="post" action="index.php?controle=utilisateur&action=inscription">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
