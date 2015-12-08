@@ -61,7 +61,7 @@
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a> 
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
-    <a id ="btnConnexion" style="margin-left: 380px;" class="bold btn btn-orange">Connexion</a>
+    <a id ="btnConnexion" style="margin-left:260px;" class="bold btn btn-orange">Connexion</a>
     <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
     <a id="btnCreerEvent" class="bold btn btn-link text-orange">+</a>
     
@@ -75,7 +75,7 @@
         <?php include ('./Vue/inscription.php'); ?>
     </div>
     
-    <div id="dialog-creerEvent" title="Création d'un utilisateur">
+    <div id="dialog-creerEvent" title="Création d'un événement">
         <?php include ('./Vue/creationEvent.php'); ?>
     </div>
 </div>

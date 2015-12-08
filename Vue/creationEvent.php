@@ -119,9 +119,9 @@
                         <td><label for="tarif">Tarif :</label></td>
                         <td><input type="text" name="tarif" id="tarif" class="input"></td>
                     </tr>
-                </table>
+                </table><br><br>
 
-                <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="S'Inscrire">
+                <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="Créer">
             </form>
         </div>
 

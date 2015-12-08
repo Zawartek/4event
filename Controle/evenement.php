@@ -16,8 +16,6 @@ function afficherPageEvent(){
         accueil();
     }
     include ("./Vue/pageEvent.php");
-    
-    
 }
 
 function creationEvent(){
@@ -39,7 +37,7 @@ isset($_POST['dateFin']) && isset($_POST['maxParticipants'])&& isset($_POST['typ
     $pays = $_POST['pays'];
     $theme = $_POST['theme'];
     $dateDebut = formattageDateBDD($_POST['dateDebut']);
-    $dateFin = $_POST['dateFin'];
+    $dateFin = formattageDateBDD($_POST['dateFin']);
     $maxParticipants = $_POST['maxParticipants'];
     $tarif = $_POST['tarif'];
     $typePublic = $_POST['typePublic'];
@@ -60,10 +58,10 @@ isset($_POST['dateFin']) && isset($_POST['maxParticipants'])&& isset($_POST['typ
     $sql3 = "INSERT INTO `evenement`(`evenement_id`, `evenement_titre`, `evenement_description`,`evenement_utilisateur_id`, `evenement_adresse_id`,"
           . "`evenement_theme_id`, `evenement_date_debut`, `evenement_heure_debut`, `evenement_date_fin`, `evenement_heure_fin`,"
           . "`evenement_max_participants`, `evenement_type_public`, `evenement_site_web`, `evenement_tarif`)"
-          . "VALUES ('','$titre','$description','1','$adresse_id',$theme, $dateDebut,'$heureDebut','$dateFin','$heureFin','$maxParticipants',"
+          . "VALUES ('','$titre','$description','1','$adresse_id','$theme','$dateDebut','$heureDebut','$dateFin','$heureFin','$maxParticipants',"
           . "'$typePublic','$siteWeb','$tarif')";
     $reponse3 = $db->query($sql3);
 }
 
-//echo "<script>location='index.php';</script>";
+echo "<script>location='index.php';</script>";
 }
