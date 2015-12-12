@@ -4,6 +4,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+
+if (isset($_POST["date"]))
+{
+    echo $_POST["date"];
+}
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -35,12 +43,7 @@ and open the template in the editor.
 
                 <form id="barreRecherche" method="post" action="#">
                     <select id="choixTheme" name="choixTheme" class="input">
-                        <?php
-                        for ($i = 0; $i < 5; $i++) {
-                            ?>
-                            <option>Test</option>
-                        <?php }
-                        ?>
+                        <?php getThemeEvent(); ?>
                     </select>
                     <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
