@@ -111,8 +111,14 @@ function getThemeEvent()
     $sql = "SELECT * FROM theme";
     $reponse = $db->query($sql);
 
-    while ($data = $reponse->fetch())
+    $i = 0;
+    $tableau = array();
+    
+    while($ligne = $reponse->fetch())
     {
-        echo '<option value="' . $data["theme_id"] . '">' . $data["theme_nom"] . '</option>';
+        $tableau[$i] = $ligne;
+        $i++;
     }
+    
+    return $tableau;
 }

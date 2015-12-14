@@ -5,10 +5,25 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
+require('./Modele/configSQL.php');
+require ('./Vue/fonctions.php');
 
 if (isset($_POST["date"]))
 {
-    echo $_POST["date"];
+    $date = formattageDateBDD($_POST["date"]);
+    $theme = $_POST["choixTheme"];
+
+    $sql = $db->prepare("SELECT evenement_utilisateur_id FROM `evenement` WHERE evenement_date_debut > :date AND evenement_theme_id = :theme");
+    
+    $sql->bindValue(':date', $date);
+    $sql->bindValue(':theme', $theme, PDO::PARAM_STR);
+    
+    $sql->execute();
+    
+    while ($data = $sql->fetch())
+    {
+        //print_r ($data["evenement_utilisateur_id"]);
+    }
 }
 
 ?>
@@ -43,7 +58,12 @@ if (isset($_POST["date"]))
 
                 <form id="barreRecherche" method="post" action="#">
                     <select id="choixTheme" name="choixTheme" class="input">
-                        <?php getThemeEvent(); ?>
+                        <?php
+                        foreach($themes as $theme)
+                        {
+                            echo '<option value="'.$theme["theme_id"].'">'.$theme["theme_nom"].'</option>';
+                        }
+                        ?>
                     </select>
                     <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">

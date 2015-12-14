@@ -28,11 +28,6 @@
 
 
         <div id="content">
-            <?php
-                //require_once("./Vue/header.php");
-                require_once ("./Controle/evenement.php");
-            ?>
-
             <form id="creationEvent" method="post" action="index.php?controle=evenement&action=creationEvent" style="margin: auto;">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Création Evénement</h2><br>
 
@@ -69,7 +64,12 @@
                         <td><label for="theme">Thème :</label></td>
                         <td>
                             <select id="theme" name="theme" class="input">
-                                <?php getThemeEvent(); ?>
+                                <?php
+                                foreach($themes as $theme)
+                                {
+                                    echo '<option value="'.$theme["theme_id"].'">'.$theme["theme_nom"].'</option>';
+                                }
+                                ?>
                             </select>
                         </td>
                         <td></td>
@@ -94,7 +94,12 @@
                         <td><label for="typePublic">Type public :</label></td>
                         <td>
                             <select id="typePublic" name="typePublic" class="input">
-                                <?php getThemeEvent(); ?>
+                                <?php
+                                foreach($themes as $theme)
+                                {
+                                    echo '<option value="'.$theme["theme_id"].'">'.$theme["theme_nom"].'</option>';
+                                }
+                                ?>
                             </select>
                         </td>
                     </tr>
