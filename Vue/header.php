@@ -61,10 +61,27 @@
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a> 
     <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
-    <a id ="btnConnexion" style="margin-left:260px;" class="bold btn btn-orange">Connexion</a>
-    <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
-    <a id="btnCreerEvent" class="bold btn btn-link text-orange">+</a>
+    <?php
+    if (isset($_SESSION['prenom_nom']))
+    {
+        
+        echo '<a id="btnCreerEvent" style="margin-left:100px;" class="bold btn btn-link text-orange">ajouter un événement</a>';
+        
+        echo "<a href=\"index.php?controle=utilisateur&action=afficherPageUti\""
+        . "class=\"bold btn btn-link text-orange\">" . $_SESSION['prenom_nom'] . "</a>";
+        echo '<a href="index.php?controle=utilisateur&action=deconnexion"'
+        . 'class="bold btn btn-link text-orange">Déconnexion</a>';
+    }
+    else
+    {?>
+        <a id ="btnConnexion" style="margin-left:260px;" class="bold btn btn-orange">Connexion</a>
+        <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
+    <?php }
     
+    if (isset($erreur)){
+        echo $erreur;
+    }
+    ?>
 <div id="users-contain" class="ui-widget">
 </div>
     <div id="dialog-connexion" title="Connexion d'un utilisateur">
@@ -78,4 +95,5 @@
     <div id="dialog-creerEvent" title="Création d'un événement">
         <?php include ('./Vue/creationEvent.php'); ?>
     </div>
+    
 </div>

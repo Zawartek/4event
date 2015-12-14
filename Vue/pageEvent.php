@@ -43,10 +43,17 @@ and open the template in the editor.
                     </p>
                     <a href='index.php?controle=utilisateur&action=afficherPageUti'>profil</a>
                 </div>
+                <?php if ($_SESSION['userID']){?>
                 <div id="participationEvent">
-                    <button>Participer</button>
-                    <button>Ajouter à ses interet</button>
+                    <?php
+                        echo '<a href="index.php?controle=evenement&action=participer'.
+                           '&param='. $event['evenement_id'] .
+                           '" class="bold btn">Participer</a> ';
+                    ?>
+                    <a href="index.php?controle=evenement&action=ajoutInteret"
+                        class="bold btn">Ajouter à ses interet</a>
                 </div>
+                <?php } ?>
             </div>
             <div id="clear"></div>
             <br>

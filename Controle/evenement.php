@@ -6,11 +6,9 @@
  * and open the template in the editor.
  */
 
-function afficherPageEvent()
+function afficherPageEvent($idEvent)
 {
     require './Modele/evenements.php';
-    
-    $idEvent = 2;
     $event = infosEvent($db, $idEvent);
     
     if ($event ==null)
@@ -19,6 +17,22 @@ function afficherPageEvent()
         accueil();
     }
     include ("./Vue/pageEvent.php");
+}
+function participer($idEvent)
+{
+    require './Modele/evenements.php';
+    if (isset($_SESSION['userID'])){
+        participerBD($db, $idEvent, $_SESSION['userID']);
+    }
+    
+    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
+    header ("Location:" . $nexturl);
+}
+
+function ajoutInteret()
+{
+    require './Modele/evenements.php';
+    ajoutInteretBD($idEvent);
 }
 
 function creationEvent()

@@ -3,8 +3,8 @@
 require("configSQL.php");
 
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
-function mdp($db, $identifiant) {
-    $reponse = $db->query('SELECT utilisateur_id, utilisateur_mot_de_passe FROM Utilisateurs WHERE identifiant="' . $identifiant . '"');
+function mdp($db, $email) {
+    $reponse = $db->query('SELECT * FROM utilisateur WHERE utilisateur_email="' . $email . '";');
     return $reponse;
 }
 

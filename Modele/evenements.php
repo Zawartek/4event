@@ -45,4 +45,13 @@ function infosEvent($db, $idEvent) {
     return $data;
 }
 
+function participerBD($db, $idEvent, $idUti)
+{
+    // Recuperation de l'evenement
+    $request = 'INSERT INTO participation '
+            . 'VALUES (' . $idUti . ',' . $idEvent . ');';
+    $reussite = $db->exec($request);
+    echo $reussite;
+}
+
 ?>
