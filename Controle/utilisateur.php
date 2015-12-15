@@ -22,10 +22,9 @@ function accueil() {
     include ("./Vue/accueil.php");
 }
 
-function afficherPageUti() {
+function afficherPageUti($idUti) {
     require_once './Modele/utilisateurs.php';
     $_SESSION['page'] = 'pageUti';
-    $idUti = 1;
     $uti = infosUti($db, $idUti);
     include ("./Vue/profilUtilisateur.php");
 }

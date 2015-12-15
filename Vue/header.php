@@ -64,13 +64,19 @@
     <?php
     if (isset($_SESSION['prenom_nom']))
     {
+        ?>
+        <a id="btnCreerEvent" style="margin-left:90px;" 
+           class="bold btn btn-link text-orange">ajouter un événement</a>
         
-        echo '<a id="btnCreerEvent" style="margin-left:100px;" class="bold btn btn-link text-orange">ajouter un événement</a>';
-        
-        echo "<a href=\"index.php?controle=utilisateur&action=afficherPageUti\""
-        . "class=\"bold btn btn-link text-orange\">" . $_SESSION['prenom_nom'] . "</a>";
-        echo '<a href="index.php?controle=utilisateur&action=deconnexion"'
-        . 'class="bold btn btn-link text-orange">Déconnexion</a>';
+    <a href="index.php?controle=utilisateur&action=afficherPageUti&param= <?php echo $_SESSION['userID'];?>" 
+           style="display:inline"
+           class="bold btn btn-link text-orange"> 
+               <?php echo $_SESSION['prenom_nom']?> 
+        </a>
+        <a href="index.php?controle=utilisateur&action=deconnexion" 
+           style="display:inline"
+        class="bold btn btn-link text-orange">Déconnexion</a>
+    <?php
     }
     else
     {?>

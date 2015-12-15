@@ -8,24 +8,21 @@ and open the template in the editor.
 require('./Modele/configSQL.php');
 require ('./Vue/fonctions.php');
 
-if (isset($_POST["date"]))
-{
+if (isset($_POST["date"])) {
     $date = formattageDateBDD($_POST["date"]);
     $theme = $_POST["choixTheme"];
 
     $sql = $db->prepare("SELECT evenement_utilisateur_id FROM `evenement` WHERE evenement_date_debut > :date AND evenement_theme_id = :theme");
-    
+
     $sql->bindValue(':date', $date);
     $sql->bindValue(':theme', $theme, PDO::PARAM_STR);
-    
+
     $sql->execute();
-    
-    while ($data = $sql->fetch())
-    {
+
+    while ($data = $sql->fetch()) {
         //print_r ($data["evenement_utilisateur_id"]);
     }
 }
-
 ?>
 <html>
     <head>
@@ -39,7 +36,7 @@ if (isset($_POST["date"]))
         <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
-            $(function()
+            $(function ()
             {
                 $("#date").datepicker($.datepicker.regional["fr"]);
                 $("#date").datepicker('setDate', new Date());
@@ -52,16 +49,15 @@ if (isset($_POST["date"]))
             <div>
                 <h1 class="text-orange" style=" text-align: center;">Le site de partage d'événements</h1>
             </div>
-           
+
             <div id="slider">
                 <?php include('./Vue/slider/slider.html'); ?>
 
                 <form id="barreRecherche" method="post" action="#">
                     <select id="choixTheme" name="choixTheme" class="input">
                         <?php
-                        foreach($themes as $theme)
-                        {
-                            echo '<option value="'.$theme["theme_id"].'">'.$theme["theme_nom"].'</option>';
+                        foreach ($themes as $theme) {
+                            echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
                         }
                         ?>
                     </select>
@@ -82,29 +78,46 @@ if (isset($_POST["date"]))
             </select>
 
             <div id="clear"></div>
+            <div id="listeCommentaires">
+                <div class="cadre" >
+                    <div style="float:left;  width : 20%;">
+                        <p>Nom de l'évenement</p>
+                        <div style="background-image: url(' ./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
+                    </div>
+                    <div style="float:left; width : 80%;">Description------------------------------------------------------------------------------
+                        -----------------------------------------------------------------------------------------------
+                        -----------------------------------------------------------------------------------------------
+                        <br/>
 
-            <div class="cadre" style="height: 120px;">
-                <div style="float:left; background-image: url('./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 150px; height : 100px;"> Nom de l'évenement</div>
-                <div style="float:left; width : 70%;">Descritpion------------------------------------------------------------------------------
-                    -----------------------------------------------------------------------------------------------
-                    -----------------------------------------------------------------------------------------------
-                    <form>
-                        <input type='hidden' name='controle' value='evenement'/>
-                        <input type='hidden' name='action' value='afficherPageEvent'/>
-                        <input type="submit" value="voir l'événement"/>
-                    </form>
+                        <form>
+                            <input type='hidden' name='controle' value='evenement'/>
+                            <input type='hidden' name='action' value='afficherPageEvent'/>
+                            <input type='hidden' name='param' value='1'/>
+
+                            <input type="submit" value="voir l'événement"/>
+                        </form>
+                    </div> 
                     <div id="clear"></div>
                 </div>
-            </div>
 
-            <div class="cadre" >
-                <div style="float:left; width : 80%;">Descritpion------------------------------------------------------------------------------
-                    -----------------------------------------------------------------------------------------------
-                    -----------------------------------------------------------------------------------------------
-                    <button>voir l'événement</button>
+                <div class="cadre" >
+                    <div style="float:left; width : 80%;">Description------------------------------------------------------------------------------
+                        -----------------------------------------------------------------------------------------------
+                        -----------------------------------------------------------------------------------------------
+                        <br/>
+                        <form>
+                            <input type='hidden' name='controle' value='evenement'/>
+                            <input type='hidden' name='action' value='afficherPageEvent'/>
+                            <input type='hidden' name='param' value='2'/>
+                            <input type="submit" value="voir l'événement"/>
+                        </form>
+                    </div> 
+                    <div style="float:left;  width : 20%;">
+                        <p>Nom de l'évenement</p>
+                        <div style="background-image: url(' ./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
+                    </div>
+                    <div id="clear"></div>
                 </div>
-                <div style="float:left; background-image: url(' ./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; width : 20%; height : 100px;"> Nom de l'évenement</div>
-                <div id="clear"></div>
             </div>
             <?php include('./Vue/footer.php'); ?>
         </div>

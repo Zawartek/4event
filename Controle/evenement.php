@@ -16,8 +16,10 @@ function afficherPageEvent($idEvent)
         require './Controle/utilisateur.php';
         accueil();
     }
+    $participation = participe($db,$_SESSION['userID'], $idEvent);
     include ("./Vue/pageEvent.php");
 }
+
 function participer($idEvent)
 {
     require './Modele/evenements.php';
@@ -33,6 +35,16 @@ function ajoutInteret()
 {
     require './Modele/evenements.php';
     ajoutInteretBD($idEvent);
+}
+
+function annulerParticipation($idEvent)
+{
+    require './Modele/evenements.php';
+    if (isset($_SESSION['userID'])){
+        annulerParticipationBD($db, $idEvent, $_SESSION['userID']);
+    }
+    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
+    header ("Location:" . $nexturl);
 }
 
 function creationEvent()

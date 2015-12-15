@@ -45,13 +45,33 @@ function infosEvent($db, $idEvent) {
     return $data;
 }
 
-function participerBD($db, $idEvent, $idUti)
+function annulerParticipationBD($db, $idEvent, $idUti)
+{
+    // Recuperation de l'evenement
+    $request = 'DELETE FROM participation '
+            . 'WHERE participation_utilisateur_id=' . $idUti . 
+            ' and participation_evenement_id=' . $idEvent . ';';
+    $reussite = $db->exec($request);
+    echo $reussite;
+}
+
+function participerBD($db, $idEvent, $idUti,$nb)
 {
     // Recuperation de l'evenement
     $request = 'INSERT INTO participation '
-            . 'VALUES (' . $idUti . ',' . $idEvent . ');';
+            . 'VALUES (' . $idUti . ',' . $idEvent . ', '. $nb . ');';
     $reussite = $db->exec($request);
     echo $reussite;
+}
+
+function participe($db, $idUti, $idEvent)
+{
+    // Recuperation de l'evenement
+    $request = 'SELECT count(*) as nb FROM participation '
+            . 'WHERE participation_utilisateur_id=' . $idUti . 
+            ' and participation_evenement_id=' . $idEvent . ';';
+    $reponse = $db->query($request);
+    return $reponse->fetch()['nb'];
 }
 
 ?>
