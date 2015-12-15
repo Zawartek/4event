@@ -61,7 +61,6 @@ function participerBD($db, $idEvent, $idUti,$nb)
     $request = 'INSERT INTO participation '
             . 'VALUES (' . $idUti . ',' . $idEvent . ', '. $nb . ');';
     $reussite = $db->exec($request);
-    echo $reussite;
 }
 
 function participe($db, $idUti, $idEvent)

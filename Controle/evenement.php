@@ -20,13 +20,15 @@ function afficherPageEvent($idEvent)
     include ("./Vue/pageEvent.php");
 }
 
-function participer($idEvent)
+function participer()
 {
+    $idEvent = $_POST['idEvent'];
+    $nb = $_POST['nb'];
     require './Modele/evenements.php';
     if (isset($_SESSION['userID'])){
-        participerBD($db, $idEvent, $_SESSION['userID']);
+        participerBD($db, $idEvent, $_SESSION['userID'], $nb);
     }
-    
+    echo $idEvent;
     $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
     header ("Location:" . $nexturl);
 }

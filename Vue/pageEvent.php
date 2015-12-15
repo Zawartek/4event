@@ -11,7 +11,28 @@ and open the template in the editor.
         <title>page événement</title>
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
         <?php include ('./Vue/map/getlatlng.php'); ?>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript">
+            $(function () {
+                var dialogParticipe
+                dialogParticipe = $("#dialog-participe").dialog({
+                    autoOpen: false,
+                    height: 100,
+                    width: 300,
+                    modal: true,
+                    position: {my: "center", at: "center", of: window},
+                    close: function () {
+                        form[ 0 ].reset();
+                        allFields.removeClass("ui-state-error");
+                    }
+                });
+
+                $("#btnParticipation").button().on("click", function () {
+                    dialogParticipe.dialog("open");
+                });
+            });
             function loadMap() {
                 initialize();
                 geocode("<?php echo $event["adresse"]; ?>");
@@ -43,24 +64,23 @@ and open the template in the editor.
                     </p>
                     <a href='index.php?controle=utilisateur&action=afficherPageUti'>profil</a>
                 </div>
-                <?php if (isset($_SESSION['userID'])){?>
-                <div id="participationEvent">
-                    <?php
-                    if ($participation==0){
-                        echo '<a href="index.php?controle=evenement&action=participer'.
-                           '&param='. $event['evenement_id'] .
-                           '" class="bold btn">Participer</a> ';
-                    ?>
-                    <a href="index.php?controle=evenement&action=ajoutInteret"
-                        class="bold btn">Ajouter à ses interet</a>
-                    <?php 
-                    }
-                    else {
-                        echo '<a href="index.php?controle=evenement&action=annulerParticipation'.
-                           '&param='. $event['evenement_id'] .
-                           '" class="bold btn">Annuler participation</a> ';
-                    }
-                    } ?>
+                <?php if (isset($_SESSION['userID'])) { ?>
+                    <div id="participationEvent">
+                        <?php
+                        if ($participation == 0) {
+                            ?><a id="btnParticipation"
+                               class="bold btn">Participer</a>
+
+                            <a href="index.php?controle=evenement&action=ajoutInteret"
+                               class="bold btn">Ajouter à ses interet</a>
+                               <?php
+                           } else {
+                               echo '<a href="index.php?controle=evenement&action=annulerParticipation' .
+                               '&param=' . $event['evenement_id'] .
+                               '" class="bold btn">Annuler participation</a> ';
+                           }
+                       }
+                       ?>
                 </div>
             </div>
             <div id="clear"></div>
@@ -127,6 +147,16 @@ and open the template in the editor.
 
         <div id="footer">
 
+        </div>
+
+        <div id="dialog-participe" title="Indiquer le nombre de participants!">
+            <form method="post" action="index.php?controle=evenement&action=participer">
+                <input type="hidden" name="controle" value="evenement"/>
+                <input type="hidden" name="action" value="participer"/>
+                <input type="hidden" name="idEvent" value="<?php echo $event['evenement_id'] ?>"/>
+                <input type="number" min="1" name="nb" value="1"/>
+                <input type="submit" value="Valider"/>
+            </form>
         </div>
     </body>
 </html>
