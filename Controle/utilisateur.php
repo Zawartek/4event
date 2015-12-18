@@ -14,7 +14,6 @@ function accueil() {
     require ('./Controle/evenement.php');
     
     $_SESSION['page'] = 'accueil';
-    $themes = getThemeEvent();
     /*
       $nexturl = "./Vue/accueil.php";
       header ("Location:" . $nexturl);
