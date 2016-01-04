@@ -35,33 +35,6 @@ function participer()
 
 function ajoutInteret()
 {
-<<<<<<< HEAD
-    $titre = $_POST['titre'];
-    $description = $_POST['description'];
-    $voie = $_POST['voie'];
-    $codepostal = $_POST['codepostal'];
-    $ville = $_POST['ville'];
-    $pays = $_POST['pays'];
-    $theme = $_POST['theme'];
-    $dateDebut = formattageDateBDD($_POST['dateDebut']);
-    $dateFin = formattageDateBDD($_POST['dateFin']);
-    $maxParticipants = $_POST['maxParticipants'];
-    $tarif = $_POST['tarif'];
-    $typePublic = $_POST['typePublic'];
-    $heureDebut = $_POST['heureDebut'];
-    $heureFin = $_POST['heureFin'];
-    $siteWeb = $_POST['siteWeb'];
-    
-    $sql = "SELECT MAX(adresse_id) AS ID FROM `adresse`";
-    $reponse = $db->query($sql);
-    $data = $reponse->fetch();
-    
-    $adresse_id = $data['ID'] + 1;
-    
-    $sql2 = "INSERT INTO `adresse`(`adresse_id`, `adresse_numero_voie`, `adresse_ville`, `adresse_code_postal`, `adresse_pays`)"
-         . "VALUES ('$adresse_id' ,'$voie' ,'$ville' ,'$codepostal' ,'$pays')";
-        $reponse2 = $db->query($sql2);
-=======
     require './Modele/evenements.php';
     ajoutInteretBD($idEvent);
 }
@@ -123,7 +96,6 @@ function creationEvent()
                 .'evenement_utilisateur_id = :user_id, evenement_adresse_id = :adresse_id, evenement_theme_id = :theme, evenement_date_debut = :dateDebut,'
                 .'evenement_heure_debut = :heureDebut, evenement_date_fin = :dateFin, evenement_heure_fin = :heureFin,'
                 .'evenement_max_participants = :maxParticipants, evenement_type_public = :typePublic, evenement_site_web = :siteWeb, evenement_tarif = :tarif');
->>>>>>> origin/master
         
         $sql3->bindValue(':evenement_id', NULL);
         $sql3->bindValue(':titre', $titre, PDO::PARAM_STR);
