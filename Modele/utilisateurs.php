@@ -10,8 +10,8 @@ function mdp($db, $email) {
 
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
 function utilisateurs($db) {
-    $reponse = $db->query('SELECT utilisateur_id FROM Utilisateurs');
-    return $reponse;
+    $reponse = $db->query('SELECT * FROM utilisateur');
+    return $reponse->fetchAll();
 }
 
 function infosUti($db, $idUti) {

@@ -8,12 +8,13 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Gestion de la FAQ</title>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="./Vue/css/style.css">
     </head>
     <body>
-        <div id="content" class="cadre">
+        <div id="content">
+        <?php require './Vue/header.php'; ?>
         <?php 
-            require './menuAdmin.php';
+            require './Vue/Admin/menuAdmin.php';
         ?>
         <div id="listeFAQ">
         <label>Liste des FAQ : </label>
@@ -60,6 +61,7 @@ and open the template in the editor.
                 <button class="btn-orange">Ajouter</button>
             </div>
         </form>
+        <?php require './Vue/footer.php'; ?>
         </div>
     </body>
 </html>
