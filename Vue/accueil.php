@@ -6,23 +6,6 @@ and open the template in the editor.
 -->
 <?php
 require('./Modele/configSQL.php');
-require ('./Vue/fonctions.php');
-
-if (isset($_POST["date"])) {
-    $date = formattageDateBDD($_POST["date"]);
-    $theme = $_POST["choixTheme"];
-
-    $sql = $db->prepare("SELECT evenement_utilisateur_id FROM `evenement` WHERE evenement_date_debut > :date AND evenement_theme_id = :theme");
-
-    $sql->bindValue(':date', $date);
-    $sql->bindValue(':theme', $theme, PDO::PARAM_STR);
-
-    $sql->execute();
-
-    while ($data = $sql->fetch()) {
-        //print_r ($data["evenement_utilisateur_id"]);
-    }
-}
 ?>
 <html>
     <head>
@@ -53,8 +36,9 @@ if (isset($_POST["date"])) {
             <div id="slider">
                 <?php include('./Vue/slider/slider.html'); ?>
 
-                <form id="barreRecherche" method="post" action="#">
+                <form id="barreRecherche" method="post" action="index.php?controle=utilisateur&action=accueil">
                     <select id="choixTheme" name="choixTheme" class="input">
+                        <option value="0">Tous</option>
                         <?php
                         foreach ($themes as $theme) {
                             echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
@@ -79,45 +63,59 @@ if (isset($_POST["date"])) {
 
             <div id="clear"></div>
             <div id="listeCommentaires">
-                <div class="cadre" >
-                    <div style="float:left;  width : 20%;">
-                        <p>Nom de l'évenement</p>
-                        <div style="background-image: url(' ./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
-                    </div>
-                    <div style="float:left; width : 80%;">Description------------------------------------------------------------------------------
-                        -----------------------------------------------------------------------------------------------
-                        -----------------------------------------------------------------------------------------------
-                        <br/>
+                <?php
+                if (sizeof($events) == 0) {
+                    echo "<p align='center'>Aucun événement n'est prévu actuellement</p>";
+                } else {
+                    $bool = true;
+                    foreach ($events as $event) {
+                        if ($bool) {
+                            ?>
+                            <div class="cadre" >
+                                <div style="float:left;  width : 20%;">
+                                    <p><?php echo $event["evenement_titre"] ?></p>
+                                    <div style="background-image: url(' ./Vue/img/logoTheme/<?php echo $event["evenement_theme_id"]; ?>.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
+                                </div>
+                                <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
+                                    <br/>
 
-                        <form>
-                            <input type='hidden' name='controle' value='evenement'/>
-                            <input type='hidden' name='action' value='afficherPageEvent'/>
-                            <input type='hidden' name='param' value='1'/>
+                                    <form>
+                                        <input type='hidden' name='controle' value='evenement'/>
+                                        <input type='hidden' name='action' value='afficherPageEvent'/>
+                                        <input type='hidden' name='param' value='1'/>
 
-                            <input type="submit" value="voir l'événement"/>
-                        </form>
-                    </div> 
-                    <div id="clear"></div>
-                </div>
-
-                <div class="cadre" >
-                    <div style="float:left; width : 80%;">Description------------------------------------------------------------------------------
-                        -----------------------------------------------------------------------------------------------
-                        -----------------------------------------------------------------------------------------------
-                        <br/>
-                        <form>
-                            <input type='hidden' name='controle' value='evenement'/>
-                            <input type='hidden' name='action' value='afficherPageEvent'/>
-                            <input type='hidden' name='param' value='2'/>
-                            <input type="submit" value="voir l'événement"/>
-                        </form>
-                    </div> 
-                    <div style="float:left;  width : 20%;">
-                        <p>Nom de l'évenement</p>
-                        <div style="background-image: url(' ./Vue/img/default-event.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
-                    </div>
-                    <div id="clear"></div>
-                </div>
+                                        <input type="submit" value="voir l'événement"/>
+                                    </form>
+                                </div> 
+                                <div id="clear"></div>
+                            </div>
+                        <?php } else {
+                            ?>
+                            <div class="cadre" >
+                                <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
+                                    <br/>
+                                    <div style="bottom:0; right : 0;">
+                                        <p style="display : inline-block"><?php echo " date de début : " . $event["evenement_date_debut"] ?></p>
+                                        <form style="display : inline-block">
+                                            <input type='hidden' name='controle' value='evenement'/>
+                                            <input type='hidden' name='action' value='afficherPageEvent'/>
+                                            <input type='hidden' name='param' value='2'/>
+                                            <input type="submit" value="voir l'événement"/>
+                                        </form>
+                                    </div>
+                                </div> 
+                                <div style="float:left;  width : 20%;">
+                                    <p><?php echo $event["evenement_titre"] ?></p>
+                                    <div style="background-image: url(' ./Vue/img/logoTheme/<?php echo $event["evenement_theme_id"]; ?>.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
+                                </div>
+                                <div id="clear"></div>
+                            </div>
+                            <?php
+                        }
+                        $bool = !$bool;
+                    }
+                }
+                ?>
             </div>
             <?php include('./Vue/footer.php'); ?>
         </div>

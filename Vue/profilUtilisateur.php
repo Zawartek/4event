@@ -18,7 +18,7 @@ and open the template in the editor.
                 <div id="infosProfil">
                     <p><?php echo $uti['utilisateur_prenom'] . " " . $uti['utilisateur_nom'] ?></p>
                     <p><?php echo $uti['adresse_ville'] ?></p>
-                    <p>Evenements inscrits : <?php echo $uti['nbEventInscrit'] ?></p>
+                    <p>Evenements inscrits : <?php echo sizeof($uti['evenements']); ?></p>
                     <p>Evenements organisés : <?php echo $uti['nbEventOrga'] ?></p>
                 </div>
                 <div id="clear"></div>
@@ -29,32 +29,56 @@ and open the template in the editor.
                     <p class="titre">Agenda</p>
                     
                     <?php
-                    for ($i = 0 ; $i<5 ; $i++){
+                    if (sizeof($uti['evenements'])>0){
+                    foreach ($uti['evenements'] as $event){
                         ?>
-                    <a class="eventProfil" href=""> lien événement</a>
+                    <a class="eventProfil" 
+                       href="<?php echo "index.php?controle=evenement"
+                       . "&action=afficherPageEvent"
+                               . "&param=" . $event['evenement_id'];?>"> 
+                           <?php echo $event["evenement_titre"] ?>
+                    </a>
                     <br>
                     <?php
+                    }
+                    }
+                    else {
+                        echo "<p>aucun événément de prévu dans l'agenda</p>";
                     }
                     ?>
                 </div>
                 <div id="commentaires">
                     <p class="titre">Commentaires</p>
-                    <p>
                     <?php
-                    for ($i = 0 ; $i<5 ; $i++){
+                if (isset($uti['commentaires'][0])) {
+                    foreach ($uti['commentaires'] as $com) {
                         ?>
-                    <p class="comsProfil">
-                        Commentaire---------------------------------------------
+                        <div class="cadre">
+                            <p>
+                                <?php echo nl2br($com['avis_contenu']); ?><br>
+                            </p>
+                            <p align="right">
+                                écrit par <?php
+                                echo $com['utilisateur_prenom'] .
+                                ' ' . $com['utilisateur_nom'];
+                                ?>
+                            </p>
+                            <p align="right">
+                                <?php echo  '<a href="index.php?'.
+                                    'controle=evenement&'.
+                                        'action=afficherPageEvent'.
+                                        '&param='.$com["evenement_id"].'">'.
+                                    'Aller à l\'événement'.
+                                '</a>'?>
+                            </p>
+                        </div>
                         <br>
-                        --------------------------------------------------------
-                        <br>
-                    <a href=""> lire la suite</a>
-                    </p>
-                    <br>
-                    <?php
+                        <?php
                     }
-                    ?>
-                    </p>
+                } else {
+                    echo '<p> aucun commentaire n\'a été ajouté</p>';
+                }
+                ?>
                 </div>
                 <div id="clear"></div>
             </div>

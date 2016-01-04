@@ -11,13 +11,13 @@ function ident() {
 }
 
 function accueil() {
-    require ('./Controle/evenement.php');
     
     $_SESSION['page'] = 'accueil';
     /*
       $nexturl = "./Vue/accueil.php";
       header ("Location:" . $nexturl);
      */
+    $events = recherche();
     include ("./Vue/accueil.php");
 }
 
@@ -26,6 +26,10 @@ function afficherPageUti($idUti) {
     $_SESSION['page'] = 'pageUti';
     $uti = infosUti($db, $idUti);
     include ("./Vue/profilUtilisateur.php");
+}
+
+function afficherPageAdmin(){
+    include './Vue/Admin/gestionUtilisateur.php';
 }
 
 // Controleur pour gérer le formulaire de connexion des utilisateurs
@@ -49,6 +53,7 @@ function connexion() {
             } else { // mot de passe correct, on affiche la page d'accueil
                 $_SESSION['userID'] = $ligne['utilisateur_id'];
                 $_SESSION['prenom_nom'] = $ligne['utilisateur_prenom'] . " " . $ligne['utilisateur_nom'];
+                $_SESSION['userType'] = $ligne['utilisateur_type'];
                 
             }
         }

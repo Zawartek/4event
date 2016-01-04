@@ -62,9 +62,18 @@ and open the template in the editor.
                         Nombres d'événements organisés : 
                         <?php echo $event["nbEvent"]; ?>
                     </p>
-                    <a href='index.php?controle=utilisateur&action=afficherPageUti'>profil</a>
+                    <a 
+                    <?php
+                    echo "href='index.php?"
+                    . "controle=utilisateur&"
+                    . "action=afficherPageUti&"
+                    . "param=" . $event["evenement_utilisateur_id"] . "'";
+                    ?>
+                        >
+                        profil
+                    </a>
                 </div>
-                <?php if (isset($_SESSION['userID'])) { ?>
+                    <?php if (isset($_SESSION['userID'])) { ?>
                     <div id="participationEvent">
                         <?php
                         if ($participation == 0) {
@@ -79,16 +88,16 @@ and open the template in the editor.
                                '&param=' . $event['evenement_id'] .
                                '" class="bold btn">Annuler participation</a> ';
                            }
-                       }
-                       ?>
-                </div>
+                           ?>
+                    </div>
+<?php } ?>
             </div>
             <div id="clear"></div>
             <br>
             <div id ="descriptionEvent">
                 <h1>Description</h1>
                 <p>
-                    <?php echo nl2br($event["evenement_description"]); ?>
+<?php echo nl2br($event["evenement_description"]); ?>
                 </p>
 
             </div>
@@ -125,7 +134,7 @@ and open the template in the editor.
                         ?>
                         <div class="cadre">
                             <p>
-                                <?php echo nl2br($com['avis_contenu']); ?><br>
+        <?php echo nl2br($com['avis_contenu']); ?><br>
                             </p>
                             <p align="right">
                                 écrit par <?php

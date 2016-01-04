@@ -8,12 +8,13 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Gestion des utilisteurs</title>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="./Vue/css/style.css">
     </head>
     <body>
         <div id="content" class="cadre">
+        <?php require './Vue/header.php'; ?>
         <?php 
-            require './menuAdmin.php';
+            require './Vue/Admin/menuAdmin.php';
         ?>
         <div id="listeUtilisateur">
         <label>Liste des utilisateurs : </label>
