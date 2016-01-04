@@ -13,7 +13,7 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="inscriptionControler.php">
+            <form method="post" action="index.php?controle=utilisateur&action=connexion">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Connexion</h2>
 
                 <label for="email">Se connecter avec Facebook</label>

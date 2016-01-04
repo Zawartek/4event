@@ -19,7 +19,14 @@ else {
 	//echo ('controle : ' . $controle . ' et <br/> action : ' . $action);
         $url = './Controle/' . $controle . '.php';
 	require $url;
-	$action ();
+        if (isset($_GET['param']))
+        {
+            $action($_GET['param']);
+        }
+        else 
+        {
+            $action ();
+        }
 } 
 
 ?>
