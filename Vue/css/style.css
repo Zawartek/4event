@@ -1,3 +1,11 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #333;
+    background-color: #F8F8F8;
+}
+
 #content
 {
     width : 900px;
@@ -75,6 +83,7 @@
     width : 700px;
 }
 
+
 fieldset
 {
     padding : 30px;
@@ -135,6 +144,7 @@ fieldset
     padding : 20px;
     width:45%;
     float : left;
+	
 }
 
 .eventProfil
@@ -150,19 +160,29 @@ fieldset
 }
 
 /* page Event */
+
+.container_event {
+	margin: auto;
+	width: 900px;
+}
+
 #profilEvent
 {
-    border : solid 1px black;
+    border : solid 1px #EAEAEA;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+	
     margin : 10px 10px 10px 0px;
     float : left;
     padding : 1%;
     width : 65%;
+	background-color: #FFF;
 }
 
 
 #infosEvent
 {
-    float : left;
+    float : right;
     padding : 1%;
     width : auto;
     margin : 0px;
@@ -170,31 +190,41 @@ fieldset
 
 #infosOrganisateur
 {
-    border : solid 1px black;
+    border : solid 1px #EAEAEA;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+	
     padding : 8px;
+	background-color: #FFF;
 }
 
 #descriptionEvent
 {
-    border : solid 1px black;
+    border : solid 1px #EAEAEA;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
     margin : 10px 10px 10px 0px;
     float : left;
     padding : 1%;
     width : 65%;
+	background-color: #FFF;
 }
 
 #infosComplementairesEvent
 {
-    float : left;
+    float : right;
     padding : 1%;
     width : 27%;
     margin : 8px 0px 8px 8px;
-    border : solid 1px black;
+    border : solid 1px #EAEAEA;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+	background-color: #FFF;
 }
 
 #infosLieu
 {
-    height : 200px;
+    height : 220px;
     
 }
 
@@ -206,10 +236,14 @@ fieldset
 }
 
 .cadre
-{
-    border : solid 1px black;
+{	
+	width: 900px;
+    border : solid 1px #EAEAEA;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
     padding : 8px 30px 8px 30px;
     margin : 0px 50px 15px 0px;
+	background-color: #FFF;
 }
 
 /* Map css */
