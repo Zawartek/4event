@@ -166,6 +166,14 @@ fieldset
 	width: 900px;
 }
 
+.container_event h1 {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: 600;
+	color: #323C5A;
+} 
+
 #profilEvent
 {
     border : solid 1px #EAEAEA;
@@ -238,12 +246,24 @@ fieldset
 .cadre
 {	
 	width: 900px;
+	padding : 1%;
     border : solid 1px #EAEAEA;
 	border-radius: 4px;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
     padding : 8px 30px 8px 30px;
-    margin : 0px 50px 15px 0px;
 	background-color: #FFF;
+}
+
+.cadre h1 {
+	margin-left: -22px;
+	font-size: 20px;
+	font-weight: 600;
+	color: #323C5A;
+}
+
+.cadre p {
+	margin-left: -22px;
+	
 }
 
 /* Map css */
