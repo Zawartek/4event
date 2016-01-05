@@ -119,7 +119,7 @@ if (isset($_POST["date"])) {
                     <div id="clear"></div>
                 </div>
             </div>
-            <?php include('./Vue/footer.php'); ?>
         </div>
+            <?php include('./Vue/footer.php'); ?>
     </body>
 </html>
