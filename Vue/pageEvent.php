@@ -46,9 +46,9 @@ and open the template in the editor.
             <div id="profilEvent">
                 <img id="photoProfil" src="./Vue/img/default-event.png" />
                 <div id="infosProfil">
-                    <p>
+                    <h1>
                         <?php echo $event["evenement_titre"]; ?>
-                    </p>
+                    </h1>
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
@@ -96,12 +96,12 @@ and open the template in the editor.
             <div id="clear"></div>
             <br>
             <div id ="descriptionEvent">
-                <h1>Description</h1>
+                <h1>DESCRIPTION</h1>
                 <p>
 <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
 			 <div id="billeterie">
-                    <h1>Billeterie</h1>
+                    <h1>BILLETERIE</h1>
                     <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
                         Site Web                       
                     </a>
@@ -109,7 +109,7 @@ and open the template in the editor.
             </div>
             <div id="infosComplementairesEvent">
                 <div id="infosLieu">
-                    <h1>Plan</h1>
+                    <h1>PLAN</h1>
                     <div id="map">
                         <div id="map_canvas"></div>
                         <div id="crosshair"></div>
@@ -127,7 +127,7 @@ and open the template in the editor.
             <div id="clear"></div> 
 
             <div id="commentairesEvent" class="cadre">
-                <h1>Commentaires</h1>
+                <h1>COMMENTAIRES</h1>
                 <?php
                 if (isset($event['commentaires'][0])) {
                     foreach ($event['commentaires'] as $com) {
@@ -147,7 +147,7 @@ and open the template in the editor.
                         <?php
                     }
                 } else {
-                    echo '<p> aucun commentaire n\'a été ajouté</p>';
+                    echo '<p> Aucun commentaire n\'a été ajouté pour le moment. Soyez le premier à laisser votre avis ! </p>';
                 }
                 ?>
             </div>
