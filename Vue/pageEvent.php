@@ -40,6 +40,7 @@ and open the template in the editor.
         </script>
     </head>
     <body onload="loadMap()">
+	<div class="container_event">
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
@@ -99,7 +100,12 @@ and open the template in the editor.
                 <p>
 <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
-
+			 <div id="billeterie">
+                    <h1>Billeterie</h1>
+                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
+                        Site Web                       
+                    </a>
+                </div>
             </div>
             <div id="infosComplementairesEvent">
                 <div id="infosLieu">
@@ -116,14 +122,8 @@ and open the template in the editor.
                 <br>
                 <br>
 
-                <div id="billeterie">
-                    <h1>Billeterie</h1>
-                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
-                        Site Web                       
-                    </a>
-                </div>
-
             </div>
+		</div>
             <div id="clear"></div> 
 
             <div id="commentairesEvent" class="cadre">
