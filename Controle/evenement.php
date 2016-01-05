@@ -8,7 +8,7 @@
 
 function afficherPageEvent($idEvent)
 {
-    require './Modele/evenements.php';
+    require_once './Modele/evenements.php';
     $event = infosEvent($db, $idEvent);
     
     if ($event ==null)
@@ -16,7 +16,12 @@ function afficherPageEvent($idEvent)
         require './Controle/utilisateur.php';
         accueil();
     }
-    $participation = participe($db,$_SESSION['userID'], $idEvent);
+    if (isset($_SESSION['userID'])){
+        $participation = participe($db,$_SESSION['userID'], $idEvent);
+    }
+    else {
+        $participation="0";
+    }
     include ("./Vue/pageEvent.php");
 }
 
@@ -24,11 +29,10 @@ function participer()
 {
     $idEvent = $_POST['idEvent'];
     $nb = $_POST['nb'];
-    require './Modele/evenements.php';
+    require_once './Modele/evenements.php';
     if (isset($_SESSION['userID'])){
         participerBD($db, $idEvent, $_SESSION['userID'], $nb);
     }
-    echo $idEvent;
     $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
     header ("Location:" . $nexturl);
 }
@@ -135,4 +139,21 @@ function getThemeEvent()
     }
     
     return $tableau;
+}
+
+function recherche(){
+    require './Modele/evenements.php';
+    $events = Array();
+    if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
+        
+        $date = formattageDateBDD($_POST["date"]);
+        $theme = $_POST["choixTheme"];
+        $events = rechercheBD($db, $date, $theme);
+    }
+    else {
+        $date = date("d-m-Y");
+        $theme="0";
+        $events = rechercheBD($db,$date, $theme);
+    }
+    return $events;
 }

@@ -18,7 +18,12 @@ else {
 	}
 	//echo ('controle : ' . $controle . ' et <br/> action : ' . $action);
         $url = './Controle/' . $controle . '.php';
+        require "./Vue/fonctions.php";
 	require $url;
+        if ($controle!="evenement"){
+            require "./Controle/evenement.php";
+        }
+        $themes = getThemeEvent();
         if (isset($_GET['param']))
         {
             $action($_GET['param']);

@@ -10,8 +10,8 @@ function mdp($db, $email) {
 
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
 function utilisateurs($db) {
-    $reponse = $db->query('SELECT utilisateur_id FROM Utilisateurs');
-    return $reponse;
+    $reponse = $db->query('SELECT * FROM utilisateur');
+    return $reponse->fetchAll();
 }
 
 function infosUti($db, $idUti) {
@@ -25,18 +25,34 @@ function infosUti($db, $idUti) {
 
     if ($reponse != null) {
         // nombre d'événement inscrit
-        $request = 'SELECT count(participation_evenement_id) as nbEventInscrit '
-                . 'FROM participation p '
-                . 'WHERE p.participation_utilisateur_id=' . $idUti . ';';
-        $reponse = $db->query($request);
-        $data['nbEventInscrit'] = $reponse->fetch()['nbEventInscrit'];
+        $request = 'SELECT * '
+                . 'FROM participation p, evenement e '
+                . 'WHERE p.participation_utilisateur_id=' . $idUti . ' '
+                . 'and p.participation_evenement_id = e.evenement_id;';
+        $reponseIns = $db->query($request);
+        $data['evenements'] = Array();
+        while ($event = $reponseIns->fetch() and isset($event)) {
+            $data['evenements'][] = $event;
+        }
+        $reponseIns->fetch();
         
         // nombre d'événement organisé
         $request = 'SELECT count(evenement_id) as nbEventOrga '
                 . 'FROM evenement e '
                 . 'WHERE e.evenement_utilisateur_id=' . $idUti . ';';
-        $reponse = $db->query($request);
-        $data['nbEventOrga'] = $reponse->fetch()['nbEventOrga'];
+        $reponseOrg = $db->query($request);
+        $data['nbEventOrga'] = $reponseOrg->fetch()['nbEventOrga'];
+        
+        // Commentaires postés
+        $request = 'SELECT * FROM evenement e, avis a, utilisateur u'
+                . ' WHERE u.utilisateur_id=' . $idUti . ' and '
+                . 'a.avis_evenement_id = e.evenement_id and '
+                . 'a.avis_utilisateur_id = u.utilisateur_id;';
+        $reponseCom = $db->query($request);
+        $data['commentaires'] = array();
+        while ($com = $reponseCom->fetch() and isset($com)) {
+            $data['commentaires'][] = $com;
+        }
     }
     return $data;
 }

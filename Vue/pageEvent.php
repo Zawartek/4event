@@ -40,14 +40,15 @@ and open the template in the editor.
         </script>
     </head>
     <body onload="loadMap()">
+	<div class="container_event">
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
                 <img id="photoProfil" src="./Vue/img/default-event.png" />
                 <div id="infosProfil">
-                    <p>
+                    <h1>
                         <?php echo $event["evenement_titre"]; ?>
-                    </p>
+                    </h1>
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
@@ -62,9 +63,18 @@ and open the template in the editor.
                         Nombres d'événements organisés : 
                         <?php echo $event["nbEvent"]; ?>
                     </p>
-                    <a href='index.php?controle=utilisateur&action=afficherPageUti'>profil</a>
+                    <a 
+                    <?php
+                    echo "href='index.php?"
+                    . "controle=utilisateur&"
+                    . "action=afficherPageUti&"
+                    . "param=" . $event["evenement_utilisateur_id"] . "'";
+                    ?>
+                        >
+                        profil
+                    </a>
                 </div>
-                <?php if (isset($_SESSION['userID'])) { ?>
+                    <?php if (isset($_SESSION['userID'])) { ?>
                     <div id="participationEvent">
                         <?php
                         if ($participation == 0) {
@@ -79,22 +89,27 @@ and open the template in the editor.
                                '&param=' . $event['evenement_id'] .
                                '" class="bold btn">Annuler participation</a> ';
                            }
-                       }
-                       ?>
-                </div>
+                           ?>
+                    </div>
+<?php } ?>
             </div>
             <div id="clear"></div>
             <br>
             <div id ="descriptionEvent">
-                <h1>Description</h1>
+                <h1>DESCRIPTION</h1>
                 <p>
-                    <?php echo nl2br($event["evenement_description"]); ?>
+<?php echo nl2br($event["evenement_description"]); ?>
                 </p>
-
+			 <div id="billeterie">
+                    <h1>BILLETERIE</h1>
+                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
+                        Site Web                       
+                    </a>
+                </div>
             </div>
             <div id="infosComplementairesEvent">
                 <div id="infosLieu">
-                    <h1>Plan</h1>
+                    <h1>PLAN</h1>
                     <div id="map">
                         <div id="map_canvas"></div>
                         <div id="crosshair"></div>
@@ -107,25 +122,19 @@ and open the template in the editor.
                 <br>
                 <br>
 
-                <div id="billeterie">
-                    <h1>Billeterie</h1>
-                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
-                        Site Web                       
-                    </a>
-                </div>
-
             </div>
+		</div>
             <div id="clear"></div> 
 
             <div id="commentairesEvent" class="cadre">
-                <h1>Commentaires</h1>
+                <h1>COMMENTAIRES</h1>
                 <?php
                 if (isset($event['commentaires'][0])) {
                     foreach ($event['commentaires'] as $com) {
                         ?>
                         <div class="cadre">
                             <p>
-                                <?php echo nl2br($com['avis_contenu']); ?><br>
+        <?php echo nl2br($com['avis_contenu']); ?><br>
                             </p>
                             <p align="right">
                                 écrit par <?php
@@ -138,7 +147,7 @@ and open the template in the editor.
                         <?php
                     }
                 } else {
-                    echo '<p> aucun commentaire n\'a été ajouté</p>';
+                    echo '<p> Aucun commentaire n\'a été ajouté pour le moment. Soyez le premier à laisser votre avis ! </p>';
                 }
                 ?>
             </div>

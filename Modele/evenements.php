@@ -34,7 +34,6 @@ function infosEvent($db, $idEvent) {
         $data['commentaires'] = array();
         while ($com = $reponse->fetch() and isset($com)) {
             $data['commentaires'][] = $com;
-            echo $com['avis_id'];
         }
     } else {
         // return null;
@@ -60,7 +59,8 @@ function participerBD($db, $idEvent, $idUti,$nb)
     // Recuperation de l'evenement
     $request = 'INSERT INTO participation '
             . 'VALUES (' . $idUti . ',' . $idEvent . ', '. $nb . ');';
-    $reussite = $db->exec($request);
+    $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);;
+    echo "test" . $reussite;
 }
 
 function participe($db, $idUti, $idEvent)
@@ -71,6 +71,23 @@ function participe($db, $idUti, $idEvent)
             ' and participation_evenement_id=' . $idEvent . ';';
     $reponse = $db->query($request);
     return $reponse->fetch()['nb'];
+}
+
+function rechercheBD($db, $date, $theme){
+    if ($theme=="0"){
+        $sql = $db->prepare("SELECT * FROM `evenement` WHERE evenement_date_debut > :date");
+    }
+    else {
+        $sql = $db->prepare("SELECT * FROM `evenement` WHERE evenement_date_debut > :date AND evenement_theme_id = :theme");
+    }
+    $sql->bindValue(':date', $date);
+    if ($theme<>"0"){
+        $sql->bindValue(':theme', $theme, PDO::PARAM_STR);
+    }
+    $sql->execute();
+    $data = $sql->fetchAll();
+    
+    return $data;
 }
 
 ?>
