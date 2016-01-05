@@ -40,11 +40,10 @@ and open the template in the editor.
         </script>
     </head>
     <body onload="loadMap()">
-	<div class="container_event">
-        <div id="content">
+        <div class="container_event">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
-                <img id="photoProfil" src="./Vue/img/default-event.png" />
+                <img id="photoProfil" src="./Vue/img/logoTheme/<?php echo $event['evenement_theme_id']; ?>.png" />
                 <div id="infosProfil">
                     <p>
                         <?php echo $event["evenement_titre"]; ?>
@@ -74,7 +73,7 @@ and open the template in the editor.
                         profil
                     </a>
                 </div>
-                    <?php if (isset($_SESSION['userID'])) { ?>
+                <?php if (isset($_SESSION['userID'])) { ?>
                     <div id="participationEvent">
                         <?php
                         if ($participation == 0) {
@@ -91,16 +90,16 @@ and open the template in the editor.
                            }
                            ?>
                     </div>
-<?php } ?>
+                <?php } ?>
             </div>
             <div id="clear"></div>
             <br>
             <div id ="descriptionEvent">
                 <h1>Description</h1>
                 <p>
-<?php echo nl2br($event["evenement_description"]); ?>
+                    <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
-			 <div id="billeterie">
+                <div id="billeterie">
                     <h1>Billeterie</h1>
                     <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
                         Site Web                       
@@ -123,7 +122,6 @@ and open the template in the editor.
                 <br>
 
             </div>
-		</div>
             <div id="clear"></div> 
 
             <div id="commentairesEvent" class="cadre">
@@ -134,7 +132,7 @@ and open the template in the editor.
                         ?>
                         <div class="cadre">
                             <p>
-        <?php echo nl2br($com['avis_contenu']); ?><br>
+                                <?php echo nl2br($com['avis_contenu']); ?><br>
                             </p>
                             <p align="right">
                                 écrit par <?php
