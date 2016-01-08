@@ -39,8 +39,8 @@ function gestionUti() {
         }
         $mdp = htmlspecialchars($_POST['mdp']);
         $sexe = htmlspecialchars($_POST['sexe']);
-        $etat="0";
-        $type="0";
+        $etat=$_POST['etat'];
+        $type=$_POST['type'];
         $newsletter=0;
         if (isset($_POST['ADD'])) {
             ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
@@ -49,7 +49,7 @@ function gestionUti() {
             modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
                     , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
             
-    header('Location: index.php?controle=admin&action=afficherPageAdminGU');
+            header('Location: index.php?controle=admin&action=afficherPageAdminGU');
         }
     }
 }

@@ -15,7 +15,7 @@ and open the template in the editor.
 
         $('#ddlUtilisateur').on('change', function () {
             var text;
-            text = this.options[this.selectedIndex].value - 1;
+            text = this.options[this.selectedIndex].value;
             if (this.selectedIndex == "0") {
                 $('#id').val("");
                 $('#email').val("");
@@ -52,7 +52,6 @@ and open the template in the editor.
                 $('#codepostal').val(utilisateurs[text]['adresse_code_postal']);
                 $('#pays').val(utilisateurs[text]['adresse_pays']);
                 
-                
                 $('#ADD').hide();
                 $('#MOD').show();
                 $('#SUPPR').show();
@@ -78,8 +77,9 @@ and open the template in the editor.
                 <select id="ddlUtilisateur">
                     <option value="0">Création d'un nouvel utilisateur</option>
                     <?php
+                    $cpt=0;
                     foreach ($utilisateurs as $uti) {
-                        echo '<option value="' . $uti['utilisateur_id'] . '">' . $uti['utilisateur_email'] . '</option>';
+                        echo '<option value="' . $cpt++ . '">' . $uti['utilisateur_email'] . '</option>';
                     }
                     ?>
                 </select>
