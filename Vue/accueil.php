@@ -64,58 +64,48 @@ require('./Modele/configSQL.php');
             <div id="clear"></div>
             <div id="listeCommentaires">
                 <?php
-                if (sizeof($events) == 0) {
-                    echo "<p align='center'>Aucun événement n'est prévu actuellement</p>";
-                } else {
-                    $bool = true;
-                    foreach ($events as $event) {
-                        if ($bool) {
-                            ?>
-                            <div class="cadre" >
+                $bool = TRUE;
+                echo count($events);
+                if (sizeof($events) == 0) { echo "<p align='center'>Aucun événement trouvé.</p>"; }
+                else
+                {
+                    foreach ($events as $event)
+                    { ?>
+                        <div class="cadre">
+                            <?php
+                            if ($bool == TRUE)
+                            { ?>
                                 <div style="float:left;  width : 20%;">
-                                    <p><?php echo $event["evenement_titre"] ?></p>
-                                    <div style="background-image: url(' ./Vue/img/logoTheme/<?php echo $event["evenement_theme_id"]; ?>.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
+                                    <p><?php echo $event["evenement_titre"]; ?></p>
+                                    <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
                                 </div>
-                                <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
-                                    <br/>
-
-                                    <form>
-                                        <input type='hidden' name='controle' value='evenement'/>
-                                        <input type='hidden' name='action' value='afficherPageEvent'/>
-                                        <input type='hidden' name='param' value='1'/>
-
-                                        <input type="submit" value="voir l'événement"/>
-                                    </form>
-                                </div> 
-                                <div id="clear"></div>
-                            </div>
-                        <?php } else {
-                            ?>
-                            <div class="cadre" >
-                                <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
-                                    <br/>
-                                    <div style="bottom:0; right : 0;">
-                                        <p style="display : inline-block"><?php echo " date de début : " . $event["evenement_date_debut"] ?></p>
-                                        <form style="display : inline-block">
-                                            <input type='hidden' name='controle' value='evenement'/>
-                                            <input type='hidden' name='action' value='afficherPageEvent'/>
-                                            <input type='hidden' name='param' value='2'/>
-                                            <input type="submit" value="voir l'événement"/>
-                                        </form>
-                                    </div>
-                                </div> 
-                                <div style="float:left;  width : 20%;">
-                                    <p><?php echo $event["evenement_titre"] ?></p>
-                                    <div style="background-image: url(' ./Vue/img/logoTheme/<?php echo $event["evenement_theme_id"]; ?>.png'); background-size: 100px 100px; background-repeat: no-repeat; height : 100px;"></div>
-                                </div>
-                                <div id="clear"></div>
+                            <?php
+                            } ?>
+                            <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
+                                <form>
+                                    <input type='hidden' name='controle' value='evenement'/>
+                                    <input type='hidden' name='action' value='afficherPageEvent'/>
+                                    <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
+                                    
+                                    <input type="submit" value="voir l'événement"/>
+                                </form>
                             </div>
                             <?php
-                        }
-                        $bool = !$bool;
+                            if ($bool == FALSE)
+                            { ?>
+                                <div style="float:left;  width : 20%;">
+                                    <p><?php echo $event["evenement_titre"]; ?></p>
+                                    <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
+                                </div>
+                            <?php
+                            }
+                            $bool = ($bool == TRUE) ? FALSE : TRUE;
+                            ?>
+                            <div id="clear"></div>
+                        </div>
+                    <?php   
                     }
-                }
-                ?>
+                } ?>
             </div>
         </div>
             <?php include('./Vue/footer.php'); ?>

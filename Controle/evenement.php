@@ -143,17 +143,33 @@ function getThemeEvent()
 
 function recherche(){
     require './Modele/evenements.php';
-    $events = Array();
-    if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
-        
+    $events = array(array());
+    
+    if (isset($_POST["date"]) && isset($_POST["choixTheme"]))
+    {    
         $date = formattageDateBDD($_POST["date"]);
         $theme = $_POST["choixTheme"];
-        $events = rechercheBD($db, $date, $theme);
+        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, $date) >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
+        
+        $events = rechercheEvent($condition, $db);
     }
-    else {
-        $date = date("d-m-Y");
-        $theme="0";
-        $events = rechercheBD($db,$date, $theme);
+    else
+    {
+        if (isset($_SESSION['userID']))
+        {
+            $date = date("d-m-Y");
+            // RAJOUTER LES THEMES FAVORIS DANS LA CONDITION
+            $condition = "WHERE evenement_date_debut > $date";
+            
+            $events = rechercheEvent($condition, $db);
+        }
+        else
+        {
+            $date = date("d-m-Y");
+            $condition = "WHERE evenement_date_debut > $date";
+            
+            $events = rechercheEvent($condition, $db);
+        }
     }
     return $events;
 }

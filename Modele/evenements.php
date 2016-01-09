@@ -90,4 +90,37 @@ function rechercheBD($db, $date, $theme){
     return $data;
 }
 
+function rechercheEvent($condition, $db)
+{
+    $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id FROM `evenement` $condition";
+    echo $sql1;
+    $events = array(array());
+    $i = 0;
+
+    $reponse1 = $db->query($sql1);
+
+    while ($data1 = $reponse1->fetch())
+    {
+        $evenement_id = $data1["evenement_id"];
+
+        $events[$i]["evenement_id"] = $evenement_id;
+        $events[$i]["evenement_titre"] = $data1["evenement_titre"];
+        $events[$i]["evenement_description"] = $data1["evenement_description"];
+        $events[$i]["evenement_utilisateur_id"] = $data1["evenement_utilisateur_id"];
+        $events[$i]["evenement_theme_id"] = $data1["evenement_theme_id"];
+
+        $sql2 = "SELECT media_url FROM `media` WHERE media_evenement_id = $evenement_id AND media_type = 0 AND media_miniature = 1";
+        $reponse2 = $db->query($sql2);
+        $data2 = $reponse2->fetch();
+
+        $sql3 = "SELECT theme_miniature FROM `theme` WHERE theme_id = ".$data1["evenement_theme_id"];
+        $reponse3 = $db->query($sql3);
+        $data3 = $reponse3->fetch();
+
+        $events[$i]["miniature"] = ($data2["media_url"] == NULL) ? "logoTheme/".$data3["theme_miniature"] : "event/".$data2["media_url"];
+
+        $i ++;
+    }
+    return $events;
+}
 ?>
