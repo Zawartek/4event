@@ -65,7 +65,6 @@ require('./Modele/configSQL.php');
             <div id="listeCommentaires">
                 <?php
                 $bool = TRUE;
-                echo count($events);
                 if (sizeof($events) == 0) { echo "<p align='center'>Aucun événement trouvé.</p>"; }
                 else
                 {

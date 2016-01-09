@@ -93,7 +93,6 @@ function rechercheBD($db, $date, $theme){
 function rechercheEvent($condition, $db)
 {
     $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id FROM `evenement` $condition";
-    echo $sql1;
     $events = array(array());
     $i = 0;
 
@@ -121,6 +120,8 @@ function rechercheEvent($condition, $db)
 
         $i ++;
     }
-    return $events;
+    
+    if (!isset($events[0]["evenement_id"])) { return NULL; }
+    else { return $events; }
 }
 ?>

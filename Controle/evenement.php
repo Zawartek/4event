@@ -56,7 +56,6 @@ function annulerParticipation($idEvent)
 function creationEvent()
 {
     require ('./Modele/configSQL.php');
-    require ('./Vue/fonctions.php');
 
     if (isset($_POST['titre']) && isset($_POST['description']) && isset($_POST['voie']) && isset($_POST['codepostal']) &&
     isset($_POST['ville']) && isset($_POST['pays']) && isset($_POST['theme']) && isset($_POST['dateDebut']) &&
@@ -149,7 +148,7 @@ function recherche(){
     {    
         $date = formattageDateBDD($_POST["date"]);
         $theme = $_POST["choixTheme"];
-        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, $date) >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
+        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
         
         $events = rechercheEvent($condition, $db);
     }
@@ -157,16 +156,16 @@ function recherche(){
     {
         if (isset($_SESSION['userID']))
         {
-            $date = date("d-m-Y");
+            $date = date("Y-m-d");
             // RAJOUTER LES THEMES FAVORIS DANS LA CONDITION
-            $condition = "WHERE evenement_date_debut > $date";
+            $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
             
             $events = rechercheEvent($condition, $db);
         }
         else
         {
-            $date = date("d-m-Y");
-            $condition = "WHERE evenement_date_debut > $date";
+            $date = date("Y-m-d");
+            $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
             
             $events = rechercheEvent($condition, $db);
         }
