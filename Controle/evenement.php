@@ -156,10 +156,10 @@ function recherche(){
     {
         if (isset($_SESSION['userID']))
         {
+            require_once './Modele/utilisateurs.php';
             $date = date("Y-m-d");
-            // RAJOUTER LES THEMES FAVORIS DANS LA CONDITION
-            $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
-            
+            $favoris = rechercheFavori($db, $_SESSION['userID']);
+            $condition = ($favoris != NULL) ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id = $favoris" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
             $events = rechercheEvent($condition, $db);
         }
         else

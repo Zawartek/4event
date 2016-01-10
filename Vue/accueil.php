@@ -49,64 +49,54 @@ require('./Modele/configSQL.php');
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
                 </form>
             </div>
-            <select id="trierPar" name="trierPar" class="select">
-                <option>Trier par</option>
-                <?php
-                for ($i = 0; $i < 5; $i++) {
-                    ?>
-                    <option>
-                        Test
-                    </option>
-                <?php }
-                ?>
-            </select>
+            <?php /*
+              <select id="trierPar" name="trierPar" class="select">
+              <option>Trier par</option>
+              <?php
+              for ($i = 0; $i < 5; $i++) {
+              ?>
+              <option>
+              Test
+              </option>
+              <?php }
+              ?>
+              </select>
+             */ ?>
 
             <div id="clear"></div>
             <div id="listeCommentaires">
                 <?php
-                $bool = TRUE;
-                if (sizeof($events) == 0) { echo "<p align='center'>Aucun événement trouvé.</p>"; }
+                if (sizeof($events) == 0) {
+                    echo "<p align='center'>Aucun événement trouvé.</p>";
+                }
                 else
                 {
                     foreach ($events as $event)
                     { ?>
                         <div class="cadre">
-                            <?php
-                            if ($bool == TRUE)
-                            { ?>
-                                <div style="float:left;  width : 20%;">
-                                    <p><?php echo $event["evenement_titre"]; ?></p>
-                                    <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
-                                </div>
-                            <?php
-                            } ?>
-                            <div style="float:left; width : 80%;"><?php echo $event["evenement_description"]; ?>
-                                <form>
-                                    <input type='hidden' name='controle' value='evenement'/>
-                                    <input type='hidden' name='action' value='afficherPageEvent'/>
-                                    <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
-                                    
-                                    <input type="submit" value="voir l'événement"/>
-                                </form>
+                            <form style="float: right;">
+                                <input type='hidden' name='controle' value='evenement'/>
+                                <input type='hidden' name='action' value='afficherPageEvent'/>
+                                <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
+                                <input type="submit" class="btn bold" value="Afficher"/>
+                            </form>
+                            <div class="bold"><?php echo $event["evenement_titre"]; ?></div>
+                            
+                            
+                            <div style="float: left; margin: 10px;">
+                                <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
                             </div>
-                            <?php
-                            if ($bool == FALSE)
-                            { ?>
-                                <div style="float:left;  width : 20%;">
-                                    <p><?php echo $event["evenement_titre"]; ?></p>
-                                    <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
-                                </div>
-                            <?php
-                            }
-                            $bool = ($bool == TRUE) ? FALSE : TRUE;
-                            ?>
+
+                            <textarea class="text-area" cols="95" rows="5" style="float:left; margin: 10px; border: none;"><?php echo $event["evenement_description"]; ?></textarea>
+                            
+                            
                             <div id="clear"></div>
                         </div>
-                    <?php   
+                        <?php
                     }
                 } ?>
             </div>
         </div>
-            <?php include('./Vue/footer.php'); ?>
+        <?php include('./Vue/footer.php'); ?>
     </body>
 </html>

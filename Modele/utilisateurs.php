@@ -114,4 +114,24 @@ function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codeposta
     echo $sql2 . "<br>" . $sql3;
 }
 
+function ajoutFavori ($db, $idUti, $idTheme)
+{
+    $sql1 = "INSERT INTO favori(favori_id, favori_utilisateur_id, favori_theme_id) VALUES ('',$idUti,$idTheme)";
+    $reponse1 = $db->query($sql1);
+}
+
+function rechercheFavori ($db, $idUti)
+{
+    $sql1 = "SELECT favori_theme_id FROM favori WHERE favori_utilisateur_id = $idUti";
+    $reponse1 = $db->query($sql1);
+    
+    $retour = "";
+    while ($data1 = $reponse1->fetch())
+    {
+        $retour += $data1["favori_theme_id"].",";
+    }
+    
+    return $retour;
+}
+
 ?>
