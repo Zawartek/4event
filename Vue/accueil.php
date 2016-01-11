@@ -45,7 +45,7 @@ require('./Modele/configSQL.php');
                             echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
                         } ?>
                     </select>
-                    <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
+                    <input type="text" id="date" name="date" class="date" onload="this.value(Date());" readonly="readonly">
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
                 </form>
             </div>

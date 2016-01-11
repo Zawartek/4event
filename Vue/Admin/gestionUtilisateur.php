@@ -208,9 +208,9 @@ and open the template in the editor.
                 </fieldset>
                 <input id="id" type="hidden" name="id"/>
                 <div id="boutons">
+                    <br>
                     <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
                     <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
-                    <br>
                     <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
                 </div>
             </form>
