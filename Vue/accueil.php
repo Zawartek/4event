@@ -40,10 +40,10 @@ require('./Modele/configSQL.php');
                     <select id="choixTheme" name="choixTheme" class="input">
                         <option value="0">Tous</option>
                         <?php
-                        foreach ($themes as $theme) {
+                        foreach ($themes as $theme)
+                        {
                             echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
-                        }
-                        ?>
+                        } ?>
                     </select>
                     <input type="text" id="date" name="date" class="date" onload="this.value(Date());">
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
@@ -62,7 +62,6 @@ require('./Modele/configSQL.php');
               ?>
               </select>
              */ ?>
-
             <div id="clear"></div>
             <div id="listeCommentaires">
                 <?php
@@ -78,17 +77,15 @@ require('./Modele/configSQL.php');
                                 <input type='hidden' name='controle' value='evenement'/>
                                 <input type='hidden' name='action' value='afficherPageEvent'/>
                                 <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
-                                <input type="submit" class="btn bold" value="Afficher"/>
+                                <input type="submit" class="btn bold btn-orange" value="Afficher"/>
                             </form>
                             <div class="bold"><?php echo $event["evenement_titre"]; ?></div>
-                            
                             
                             <div style="float: left; margin: 10px;">
                                 <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
                             </div>
 
-                            <textarea class="text-area" cols="95" rows="5" style="float:left; margin: 10px; border: none;"><?php echo $event["evenement_description"]; ?></textarea>
-                            
+                            <textarea class="text-area description" disabled="disable"><?php echo $event["evenement_description"]; ?></textarea>
                             
                             <div id="clear"></div>
                         </div>
