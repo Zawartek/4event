@@ -200,27 +200,21 @@ and open the template in the editor.
                     foreach ($event['commentaires'] as $com) {
                         ?>
                         <div class="cadre" style="width:830px;">
-                            <p>
+                            <p style="margin-left: 0px;">
                                 <?php
                                 for ($i = 0; $i < 5; $i++) {
                                     if ($i < $com['avis_note']) {
-                                        echo "<img class='noteCom' src='./Vue/img/etoileCom.gif'  style='height:auto'/>";
+                                        echo "<img class='noteCom' src='./Vue/img/etoileCom.png'  style='height:auto'/>";
                                     } else {
-                                        echo "<img class='noteCom' src='./Vue/img/etoileComBlanc.gif'  style='height:auto'/>";
+                                        echo "<img class='noteCom' src='./Vue/img/etoileComBlanc.png'  style='height:auto'/>";
                                     }
                                 }
                                 ?>
                             </p>
                             <br/>
-                            <textarea class="text-area comContenu" disabled="true">
-                                <?php echo $com['avis_contenu']; ?>
-                            </textarea>
-                            <p align="right">
-                                écrit par <?php
-                                echo $com['utilisateur_prenom'] .
-                                ' ' . $com['utilisateur_nom'];
-                                ?>
-                            </p>
+                            <textarea class="text-area comContenu" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
+                            
+                            <p align="right"><?php echo "écrit par <Sspan class='bold'>".$com['utilisateur_prenom']." ".$com['utilisateur_nom']."</span>."; ?></p>
                         </div>
                         <br>
                         <?php
