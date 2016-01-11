@@ -167,6 +167,5 @@ function ajoutAvis() {
     }
     $idEvent = $_POST['idEvent'];
     ajoutAvisBD($db, $note, $avis,$_SESSION['userID'], $idEvent);
-    echo "test";
     header("Location:". "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent);
 }

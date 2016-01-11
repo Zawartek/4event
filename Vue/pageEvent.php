@@ -212,7 +212,7 @@ and open the template in the editor.
                             </p>
                             <br/>
                             <textarea class="text-area comContenu" disabled="true">
-                                <?php echo $com['avis_contenu']; ?><br>
+                                <?php echo $com['avis_contenu']; ?>
                             </textarea>
                             <p align="right">
                                 écrit par <?php
