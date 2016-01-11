@@ -28,16 +28,36 @@ and open the template in the editor.
                         allFields.removeClass("ui-state-error");
                     }
                 });
-
                 $("#btnParticipation").button().on("click", function () {
                     dialogParticipe.dialog("open");
                 });
-            });
-            function loadMap() {
-                initialize();
-                geocode("<?php echo $event["adresse"]; ?>");
-            }
-        </script>
+                function loadMap() {
+                    initialize();
+                    geocode("<?php echo $event["adresse"]; ?>");
+                }
+
+                // Lorsque le DOM est chargé on applique le Javascript $(document).ready(function() {
+                // On ajoute la classe "js" à la liste pour mettre en place par la suite du code CSS uniquement dans le cas où le Javascript est activé
+                $("ul.notes-echelle").addClass("js");
+                // On passe chaque note à l'état grisé par défaut
+                //$("ul.notes-echelle li").addClass("note-off");
+                // Au survol de chaque note à la souris
+                $("ul.notes-echelle li").mouseover(function () {
+                    // On passe les notes supérieures à l'état inactif (par défaut)
+                    $(this).nextAll("li").addClass("note-off");
+                    // On passe les notes inférieures à l'état actif
+                    $(this).prevAll("li").removeClass("note-off");
+                    // On passe la note survolée à l'état actif (par défaut)
+                    $(this).removeClass("note-off");
+                });
+                // Lorsque l'on sort du sytème de notation à la souris
+                $("ul.notes-echelle").mouseout(function () {
+                    // On passe toutes les notes à l'état inactif
+                    $(this).children("li").addClass("note-off");
+                    // On simule (trigger) un mouseover sur la note cochée s'il y a lieu
+                    $(this).find("li input:checked").parent("li").trigger("mouseover");
+                });
+            });</script>
     </head>
     <body onload="loadMap()">
         <div class="container_event">
@@ -122,18 +142,78 @@ and open the template in the editor.
                 <br>
 
             </div>
-            <div id="clear"></div> 
-
+            <div id="clear"></div>
+            <div class="cadre">
+                <h1>Donner votre avis</h1>
+                <form method="POST" action="index.php?controle=evenement&action=ajoutAvis">
+                    <table>
+                        <tr>
+                            <td>
+                                <ul class="notes-echelle">
+                                    <li>
+                                        <label for="note01" title="Note&nbsp;: 1 sur 5">&nbsp;</label>
+                                        <input id="note01" name="noteAvis" type="radio" value="1"/>
+                                    </li>
+                                    <li>
+                                        <label for="note02" title="Note&nbsp;: 2 sur 5">&nbsp;</label>
+                                        <input id="note02" name="noteAvis" type="radio" value="2"/>
+                                    </li>
+                                    <li>
+                                        <label for="note03" title="Note&nbsp;: 3 sur 5">&nbsp;</label>
+                                        <input id="note03" name="noteAvis" type="radio" value="3"/>
+                                    </li>
+                                    <li>
+                                        <label for="note04" title="Note&nbsp;: 4 sur 5">&nbsp;</label>
+                                        <input id="note04" name="noteAvis" type="radio" value="4"/>
+                                    </li>
+                                    <li>
+                                        <label for="note05" title="Note&nbsp;: 5 sur 5">&nbsp;</label>
+                                        <input id="note05" name="noteAvis" type="radio" value="5" checked="true"/>
+                                    </li>
+                                </ul>
+                                <div id="clear"></div>
+                            </td>
+                            <td rowspan="2">
+                                <textarea name="avis" style="width:600px; height:100px; margin-left:50px; resize: none"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <input type="hidden" name="idEvent" value="<?php echo $event['evenement_id']; ?>"/>
+                                <?php if (isset($_SESSION['userID'])) { ?>
+                                    <input style="margin-right:16px;" type="submit" value="envoyer"/>
+                                    <?php
+                                } else {
+                                    echo "<p>Veuillez vous connecter pour donner votre avis</p>";
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
             <div id="commentairesEvent" class="cadre">
                 <h1>COMMENTAIRES</h1>
                 <?php
                 if (isset($event['commentaires'][0])) {
                     foreach ($event['commentaires'] as $com) {
                         ?>
-                        <div class="cadre">
+                        <div class="cadre" style="width:830px;">
                             <p>
-                                <?php echo nl2br($com['avis_contenu']); ?><br>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    if ($i < $com['avis_note']) {
+                                        echo "<img class='noteCom' src='./Vue/img/etoileCom.gif'  style='height:auto'/>";
+                                    } else {
+                                        echo "<img class='noteCom' src='./Vue/img/etoileComBlanc.gif'  style='height:auto'/>";
+                                    }
+                                }
+                                ?>
                             </p>
+                            <br/>
+                            <textarea class="text-area" cols="95" rows="5" style="float:left; margin: 10px; border: none;" disabled="true">
+                                <?php echo $com['avis_contenu']; ?><br>
+                            </textarea>
                             <p align="right">
                                 écrit par <?php
                                 echo $com['utilisateur_prenom'] .

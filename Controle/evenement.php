@@ -6,62 +6,54 @@
  * and open the template in the editor.
  */
 
-function afficherPageEvent($idEvent)
-{
+function afficherPageEvent($idEvent) {
     require_once './Modele/evenements.php';
     $event = infosEvent($db, $idEvent);
-    
-    if ($event ==null)
-    {
+
+    if ($event == null) {
         require './Controle/utilisateur.php';
         accueil();
     }
-    if (isset($_SESSION['userID'])){
-        $participation = participe($db,$_SESSION['userID'], $idEvent);
-    }
-    else {
-        $participation="0";
+    if (isset($_SESSION['userID'])) {
+        $participation = participe($db, $_SESSION['userID'], $idEvent);
+    } else {
+        $participation = "0";
     }
     include ("./Vue/pageEvent.php");
 }
 
-function participer()
-{
+function participer() {
     $idEvent = $_POST['idEvent'];
     $nb = $_POST['nb'];
     require_once './Modele/evenements.php';
-    if (isset($_SESSION['userID'])){
+    if (isset($_SESSION['userID'])) {
         participerBD($db, $idEvent, $_SESSION['userID'], $nb);
     }
-    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
-    header ("Location:" . $nexturl);
+    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=" . $idEvent;
+    header("Location:" . $nexturl);
 }
 
-function ajoutInteret()
-{
+function ajoutInteret() {
     require './Modele/evenements.php';
     ajoutInteretBD($idEvent);
 }
 
-function annulerParticipation($idEvent)
-{
+function annulerParticipation($idEvent) {
     require './Modele/evenements.php';
-    if (isset($_SESSION['userID'])){
+    if (isset($_SESSION['userID'])) {
         annulerParticipationBD($db, $idEvent, $_SESSION['userID']);
     }
-    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent;
-    header ("Location:" . $nexturl);
+    $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=" . $idEvent;
+    header("Location:" . $nexturl);
 }
 
-function creationEvent()
-{
+function creationEvent() {
     require ('./Modele/configSQL.php');
 
     if (isset($_POST['titre']) && isset($_POST['description']) && isset($_POST['voie']) && isset($_POST['codepostal']) &&
-    isset($_POST['ville']) && isset($_POST['pays']) && isset($_POST['theme']) && isset($_POST['dateDebut']) &&
-    isset($_POST['dateFin']) && isset($_POST['maxParticipants']) && isset($_POST['typePublic']) && isset($_POST['tarif']) &&
-    isset($_POST['heureDebut']) && isset($_POST['heureFin']) && isset($_POST['siteWeb']))
-    {
+            isset($_POST['ville']) && isset($_POST['pays']) && isset($_POST['theme']) && isset($_POST['dateDebut']) &&
+            isset($_POST['dateFin']) && isset($_POST['maxParticipants']) && isset($_POST['typePublic']) && isset($_POST['tarif']) &&
+            isset($_POST['heureDebut']) && isset($_POST['heureFin']) && isset($_POST['siteWeb'])) {
         $titre = htmlspecialchars($_POST['titre']);
         $description = htmlspecialchars($_POST['description']);
         $voie = htmlspecialchars($_POST['voie']);
@@ -85,7 +77,7 @@ function creationEvent()
         $adresse_id = $data['ID'] + 1;
 
         $sql2 = $db->prepare('INSERT INTO adresse SET adresse_id = :adresse_id, adresse_numero_voie = :voie, adresse_ville = :ville,'
-                .'adresse_code_postal = :codepostal, adresse_pays = :pays');
+                . 'adresse_code_postal = :codepostal, adresse_pays = :pays');
 
         $sql2->bindValue(':adresse_id', $adresse_id);
         $sql2->bindValue(':voie', $voie, PDO::PARAM_STR);
@@ -96,10 +88,10 @@ function creationEvent()
         $sql2->execute();
 
         $sql3 = $db->prepare('INSERT INTO evenement SET evenement_id = :evenement_id, evenement_titre = :titre, evenement_description = :description,'
-                .'evenement_utilisateur_id = :user_id, evenement_adresse_id = :adresse_id, evenement_theme_id = :theme, evenement_date_debut = :dateDebut,'
-                .'evenement_heure_debut = :heureDebut, evenement_date_fin = :dateFin, evenement_heure_fin = :heureFin,'
-                .'evenement_max_participants = :maxParticipants, evenement_type_public = :typePublic, evenement_site_web = :siteWeb, evenement_tarif = :tarif');
-        
+                . 'evenement_utilisateur_id = :user_id, evenement_adresse_id = :adresse_id, evenement_theme_id = :theme, evenement_date_debut = :dateDebut,'
+                . 'evenement_heure_debut = :heureDebut, evenement_date_fin = :dateFin, evenement_heure_fin = :heureFin,'
+                . 'evenement_max_participants = :maxParticipants, evenement_type_public = :typePublic, evenement_site_web = :siteWeb, evenement_tarif = :tarif');
+
         $sql3->bindValue(':evenement_id', NULL);
         $sql3->bindValue(':titre', $titre, PDO::PARAM_STR);
         $sql3->bindValue(':description', $description, PDO::PARAM_STR);
@@ -114,15 +106,14 @@ function creationEvent()
         $sql3->bindValue(':typePublic', $typePublic);
         $sql3->bindValue(':siteWeb', $siteWeb, PDO::PARAM_STR);
         $sql3->bindValue(':tarif', $tarif, PDO::PARAM_STR);
-        
+
         $sql3->execute();
     }
 
     echo "<script>location='index.php';</script>";
 }
 
-function getThemeEvent()
-{
+function getThemeEvent() {
     require ('./Modele/configSQL.php');
 
     $sql = "SELECT * FROM theme";
@@ -130,45 +121,52 @@ function getThemeEvent()
 
     $i = 0;
     $tableau = array();
-    
-    while($ligne = $reponse->fetch())
-    {
+
+    while ($ligne = $reponse->fetch()) {
         $tableau[$i] = $ligne;
         $i++;
     }
-    
+
     return $tableau;
 }
 
-function recherche(){
+function recherche() {
     require './Modele/evenements.php';
     $events = array(array());
-    
-    if (isset($_POST["date"]) && isset($_POST["choixTheme"]))
-    {    
+
+    if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
         $date = formattageDateBDD($_POST["date"]);
         $theme = $_POST["choixTheme"];
         $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
-        
+
         $events = rechercheEvent($condition, $db);
-    }
-    else
-    {
-        if (isset($_SESSION['userID']))
-        {
+    } else {
+        if (isset($_SESSION['userID'])) {
             require_once './Modele/utilisateurs.php';
             $date = date("Y-m-d");
             $favoris = rechercheFavori($db, $_SESSION['userID']);
             $condition = ($favoris != NULL) ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id = $favoris" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
             $events = rechercheEvent($condition, $db);
-        }
-        else
-        {
+        } else {
             $date = date("Y-m-d");
             $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
-            
+
             $events = rechercheEvent($condition, $db);
         }
     }
     return $events;
+}
+
+function ajoutAvis() {
+    require './Modele/evenements.php';
+    $note = $_POST['noteAvis'];
+    if (isset($_POST['avis']) && $_POST['avis']<>"") {
+        $avis = $_POST['avis'];
+    } else {
+        $avis = '';
+    }
+    $idEvent = $_POST['idEvent'];
+    ajoutAvisBD($db, $note, $avis,$_SESSION['userID'], $idEvent);
+    echo "test";
+    header("Location:". "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent);
 }

@@ -137,7 +137,6 @@ if (!isset($_SESSION['prenom_nom'])) {
                 var id_token = googleUser.getAuthResponse().id_token;
                 console.log("ID Token: " + id_token);
             }
-            ;
         </script>
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         

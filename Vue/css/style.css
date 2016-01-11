@@ -19,7 +19,7 @@ body {
 
 #footer
 {
-    margin: opx
+    margin: 0px
 }
 
 #clear
@@ -187,7 +187,6 @@ fieldset
     background-color: #FFF;
 }
 
-
 #infosEvent
 {
     float : right;
@@ -264,6 +263,54 @@ fieldset
 .cadre p {
     margin-left: -22px;
 
+}
+
+//-------------AVIS-------------
+
+ul.notes-echelle {
+	margin:0;
+	padding:0;
+	font:.75em/1.2 Arial, Helvetica, sans-serif;
+}
+ul.notes-echelle li {
+	float:left;
+	margin:0;
+	padding:0;
+	list-style:none;
+	min-width:20px;
+	min-height:20px;
+}
+
+* html ul.notes-echelle.js li {
+	width:20px;
+	height:20px;
+}
+ul.notes-echelle li label {
+	display:block;
+	text-align:center;
+	line-height:20px;
+	background:url(../img/etoile.gif) center top no-repeat;
+	cursor:pointer;
+}
+
+ul.notes-echelle li.note-off label {
+	background-position:center -60px;
+}
+
+ul.notes-echelle.js input {
+	position:absolute;
+	left:-999%;
+}
+
+.noteCom {
+	display:block;
+	text-align:center;
+	line-height:20px;
+	background:url(../img/etoile.gif) center top no-repeat;
+	cursor:pointer;
+        float:left;
+	width:20px;
+	height:20px;
 }
 
 /* Map css */

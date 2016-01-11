@@ -17,6 +17,7 @@ function accueil() {
       $nexturl = "./Vue/accueil.php";
       header ("Location:" . $nexturl);
      */
+    $themes = getThemeEvent();
     $events = recherche();
     include ("./Vue/accueil.php");
 }

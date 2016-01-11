@@ -56,7 +56,6 @@ function annulerParticipationBD($db, $idEvent, $idUti)
 
 function participerBD($db, $idEvent, $idUti,$nb)
 {
-    // Recuperation de l'evenement
     $request = 'INSERT INTO participation '
             . 'VALUES (' . $idUti . ',' . $idEvent . ', '. $nb . ');';
     $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);;
@@ -65,7 +64,6 @@ function participerBD($db, $idEvent, $idUti,$nb)
 
 function participe($db, $idUti, $idEvent)
 {
-    // Recuperation de l'evenement
     $request = 'SELECT count(*) as nb FROM participation '
             . 'WHERE participation_utilisateur_id=' . $idUti . 
             ' and participation_evenement_id=' . $idEvent . ';';
@@ -123,5 +121,12 @@ function rechercheEvent($condition, $db)
     
     if (!isset($events[0]["evenement_id"])) { return NULL; }
     else { return $events; }
+}
+
+function ajoutAvisBD($db, $note, $avis,$idUser, $idEvent){
+    $request = 'INSERT INTO avis (avis_utilisateur_id, avis_evenement_id, avis_contenu, avis_note) '
+            . 'VALUES (' . $idUser . ',' . $idEvent . ', "'. $avis . '",' . $note . ');';
+    $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);;
+    
 }
 ?>

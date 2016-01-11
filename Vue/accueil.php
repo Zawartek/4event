@@ -87,7 +87,7 @@ require('./Modele/configSQL.php');
                                 <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
                             </div>
 
-                            <textarea class="text-area" cols="95" rows="5" style="float:left; margin: 10px; border: none;"><?php echo $event["evenement_description"]; ?></textarea>
+                            <textarea class="text-area" cols="95" rows="5" style="margin: 10px; border: none;"><?php echo $event["evenement_description"]; ?></textarea>
                             
                             
                             <div id="clear"></div>
