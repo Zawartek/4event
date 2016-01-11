@@ -35,6 +35,17 @@ function infosEvent($db, $idEvent) {
         while ($com = $reponse->fetch() and isset($com)) {
             $data['commentaires'][] = $com;
         }
+        
+        $sql2 = "SELECT media_url FROM `media` WHERE media_evenement_id = $idEvent AND media_type = 0 AND media_miniature = 1";
+        $reponse2 = $db->query($sql2);
+        $data2 = $reponse2->fetch();
+
+        $sql3 = "SELECT theme_miniature FROM `theme` WHERE theme_id = ".$data["evenement_theme_id"];
+        $reponse3 = $db->query($sql3);
+        $data3 = $reponse3->fetch();
+
+        $data["miniature"] = ($data2["media_url"] == NULL) ? "logoTheme/".$data3["theme_miniature"] : "event/".$data2["media_url"];
+
     } else {
         // return null;
     }

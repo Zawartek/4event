@@ -63,7 +63,8 @@ and open the template in the editor.
         <div class="container_event">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
-                <img id="photoProfil" src="./Vue/img/logoTheme/<?php echo $event['evenement_theme_id']; ?>.png" />
+                <img id="photoProfil" src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
+                            
                 <div id="infosProfil">
                     <h1>
                         <?php echo $event["evenement_titre"]; ?>
