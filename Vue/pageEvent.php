@@ -211,7 +211,7 @@ and open the template in the editor.
                                 ?>
                             </p>
                             <br/>
-                            <textarea class="text-area" cols="95" rows="5" style="float:left; margin: 10px; border: none;" disabled="true">
+                            <textarea class="text-area comContenu" disabled="true">
                                 <?php echo $com['avis_contenu']; ?><br>
                             </textarea>
                             <p align="right">
