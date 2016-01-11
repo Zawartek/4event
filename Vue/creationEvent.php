@@ -77,14 +77,14 @@
                     </tr>
                     <tr>
                         <td><label for="dateDebut">Date début :</label></td>
-                        <td><input type="text" id="dateDebut" name="dateDebut" class="input" onload="this.value(Date());"></td>
+                        <td><input type="text" id="dateDebut" name="dateDebut" class="input" onload="this.value(Date());" readonly="readonly"></td>
                         <td><label for="heureDebut">Heure début :</label></td>
                         <td><input type="time" name="heureDebut" id="heureDebut" class="input"></td>
 
                     </tr>
                     <tr>
                         <td><label for="dateFin">Date fin :</label></td>
-                        <td><input type="text" id="dateFin" name="dateFin" class="input" onload="this.value(Date());"></td>
+                        <td><input type="text" id="dateFin" name="dateFin" class="input" onload="this.value(Date());" readonly="readonly"></td>
                         <td><label for="heureFin">Heure fin :</label></td>
                         <td><input type="time" name="heureFin" id="heureFin" class="input"></td>
                     </tr>

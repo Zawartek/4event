@@ -466,3 +466,13 @@ h2
 {
     resize: none;
 }
+
+.description
+{
+    float:left;
+    margin: 10px;
+    border: none;
+    width: 610px;
+    height: 100px;
+    background-color: transparent;
+}
