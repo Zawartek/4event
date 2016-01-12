@@ -69,31 +69,22 @@ and open the template in the editor.
                     <h1>
                         <?php echo $event["evenement_titre"]; ?>
                     </h1>
+					<p>
+                        Organisé par <a 
+                    <?php
+                    echo "href='index.php?"
+                    . "controle=utilisateur&"
+                    . "action=afficherPageUti&"
+                    . "param=" . $event["evenement_utilisateur_id"] . "'"
+                    . ">".$event["utilisateur_nom"]; ?>
+                    </a>
+					</p>
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
                 </div>
             </div>
             <div id="infosEvent">
-                <div id="infosOrganisateur">
-                    <p>
-                        Organisateur : <?php echo $event["utilisateur_nom"]; ?>
-                    </p>
-                    <p>
-                        Nombres d'événements organisés : 
-                        <?php echo $event["nbEvent"]; ?>
-                    </p>
-                    <a 
-                    <?php
-                    echo "href='index.php?"
-                    . "controle=utilisateur&"
-                    . "action=afficherPageUti&"
-                    . "param=" . $event["evenement_utilisateur_id"] . "'";
-                    ?>
-                        >
-                        profil
-                    </a>
-                </div>
                 <?php if (isset($_SESSION['userID'])) { ?>
                     <div id="participationEvent">
                         <?php
