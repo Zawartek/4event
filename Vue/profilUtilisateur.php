@@ -53,10 +53,8 @@ and open the template in the editor.
                 if (isset($uti['commentaires'][0])) {
                     foreach ($uti['commentaires'] as $com) {
                         ?>
-                        <div class="cadre">
-                            <p>
-                                <?php echo nl2br($com['avis_contenu']); ?><br>
-                            </p>
+                        <div class="cadre" style="width:475px">
+                            <textarea class="text-area comContenuP" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
                             <p align="right">
                                 écrit par <?php
                                 echo $com['utilisateur_prenom'] .

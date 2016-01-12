@@ -88,52 +88,57 @@ function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codeposta
 
         $sql2 = "UPDATE adresse "
                 . "SET "
-                    . "`adresse_numero_voie`='$voie',"
-                    . "`adresse_ville`='$ville',"
-                    . "`adresse_code_postal`='$codepostal',"
-                    . "`adresse_pays`='$pays' "
+                . "`adresse_numero_voie`='$voie',"
+                . "`adresse_ville`='$ville',"
+                . "`adresse_code_postal`='$codepostal',"
+                . "`adresse_pays`='$pays' "
                 . "WHERE adresse_id=" . $uti['utilisateur_adresse_id']
                 . "";
         $reponse2 = $db->query($sql2);
     }
-    $sql3="UPDATE utilisateur "
+    $sql3 = "UPDATE utilisateur "
             . "SET "
-            . "utilisateur_nom='". $nom ."',"
-            . "utilisateur_prenom='". $prenom ."',"
-            . "utilisateur_email='". $email ."',"
-            . "utilisateur_adresse_id='". $uti['adresse_id'] ."',"
-            . "utilisateur_date_naissance='". $datenaissance ."',"
-            . "utilisateur_image_profil='". $nom ."',"
-            . "utilisateur_mot_de_passe='". $mdp ."',"
-            . "utilisateur_etat='". $etat ."',"
-            . "utilisateur_type='". $type ."',"
-            . "utilisateur_sexe='". $sexe ."',"
-            . "utilisateur_newsletter='". $newsletter ."' "
-            . "WHERE utilisateur_id='" . $idUti."'";
+            . "utilisateur_nom='" . $nom . "',"
+            . "utilisateur_prenom='" . $prenom . "',"
+            . "utilisateur_email='" . $email . "',"
+            . "utilisateur_adresse_id='" . $uti['adresse_id'] . "',"
+            . "utilisateur_date_naissance='" . $datenaissance . "',"
+            . "utilisateur_image_profil='" . $nom . "',"
+            . "utilisateur_mot_de_passe='" . $mdp . "',"
+            . "utilisateur_etat='" . $etat . "',"
+            . "utilisateur_type='" . $type . "',"
+            . "utilisateur_sexe='" . $sexe . "',"
+            . "utilisateur_newsletter='" . $newsletter . "' "
+            . "WHERE utilisateur_id='" . $idUti . "'";
     $reponse3 = $db->query($sql3);
     echo $sql2 . "<br>" . $sql3;
 }
 
-function ajoutFavori ($db, $idUti, $idTheme)
-{
+function ajoutFavori($db, $idUti, $idTheme) {
     $sql1 = "INSERT INTO favori(favori_id, favori_utilisateur_id, favori_theme_id) VALUES ('',$idUti,$idTheme)";
     $reponse1 = $db->query($sql1);
 }
 
-function rechercheFavori ($db, $idUti)
-{
+function rechercheFavori($db, $idUti) {
     $sql1 = "SELECT favori_theme_id FROM favori WHERE favori_utilisateur_id = $idUti";
     $reponse1 = $db->query($sql1);
-    
+
     $retour = "";
-    while ($data1 = $reponse1->fetch())
-    {
-        $retour .= $data1["favori_theme_id"].",";
+    while ($data1 = $reponse1->fetch()) {
+        $retour .= $data1["favori_theme_id"] . ",";
     }
-    
-    if ($retour != "") { $retour = "(".substr($retour,0,-1).")"; }
-    
+
+    if ($retour != "") {
+        $retour = "(" . substr($retour, 0, -1) . ")";
+    }
+
     return $retour;
+}
+
+function alertesUti($db, $idUti) {
+    $sql1 = "SELECT alerte_id, evenement_titre FROM alerte, evenement WHERE alerte_utilisateur_id = $idUti and alerte_evenement_id = evenement_id";
+    $reponse1 = $db->query($sql1);
+    return $data1 = $reponse1->fetchAll();
 }
 
 ?>
