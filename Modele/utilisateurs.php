@@ -125,12 +125,14 @@ function rechercheFavori ($db, $idUti)
     $sql1 = "SELECT favori_theme_id FROM favori WHERE favori_utilisateur_id = $idUti";
     $reponse1 = $db->query($sql1);
     
-    $retour = "(";
+    $retour = "";
     while ($data1 = $reponse1->fetch())
     {
         $retour .= $data1["favori_theme_id"].",";
     }
-    $retour = substr($retour,0,-1).")";
+    
+    if ($retour != "") { $retour = "(".substr($retour,0,-1).")"; }
+    
     return $retour;
 }
 
