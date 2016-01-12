@@ -65,6 +65,8 @@ require('./Modele/configSQL.php');
             <div id="clear"></div>
             <div id="listeCommentaires">
                 <?php
+                $id = 1;
+                $class = array ("couleurEvent1", "couleurEvent2");
                 if (sizeof($events) == 0) {
                     echo "<p align='center'>Aucun événement trouvé.</p>";
                 }
@@ -72,13 +74,14 @@ require('./Modele/configSQL.php');
                 {
                     foreach ($events as $event)
                     { ?>
-                        <div class="cadre">
+                        <div class="cadre <?php echo $class[$id]; ?>">
                             <form style="float: right;">
                                 <input type='hidden' name='controle' value='evenement'/>
                                 <input type='hidden' name='action' value='afficherPageEvent'/>
                                 <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
                                 <input type="submit" class="btn bold btn-orange" value="Afficher"/>
                             </form>
+                            <p><?php echo formattageDateBDD($event["evenement_date_debut"], "aff"); ?></p>
                             <div class="bold"><?php echo $event["evenement_titre"]; ?></div>
                             
                             <div style="float: left; margin: 10px;">
@@ -90,6 +93,7 @@ require('./Modele/configSQL.php');
                             <div id="clear"></div>
                         </div>
                         <?php
+                        $id = ($id == 1) ? 0 : 1;
                     }
                 } ?>
             </div>

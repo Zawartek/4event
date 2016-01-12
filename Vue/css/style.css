@@ -485,3 +485,13 @@ h2
     height: 100px;
     background-color: transparent;
 }
+
+.couleurEvent1
+{
+    background-color: transparent;
+}
+
+.couleurEvent2
+{
+    background-color: red;
+}

@@ -85,7 +85,7 @@ function inscription() {
         $codepostal = htmlspecialchars($_POST['codepostal']);
         $ville = htmlspecialchars($_POST['ville']);
         $pays = htmlspecialchars($_POST['pays']);
-        $datenaissance = htmlspecialchars(formattageDateBDD($_POST['datenaissance']));
+        $datenaissance = htmlspecialchars(formattageDateBDD($_POST['datenaissance'], "bdd"));
         $mdp = htmlspecialchars($_POST['mdp']);
         $sexe = htmlspecialchars($_POST['sexe']);
 

@@ -101,7 +101,7 @@ function rechercheBD($db, $date, $theme){
 
 function rechercheEvent($condition, $db)
 {
-    $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id FROM `evenement` $condition";
+    $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id, evenement_date_debut FROM `evenement` $condition";
     $events = array(array());
     $i = 0;
 
@@ -116,6 +116,7 @@ function rechercheEvent($condition, $db)
         $events[$i]["evenement_description"] = $data1["evenement_description"];
         $events[$i]["evenement_utilisateur_id"] = $data1["evenement_utilisateur_id"];
         $events[$i]["evenement_theme_id"] = $data1["evenement_theme_id"];
+        $events[$i]["evenement_date_debut"] = $data1["evenement_date_debut"];
 
         $sql2 = "SELECT media_url FROM `media` WHERE media_evenement_id = $evenement_id AND media_type = 0 AND media_miniature = 1";
         $reponse2 = $db->query($sql2);

@@ -61,8 +61,8 @@ function creationEvent() {
         $ville = htmlspecialchars($_POST['ville']);
         $pays = htmlspecialchars($_POST['pays']);
         $theme = htmlspecialchars($_POST['theme']);
-        $dateDebut = formattageDateBDD($_POST['dateDebut']);
-        $dateFin = formattageDateBDD($_POST['dateFin']);
+        $dateDebut = formattageDateBDD($_POST['dateDebut'], "bdd");
+        $dateFin = formattageDateBDD($_POST['dateFin'], "bdd");
         $maxParticipants = htmlspecialchars($_POST['maxParticipants']);
         $tarif = htmlspecialchars($_POST['tarif']);
         $typePublic = htmlspecialchars($_POST['typePublic']);
@@ -135,7 +135,7 @@ function recherche() {
     $events = array(array());
 
     if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
-        $date = formattageDateBDD($_POST["date"]);
+        $date = formattageDateBDD($_POST["date"], "bdd");
         $theme = $_POST["choixTheme"];
         $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
 

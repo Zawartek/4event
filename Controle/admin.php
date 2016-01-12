@@ -35,7 +35,7 @@ function gestionUti() {
         $pays = htmlspecialchars($_POST['pays']);
         $datenaissance = htmlspecialchars($_POST['datenaissance']);
         if (strpos($datenaissance, '-') == false){
-            $datenaissance = formattageDateBDD($datenaissance);
+            $datenaissance = formattageDateBDD($datenaissance, "bdd");
         }
         $mdp = htmlspecialchars($_POST['mdp']);
         $sexe = htmlspecialchars($_POST['sexe']);

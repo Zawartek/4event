@@ -1,9 +1,21 @@
 <?php
 
-function formattageDateBDD ($date)
+function formattageDateBDD ($date, $type)
 {
-    $split = explode("/", $date);
-    return $dateBDD = $split[2]."-".$split[1]."-".$split[0]; 
+    // Format pour la BDD
+    if ($type == "bdd")
+    {
+        $charResearch = "/";
+        $charReplace = "-";
+    }
+    // Format pour l'affichage
+    elseif ($type == "aff")
+    {
+        $charResearch = "-";
+        $charReplace = "/";
+    }
+    
+    $split = explode($charResearch, $date);
+    return $dateBDD = $split[2].$charReplace.$split[1].$charReplace.$split[0]; 
 }
-
 ?>
