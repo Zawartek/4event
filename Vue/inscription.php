@@ -18,6 +18,36 @@
                 $("#datenaissance").datepicker($.datepicker.regional["fr"]);
                 $("#datenaissance").datepicker('setDate', new Date());
             });
+            function isValidDate()
+            {
+                var dateString = $("#datenaissance").val();
+                var desactivation = 0;
+
+                // Parse the date parts to integers
+                var parts = dateString.split("/");
+                var day = (parts[0]);
+                var month = (parts[1]);
+                var year = (parts[2]);
+
+                // Check the ranges of month and year
+                if(year < 1000 || year > 3000 || month == 0 || month > 12)
+                    desactivation = 1;
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                // Adjust for leap years
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                    monthLength[1] = 29;
+
+                // Check the range of the day
+                if (day < 0 || day > monthLength[month - 1])
+                    desactivation = 1;
+
+                if (desactivation == 1)
+                    document.getElementById("submitInscription").disabled = true;
+                else if (desactivation == 0)
+                    document.getElementById("submitInscription").disabled = false;
+            };
         </script>
     </head>
 
@@ -55,7 +85,7 @@
                 <input type="text" name="pays" id="pays" class="input"><br>
 
                 <label for="datenaissance">Date de naissance :</label>
-                <input type="text" id="datenaissance" name="datenaissance" class="input" onload="this.value(Date());">
+                <input type="text" id="datenaissance" name="datenaissance" class="input" onload="this.value(Date());" onchange="isValidDate();">
 
                 <label for="mdp">Mot de passe :</label>
                 <input type="password" name="mdp" id="mdp" class="input" required="required"><br>
@@ -68,7 +98,7 @@
                 <input type="checkbox" name="newsletter" id="newsletter" value="1">
                 <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4Event.</label><br>
 
-                <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="S'Inscrire">
+                <input id="submitInscription" class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="S'Inscrire">
             </form>
         </div>
     </body>
