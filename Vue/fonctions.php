@@ -1,6 +1,6 @@
 <?php
 
-function formattageDateBDD ($date, $type)
+function formattageDate ($date, $type)
 {
     // Format pour la BDD
     if ($type == "bdd")

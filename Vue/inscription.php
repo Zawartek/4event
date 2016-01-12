@@ -6,13 +6,14 @@
         <link href="./Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
             function controlDate()
             {
-                var jour = $("#jour").val();
-                var mois = $("#mois").val();
-                var annee = $("#annee").val();
+                var jour = $("#jourInscription").val();
+                var mois = $("#moisInscription").val();
+                var annee = $("#anneeInscription").val();
                 var desactivation = 0;
 
                 if (jour != 0 && mois != 0 && annee != 0)
@@ -78,7 +79,7 @@
 
                 <label style="width: auto;">Date de<br>naissance :</label>
                 <div class="formDateNaissance">
-                    <select class="champDateNaissance" name="jour" id="jour" onchange="controlDate();">
+                    <select class="champDateNaissance" name="jour" id="jourInscription" onchange="controlDate();">
                         <option value="0">Jour</option>
                         <?php
                         for ($j = 1; $j <= 31; $j ++)
@@ -86,7 +87,7 @@
                             echo "<option value='$j'>$j</option>";
                         } ?>
                     </select>
-                    <select class="champDateNaissance" name="mois" id="mois" onchange="controlDate();">
+                    <select class="champDateNaissance" name="mois" id="moisInscription" onchange="controlDate();">
                         <option value="0">Mois</option>
                         <?php
                         $mois = array('janv', 'févr', 'mars', 'avril', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc');
@@ -96,7 +97,7 @@
                             echo "<option value='$m'>$mois[$indice]</option>";
                         } ?>
                     </select>
-                    <select class="champDateNaissance" name="annee" id="annee" onchange="controlDate();">
+                    <select class="champDateNaissance" name="annee" id="anneeInscription" onchange="controlDate();">
                         <option value="0">Année</option>
                         <?php
                         for ($a = date("Y"); $a >= 1900; $a --)

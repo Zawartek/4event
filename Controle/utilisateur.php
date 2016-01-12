@@ -13,10 +13,6 @@ function ident() {
 function accueil() {
     
     $_SESSION['page'] = 'accueil';
-    /*
-      $nexturl = "./Vue/accueil.php";
-      header ("Location:" . $nexturl);
-     */
     $themes = getThemeEvent();
     $events = recherche();
     include ("./Vue/accueil.php");

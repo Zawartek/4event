@@ -81,7 +81,7 @@ require('./Modele/configSQL.php');
                                 <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
                                 <input type="submit" class="btn bold btn-orange" value="Afficher"/>
                             </form>
-                            <p><?php echo formattageDateBDD($event["evenement_date_debut"], "aff"); ?></p>
+                            <p><?php echo formattageDate($event["evenement_date_debut"], "aff"); ?></p>
                             <div class="bold"><?php echo $event["evenement_titre"]; ?></div>
                             
                             <div style="float: left; margin: 10px;">

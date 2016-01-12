@@ -4,66 +4,81 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var utilisateurs = <?php echo json_encode($utilisateurs); ?>;
-        $('#ADD').show();
-        $('#MOD').hide();
-        $('#SUPPR').hide();
-
-        $('#ddlUtilisateur').on('change', function () {
-            var text;
-            text = this.options[this.selectedIndex].value;
-            if (this.selectedIndex == "0") {
-                $('#id').val("");
-                $('#email').val("");
-                $('#nom').val("");
-                $('#prenom').val("");
-                $('#sexe').val("");
-                $('#datenaissance').val("");
-                $('#etat').val("0");
-                $('#type').val("0");
-                $('#mdp').val("");
-                
-                $('#voie').val("");
-                $('#ville').val("");
-                $('#codepostal').val("");
-                $('#pays').val("");
-                
-                $('#ADD').show();
-                $('#MOD').hide();
-                $('#SUPPR').hide();
-            }
-            else {
-                $('#id').val(utilisateurs[text]['utilisateur_id']);
-                $('#email').val(utilisateurs[text]['utilisateur_email']);
-                $('#nom').val(utilisateurs[text]['utilisateur_nom']);
-                $('#prenom').val(utilisateurs[text]['utilisateur_prenom']);
-                $('#sexe').val(utilisateurs[text]['utilisateur_sexe']);
-                $('#datenaissance').val(utilisateurs[text]['utilisateur_date_naissance']);
-                $('#etat').val(utilisateurs[text]['utilisateur_etat']);
-                $('#type').val(utilisateurs[text]['utilisateur_type']);
-                $('#mdp').val(utilisateurs[text]['utilisateur_mot_de_passe']);
-                
-                $('#voie').val(utilisateurs[text]['adresse_numero_voie']);
-                $('#ville').val(utilisateurs[text]['adresse_ville']);
-                $('#codepostal').val(utilisateurs[text]['adresse_code_postal']);
-                $('#pays').val(utilisateurs[text]['adresse_pays']);
-                
-                $('#ADD').hide();
-                $('#MOD').show();
-                $('#SUPPR').show();
-            }
-        });
-    });
-</script>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Gestion des utilisateurs</title>
         <link rel="stylesheet" href="./Vue/css/style.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var utilisateurs = <?php echo json_encode($utilisateurs); ?>;
+                $('#ADD').show();
+                $('#MOD').hide();
+                $('#SUPPR').hide();
+
+                $('#ddlUtilisateur').on('change', function () {
+                    var text;
+                    text = this.options[this.selectedIndex].value;
+                    if (this.selectedIndex == "0") {
+                        $('#id').val("");
+                        $('#email').val("");
+                        $('#nom').val("");
+                        $('#prenom').val("");
+                        $('#sexe').val("");
+                        $('#datenaissance').val("");
+                        $('#etat').val("0");
+                        $('#type').val("0");
+                        $('#mdp').val("");
+
+                        $('#voie').val("");
+                        $('#ville').val("");
+                        $('#codepostal').val("");
+                        $('#pays').val("");
+
+                        $('#ADD').show();
+                        $('#MOD').hide();
+                        $('#SUPPR').hide();
+                    }
+                    else {
+                        $('#id').val(utilisateurs[text]['utilisateur_id']);
+                        $('#email').val(utilisateurs[text]['utilisateur_email']);
+                        $('#nom').val(utilisateurs[text]['utilisateur_nom']);
+                        $('#prenom').val(utilisateurs[text]['utilisateur_prenom']);
+                        $('#sexe').val(utilisateurs[text]['utilisateur_sexe']);
+
+                        function sansZero(number)
+                        {
+                            if (number.indexOf("0") === 0)
+                                number = number.substring(1);
+                            return number;
+                        }
+
+                        var parts = utilisateurs[text]['utilisateur_date_naissance'].split("-");
+                        var jour = sansZero(parts[2]);
+                        var mois = sansZero(parts[1]);
+                        var annee = sansZero(parts[0]);
+
+                        $('#jour').val(jour);
+                        $('#mois').val(mois);
+                        $('#annee').val(annee);
+
+                        $('#etat').val(utilisateurs[text]['utilisateur_etat']);
+                        $('#type').val(utilisateurs[text]['utilisateur_type']);
+                        $('#mdp').val(utilisateurs[text]['utilisateur_mot_de_passe']);
+
+                        $('#voie').val(utilisateurs[text]['adresse_numero_voie']);
+                        $('#ville').val(utilisateurs[text]['adresse_ville']);
+                        $('#codepostal').val(utilisateurs[text]['adresse_code_postal']);
+                        $('#pays').val(utilisateurs[text]['adresse_pays']);
+
+                        $('#ADD').hide();
+                        $('#MOD').show();
+                        $('#SUPPR').show();
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="content" >
@@ -115,7 +130,32 @@ and open the template in the editor.
                             <label>Date de naissance :</label>
                         </td>
                         <td>
-                            <input style="width:80%;" id="datenaissance" type="text" name="datenaissance" value=""/>
+                            <select class="champDateNaissance" name="jour" id="jour" onchange="">
+                                <option value="0">Jour</option>
+                                <?php
+                                for ($j = 1; $j <= 31; $j ++)
+                                {
+                                    echo "<option value='$j'>$j</option>";
+                                } ?>
+                            </select>
+                            <select class="champDateNaissance" name="mois" id="mois" onchange="">
+                                <option value="0">Mois</option>
+                                <?php
+                                $mois = array('janv', 'févr', 'mars', 'avril', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc');
+                                for ($m = 1; $m <= 12; $m ++)
+                                {
+                                    $indice = $m - 1;
+                                    echo "<option value='$m'>$mois[$indice]</option>";
+                                } ?>
+                            </select>
+                            <select class="champDateNaissance" name="annee" id="annee" onchange="">
+                                <option value="0">Année</option>
+                                <?php
+                                for ($a = date("Y"); $a >= 1900; $a --)
+                                {
+                                    echo "<option value='$a'>$a</option>";
+                                } ?>
+                            </select>
                         </td>
                     </tr>
                     <tr>

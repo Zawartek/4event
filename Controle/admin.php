@@ -33,10 +33,7 @@ function gestionUti() {
         $codepostal = htmlspecialchars($_POST['codepostal']);
         $ville = htmlspecialchars($_POST['ville']);
         $pays = htmlspecialchars($_POST['pays']);
-        $datenaissance = htmlspecialchars($_POST['datenaissance']);
-        if (strpos($datenaissance, '-') == false){
-            $datenaissance = formattageDateBDD($datenaissance, "bdd");
-        }
+        $datenaissance = $_POST['annee']."-".$_POST['mois']."-".$_POST['jour'];
         $mdp = htmlspecialchars($_POST['mdp']);
         $sexe = htmlspecialchars($_POST['sexe']);
         $etat=$_POST['etat'];

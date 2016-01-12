@@ -101,7 +101,7 @@ function rechercheBD($db, $date, $theme){
 
 function rechercheEvent($condition, $db)
 {
-    $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id, evenement_date_debut FROM `evenement` $condition";
+    $sql1 = "SELECT evenement_id, evenement_titre, evenement_description, evenement_utilisateur_id,evenement_theme_id, evenement_date_debut FROM `evenement` $condition ORDER BY evenement_date_debut";
     $events = array(array());
     $i = 0;
 
