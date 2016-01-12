@@ -174,23 +174,27 @@ fieldset
     color: #323C5A;
 }
 
+#billeterie 
+{
+	margin-top: 50px;
+}
+
 #profilEvent
 {
     border : solid 1px #EAEAEA;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-
     margin : 10px 10px 10px 0px;
     float : left;
     padding : 1%;
-    width : 65%;
+    width : 100%;
     background-color: #FFF;
 }
 
 #infosEvent
 {
     float : right;
-    padding : 1%;
+    padding : 2%;
     width : auto;
     margin : 0px;
 }
@@ -200,7 +204,6 @@ fieldset
     border : solid 1px #EAEAEA;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-
     padding : 8px;
     background-color: #FFF;
 }
@@ -210,9 +213,9 @@ fieldset
     border : solid 1px #EAEAEA;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-    margin : 10px 10px 10px 0px;
+    margin : 0px 0px 10px;
     float : left;
-    padding : 1%;
+	padding: 2%;
     width : 65%;
     background-color: #FFF;
 }
@@ -220,9 +223,9 @@ fieldset
 #infosComplementairesEvent
 {
     float : right;
-    padding : 1%;
-    width : 27%;
-    margin : 8px 0px 8px 8px;
+    padding : 2%;
+    width : 34%;
+    margin : 0px 0px 10px 0px;
     border : solid 1px #EAEAEA;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
@@ -245,24 +248,24 @@ fieldset
 .cadre
 {
     width: 900px;
-    padding : 1%;
+    padding : 2%;
     border : solid 1px #EAEAEA;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
-    padding : 8px 30px 8px 30px;
     background-color: #FFF;
+	margin-bottom: 10px;
 }
 
 .cadre h1 {
-    margin-left: -22px;
+    margin-left: 0px;
     font-size: 20px;
     font-weight: 600;
     color: #323C5A;
 }
 
 .cadre p {
-    margin-left: -22px;
-
+    margin-left: 0px;
+	text-align: left;
 }
 
 /* Avis */

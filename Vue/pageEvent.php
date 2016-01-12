@@ -82,9 +82,9 @@ and open the template in the editor.
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
+						Horaires : <span id="adresse"><?php echo $event["evenement_heure_debut"]; ?></span> - <span id="adresse"><?php echo $event["evenement_heure_fin"]; ?></span>
                 </div>
             </div>
-            <div id="infosEvent">
                 <?php if (isset($_SESSION['userID'])) { ?>
                     <div id="participationEvent">
                         <?php
@@ -103,16 +103,13 @@ and open the template in the editor.
                            ?>
                     </div>
                 <?php } ?>
-            </div>
-            <div id="clear"></div>
-            <br>
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
                 <p>
                     <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
                 <div id="billeterie">
-                    <h1>Billeterie</h1>
+                    <h1>BILLETERIE</h1>
                     <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
                         Site Web                       
                     </a>
@@ -130,13 +127,11 @@ and open the template in the editor.
                         <div id="zoom_level"></div>
                     </div>
                 </div>
-                <br>
-                <br>
 
             </div>
             <div id="clear"></div>
             <div class="cadre">
-                <h1>Donner votre avis</h1>
+                <h1>DONNEZ VOTRE AVIS !</h1>
                 <form method="POST" action="index.php?controle=evenement&action=ajoutAvis">
                     <table>
                         <tr>
