@@ -138,8 +138,9 @@ if (!isset($_SESSION['prenom_nom'])) {
                 console.log("ID Token: " + id_token);
             }
         </script>
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        
+		
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
+
         
         <?php
     } else {

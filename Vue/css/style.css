@@ -3,7 +3,7 @@ body {
     font-size: 14px;
     line-height: 1.42857;
     color: #333;
-    background-color: #F8F8F8;
+    background-color: #F8F8F8 !important;
 }
 
 #content
@@ -491,10 +491,12 @@ h2
 
 .couleurEvent1
 {
-    background-color: transparent;
+    background-color: white;
+	border-color: #FF7E00;
 }
 
 .couleurEvent2
 {
-    background-color: red;
+    background-color: #FCFCFC;
+	border-color: #FF7E00;
 }
