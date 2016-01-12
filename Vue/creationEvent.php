@@ -39,7 +39,7 @@
 
                 <table id="tabCreationEvent">
                     <tr>
-                        <td><label for="voie">Lieu :</label></td>
+                        <td><label for="voie">Lieu de l'événement</label></td>
                         <td></td>
                         <td></td>
                         <td></td>
