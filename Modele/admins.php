@@ -1,23 +1,21 @@
 <?php
-
 require ("configSQL.php");
-function ajoutFAQBD($titre, $description,$idAdmin)
+
+function ajoutFAQBD($question, $reponse, $idAdmin)
 {
-    global $db;
-    $reponse = $db->query("insert into faq (faq_id, faq_question, faq_reponse, faq_utilisateur_id) values ('', '$titre', '$description', '$idAdmin')");
+    $reponse = $db->query("insert into faq (faq_id, faq_question, faq_reponse, faq_utilisateur_id) values ('', '$question', '$reponse', '$idAdmin')");
     return $reponse;
 }
-function modificationFAQBD($id, $titre, $description,$idAdmin) 
+
+function modificationFAQBD($id, $question, $reponse, $idAdmin) 
 {
-    global $db;
-    $reponse = $db->query("update faq set faq_question ='$titre', faq_reponse='$description', faq_utilisateur_id='$idAdmin' where faq_id=$id");
+    $reponse = $db->query("update faq set faq_question ='$question', faq_reponse='$reponse', faq_utilisateur_id='$idAdmin' where faq_id=$id");
     return $reponse;  
 }
 
-function suppressionFAQBD( $id)
+function suppressionFAQBD($idFaq)
 {
-    global $db;
-    $reponse = $db->query("delete from fas where id = '$id'");
+    $reponse = $db->query("delete from faq where faq_id = '$idFaq'");
     return $reponse;  
 }
 ?>
