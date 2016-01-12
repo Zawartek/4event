@@ -19,8 +19,7 @@ body {
 
 #footer
 {
-    margin: 0px;
-	background-color: C0C0C0;
+    margin: 0px
 }
 
 #clear
@@ -37,7 +36,6 @@ body {
 }
 
 .inscription, .connexion
-{
 {
     padding: 15px;
     width: 360px;
@@ -499,6 +497,6 @@ h2
 
 .couleurEvent2
 {
-    background-color: #EDEDED;
+    background-color: #FCFCFC;
 	border-color: #FF7E00;
 }
