@@ -75,8 +75,8 @@ function inscription() {
     require ('./Modele/configSQL.php');
     require ('./Modele/utilisateurs.php');
 
-    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['voie']) &&
-            isset($_POST['codepostal']) && isset($_POST['ville']) && isset($_POST['pays']) && isset($_POST['datenaissance']) &&
+    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['voie']) && isset($_POST['codepostal']) &&
+            isset($_POST['ville']) && isset($_POST['pays']) && isset($_POST['jour']) && isset($_POST['mois']) && isset($_POST['annee']) &&
             isset($_POST['mdp']) && isset($_POST['sexe'])) {
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
@@ -85,15 +85,11 @@ function inscription() {
         $codepostal = htmlspecialchars($_POST['codepostal']);
         $ville = htmlspecialchars($_POST['ville']);
         $pays = htmlspecialchars($_POST['pays']);
-        $datenaissance = htmlspecialchars(formattageDateBDD($_POST['datenaissance'], "bdd"));
+        $datenaissance = $_POST['annee']."-".$_POST['mois']."-".$_POST['jour'];
         $mdp = htmlspecialchars($_POST['mdp']);
         $sexe = htmlspecialchars($_POST['sexe']);
 
-        if (isset($_POST['newsletter'])) {
-            $newsletter = $_POST['newsletter'];
-        } else {
-            $newsletter = 0;
-        }
+        $newsletter = (isset($_POST['newsletter'])) ? $_POST['newsletter'] : 0;
 
         ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
         , $datenaissance, $mdp, $sexe,0,0,$newsletter);

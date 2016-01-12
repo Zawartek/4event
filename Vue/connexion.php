@@ -33,7 +33,7 @@
                 <label for="mdp" style="width: 150px;">Mot de passe :</label>
                 <input type="password" name="mdp" id="mdp" class="input"><br>
 
-                <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="Connexion">
+                <input class="btn btn-orange bold" type="submit" value="Connexion">
             </form>
         </div>
     </body>

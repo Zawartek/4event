@@ -5,48 +5,40 @@
         <title>Inscription</title>
         <link href="./Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
-
-        <!-- appels pour datepicker -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="./Vue/js/datepicker.js"></script>
 
         <script type="text/javascript">
-            $(function()
+            function controlDate()
             {
-                $("#datenaissance").datepicker($.datepicker.regional["fr"]);
-                $("#datenaissance").datepicker('setDate', new Date());
-            });
-            function isValidDate()
-            {
-                var dateString = $("#datenaissance").val();
+                var jour = $("#jour").val();
+                var mois = $("#mois").val();
+                var annee = $("#annee").val();
                 var desactivation = 0;
 
-                // Parse the date parts to integers
-                var parts = dateString.split("/");
-                var day = (parts[0]);
-                var month = (parts[1]);
-                var year = (parts[2]);
+                if (jour != 0 && mois != 0 && annee != 0)
+                {
+                    // On vérifie l'année et le mois
+                    var anneeMax = new Date().getFullYear();
+                    if (annee < 1900 || annee > anneeMax || mois == 0 || mois > 12)
+                        desactivation = 1;
 
-                // Check the ranges of month and year
-                if(year < 1000 || year > 3000 || month == 0 || month > 12)
-                    desactivation = 1;
+                    var moisLongeur = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+                    // On gère les années bisextiles
+                    if (annee % 400 == 0 || (annee % 100 != 0 && annee % 4 == 0))
+                        moisLongeur[1] = 29;
 
-                // Adjust for leap years
-                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-                    monthLength[1] = 29;
+                    // On vérifie le jour en fonction du mois
+                    if (jour < 0 || jour > moisLongeur[mois - 1])
+                        desactivation = 1;
 
-                // Check the range of the day
-                if (day < 0 || day > monthLength[month - 1])
-                    desactivation = 1;
-
-                if (desactivation == 1)
+                    if (desactivation == 1)
+                        document.getElementById("submitInscription").disabled = true;
+                    else if (desactivation == 0)
+                        document.getElementById("submitInscription").disabled = false;
+                }
+                else
                     document.getElementById("submitInscription").disabled = true;
-                else if (desactivation == 0)
-                    document.getElementById("submitInscription").disabled = false;
             };
         </script>
     </head>
@@ -84,8 +76,35 @@
                 <label for="pays">Pays :</label>
                 <input type="text" name="pays" id="pays" class="input"><br>
 
-                <label for="datenaissance">Date de naissance :</label>
-                <input type="text" id="datenaissance" name="datenaissance" class="input" onload="this.value(Date());" onchange="isValidDate();">
+                <label style="width: auto;">Date de<br>naissance :</label>
+                <div class="formDateNaissance">
+                    <select class="champDateNaissance" name="jour" id="jour" onchange="controlDate();">
+                        <option value="0">Jour</option>
+                        <?php
+                        for ($j = 1; $j <= 31; $j ++)
+                        {
+                            echo "<option value='$j'>$j</option>";
+                        } ?>
+                    </select>
+                    <select class="champDateNaissance" name="mois" id="mois" onchange="controlDate();">
+                        <option value="0">Mois</option>
+                        <?php
+                        $mois = array('janv', 'févr', 'mars', 'avril', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc');
+                        for ($m = 1; $m <= 12; $m ++)
+                        {
+                            $indice = $m - 1;
+                            echo "<option value='$m'>$mois[$indice]</option>";
+                        } ?>
+                    </select>
+                    <select class="champDateNaissance" name="annee" id="annee" onchange="controlDate();">
+                        <option value="0">Année</option>
+                        <?php
+                        for ($a = date("Y"); $a >= 1900; $a --)
+                        {
+                            echo "<option value='$a'>$a</option>";
+                        } ?>
+                    </select>
+                </div>
 
                 <label for="mdp">Mot de passe :</label>
                 <input type="password" name="mdp" id="mdp" class="input" required="required"><br>
@@ -98,7 +117,7 @@
                 <input type="checkbox" name="newsletter" id="newsletter" value="1">
                 <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4Event.</label><br>
 
-                <input id="submitInscription" class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="S'Inscrire">
+                <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'Inscrire" disabled="disabled">
             </form>
         </div>
     </body>
