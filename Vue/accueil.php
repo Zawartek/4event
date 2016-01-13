@@ -100,6 +100,7 @@ require('./Modele/configSQL.php');
                 } ?>
             </div>
         </div>
-        <?php include('./Vue/footer.php'); ?>
-    </body>
+        
+    </body></br>
+    <div><?php include('./Vue/footer.php'); ?></div>
 </html>
