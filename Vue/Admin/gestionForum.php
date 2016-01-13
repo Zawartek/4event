@@ -62,7 +62,7 @@ and open the template in the editor.
         </select>
         </div>
         
-        <form class="cadre">
+            <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionFaq">
             <table id="tableFAQ">
                 <tr>
                     <th id="tableLabel"></th>

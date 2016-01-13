@@ -20,7 +20,7 @@ function afficherPageAdminGE() {
 
 function afficherPageAdminGF() {
     require './Modele/admins.php';
-    $faq=FAQ();
+    $faq=FAQ($db);
     include ("./Vue/Admin/gestionForum.php");
 }
 
