@@ -18,7 +18,6 @@ function utilisateurs($db) {
 
 function suppressionutil($db,$idFaq)
 {   
-    global $db;
     $reponse = $db->query("delete from faq where faq_id = '$idFaq'");
     return $reponse;  
 }

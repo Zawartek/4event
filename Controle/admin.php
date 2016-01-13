@@ -30,7 +30,7 @@ function gestionFaq()
     $idfaq = $_POST['id'];
     if (isset($_POST['SUPPR']))
     {
-        suppressionFAQBD($idFaq);
+        suppressionFAQBD($db,$idFaq);
     } 
     
     else 
@@ -41,12 +41,12 @@ function gestionFaq()
  
         if (isset($_POST['ADD']))
         {
-            ajoutFAQBD($question, $reponse, $_SESSION["userID"]);
+            ajoutFAQBD($db,$question, $reponse, $_SESSION["userID"]);
         } 
         
         else if (isset($_POST['MOD']))
         {
-            modificationFAQBD($id, $question, $reponse, $idAdmin);   
+            modificationFAQBD($db,$id, $question, $reponse, $idAdmin);   
         }
     }
    header('Location: index.php?controle=admin&action=afficherPageAdminGF');
