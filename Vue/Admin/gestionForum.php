@@ -9,6 +9,38 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Gestion de la FAQ</title>
         <link rel="stylesheet" href="./Vue/css/style.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var faqs = <?php echo json_encode($faq); ?>;
+                $('#ADD').show();
+                $('#MOD').hide();
+                $('#SUPPR').hide();
+
+                $('#ddlfaq').on('change', function () {
+                    var text;
+                    text = this.options[this.selectedIndex].value;
+                    if (this.selectedIndex == "0") {
+                        $('#id').val("");
+                        $('#titre').val("");
+                        $('#description').val("");
+                       
+                        $('#ADD').show();
+                        $('#MOD').hide();
+                        $('#SUPPR').hide();
+                    }
+                    else {
+                        $('#id').val(faqs[text]['faq_id']);
+                        $('#titre').val(faqs[text]['fas_question']);
+                        $('#description').val(faqs[text]['faq_reponse']);
+                       
+                        $('#ADD').hide();
+                        $('#MOD').show();
+                        $('#SUPPR').show();
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="content">
@@ -18,12 +50,12 @@ and open the template in the editor.
         ?>
         <div id="listeFAQ">
         <label>Liste des FAQ : </label>
-        <select>
+        <select id="ddlfaq">
             <option>Création d'une nouvelle FAQ</option>
             <?php
-            for ($i = 0; $i<10; $i++){
-            echo '<option>' .
-                'FAQ ' . $i .
+            foreach ($faq as $s){
+            echo '<option>'
+             .$s["faq_question"].
             '</option>';
             }
             ?>

@@ -15,6 +15,14 @@ function utilisateurs($db) {
     return $reponse->fetchAll();
 }
 
+
+function suppressionutil($db,$idFaq)
+{   
+    global $db;
+    $reponse = $db->query("delete from faq where faq_id = '$idFaq'");
+    return $reponse;  
+}
+
 function infosUti($db, $idUti) {
 
     // Recuperation de l'utilisateur
