@@ -70,7 +70,7 @@ and open the template in the editor.
                         <?php echo $event["evenement_titre"]; ?>
                     </h1>
 					<p>
-                        Organisé par <a 
+                        Organisé par <a>
                     <?php
                     echo "href='index.php?"
                     . "controle=utilisateur&"
