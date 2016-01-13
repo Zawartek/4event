@@ -138,7 +138,7 @@ function rechercheEvent($condition, $db)
 function ajoutAvisBD($db, $note, $avis,$idUser, $idEvent){
     $request = 'INSERT INTO avis (avis_utilisateur_id, avis_evenement_id, avis_contenu, avis_note) '
             . 'VALUES (' . $idUser . ',' . $idEvent . ', "'. $avis . '",' . $note . ');';
-    $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);;
+    $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);
     
 }
 ?>

@@ -22,7 +22,7 @@ function suppressionFAQBD($db,$idFaq)
 function FAQ($db)
 {   
     $reponse = $db->query("select * from faq");
-    return $reponse;  
+    return $reponse->fetchAll();  
 }
 
 ?>

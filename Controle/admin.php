@@ -20,7 +20,7 @@ function afficherPageAdminGE() {
 
 function afficherPageAdminGF() {
     require './Modele/admins.php';
-    $faq=FAQ();
+    $faq=FAQ($db);
     include ("./Vue/Admin/gestionForum.php");
 }
 
@@ -30,23 +30,25 @@ function gestionFaq()
     $idfaq = $_POST['id'];
     if (isset($_POST['SUPPR']))
     {
-        suppressionFAQBD($db,$idFaq);
+        suppressionFAQBD($db,$idfaq);
     } 
     
     else 
     
     {
-        $titre = htmlspecialchars($_POST['titre']);
-        $reponse = htmlspecialchars($_POST['descrption']);
+        $question = htmlspecialchars($_POST['titre']);
+        $reponse = htmlspecialchars($_POST['description']);
  
         if (isset($_POST['ADD']))
         {
+    echo "test2";
             ajoutFAQBD($db,$question, $reponse, $_SESSION["userID"]);
         } 
         
         else if (isset($_POST['MOD']))
         {
-            modificationFAQBD($db,$id, $question, $reponse, $idAdmin);   
+    echo "test2";
+            modificationFAQBD($db,$idfaq, $question, $reponse, $_SESSION["userID"]);   
         }
     }
    header('Location: index.php?controle=admin&action=afficherPageAdminGF');

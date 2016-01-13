@@ -31,7 +31,7 @@ and open the template in the editor.
                     }
                     else {
                         $('#id').val(faqs[text]['faq_id']);
-                        $('#titre').val(faqs[text]['fas_question']);
+                        $('#titre').val(faqs[text]['faq_question']);
                         $('#description').val(faqs[text]['faq_reponse']);
                        
                         $('#ADD').hide();
@@ -51,10 +51,11 @@ and open the template in the editor.
         <div id="listeFAQ">
         <label>Liste des FAQ : </label>
         <select id="ddlfaq">
-            <option>Création d'une nouvelle FAQ</option>
+            <option value="0">Création d'une nouvelle FAQ</option>
             <?php
+            $cpt=0;
             foreach ($faq as $s){
-            echo '<option>'
+            echo '<option value="'.$cpt++.'">'
              .$s["faq_question"].
             '</option>';
             }
@@ -62,7 +63,7 @@ and open the template in the editor.
         </select>
         </div>
         
-        <form class="cadre">
+        <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionFaq">
             <table id="tableFAQ">
                 <tr>
                     <th id="tableLabel"></th>
@@ -74,7 +75,7 @@ and open the template in the editor.
             <label>Titre :</label>
                     </td>
                     <td>
-            <input type="text" name="titre" value="testPrenom"/>
+            <input id="titre" type="text" name="titre" value=""/>
                     </td>
                 </tr>
                 <tr>
@@ -82,16 +83,17 @@ and open the template in the editor.
                         <label>Description :</label>
                     </td>
                     <td>
-                        <textarea name="description" rows="5" style="width:100%;"></textarea>
+                        <textarea id="description" name="description" rows="5" style="width:100%;"></textarea>
                     </td>
                 </tr>
             </table>
-            <div id="boutons">
-                <button class="btn-orange">Modifier</button>
-                <button class="btn-orange">Supprimer</button>
-                <br>
-                <button class="btn-orange">Ajouter</button>
-            </div>
+                <input id="id" type="hidden" name="id""/>
+                <div id="boutons">
+                    <br>
+                    <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
+                    <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
+                    <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                </div>
         </form>
         <?php require './Vue/footer.php'; ?>
         </div>
