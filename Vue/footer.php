@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -63,7 +64,7 @@ and open the template in the editor.
 		
 		<div id="footer" class="MainFollow">
 			<ul>
-				<li id="ElmtID" class="ElmtBFooter"><a  class="ElmtBFinterne" href="#" target="_blank">Follow us :  </a>
+				<li id="ElmtID" class="ElmtBFooter"><a  class="ElmtBFinterne" target="_blank">Follow us :  </a>
 					<a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
 					<a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
 					<a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>

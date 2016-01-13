@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -30,7 +32,7 @@ require('./Modele/configSQL.php');
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div>
-                <h1 class="text-orange" style=" text-align: center;">Le site de partage d'événements</h1>
+                <h2 class="text-orange" style=" text-align: center; margin-top: 7px; ">Le site de partage d'événements</h2>
             </div>
 
             <div id="slider">

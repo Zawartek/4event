@@ -6,8 +6,10 @@ footer
 #mainFooter 
 {
 	color: white;
-	background-color: #353e48;
-	margin-bottom: 0px; 
+	background-color: #C0C0C0;
+        border-top: 1px #FF7E00 solid; 
+	margin-top:0px;
+        margin-top: 20px; 
  
 }
 

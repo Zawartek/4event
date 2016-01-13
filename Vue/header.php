@@ -5,10 +5,10 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<!-- Google sign in api-->
+<!-- Google sign in api
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="129178937096-9qmmouu4uov21rk8l8l3p05hch25lgj5.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 <script type="text/javascript">
     $(function ()
@@ -66,30 +66,35 @@ if (!isset($_SESSION['prenom_nom'])) {
 </script>
 
 <div id="header">
-    <a href="index.php"><img src="./Vue/img/logo.png" height="70px" style="margin-right: 25px;"></a>
-    <a class="lien-reseau" href="index.php"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home" style="margin-right:30px;"></a>     
-    <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-    <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a> 
-    <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
+    <div style="display: block; ">
+        <a href="index.php"><img src="./Vue/img/logo.png" height="70px" style="margin-right: 25px;"></a>
+        <a class="lien-reseau" href="index.php"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home" style="margin-right:30px;"></a>     
+        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
+        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a> 
+        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
 
-    <?php
-    if (isset($_SESSION['prenom_nom'])) {
-        ?>
-        <a id="btnCreerEvent" style="margin-left:90px;" 
-           class="bold btn btn-orange">Ajouter un Evénement</a>
+        <?php
+        if (isset($_SESSION['prenom_nom'])) {
+            ?>
 
+        <nav class="NomPrenDecon" >
         <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $_SESSION['userID']; ?>" 
            style="display:inline"
            class="bold btn btn-link text-orange"> 
-               <?php echo $_SESSION['prenom_nom']; ?> 
-        </a>
-
+               <?php echo $_SESSION['prenom_nom']; ?>
+        </a> 
         <a href="index.php?controle=utilisateur&action=deconnexion" 
            style="display:inline"
-           class="bold btn btn-link text-orange">Déconnexion
-        </a>
-    
-        <a href="#" onclick="signOut();">Sign out</a>
+           class="bold btn btn-link text-orange">Déconnexion</a>
+           
+    </nav>       
+           
+     </div> 
+    <div class="AjEvent" >
+         <a id="btnCreerEvent" style="margin-left:90px; margin-top: 5px; float: right;" 
+           class="bold btn btn-orange">Ajouter un Evénement</a>
+    </div>
+       <!-- <a href="#" onclick="signOut();">Sign out</a>
         <script>
             function signOut() {
                 var auth2 = gapi.auth2.getAuthInstance();
@@ -97,7 +102,7 @@ if (!isset($_SESSION['prenom_nom'])) {
                     console.log('User signed out.');
                 });
             }
-        </script>
+        </script> -->
         <?php
     } else {
         ?>
@@ -125,7 +130,7 @@ if (!isset($_SESSION['prenom_nom'])) {
             <?php include ('./Vue/inscription.php'); ?>
         </div>
 
-        <script>
+       <!--  <script>
             function onSignIn(googleUser) {
                 // Useful data for your client-side scripts:
                 var profile = googleUser.getBasicProfile();
@@ -139,7 +144,7 @@ if (!isset($_SESSION['prenom_nom'])) {
             }
         </script>
 		
-        <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
 
         
         <?php
