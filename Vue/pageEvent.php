@@ -77,7 +77,7 @@ and open the template in the editor.
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
-						Horaires : <span id="adresse"><?php echo $event["evenement_heure_debut"]; ?></span> - <span id="adresse"><?php echo $event["evenement_heure_fin"]; ?></span>
+                    Horaires : <span id="adresse"><?php echo $event["evenement_heure_debut"]; ?></span> - <span id="adresse"><?php echo $event["evenement_heure_fin"]; ?></span>
                 </div>
             </div>
                 <?php if (isset($_SESSION['userID'])) { ?>
@@ -100,7 +100,7 @@ and open the template in the editor.
                 <?php } ?>
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
-                <p>
+                <p class="descriptionPageEvent">
                     <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
                 <div id="billeterie">

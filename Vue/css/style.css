@@ -499,7 +499,13 @@ h2
     width: 720px;
     height: 100px;
     background-color: transparent;
+    padding-right: 10px;
     text-align : justify;
+}
+
+.descriptionPageEvent
+{
+    text-align: justify;
 }
 
 .comContenu
