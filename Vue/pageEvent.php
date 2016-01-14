@@ -69,15 +69,10 @@ and open the template in the editor.
                     <h1>
                         <?php echo $event["evenement_titre"]; ?>
                     </h1>
-					<p>
-                        Organisé par <a>
-                    <?php
-                    echo "href='index.php?"
-                    . "controle=utilisateur&"
-                    . "action=afficherPageUti&"
-                    . "param=" . $event["evenement_utilisateur_id"] . "'"
-                    . ">".$event["utilisateur_nom"]; ?>
-                    </a>
+                    <p>Organisé par
+                        <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $event["evenement_utilisateur_id"]; ?>">
+                            <?php echo $event["utilisateur_prenom"]." ".$event["utilisateur_nom"]; ?>
+                        </a>
 					</p>
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
@@ -110,7 +105,7 @@ and open the template in the editor.
                 </p>
                 <div id="billeterie">
                     <h1>BILLETERIE</h1>
-                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
+                    <a href= <?php echo "http://".$event["evenement_site_web"]; ?> target="_blank">
                         Site Web                       
                     </a>
                 </div>

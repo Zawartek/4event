@@ -14,14 +14,13 @@
                 var jour = $("#jourInscription").val();
                 var mois = $("#moisInscription").val();
                 var annee = $("#anneeInscription").val();
-                var desactivation = 0;
 
                 if (jour != 0 && mois != 0 && annee != 0)
                 {
                     // On vérifie l'année et le mois
                     var anneeMax = new Date().getFullYear();
                     if (annee < 1900 || annee > anneeMax || mois == 0 || mois > 12)
-                        desactivation = 1;
+                        return 1;
 
                     var moisLongeur = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -31,16 +30,30 @@
 
                     // On vérifie le jour en fonction du mois
                     if (jour < 0 || jour > moisLongeur[mois - 1])
-                        desactivation = 1;
-
-                    if (desactivation == 1)
-                        document.getElementById("submitInscription").disabled = true;
-                    else if (desactivation == 0)
-                        document.getElementById("submitInscription").disabled = false;
+                        return 1;
+                    else
+                        return 0;
                 }
                 else
-                    document.getElementById("submitInscription").disabled = true;
+                    return 1;
             };
+            
+            function checkFormulaire()
+            {
+                var submit = document.getElementById("submitInscription");
+                var desactivation = 0;
+                
+                if ($("#nom").val() == "" || $("#prenom").val() == "" || $("#email").val() == "" || $("#voie").val() == "" ||
+                    $("#codepostal").val() == "" || $("#ville").val() == "" || $("#pays").val() == "" || $("#mdp").val() == "" || !$("#cgu").is(":checked"))
+                        desactivation = 1;
+                else
+                    desactivation = controlDate();
+                
+                if (desactivation == 1)
+                    submit.disabled = true;
+                else if (desactivation == 0)
+                    submit.disabled = false;
+            }
         </script>
     </head>
 
@@ -50,7 +63,7 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="index.php?controle=utilisateur&action=inscription">
+            <form method="post" action="index.php?controle=utilisateur&action=inscription" onchange="checkFormulaire();">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
@@ -79,7 +92,7 @@
 
                 <label style="width: auto;">Date de<br>naissance :</label>
                 <div class="formDateNaissance">
-                    <select class="champDateNaissance" name="jour" id="jourInscription" onchange="controlDate();">
+                    <select class="champDateNaissance" name="jour" id="jourInscription">
                         <option value="0">Jour</option>
                         <?php
                         for ($j = 1; $j <= 31; $j ++)
@@ -87,7 +100,7 @@
                             echo "<option value='$j'>$j</option>";
                         } ?>
                     </select>
-                    <select class="champDateNaissance" name="mois" id="moisInscription" onchange="controlDate();">
+                    <select class="champDateNaissance" name="mois" id="moisInscription">
                         <option value="0">Mois</option>
                         <?php
                         $mois = array('janv', 'févr', 'mars', 'avril', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc');
@@ -97,7 +110,7 @@
                             echo "<option value='$m'>$mois[$indice]</option>";
                         } ?>
                     </select>
-                    <select class="champDateNaissance" name="annee" id="anneeInscription" onchange="controlDate();">
+                    <select class="champDateNaissance" name="annee" id="anneeInscription">
                         <option value="0">Année</option>
                         <?php
                         for ($a = date("Y"); $a >= 1900; $a --)
@@ -117,6 +130,9 @@
 
                 <input type="checkbox" name="newsletter" id="newsletter" value="1">
                 <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4Event.</label><br>
+                
+                <input type="checkbox" name="cgu" id="cgu" value="1">
+                <label for="cgu" style="width: auto">J'ai lu et j'accepte les <a href="./Vue/conditions_GU.html" target="_blank">CGU</a>.</label><br>
 
                 <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'Inscrire" disabled="disabled">
             </form>

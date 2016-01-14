@@ -19,7 +19,7 @@ if (!isset($_SESSION['prenom_nom'])) {
             var dialogInscription, dialogConnexion, dialogCreerEvent
             dialogInscription = $("#dialog-inscription").dialog({
                 autoOpen: false,
-                height: 600,
+                height: 640,
                 width: 500,
                 modal: true,
                 position: {my: "center ", at: "top", of: window},
@@ -29,7 +29,7 @@ if (!isset($_SESSION['prenom_nom'])) {
 
             dialogConnexion = $("#dialog-connexion").dialog({
                 autoOpen: false,
-                height: 500,
+                height: 475,
                 width: 500,
                 modal: true,
                 position: {my: "center", at: "top", of: window},
