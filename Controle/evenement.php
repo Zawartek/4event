@@ -137,7 +137,7 @@ function recherche() {
     if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
         $date = formattageDate($_POST["date"], "bdd");
         $theme = $_POST["choixTheme"];
-        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE evenement_date_debut > $date AND evenement_theme_id = $theme";
+        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id = $theme";
 
         $events = rechercheEvent($condition, $db);
     } else {

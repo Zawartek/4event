@@ -21,10 +21,10 @@
                 <label for="email">Se connecter avec Twitter</label>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
                 <label for="email">Se connecter avec Google +</label>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br><br>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br>
 
                 <div style="text-align: center;">
-                    <label for="email">Ou</label><br><br>
+                    <label for="email">Ou</label><br>
                 </div>
 
                 <label for="email" style="width: 150px;">Email :</label>
