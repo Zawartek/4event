@@ -25,8 +25,14 @@ function afficherPageUti($idUti) {
     include ("./Vue/profilUtilisateur.php");
 }
 
-function afficherPageAdmin(){
-    include './Vue/Admin/gestionUtilisateur.php';
+function afficherPageGestionUti(){
+    require_once './Modele/utilisateurs.php';
+    $idUti = $_SESSION["userID"];
+    $uti = infosUti($db, $idUti);
+    $themes = getThemeEvent();
+    $uti["utilisateur_favoris"] = rechercheFavori($db, $idUti);
+    $uti["utilisateur_alertes"] = alertesUti($db, $idUti);
+    include './Vue/gestion/gestionProfil.php';
 }
 
 // Controleur pour gérer le formulaire de connexion des utilisateurs

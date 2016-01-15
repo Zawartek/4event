@@ -16,9 +16,9 @@ function utilisateurs($db) {
 }
 
 
-function suppressionutil($db,$idFaq)
+function suppressionutil($db,$idUti)
 {   
-    $reponse = $db->query("delete from faq where faq_id = '$idFaq'");
+    $reponse = $db->query("delete from utilisateur where utilisateur_id = '$idUti'");
     return $reponse;  
 }
 

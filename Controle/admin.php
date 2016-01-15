@@ -61,7 +61,7 @@ function gestionUti()
     $idUti = $_POST['id'];
     if (isset($_POST['SUPPR'])) 
    {
-     suppressionutil($db,$idFaq);
+     suppressionutil($db,$idUti);
    } 
 
    else
