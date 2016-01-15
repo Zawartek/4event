@@ -27,7 +27,7 @@
     <body>
 
 
-        <div id="content">
+        <div id="popupEvent">
             <form id="creationEvent" method="post" action="index.php?controle=evenement&action=creationEvent" style="margin: auto;">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Création Evénement</h2><br>
 

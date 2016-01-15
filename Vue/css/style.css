@@ -8,6 +8,12 @@ body {
     background-color: #F8F8F8 !important;
 }
 
+.cadre a {
+	padding: 20px;
+	margin: 42px;
+}
+
+
 #content
 {
     width : 900px;
@@ -267,8 +273,7 @@ fieldset
 
 #participationEvent
 {
-    margin-top: 5px;
-    padding : 8px;
+    float: right;
 }
 
 .cadre
@@ -533,7 +538,7 @@ h2
     background-color: #FCFCFC;
     border-color: #FF7E00;
 }
-.AjEvent
+.barreMenu
 {
     border : 1px #FF7E00 solid; 
     background-color: #C0C0C0; 

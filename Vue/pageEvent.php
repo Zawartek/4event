@@ -34,6 +34,7 @@ and open the template in the editor.
                 $("#btnParticipation").button().on("click", function () {
                     dialogParticipe.dialog("open");
                 });
+                $("#btnInteret").button();
 
                 // Lorsque le DOM est chargé on applique le Javascript $(document).ready(function() {
                 // On ajoute la classe "js" à la liste pour mettre en place par la suite du code CSS uniquement dans le cas où le Javascript est activé
@@ -77,17 +78,16 @@ and open the template in the editor.
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
-                    Horaires : <span id="adresse"><?php echo $event["evenement_heure_debut"]; ?></span> - <span id="adresse"><?php echo $event["evenement_heure_fin"]; ?></span>
+                    Horaires : <span><?php echo substr($event["evenement_heure_debut"],0 ,5)." - ".substr($event["evenement_heure_fin"],0 ,5); ?></span>
                 </div>
-            </div>
-            <?php if (isset($_SESSION['userID'])) { ?>
-                <div id="participationEvent">
-                    <?php
+                <?php if (isset($_SESSION['userID'])) { ?>
+                	<div id="participationEvent">
+                   	 <?php
                     if ($participation == 0) {
                         ?><a id="btnParticipation"
                            class="bold btn">Participer</a>
 
-                        <a href="index.php?controle=evenement&action=ajoutInteret"
+                        <a id="btnInteret" <?php /*href="index.php?controle=evenement&action=ajoutInteret"*/; ?>
                            class="bold btn">Ajouter à ses interet</a>
                            <?php
                        } else {
@@ -96,8 +96,10 @@ and open the template in the editor.
                            '" class="bold btn">Annuler participation</a> ';
                        }
                        ?>
-                </div>
-            <?php } ?>
+               	 </div>
+            	<?php } ?>
+            </div>
+           
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
                 <p class="descriptionPageEvent">

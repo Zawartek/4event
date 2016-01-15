@@ -13,9 +13,9 @@
 <script type="text/javascript">
     $(function ()
     {
-<?php
-if (!isset($_SESSION['prenom_nom'])) {
-    ?>
+        <?php
+        if (!isset($_SESSION['prenom_nom']))
+        { ?>
             var dialogInscription, dialogConnexion, dialogCreerEvent
             dialogInscription = $("#dialog-inscription").dialog({
                 autoOpen: false,
@@ -44,13 +44,14 @@ if (!isset($_SESSION['prenom_nom'])) {
             $("#btnConnexion").button().on("click", function () {
                 dialogConnexion.dialog("open");
             });
-    <?php
-} else {
-    ?>
+        <?php
+        }
+        else
+        {  ?>
             dialogCreerEvent = $("#dialog-creerEvent").dialog({
                 autoOpen: false,
-                height: 700,
-                width: 920,
+                height: 800,
+                width: 850,
                 modal: true,
                 position: {my: "center", at: "top", of: window},
                 close: function () {
@@ -60,68 +61,64 @@ if (!isset($_SESSION['prenom_nom'])) {
             $("#btnCreerEvent").button().on("click", function () {
                 dialogCreerEvent.dialog("open");
             });
-<?php }
-?>
+            $("#btnBackOffice").button();
+        <?php
+        } ?>
     });
 </script>
 
 <div id="header">
     <div style="display: block; ">
         <a href="index.php"><img src="./Vue/img/logo.png" height="70px" style="margin-right: 25px;"></a>
-        <a class="lien-reseau" href="index.php" style="margin-right:30px;"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home"></a>     
-        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a> 
-        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
+        <a class="lien-reseau" href="index.php" style="margin-right:30px;"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home"></a>
+        <a class="lien-reseau" href="https://www.facebook.com/ISEP4event/" target="_blank"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
+        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
 
-        <?php
-        if (isset($_SESSION['prenom_nom'])) {
-            ?>
-
-        <nav class="NomPrenDecon" >
-        <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $_SESSION['userID']; ?>" 
-           style="display:inline"
-           class="bold btn btn-link text-orange"> 
-               <?php echo $_SESSION['prenom_nom']; ?>
-        </a> 
-        <a href="index.php?controle=utilisateur&action=deconnexion" 
-           style="display:inline"
-           class="bold btn btn-link text-orange">Déconnexion</a>
-           
-    </nav>       
-           
-     </div> 
-    <div class="AjEvent" >
-         <a id="btnCreerEvent" style="margin-left:90px; margin-top: 5px; float: right;" 
-           class="bold btn btn-orange">Ajouter un Evénement</a>
-    </div>
-       <!-- <a href="#" onclick="signOut();">Sign out</a>
-        <script>
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
-        </script> -->
-        <?php
-    } else {
+    <?php
+    if (isset($_SESSION['prenom_nom']))
+    {
+        $urlProfil = "index.php?controle=utilisateur&action=afficherPageUti&param=".$_SESSION['userID'];
         ?>
+        <nav class="NomPrenDecon" >
+            <a href="<?php echo $urlProfil; ?>" style="display:inline" class="bold btn btn-link text-orange">
+                <?php echo $_SESSION['prenom_nom']; ?>
+            </a>
+            <a href="index.php?controle=utilisateur&action=deconnexion" style="display:inline" class="bold btn btn-link text-orange">
+                Déconnexion
+            </a>
+        </nav>
+    </div>
+    <div class="barreMenu" >
+        <a id="btnCreerEvent" style="margin: 5px; float: right;" class="bold btn">Ajouter un Evénement</a>
+
+        <?php
+        if ($_SESSION['userType'] == 2)
+        { ?>
+            <a id="btnBackOffice" style="margin: 5px; float: right;" class="bold btn"
+               href="index.php?controle=admin&action=afficherPageAdminGU">
+                BackOffice
+            </a>
+        <?php
+        } ?>
+    </div>
+    <?php
+    }
+    else
+    { ?>
         <div style="float: right;">
             <a id ="btnConnexion" class="bold btn btn-orange">Connexion</a>
             <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
         </div>
-        <?php
+    <?php
     }
 
-    if (isset($erreur)) {
-        echo $erreur;
-    }
+    if (isset($erreur)) { echo $erreur; }
     ?>
 
     <div id="users-contain" class="ui-widget"></div>
     <?php
-    if (!isset($_SESSION['prenom_nom'])) {
-        ?>
+    if (!isset($_SESSION['prenom_nom']))
+    { ?>
         <div id="dialog-connexion" title="Connexion d'un utilisateur">
             <?php include ('./Vue/connexion.php'); ?>
         </div>
@@ -129,44 +126,16 @@ if (!isset($_SESSION['prenom_nom'])) {
         <div id="dialog-inscription" title="Inscription d'un utilisateur">
             <?php include ('./Vue/inscription.php'); ?>
         </div>
-
-       <!--  <script>
-            function onSignIn(googleUser) {
-                // Useful data for your client-side scripts:
-                var profile = googleUser.getBasicProfile();
-                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                console.log("Name: " + profile.getName());
-                console.log("Image URL: " + profile.getImageUrl());
-                console.log("Email: " + profile.getEmail());
-                // The ID token you need to pass to your backend:
-                var id_token = googleUser.getAuthResponse().id_token;
-                console.log("ID Token: " + id_token);
-            }
-        </script>
-		
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
-
-        
-        <?php
-    } else {
-        ?>
+    <?php
+    }
+    else
+    { ?>
         <div id="dialog-creerEvent" title="Création d'un événement">
             <?php
             $themes = getThemeEvent();
             include ('./Vue/creationEvent.php');
             ?>
         </div>
-
-        <?php if ($_SESSION['userType'] == 2) { ?>
-            <a class="lien-reseau" 
-               href="index.php?controle=utilisateur&action=afficherPageAdmin">
-                <img class="logo-reseau" src="./Vue/img/2435.png" 
-                     alt="home" style="margin-right:30px;">
-            </a>     
-
-            <?php
-        }
-    }
-    ?>
-
+    <?php
+    } ?>
 </div>

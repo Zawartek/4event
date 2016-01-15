@@ -44,9 +44,8 @@
             <div id="footer" class="MainFollow">
                 <ul>
                     <li id="ElmtID" class="ElmtBFooter"><a  class="ElmtBFinterne" target="_blank">Suivez nous :  </a>
-                        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
+                        <a class="lien-reseau" href="https://www.facebook.com/ISEP4event/" target="_blank"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
                         <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
-                        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
                     </li>
                 </ul>
             </div>
