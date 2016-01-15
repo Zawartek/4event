@@ -80,10 +80,9 @@ and open the template in the editor.
                     </p>
                     Horaires : <span><?php echo substr($event["evenement_heure_debut"],0 ,5)." - ".substr($event["evenement_heure_fin"],0 ,5); ?></span>
                 </div>
-            </div>
-            <?php if (isset($_SESSION['userID'])) { ?>
-                <div id="participationEvent">
-                    <?php
+                <?php if (isset($_SESSION['userID'])) { ?>
+                	<div id="participationEvent">
+                   	 <?php
                     if ($participation == 0) {
                         ?><a id="btnParticipation"
                            class="bold btn">Participer</a>
@@ -97,8 +96,10 @@ and open the template in the editor.
                            '" class="bold btn">Annuler participation</a> ';
                        }
                        ?>
-                </div>
-            <?php } ?>
+               	 </div>
+            	<?php } ?>
+            </div>
+           
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
                 <p class="descriptionPageEvent">
