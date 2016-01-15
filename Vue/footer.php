@@ -9,13 +9,6 @@
     </body>
     <footer id="mainFooter">
         <div id="mainFooter-bounds">
-            <div class="hautFooter">
-                <div class="DivCreerGroupe">
-                    <a id="startFooterBtn" class="footerCG TextBtn" href="#">
-                        4event
-                    </a>
-                </div>
-            </div>
             <section>
                 <ul class="BodyFooter">
                     <li id="ElmtID" class="ElmtBFooter">
