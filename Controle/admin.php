@@ -62,7 +62,7 @@ function gestionUti()
     if (isset($_POST['SUPPR'])) 
    {
      suppressionutil($db,$idUti);
-   } 
+   }
 
    else
    {

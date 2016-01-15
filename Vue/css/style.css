@@ -352,13 +352,13 @@ div#map_canvas {
 
 div#crosshair {
     position: absolute;
-    top: 192px;
+    top: 90px;
     height: 19px;
     width: 19px;
-    left: 50%;
+    left: 99px;
     margin-left: -8px;
     display: block;
-    background: url(./Vue/map/crosshair.gif);
+    background: url(../map/crosshair.gif);
     background-position: center center;
     background-repeat: no-repeat;
 }

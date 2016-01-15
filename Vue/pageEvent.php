@@ -16,6 +16,9 @@ and open the template in the editor.
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript">
             $(function () {
+                initialize();
+                geocode("<?php echo $event["adresse"]; ?>");
+
                 var dialogParticipe
                 dialogParticipe = $("#dialog-participe").dialog({
                     autoOpen: false,
@@ -31,10 +34,6 @@ and open the template in the editor.
                 $("#btnParticipation").button().on("click", function () {
                     dialogParticipe.dialog("open");
                 });
-                function loadMap() {
-                    initialize();
-                    geocode("<?php echo $event["adresse"]; ?>");
-                }
 
                 // Lorsque le DOM est chargé on applique le Javascript $(document).ready(function() {
                 // On ajoute la classe "js" à la liste pour mettre en place par la suite du code CSS uniquement dans le cas où le Javascript est activé
@@ -57,47 +56,48 @@ and open the template in the editor.
                     // On simule (trigger) un mouseover sur la note cochée s'il y a lieu
                     $(this).find("li input:checked").parent("li").trigger("mouseover");
                 });
-            });</script>
+            });
+        </script>
     </head>
-    <body onload="loadMap()">
+    <body>
         <div class="container_event">
             <?php require("./Vue/header.php"); ?>
             <div id="profilEvent">
                 <img id="photoProfil" src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
-                            
+
                 <div id="infosProfil">
                     <h1>
                         <?php echo $event["evenement_titre"]; ?>
                     </h1>
                     <p>Organisé par
                         <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $event["evenement_utilisateur_id"]; ?>">
-                            <?php echo $event["utilisateur_prenom"]." ".$event["utilisateur_nom"]; ?>
+                            <?php echo $event["utilisateur_prenom"] . " " . $event["utilisateur_nom"]; ?>
                         </a>
-					</p>
+                    </p>
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
                     Horaires : <span id="adresse"><?php echo $event["evenement_heure_debut"]; ?></span> - <span id="adresse"><?php echo $event["evenement_heure_fin"]; ?></span>
                 </div>
             </div>
-                <?php if (isset($_SESSION['userID'])) { ?>
-                    <div id="participationEvent">
-                        <?php
-                        if ($participation == 0) {
-                            ?><a id="btnParticipation"
-                               class="bold btn">Participer</a>
+            <?php if (isset($_SESSION['userID'])) { ?>
+                <div id="participationEvent">
+                    <?php
+                    if ($participation == 0) {
+                        ?><a id="btnParticipation"
+                           class="bold btn">Participer</a>
 
-                            <a href="index.php?controle=evenement&action=ajoutInteret"
-                               class="bold btn">Ajouter à ses interet</a>
-                               <?php
-                           } else {
-                               echo '<a href="index.php?controle=evenement&action=annulerParticipation' .
-                               '&param=' . $event['evenement_id'] .
-                               '" class="bold btn">Annuler participation</a> ';
-                           }
-                           ?>
-                    </div>
-                <?php } ?>
+                        <a href="index.php?controle=evenement&action=ajoutInteret"
+                           class="bold btn">Ajouter à ses interet</a>
+                           <?php
+                       } else {
+                           echo '<a href="index.php?controle=evenement&action=annulerParticipation' .
+                           '&param=' . $event['evenement_id'] .
+                           '" class="bold btn">Annuler participation</a> ';
+                       }
+                       ?>
+                </div>
+            <?php } ?>
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
                 <p class="descriptionPageEvent">
@@ -105,7 +105,7 @@ and open the template in the editor.
                 </p>
                 <div id="billeterie">
                     <h1>BILLETERIE</h1>
-                    <a href= <?php echo "http://".$event["evenement_site_web"]; ?> target="_blank">
+                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
                         Site Web                       
                     </a>
                 </div>
@@ -194,8 +194,8 @@ and open the template in the editor.
                             </p>
                             <br/>
                             <textarea class="text-area comContenu" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
-                            
-                            <p align="right"><?php echo "écrit par <Sspan class='bold'>".$com['utilisateur_prenom']." ".$com['utilisateur_nom']."</span>."; ?></p>
+
+                            <p align="right"><?php echo "écrit par <Sspan class='bold'>" . $com['utilisateur_prenom'] . " " . $com['utilisateur_nom'] . "</span>."; ?></p>
                         </div>
                         <br>
                         <?php
