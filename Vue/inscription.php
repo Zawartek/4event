@@ -38,7 +38,7 @@
                     return 1;
             };
             
-            function checkFormulaire()
+            function checkFormulaireInscription()
             {
                 var submit = document.getElementById("submitInscription");
                 var desactivation = 0;
@@ -63,34 +63,33 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="index.php?controle=utilisateur&action=inscription" onchange="checkFormulaire();">
+            <form method="post" action="index.php?controle=utilisateur&action=inscription" onchange="checkFormulaireInscription();">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br>
+                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
 
-                <label for="nom">Nom :</label>
+                <label for="nom">Nom* :</label>
                 <input type="text" name="nom" id="nom" class="input"><br>
 
-                <label for="prenom">Prenom :</label>
+                <label for="prenom">Prenom* :</label>
                 <input type="text" name="prenom" id="prenom" class="input"><br>
 
-                <label for="email">Email :</label>
+                <label for="email">Email* :</label>
                 <input type="text" name="email" id="email" class="input"><br>
 
-                <label for="voie">Voie :</label>
+                <label for="voie">Voie* :</label>
                 <input type="text" name="voie" id="voie" class="input"><br>
 
-                <label for="codepostal">Code postal :</label>
+                <label for="codepostal">Code postal* :</label>
                 <input type="text" name="codepostal" id="codepostal" class="input"><br>
 
-                <label for="ville">Ville :</label>
+                <label for="ville">Ville* :</label>
                 <input type="text" name="ville" id="ville" class="input"><br>
 
-                <label for="pays">Pays :</label>
+                <label for="pays">Pays* :</label>
                 <input type="text" name="pays" id="pays" class="input"><br>
 
-                <label style="width: auto;">Date de<br>naissance :</label>
+                <label style="width: auto;">Date de<br>naissance* :</label>
                 <div class="formDateNaissance">
                     <select class="champDateNaissance" name="jour" id="jourInscription">
                         <option value="0">Jour</option>
@@ -120,7 +119,7 @@
                     </select>
                 </div>
 
-                <label for="mdp">Mot de passe :</label>
+                <label for="mdp">Mot de passe* :</label>
                 <input type="password" name="mdp" id="mdp" class="input" required="required"><br>
 
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
@@ -132,7 +131,7 @@
                 <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4Event.</label><br>
                 
                 <input type="checkbox" name="cgu" id="cgu" value="1">
-                <label for="cgu" style="width: auto">J'ai lu et j'accepte les <a href="./Vue/conditions_GU.html" target="_blank">CGU</a>.</label><br>
+                <label for="cgu" style="width: auto">J'ai lu et j'accepte les <a href="./Vue/conditions_GU.html" target="_blank">CGU</a>.*</label><br>
 
                 <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'Inscrire" disabled="disabled">
             </form>

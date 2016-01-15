@@ -8,6 +8,11 @@ and open the template in the editor.
 -->
 <?php
 require('./Modele/configSQL.php');
+if (isset($_POST["date"]))
+    $date = $_POST["date"];
+else
+    $date = date("Y-m-d");
+
 ?>
 <html>
     <head>
@@ -24,7 +29,7 @@ require('./Modele/configSQL.php');
             $(function ()
             {
                 $("#date").datepicker($.datepicker.regional["fr"]);
-                $("#date").datepicker('setDate', new Date());
+                $("#date").datepicker('setDate', new Date(<?php echo json_encode($date); ?>));
             });
         </script>
     </head>
@@ -47,23 +52,10 @@ require('./Modele/configSQL.php');
                             echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
                         } ?>
                     </select>
-                    <input type="text" id="date" name="date" class="date" onload="this.value(Date());" readonly="readonly">
+                    <input type="text" id="date" name="date" class="date" readonly="readonly">
                     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
                 </form>
             </div>
-            <?php /*
-              <select id="trierPar" name="trierPar" class="select">
-              <option>Trier par</option>
-              <?php
-              for ($i = 0; $i < 5; $i++) {
-              ?>
-              <option>
-              Test
-              </option>
-              <?php }
-              ?>
-              </select>
-             */ ?>
             <div id="clear"></div>
             <div id="listeCommentaires">
                 <?php
