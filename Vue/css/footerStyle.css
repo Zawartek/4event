@@ -1,15 +1,15 @@
 
-footer 
+footer
 {
 		font-family: "Helvetica Neue", Helvetica, Arial;
 }
-#mainFooter 
+#mainFooter
 {
 	color: white;
 	background-color: #C0C0C0;
 	margin-top:0px;
-        margin-top: 20px; 
- 
+        margin-top: 20px;
+
 }
 
 #mainFooter-bounds
@@ -20,61 +20,11 @@ footer
     max-width: 960px;
     padding: 24px 16px 8px;
     width: 100%;
-	
-}
 
-.hautFooter
-{
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
-    -ms-justify-content: flex-start;
-    justify-content: flex-start;
-    -ms-flex-pack: start;
-    -webkit-box-align: flex;
-    -webkit-align-items: flex;
-    -ms-align-items: flex;
-    -ms-flex-align: flex;
-    box-sizing: border-box;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-direction: row;
-    -webkit-box-lines: single;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-	font-weight: 700;
-	
-	
-}
-.DivCreerGroupe 
-{
-    -webkit-flex-basis: auto;
-    flex-basis: auto;
-    -ms-flex-preferred-size: auto;
-    width: initial;
-    margin-right: 66%;
-    float:left;
-    white-space: nowrap; 
-}
-
-.hautFooter a {
-    color: inherit !important;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 19px;
 }
 
 ol, ul {
-    list-style-type: none;	
+    list-style-type: none;
     list-style-position: outside;
     padding-left: 1.33em;
     margin: 0 0 18px;
@@ -84,7 +34,7 @@ ol, ul {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     -webkit-padding-start: 0px;
-	
+
     display: -webkit-box;
     display: -moz-box;
     display: box;
@@ -127,17 +77,17 @@ ol, ul {
 
     display: block;
     margin-bottom: 7px !important;
-    white-space: nowrap; 
+    white-space: nowrap;
 
 }
 
 .ElmtBFooter
 {
 	margin-right: 2%;
-}	
+}
 
 .lien-reseau
 {
 	margin-left: 5px;
-	
+
 }
