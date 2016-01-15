@@ -37,18 +37,18 @@
                 else
                     return 1;
             };
-            
+
             function checkFormulaireInscription()
             {
                 var submit = document.getElementById("submitInscription");
                 var desactivation = 0;
-                
+
                 if ($("#nom").val() == "" || $("#prenom").val() == "" || $("#email").val() == "" || $("#voie").val() == "" ||
                     $("#codepostal").val() == "" || $("#ville").val() == "" || $("#pays").val() == "" || $("#mdp").val() == "" || !$("#cgu").is(":checked"))
                         desactivation = 1;
                 else
                     desactivation = controlDate();
-                
+
                 if (desactivation == 1)
                     submit.disabled = true;
                 else if (desactivation == 0)
@@ -71,7 +71,7 @@
                 <label for="nom">Nom* :</label>
                 <input type="text" name="nom" id="nom" class="input"><br>
 
-                <label for="prenom">Prenom* :</label>
+                <label for="prenom">Prénom* :</label>
                 <input type="text" name="prenom" id="prenom" class="input"><br>
 
                 <label for="email">Email* :</label>
@@ -128,12 +128,12 @@
                 <label for="homme" style="width: auto">Homme</label><br>
 
                 <input type="checkbox" name="newsletter" id="newsletter" value="1">
-                <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4Event.</label><br>
-                
+                <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4event.</label><br>
+
                 <input type="checkbox" name="cgu" id="cgu" value="1">
                 <label for="cgu" style="width: auto">J'ai lu et j'accepte les <a href="./Vue/conditions_GU.html" target="_blank">CGU</a>.*</label><br>
 
-                <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'Inscrire" disabled="disabled">
+                <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'inscrire" disabled="disabled">
             </form>
         </div>
     </body>

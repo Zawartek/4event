@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>profil utilisateur</title>
-        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css"> 
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
     </head>
     <body>
         <div id="content">
@@ -18,8 +18,8 @@ and open the template in the editor.
                 <div id="infosProfil">
                     <p><?php echo $uti['utilisateur_prenom'] . " " . $uti['utilisateur_nom'] ?></p>
                     <p><?php echo $uti['adresse_ville'] ?></p>
-                    <p>Evenements inscrits : <?php echo sizeof($uti['evenements']); ?></p>
-                    <p>Evenements organisés : <?php echo $uti['nbEventOrga'] ?></p>
+                    <p>Événements inscrits : <?php echo sizeof($uti['evenements']); ?></p>
+                    <p>Événements organisés : <?php echo $uti['nbEventOrga'] ?></p>
                 </div>
                 <?php if (isset($_SESSION['userID']) && $_SESSION['userID'] == $uti['utilisateur_id']) { ?>
                     <div id="gestionUti">
@@ -38,12 +38,12 @@ and open the template in the editor.
                     if (sizeof($uti['evenements']) > 0) {
                         foreach ($uti['evenements'] as $event) {
                             ?>
-                            <a class="eventProfil" 
+                            <a class="eventProfil"
                                href="<?php
                                echo "index.php?controle=evenement"
                                . "&action=afficherPageEvent"
                                . "&param=" . $event['evenement_id'];
-                               ?>"> 
+                               ?>">
                             <?php echo $event["evenement_titre"] ?>
                             </a>
                             <br>
@@ -55,18 +55,18 @@ and open the template in the editor.
                     ?>
                 </div>
                 <div id="orga">
-                    <p class="titre">Evénements organisés</p>
+                    <p class="titre">Événements organisés</p>
 
                     <?php
                     if (sizeof($uti['eventOrga']) > 0) {
                         foreach ($uti['eventOrga'] as $event) {
                             ?>
-                            <a class="eventProfil" 
+                            <a class="eventProfil"
                                href="<?php
                                echo "index.php?controle=evenement"
                                . "&action=afficherPageEvent"
                                . "&param=" . $event['evenement_id'];
-                               ?>"> 
+                               ?>">
                             <?php echo $event["evenement_titre"] ?>
                             </a>
                             <br>
@@ -112,7 +112,7 @@ and open the template in the editor.
                     ?>
                 </div>
             </div>
-        </div>    
+        </div>
 
         <div id="footer">
 
