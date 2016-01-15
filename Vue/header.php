@@ -73,7 +73,6 @@
         <a class="lien-reseau" href="index.php" style="margin-right:30px;"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home"></a>
         <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
         <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
-        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a>
 
     <?php
     if (isset($_SESSION['prenom_nom']))
