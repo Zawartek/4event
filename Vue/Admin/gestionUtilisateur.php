@@ -114,9 +114,6 @@ and open the template in the editor.
                         <td>
                             <input style="width:80%;" id="email" type="text" name="email" value=""/>
                         </td>
-                        <td>
-                            <button>rechercher</button>
-                        </td>
                     </tr>
 
                     <tr>
@@ -141,7 +138,7 @@ and open the template in the editor.
                             <select class="champDateNaissance" name="mois" id="mois" onchange="">
                                 <option value="0">Mois</option>
                                 <?php
-                                $mois = array('janv', 'févr', 'mars', 'avril', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc');
+                                $mois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
                                 for ($m = 1; $m <= 12; $m ++)
                                 {
                                     $indice = $m - 1;
@@ -171,9 +168,9 @@ and open the template in the editor.
                         <td>
                             
                             <select style="width:80%;" id="etat" type="text" name="etat" >
-                                <option value="0">actif</option>
-                                <option value="1">supprimé</option>
-                                <option value="2">bani</option>
+                                <option value="0">Actif</option>
+                                <option value="1">Supprimé</option>
+                                <option value="2">Bani</option>
                             </select>
                         </td>
                     </tr>
@@ -193,9 +190,9 @@ and open the template in the editor.
                         <td>
                             
                             <select style="width:80%;" id="type" type="text" name="type">
-                                <option value="0">normal</option>
-                                <option value="1">modérateur</option>
-                                <option value="2">administrateur</option>
+                                <option value="0">Normal</option>
+                                <option value="1">Modérateur</option>
+                                <option value="2">Administrateur</option>
                             </select>
                         </td>
                     </tr>
