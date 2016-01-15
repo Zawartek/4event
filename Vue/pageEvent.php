@@ -88,18 +88,18 @@ and open the template in the editor.
                            class="bold btn">Participer</a>
 
                         <a id="btnInteret" <?php /*href="index.php?controle=evenement&action=ajoutInteret"*/; ?>
-                           class="bold btn">Ajouter à ses interet</a>
+                           class="bold btn">Ajouter à ses intérêts</a>
                            <?php
                        } else {
                            echo '<a href="index.php?controle=evenement&action=annulerParticipation' .
                            '&param=' . $event['evenement_id'] .
-                           '" class="bold btn">Annuler participation</a> ';
+                           '" class="bold btn">Annuler la participation</a> ';
                        }
                        ?>
                	 </div>
             	<?php } ?>
             </div>
-           
+
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
                 <p class="descriptionPageEvent">
@@ -108,7 +108,7 @@ and open the template in the editor.
                 <div id="billeterie">
                     <h1>BILLETERIE</h1>
                     <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
-                        Site Web                       
+                        Site Web
                     </a>
                 </div>
             </div>

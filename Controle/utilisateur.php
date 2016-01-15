@@ -11,7 +11,7 @@ function ident() {
 }
 
 function accueil() {
-    
+
     $_SESSION['page'] = 'accueil';
     $themes = getThemeEvent();
     $events = recherche();
@@ -58,7 +58,7 @@ function connexion() {
                 $_SESSION['userID'] = $ligne['utilisateur_id'];
                 $_SESSION['prenom_nom'] = $ligne['utilisateur_prenom'] . " " . $ligne['utilisateur_nom'];
                 $_SESSION['userType'] = $ligne['utilisateur_type'];
-                
+
             }
         }
     } else { // L'utilisateur n'a pas rempli tous les champs du formulaire
