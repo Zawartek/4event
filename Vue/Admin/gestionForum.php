@@ -46,7 +46,7 @@ and open the template in the editor.
         <div id="content">
         <?php require './Vue/header.php'; ?>
         <?php 
-            require './Vue/Admin/menuAdmin.php';
+            require_once './Vue/Admin/menuAdmin.php';
         ?>
         <div id="listeFAQ">
         <label>Liste des FAQ : </label>
@@ -87,7 +87,7 @@ and open the template in the editor.
                     </td>
                 </tr>
             </table>
-                <input id="id" type="hidden" name="id""/>
+                <input id="id" type="hidden" name="id"/>
                 <div id="boutons">
                     <br>
                     <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
