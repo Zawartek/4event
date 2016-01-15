@@ -15,11 +15,9 @@ function utilisateurs($db) {
     return $reponse->fetchAll();
 }
 
-
-function suppressionutil($db,$idUti)
-{   
+function suppressionutil($db, $idUti) {
     $reponse = $db->query("delete from utilisateur where utilisateur_id = '$idUti'");
-    return $reponse;  
+    return $reponse;
 }
 
 function infosUti($db, $idUti) {
@@ -61,6 +59,19 @@ function infosUti($db, $idUti) {
         while ($com = $reponseCom->fetch() and isset($com)) {
             $data['commentaires'][] = $com;
         }
+    }
+    return $data;
+}
+
+function eventOrga($db, $idUti) {
+    // nombre d'événement organisé
+    $request = 'SELECT evenement_titre, evenement_id '
+            . 'FROM evenement e '
+            . 'WHERE e.evenement_utilisateur_id=' . $idUti . ';';
+    $reponseOrg = $db->query($request);
+    $data = Array();
+    while ($event = $reponseOrg->fetch() and isset($event)) {
+        $data[] = $event;
     }
     return $data;
 }

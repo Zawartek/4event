@@ -47,14 +47,37 @@ and open the template in the editor.
                     }
                     ?>
                 </div>
+                <div id="orga">
+                    <p class="titre">Evénements organisés</p>
+                    
+                    <?php
+                    if (sizeof($uti['eventOrga'])>0){
+                    foreach ($uti['eventOrga'] as $event){
+                        ?>
+                    <a class="eventProfil" 
+                       href="<?php echo "index.php?controle=evenement"
+                       . "&action=afficherPageEvent"
+                               . "&param=" . $event['evenement_id'];?>"> 
+                           <?php echo $event["evenement_titre"] ?>
+                    </a>
+                    <br>
+                    <?php
+                    }
+                    }
+                    else {
+                        echo "<p>aucun événément n'a été organisé.</p>";
+                    }
+                    ?>
+                </div>
+                <div id="clear"></div>
                 <div id="commentaires">
                     <p class="titre">Commentaires</p>
                     <?php
                 if (isset($uti['commentaires'][0])) {
                     foreach ($uti['commentaires'] as $com) {
                         ?>
-                        <div class="cadre" style="width:475px">
-                            <textarea class="text-area comContenuP" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
+                        <div class="cadre">
+                            <textarea class="text-area comContenu" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
                             <p align="right">
                                 écrit par <?php
                                 echo $com['utilisateur_prenom'] .
@@ -78,7 +101,6 @@ and open the template in the editor.
                 }
                 ?>
                 </div>
-                <div id="clear"></div>
             </div>
         </div>    
         

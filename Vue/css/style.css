@@ -160,12 +160,17 @@ fieldset
     float : left;
 }
 
-#commentaires
+#orga
 {
-    border-left: solid 1px black;
     padding : 20px;
     width:45%;
     float : left;
+}
+
+#commentaires
+{
+    padding : 20px;
+    width:100%;
 
 }
 

@@ -22,6 +22,7 @@ function afficherPageUti($idUti) {
     require_once './Modele/utilisateurs.php';
     $_SESSION['page'] = 'pageUti';
     $uti = infosUti($db, $idUti);
+    $uti["eventOrga"]=  eventOrga($db, $idUti);
     include ("./Vue/profilUtilisateur.php");
 }
 
