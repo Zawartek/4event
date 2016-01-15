@@ -50,8 +50,8 @@
         {  ?>
             dialogCreerEvent = $("#dialog-creerEvent").dialog({
                 autoOpen: false,
-                height: 700,
-                width: 920,
+                height: 800,
+                width: 950,
                 modal: true,
                 position: {my: "center", at: "top", of: window},
                 close: function () {
@@ -71,7 +71,7 @@
     <div style="display: block; ">
         <a href="index.php"><img src="./Vue/img/logo.png" height="70px" style="margin-right: 25px;"></a>
         <a class="lien-reseau" href="index.php" style="margin-right:30px;"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home"></a>
-        <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
+        <a class="lien-reseau" href="https://www.facebook.com/ISEP4event/" target="_blank"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
         <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
 
     <?php
