@@ -20,8 +20,6 @@
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a><br>
                 <label for="email">Se connecter avec Twitter</label>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
-                <label for="email">Se connecter avec Google +</label>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/googleplus.png" alt="google+"></a><br>
 
                 <div style="text-align: center;">
                     <label for="email">Ou</label><br>
