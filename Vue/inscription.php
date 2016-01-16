@@ -11,48 +11,85 @@
         <script type="text/javascript">
             function controlDate()
             {
-                var jour = $("#jourInscription").val();
-                var mois = $("#moisInscription").val();
-                var annee = $("#anneeInscription").val();
+                var jour = document.getElementById("jourInscription");
+                var mois = document.getElementById("moisInscription");
+                var annee = document.getElementById("anneeInscription");
 
-                if (jour != 0 && mois != 0 && annee != 0)
+                var valJour = jour.value;
+                var valMois = mois.value;
+                var valAnnee = annee.value;
+
+                var validJour = (valJour == 0) ? 0 : 1;
+                var validMois = (valMois == 0) ? 0 : 1;
+                var validAnnee = (valAnnee == 0) ? 0 : 1;
+
+                if (validJour == 1 && validMois == 1 && validAnnee == 1)
                 {
                     // On vérifie l'année et le mois
                     var anneeMax = new Date().getFullYear();
-                    if (annee < 1900 || annee > anneeMax || mois == 0 || mois > 12)
-                        return 1;
+                    if (valAnnee < 1900 || valAnnee > anneeMax)
+                        validAnnee = 0;
+
+                    if (valMois == 0 || valMois > 12)
+                        validMois = 0;
 
                     var moisLongeur = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
                     // On gère les années bisextiles
-                    if (annee % 400 == 0 || (annee % 100 != 0 && annee % 4 == 0))
+                    if (valAnnee % 400 == 0 || (valAnnee % 100 != 0 && valAnnee % 4 == 0))
                         moisLongeur[1] = 29;
 
                     // On vérifie le jour en fonction du mois
-                    if (jour < 0 || jour > moisLongeur[mois - 1])
-                        return 1;
-                    else
-                        return 0;
+                    if (valJour < 0 || valJour > moisLongeur[valMois - 1])
+                        validJour = 0;
                 }
-                else
+                jour.style.borderColor = (validJour == 0) ? "red" : "black";
+                mois.style.borderColor = (validMois == 0) ? "red" : "black";
+                annee.style.borderColor = (validAnnee == 0) ? "red" : "black";
+
+                if (validJour == 0 || validMois == 0 || validAnnee == 0)
                     return 1;
+                else
+                    return 0;
             };
 
             function checkFormulaireInscription()
             {
-                var submit = document.getElementById("submitInscription");
-                var desactivation = 0;
+                var nom = document.getElementById("nom");
+                var prenom = document.getElementById("prenom");
+                var email = document.getElementById("email");
+                var voie = document.getElementById("voie");
+                var codepostal = document.getElementById("codepostal");
+                var ville = document.getElementById("ville");
+                var pays = document.getElementById("pays");
+                var mdp = document.getElementById("mdp");
 
-                if ($("#nom").val() == "" || $("#prenom").val() == "" || $("#email").val() == "" || $("#voie").val() == "" ||
-                    $("#codepostal").val() == "" || $("#ville").val() == "" || $("#pays").val() == "" || $("#mdp").val() == "" || !$("#cgu").is(":checked"))
-                        desactivation = 1;
-                else
-                    desactivation = controlDate();
+                var desactivationInscription = 0;
 
-                if (desactivation == 1)
-                    submit.disabled = true;
-                else if (desactivation == 0)
-                    submit.disabled = false;
+                // On créé un tableau contenant tous nos inputs
+                var inputs = [nom, prenom, email, voie, codepostal, ville, pays, mdp];
+
+                // On parcours notre tableau
+                for (var i = 0, c = inputs.length; i < c; i++)
+                {
+                    if (inputs[i].value == "") ( desactivationInscription = 1 )
+                    inputs[i].style.borderColor = (inputs[i].value == "") ? "red" : "black";
+                }
+
+                var cguText = document.getElementById("cguText");
+                var cguLink = document.getElementById("cguLink");
+
+                if (!$("#cgu").is(":checked")) ( desactivationInscription = 1 )
+                cguText.style.color = (!$("#cgu").is(":checked")) ? "red" : "black";
+                cguLink.style.color = (!$("#cgu").is(":checked")) ? "orange" : "blue";
+
+                var desactivationDate = controlDate();
+
+                if (desactivationDate == 1)
+                    desactivationInscription = 1;
+
+                if (desactivationInscription == 0)
+                    document.getElementById("formInscription").submit();
             }
         </script>
     </head>
@@ -63,7 +100,7 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="index.php?controle=utilisateur&action=inscription" onchange="checkFormulaireInscription();">
+            <form id="formInscription" method="post" action="index.php?controle=utilisateur&action=inscription">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
@@ -120,7 +157,7 @@
                 </div>
 
                 <label for="mdp">Mot de passe* :</label>
-                <input type="password" name="mdp" id="mdp" class="input" required="required"><br>
+                <input type="password" name="mdp" id="mdp" class="input"><br>
 
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
                 <label for="femme" style="width: auto">Femme</label>
@@ -131,9 +168,9 @@
                 <label for="newsletter" style="width: auto">Je veux recevoir la newsletter de 4event.</label><br>
 
                 <input type="checkbox" name="cgu" id="cgu" value="1">
-                <label for="cgu" style="width: auto">J'ai lu et j'accepte les <a href="./Vue/conditions_GU.html" target="_blank">CGU</a>.*</label><br>
+                <label id="cguText" for="cgu" style="width: auto">J'ai lu et j'accepte les <a id="cguLink" href="./Vue/conditions_GU.html" target="_blank">CGU</a>.*</label><br>
 
-                <input id="submitInscription" class="btn btn-orange bold" type="submit" value="S'inscrire" disabled="disabled">
+                <input id="submitInscription" class="btn btn-orange bold" type="button" value="S'inscrire" onclick="checkFormulaireInscription();">
             </form>
         </div>
     </body>

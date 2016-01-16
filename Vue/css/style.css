@@ -54,7 +54,7 @@ body {
     box-shadow: 2px 2px 20px #C0C0C0;
 }
 
-.inscription input[type=submit], .connexion input[type=submit]
+.inscription input[type=button], .connexion input[type=submit]
 {
     display: block;
     margin: 10px auto 0px auto;
@@ -72,6 +72,11 @@ body {
     border-radius: 3px;
     text-align: left;
     padding: 2px;
+}
+
+#cguLink
+{
+    color: blue;
 }
 
 .inscription input[type=text], .inscription input[type=date], .inscription input[type=password], .inscription input[type=email]
@@ -104,13 +109,6 @@ body {
 {
     padding: 10px;
 }
-
-#formInscription
-{
-    margin : 10%;
-    width : 700px;
-}
-
 
 fieldset
 {
@@ -540,14 +538,14 @@ h2
 }
 .barreMenu
 {
-    border : 1px #FF7E00 solid; 
-    background-color: #C0C0C0; 
-    border-radius: 5px; 
+    border : 1px #FF7E00 solid;
+    background-color: #C0C0C0;
+    border-radius: 5px;
     height: 40px;
 }
 
 .NomPrenDecon
 {
-    float: right; 
+    float: right;
     margin-top: 25px;
 }

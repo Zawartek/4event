@@ -18,6 +18,7 @@ else
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
+        <link rel="icon" type="image/png" href="favicon.png">
 
         <!-- appels pour datepicker -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">

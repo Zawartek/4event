@@ -5,18 +5,6 @@
         <title>Connexion</title>
         <link href="./Vue/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" media="all" type="text/css">
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
-        
-        <script type="text/javascript">
-            function checkFormulaireConnexion()
-            {
-                var submit = document.getElementById("submitConnexion");
-                
-                if ($("#emailConnexion").val() == "" || $("#mdpConnexion").val() == "")
-                    submit.disabled = true;
-                else
-                    submit.disabled = false;
-            }
-        </script>
     </head>
 
     <body>
@@ -25,7 +13,7 @@
                 <img src="./Vue/img/logo.png" height="40px">
             </div>
 
-            <form method="post" action="index.php?controle=utilisateur&action=connexion" onchange="checkFormulaireConnexion();">
+            <form id="formConnexion" method="post" action="index.php?controle=utilisateur&action=connexion">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Connexion</h2>
 
                 <label for="">Se connecter avec Facebook</label>
@@ -38,12 +26,12 @@
                 </div><br>
 
                 <label for="emailConnexion" style="width: 150px;">Email* :</label>
-                <input type="text" name="email" id="emailConnexion" class="input"><br>
+                <input type="text" name="email" id="emailConnexion" class="input" required="required"><br>
 
                 <label for="mdpConnexion" style="width: 150px;">Mot de passe* :</label>
-                <input type="password" name="mdp" id="mdpConnexion" class="input"><br>
+                <input type="password" name="mdp" id="mdpConnexion" class="input"required="required"><br>
 
-                <input id="submitConnexion" class="btn btn-orange bold" type="submit" value="Connexion" disabled="disabled">
+                <input id="submitConnexion" class="btn btn-orange bold" type="submit" value="Connexion">
             </form>
         </div>
     </body>
