@@ -49,12 +49,12 @@ and open the template in the editor.
             ?>
             <div id="listeFAQ">
                 <label>Liste des Questions : </label>
-                <select id="ddlfaq">
+                <select id="ddlfaq" style="max-width:250px;">
                     <option value="0">Création d'une nouvelle Question</option>
                     <?php
                     $cpt = 0;
                     foreach ($faq as $s) {
-                        echo '<option value="' . $cpt++ . '">'
+                        echo '<option style="max-width: 230px;" value="' . $cpt++ . '">'
                         . $s["faq_question"] .
                         '</option>';
                     }
