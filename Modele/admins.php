@@ -16,7 +16,7 @@ function ajoutFAQBD($db,$question, $reponse, $idAdmin)
 function modificationFAQBD($db,$id, $question, $reponse, $idAdmin)
 {
     $sql = $db->prepare('UPDATE faq SET faq_question = :question, faq_reponse = :reponse, faq_utilisateur_id = :idAdmin WHERE faq_id = :id');
-
+    
     $sql->bindValue(':question', $question, PDO::PARAM_STR);
     $sql->bindValue(':reponse', $reponse, PDO::PARAM_STR);
     $sql->bindValue(':idAdmin', $idAdmin);

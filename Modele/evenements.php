@@ -2,24 +2,92 @@
 
 require ("configSQL.php");
 
-function ajouteventBD($db,$question, $reponse, $idAdmin)
-{
-    $reponse = $db->query("insert into faq (faq_id, faq_question, faq_reponse, faq_utilisateur_id) values ('', '$question', '$reponse', '$idAdmin')");
-    return $reponse->fetchAll();
+function modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id, $evenement_date_debut,
+        $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif)
+{    
+    $sql = $db->prepare('UPDATE evenement SET evenement_titre = :titre, evenement_description = :description, evenement_utilisateur_id = :user_id,'
+                . 'evenement_theme_id = :theme, evenement_date_debut = :dateDebut, evenement_heure_debut = :heureDebut,'
+                . 'evenement_date_fin = :dateFin, evenement_heure_fin = :heureFin, evenement_max_participants = :maxParticipants, evenement_type_public = :typePublic,'
+                . 'evenement_site_web = :siteWeb, evenement_tarif = :tarif WHERE evenement_id = :evenement_id');
+
+    $sql->bindValue(':evenement_id', $evenement_id);
+    $sql->bindValue(':titre', "$evenement_titre", PDO::PARAM_STR);
+    $sql->bindValue(':description', "$evenement_description", PDO::PARAM_STR);
+    $sql->bindValue(':user_id', $evenement_utilisateur_id);
+    $sql->bindValue(':theme', $evenement_theme_id);
+    $sql->bindValue(':dateDebut', $evenement_date_debut);
+    $sql->bindValue(':heureDebut', $evenement_heure_debut);
+    $sql->bindValue(':dateFin', $evenement_date_fin);
+    $sql->bindValue(':heureFin', $evenement_heure_fin);
+    $sql->bindValue(':maxParticipants', $evenement_max_participants);
+    $sql->bindValue(':typePublic', $evenement_type_public);
+    $sql->bindValue(':siteWeb', $evenement_site_web, PDO::PARAM_STR);
+    $sql->bindValue(':tarif', $evenement_tarif, PDO::PARAM_STR);
+
+    $sql->execute();
 }
 
-function modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif)
+function insertionEventBD ($db, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id,
+        $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public,
+        $evenement_site_web, $evenement_tarif, $evenement_adresse_id)
 {
-    $sql = "update evenement set evenement_titre ='$evenement_titre', evenement_description='$evenement_description', evenement_utilisateur_id='$evenement_utilisateur_id', evenement_theme_id='$evenement_theme_id', evenement_date_debut='$evenement_date_debut', evenement_heure_debut='$evenement_heure_debut', evenement_date_fin='$evenement_date_fin', evenement_heure_fin='$evenement_heure_fin', evenement_max_participants='$evenement_max_participants', evenement_type_public='$evenement_type_public', evenement_site_web='$evenement_site_web', evenement_tarif='$evenement_tarif'  where evenement_id='$evenement_id'";
-    $reponse = $db->query($sql);
-    return $reponse->fetchAll();
+    $sql = $db->prepare('INSERT INTO evenement SET evenement_id = :evenement_id, evenement_titre = :titre, evenement_description = :description,'
+                . 'evenement_utilisateur_id = :user_id, evenement_adresse_id = :adresse_id, evenement_theme_id = :theme, evenement_date_debut = :dateDebut,'
+                . 'evenement_heure_debut = :heureDebut, evenement_date_fin = :dateFin, evenement_heure_fin = :heureFin,'
+                . 'evenement_max_participants = :maxParticipants, evenement_type_public = :typePublic, evenement_site_web = :siteWeb, evenement_tarif = :tarif');
+
+    $sql->bindValue(':evenement_id', NULL);
+    $sql->bindValue(':titre', "$evenement_titre", PDO::PARAM_STR);
+    $sql->bindValue(':description', "$evenement_description", PDO::PARAM_STR);
+    $sql->bindValue(':user_id', $evenement_utilisateur_id);
+    $sql->bindValue(':adresse_id', $evenement_adresse_id);
+    $sql->bindValue(':theme', $evenement_theme_id);
+    $sql->bindValue(':dateDebut', $evenement_date_debut);
+    $sql->bindValue(':heureDebut', $evenement_heure_debut);
+    $sql->bindValue(':dateFin', $evenement_date_fin);
+    $sql->bindValue(':heureFin', $evenement_heure_fin);
+    $sql->bindValue(':maxParticipants', $evenement_max_participants);
+    $sql->bindValue(':typePublic', $evenement_type_public);
+    $sql->bindValue(':siteWeb', $evenement_site_web, PDO::PARAM_STR);
+    $sql->bindValue(':tarif', $evenement_tarif, PDO::PARAM_STR);
+
+    $sql->execute();
 }
 
 function modificationadresseBD($db, $adresse_id, $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays)
 {
-    $sql = "update adresse set adresse_numero_voie='$adresse_numero_voie', adresse_ville='$adresse_ville', adresse_code_postal='$adresse_code_postal', adresse_pays='$adresse_pays' where adresse_id='$adresse_id'";
+    $sql = $db->prepare('UPDATE adresse SET adresse_numero_voie = :voie, adresse_ville = :ville,'
+                . 'adresse_code_postal = :codepostal, adresse_pays = :pays WHERE adresse_id = :adresse_id');
+
+    $sql->bindValue(':adresse_id', $adresse_id);
+    $sql->bindValue(':voie', $adresse_numero_voie, PDO::PARAM_STR);
+    $sql->bindValue(':ville', $adresse_ville, PDO::PARAM_STR);
+    $sql->bindValue(':codepostal', $adresse_code_postal);
+    $sql->bindValue(':pays', $adresse_pays, PDO::PARAM_STR);
+
+    $sql->execute();
+}
+
+function insertionAdresseBD($db, $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays)
+{
+    $sql = "SELECT MAX(adresse_id) AS ID FROM `adresse`";
     $reponse = $db->query($sql);
-    return $reponse->fetchAll();
+    $data = $reponse->fetch();
+
+    $adresse_id = $data['ID'] + 1;
+
+    $sql2 = $db->prepare('INSERT INTO adresse SET adresse_id = :adresse_id, adresse_numero_voie = :voie, adresse_ville = :ville,'
+                . 'adresse_code_postal = :codepostal, adresse_pays = :pays');
+
+    $sql2->bindValue(':adresse_id', $adresse_id);
+    $sql2->bindValue(':voie', $adresse_numero_voie, PDO::PARAM_STR);
+    $sql2->bindValue(':ville', $adresse_ville, PDO::PARAM_STR);
+    $sql2->bindValue(':codepostal', $adresse_code_postal);
+    $sql2->bindValue(':pays', $adresse_pays, PDO::PARAM_STR);
+
+    $sql2->execute();
+
+    return $adresse_id;
 }
 
 function adresseByEventBD($db, $evenement_id)
@@ -39,10 +107,7 @@ function events($db)
 {
     $reponse = $db->query("select * from evenement, adresse where evenement_adresse_id=adresse_id");
     return $reponse->fetchAll();
-
 }
-
-
 
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
 function infosEvent($db, $idEvent) {

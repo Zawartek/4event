@@ -33,7 +33,6 @@ function gestionEvent()
     {
         suppressioneventBD($db,$evenement_id);
     }
-
     else
     {
         $evenement_titre = htmlspecialchars($_POST['titre']);
@@ -49,11 +48,18 @@ function gestionEvent()
         $evenement_tarif = htmlspecialchars($_POST['tarif']);
 
         $adresse_numero_voie = htmlspecialchars($_POST['voie']);
-        $adresse_ville = htmlspecialchars($_POST['codepostal']);
-        $adresse_code_postal = htmlspecialchars($_POST['ville']);
+        $adresse_ville = htmlspecialchars($_POST['ville']);
+        $adresse_code_postal = htmlspecialchars($_POST['codepostal']);
         $adresse_pays = htmlspecialchars($_POST['pays']);
 
-        if (isset($_POST['MOD']))
+        if (isset($_POST['ADD']))
+        {
+            $adresse_id = insertionAdresseBD($db, $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays);
+            
+            insertionEventBD($db, $evenement_titre, $evenement_description, $_SESSION["userID"], $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin,
+            $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif, $adresse_id);
+        }
+        else if (isset($_POST['MOD']))
         {
             modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $_SESSION["userID"], $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin,
             $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif);

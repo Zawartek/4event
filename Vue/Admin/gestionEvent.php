@@ -42,7 +42,7 @@ and open the template in the editor.
                         $('#heureFin').val("00:00");
                         $('#max').val("0");
                         $('#public').val("0");
-                        $('#themeId').val("0");
+                        $('#themeId').val("1");
                         $('#siteWeb').val("");
                         $('#tarif').val("");
                         
@@ -128,7 +128,6 @@ and open the template in the editor.
                             </td>
                             <td>
                                 <select style="width:80%;"  id="themeId" name="themeId" class="input">
-                                    <option value="0">Tous</option>
                                     <?php
                                     foreach ($themes as $theme) {
                                         echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';

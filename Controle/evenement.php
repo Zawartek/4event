@@ -95,7 +95,7 @@ function creationEvent() {
         $sql3->bindValue(':evenement_id', NULL);
         $sql3->bindValue(':titre', $titre, PDO::PARAM_STR);
         $sql3->bindValue(':description', $description, PDO::PARAM_STR);
-        $sql3->bindValue(':user_id', "1"); // Récup l'id de l'user par la session
+        $sql3->bindValue(':user_id', $_SESSION["userID"]); // Récup l'id de l'user par la session
         $sql3->bindValue(':adresse_id', $adresse_id);
         $sql3->bindValue(':theme', $theme);
         $sql3->bindValue(':dateDebut', $dateDebut);
