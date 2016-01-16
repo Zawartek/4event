@@ -96,9 +96,9 @@ and open the template in the editor.
                 <?php
                 require './Vue/Admin/menuAdmin.php';
                 ?>
-                <div id='listEvent'>
+                <div id='listeEvent'>
                     <label>Liste des évenements : </label>
-                    <select id="ddlEvent">
+                    <select id="ddlEvent" class="input">
                         <option value="0">Création d'un nouvel événement</option>
                         <?php
                         $cpt = 0;
@@ -109,12 +109,12 @@ and open the template in the editor.
                     </select>
                 </div>
                 <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionEvent">
-                    <table id="tableEvenement">
+                    <table id="tableEvent">
                         <tr>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <tr>
                             <td>
@@ -127,7 +127,7 @@ and open the template in the editor.
                                 <label>Thème :</label>
                             </td>
                             <td>
-                                <select style="width:80%;"  id="themeId" name="themeId">
+                                <select style="width:80%;"  id="themeId" name="themeId" class="input">
                                     <option value="0">Tous</option>
                                     <?php
                                     foreach ($themes as $theme) {
@@ -203,13 +203,13 @@ and open the template in the editor.
                         </tr>
                     </table>
 
-                    <fieldset style="border : 1px solid black">
+                    <fieldset id="fieldset">
                         <legend class="legende">Adresse</legend>
-                        <table>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
+                        <table id="tableAdresse">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <tr>
                                 <td>
                                     <label>Voie :</label>
@@ -243,9 +243,9 @@ and open the template in the editor.
                     <input id="id" type="hidden" name="id">
                     <div id="boutons">
                         <br>
-                        <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
-                        <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
-                        <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                        <button id="MOD" type="submit" name="MOD" class="bold btn btn-orange">Modifier</button>
+                        <button id="SUPPR" type="submit" name="SUPPR" class="bold btn btn-orange">Supprimer</button>
+                        <button id="ADD" type="submit" name="ADD" class="bold btn btn-orange">Ajouter</button>
                     </div>
                 </form>
             </div>

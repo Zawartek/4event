@@ -95,7 +95,7 @@ and open the template in the editor.
                 ?>
                 <div id='listeUtilisateur'>
                     <label>Liste des utilisateurs : </label>
-                    <select id="ddlUtilisateur">
+                    <select id="ddlUtilisateur" class="input">
                         <option value="0">Création d'un nouvel utilisateur</option>
                         <?php
                         $cpt = 0;
@@ -108,10 +108,10 @@ and open the template in the editor.
                 <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionUti">
                     <table id="tableUtilisateur">
                         <tr>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <tr>
                             <td>
@@ -121,7 +121,6 @@ and open the template in the editor.
                                 <input style="width:80%;" id="email" type="text" name="email" value="">
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <label>Nom :</label>
@@ -133,7 +132,7 @@ and open the template in the editor.
                                 <label>Date de naissance :</label>
                             </td>
                             <td>
-                                <select class="champDateNaissance" name="jour" id="jour">
+                                <select class="input" name="jour" id="jour">
                                     <option value="0">Jour</option>
                                     <?php
                                     for ($j = 1; $j <= 31; $j ++) {
@@ -141,7 +140,7 @@ and open the template in the editor.
                                     }
                                     ?>
                                 </select>
-                                <select class="champDateNaissance" name="mois" id="mois">
+                                <select class="input" name="mois" id="mois">
                                     <option value="0">Mois</option>
                                     <?php
                                     $mois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
@@ -151,7 +150,7 @@ and open the template in the editor.
                                     }
                                     ?>
                                 </select>
-                                <select class="champDateNaissance" name="annee" id="annee">
+                                <select class="input" name="annee" id="annee">
                                     <option value="0">Année</option>
                                     <?php
                                     for ($a = date("Y"); $a >= 1900; $a --) {
@@ -172,7 +171,7 @@ and open the template in the editor.
                                 <label>Etat :</label>
                             </td>
                             <td>
-                                <select style="width:80%;" id="etat" type="text" name="etat">
+                                <select style="width:80%;" id="etat" type="text" name="etat" class="input">
                                     <option value="0">Actif</option>
                                     <option value="1">Supprimé</option>
                                     <option value="2">Bani</option>
@@ -184,7 +183,7 @@ and open the template in the editor.
                                 <label>Sexe :</label>
                             </td>
                             <td>
-                                <select style="width:80%;" id="sexe" type="text" name="sexe">
+                                <select style="width:80%;" id="sexe" type="text" name="sexe" class="input">
                                     <option value="0">Femme</option>
                                     <option value="1">Homme</option>
                                 </select>
@@ -194,7 +193,7 @@ and open the template in the editor.
                             </td>
                             <td>
 
-                                <select style="width:80%;" id="type" type="text" name="type">
+                                <select style="width:80%;" id="type" type="text" name="type" class="input">
                                     <option value="0">Normal</option>
                                     <option value="1">Modérateur</option>
                                     <option value="2">Administrateur</option>
@@ -211,13 +210,13 @@ and open the template in the editor.
                         </tr>
                     </table>
 
-                    <fieldset style="border : 1px solid black">
+                    <fieldset id="fieldset">
                         <legend class="legende">Adresse</legend>
-                        <table>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
-                            <th classe="tableLabel"></th>
-                            <th classe="tableValeur"></th>
+                        <table id="tableAdresse">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <tr>
                                 <td>
                                     <label>Voie :</label>
@@ -251,9 +250,9 @@ and open the template in the editor.
                     <input id="id" type="hidden" name="id">
                     <div id="boutons">
                         <br>
-                        <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
-                        <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
-                        <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                        <button id="MOD" type="submit" name="MOD" class="bold btn btn-orange">Modifier</button>
+                        <button id="SUPPR" type="submit" name="SUPPR" class="bold btn btn-orange">Supprimer</button>
+                        <button id="ADD" type="submit" name="ADD" class="bold btn btn-orange">Ajouter</button>
                     </div>
                 </form>
             </div>

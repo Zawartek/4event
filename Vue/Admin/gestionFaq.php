@@ -49,12 +49,12 @@ and open the template in the editor.
             ?>
             <div id="listeFAQ">
                 <label>Liste des Questions : </label>
-                <select id="ddlfaq" style="max-width:250px;">
+                <select id="ddlfaq" class="input">
                     <option value="0">Création d'une nouvelle Question</option>
                     <?php
                     $cpt = 0;
                     foreach ($faq as $s) {
-                        echo '<option style="max-width: 230px;" value="' . $cpt++ . '">'
+                        echo '<option value="' . $cpt++ . '">'
                         . $s["faq_question"] .
                         '</option>';
                     }
@@ -73,7 +73,7 @@ and open the template in the editor.
                             <label>Question :</label>
                         </td>
                         <td>
-                            <input id="titre" type="text" name="titre" style="width:100%;">
+                            <textarea id="titre" name="titre" rows="3" style="width:100%; resize: none;"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -88,9 +88,9 @@ and open the template in the editor.
                 <input id="id" type="hidden" name="id">
                 <div id="boutons">
                     <br>
-                    <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
-                    <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
-                    <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                    <button id="MOD" type="submit" name="MOD" class="bold btn btn-orange">Modifier</button>
+                    <button id="SUPPR" type="submit" name="SUPPR" class="bold btn btn-orange">Supprimer</button>
+                    <button id="ADD" type="submit" name="ADD" class="bold btn btn-orange">Ajouter</button>
                 </div>
             </form>
             <?php require './Vue/footer.php'; ?>

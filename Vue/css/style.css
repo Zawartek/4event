@@ -8,9 +8,9 @@ body {
     background-color: #F8F8F8 !important;
 }
 
-.cadre a {
-	padding: 20px;
-	margin: 42px;
+.cadre a
+{
+    margin: 0px 40px;
 }
 
 
@@ -440,23 +440,83 @@ div#crosshair {
 
 #listeUtilisateur
 {
-    margin-left: 30%;
+    text-align: center;
 }
 
 #listeFAQ
 {
-    margin-left: 35%;
+    text-align: center;
+}
+
+#listeEvent
+{
+    text-align: center;
 }
 
 #tableUtilisateur
 {
-    width : 100%;
+    width : 80%;
+    margin-left: 10%;
 }
 
 #tableFAQ
 {
     width : 70%;
-    margin-left: 25%;
+    margin-left: 15%;
+}
+
+#tableEvent
+{
+    width : 80%;
+    margin-left: 10%;
+}
+
+#fieldset
+{
+    border : 1px solid black;
+    width : 80%;
+    margin-left: 10%;
+}
+
+#tableAdresse
+{
+    width : 100%;
+    margin-left: 5%;
+}
+
+.legende
+{
+    width:auto;
+    margin-bottom: 0px;
+    border: none;
+    padding: 4px;
+}
+
+#ddlUtilisateur
+{
+    max-width: 230px;
+}
+#ddlUtilisateur option
+{
+    max-width: 210px;
+}
+
+#ddlfaq
+{
+    max-width: 250px;
+}
+#ddlfaq option
+{
+    max-width: 230px;
+}
+
+#ddlEvent
+{
+    max-width: 240px;
+}
+#ddlEvent option
+{
+    max-width: 220px;
 }
 
 #tableLabel
@@ -482,8 +542,7 @@ div#crosshair {
 }
 
 .input
-{   
-   
+{
     border: 1px solid gray;
     border-radius: 3px;
     text-align: left;
@@ -551,10 +610,7 @@ h2
     margin-top: 25px;
 }
 
-.legende
+select
 {
-    width:auto;
-    margin-bottom: 0px;
-    border: none;
-    padding: 4px;
+    font-size: 14px;
 }
