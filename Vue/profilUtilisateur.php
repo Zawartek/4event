@@ -50,13 +50,12 @@ and open the template in the editor.
                             <?php
                         }
                     } else {
-                        echo "<p>aucun événément de prévu dans l'agenda</p>";
+                        echo "<p class='eventProfil'>aucun événément de prévu dans l'agenda</p>";
                     }
                     ?>
                 </div>
                 <div id="orga">
                     <p class="titre">Événements organisés</p>
-
                     <?php
                     if (sizeof($uti['eventOrga']) > 0) {
                         foreach ($uti['eventOrga'] as $event) {
@@ -73,7 +72,7 @@ and open the template in the editor.
                             <?php
                         }
                     } else {
-                        echo "<p>aucun événément n'a été organisé.</p>";
+                        echo "<p class='eventProfil'>aucun événément organisé.</p>";
                     }
                     ?>
                 </div>
@@ -81,18 +80,22 @@ and open the template in the editor.
                 <div id="commentaires">
                     <p class="titre">Commentaires</p>
                     <?php
-                    if (isset($uti['commentaires'][0])) {
-                        foreach ($uti['commentaires'] as $com) {
-                            ?>
-                            <div class="cadre">
-                                <textarea class="text-area comContenu" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
-                                <p align="right">
-                                    écrit par <?php
-                                    echo $com['utilisateur_prenom'] .
-                                    ' ' . $com['utilisateur_nom'];
-                                    ?>
+                    if (isset($uti['commentaires'][0]))
+                    {
+                        foreach ($uti['commentaires'] as $com)
+                        { ?>
+                            <div class="cadre blockComProfil">
+                                <p style="float: left;">
+                                    <?php
+                                    for ($i = 0; $i < 5; $i++) {
+                                        if ($i < $com['avis_note']) {
+                                            echo "<img class='noteCom' src='./Vue/img/etoileCom.png'  style='height:auto'/>";
+                                        } else {
+                                            echo "<img class='noteCom' src='./Vue/img/etoileComBlanc.png'  style='height:auto'/>";
+                                        }
+                                    } ?>
                                 </p>
-                                <p align="right">
+                                <p style="float: right;">
                                     <?php
                                     echo '<a href="index.php?' .
                                     'controle=evenement&' .
@@ -102,13 +105,12 @@ and open the template in the editor.
                                     '</a>'
                                     ?>
                                 </p>
+                                <textarea class="text-area comProfil" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
                             </div>
-                            <br>
-                            <?php
+                        <?php
                         }
-                    } else {
-                        echo '<p> aucun commentaire n\'a été ajouté</p>';
                     }
+                    else { echo '<p> Cet utilisateur n\'a pas encore rédigé de commentaire.</p>'; }
                     ?>
                 </div>
             </div>

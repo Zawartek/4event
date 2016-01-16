@@ -71,7 +71,7 @@
     <div style="display: block; ">
         <a href="index.php"><img src="./Vue/img/logo.png" height="70px" style="margin-right: 25px;"></a>
         <a class="lien-reseau" href="index.php" style="margin-right:30px;"><img class="logo-reseau" src="./Vue/img/2435.png" alt="home"></a>
-        
+
     <?php
     if (isset($_SESSION['prenom_nom']))
     {

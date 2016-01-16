@@ -72,7 +72,7 @@ and open the template in the editor.
                     </h1>
                     <p>Organisé par
                         <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $event["evenement_utilisateur_id"]; ?>">
-                            <?php echo $event["utilisateur_prenom"] . " " . $event["utilisateur_nom"]; ?>
+                            <span class='bold'><?php echo $event["utilisateur_prenom"] . " " . $event["utilisateur_nom"]; ?></span>
                         </a>
                     </p>
                     <p>
@@ -197,7 +197,11 @@ and open the template in the editor.
                             <br/>
                             <textarea class="text-area comContenu" disabled="true"><?php echo $com['avis_contenu']; ?></textarea>
 
-                            <p align="right"><?php echo "écrit par <Sspan class='bold'>" . $com['utilisateur_prenom'] . " " . $com['utilisateur_nom'] . "</span>."; ?></p>
+                            <p align="right">écrit par
+                                <a href="index.php?controle=utilisateur&action=afficherPageUti&param=<?php echo $com["utilisateur_id"]; ?>" style="margin: 0px;">
+                                    <span class='bold'><?php echo $com["utilisateur_prenom"] . " " . $com["utilisateur_nom"]; ?></span>
+                                </a>
+                            </p>
                         </div>
                         <br>
                         <?php
