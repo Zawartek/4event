@@ -80,24 +80,30 @@ and open the template in the editor.
                     </p>
                     Horaires : <span><?php echo substr($event["evenement_heure_debut"],0 ,5)." - ".substr($event["evenement_heure_fin"],0 ,5); ?></span>
                 </div>
-                <?php if (isset($_SESSION['userID'])) { ?>
-                	<div id="participationEvent">
-                   	 <?php
-                    if ($participation == 0) {
-                        ?><a id="btnParticipation"
-                           class="bold btn">Participer</a>
+                <div id="participationEvent">
+                    <?php
+                    if (isset($_SESSION['userID']))
+                    {
+                        if ($participation == 0)
+                        { ?>
+                            <a id="btnParticipation" class="bold btn">Participer</a>
 
-                        <a id="btnInteret" <?php /*href="index.php?controle=evenement&action=ajoutInteret"*/; ?>
-                           class="bold btn">Ajouter à ses intérêts</a>
-                           <?php
-                       } else {
+                            <a id="btnInteret" <?php /*href="index.php?controle=evenement&action=ajoutInteret"*/; ?>
+                               class="bold btn">Ajouter à ses intérêts</a>
+                        <?php
+                        }
+                        else
+                        {
                            echo '<a href="index.php?controle=evenement&action=annulerParticipation' .
                            '&param=' . $event['evenement_id'] .
                            '" class="bold btn">Annuler la participation</a> ';
-                       }
-                       ?>
-               	 </div>
-            	<?php } ?>
+                        }
+                    }
+                    else
+                    {
+                        echo "<p style='margin: 8px;'>Vous devez être connecté pour<br>pouvoir participer a cet événement.</p>";
+                    } ?>
+                </div>
             </div>
 
             <div id ="descriptionEvent">
@@ -164,12 +170,13 @@ and open the template in the editor.
                         <tr>
                             <td align="right">
                                 <input type="hidden" name="idEvent" value="<?php echo $event['evenement_id']; ?>"/>
-                                <?php if (isset($_SESSION['userID'])) { ?>
+                                <?php
+                                if (isset($_SESSION['userID']))
+                                { ?>
                                     <input style="margin-right:16px;" type="submit" value="envoyer"/>
-                                    <?php
-                                } else {
-                                    echo "<p>Veuillez vous connecter pour donner votre avis</p>";
+                                <?php
                                 }
+                                else { echo "<p>Veuillez vous connecter pour donner votre avis</p>"; }
                                 ?>
                             </td>
                         </tr>
