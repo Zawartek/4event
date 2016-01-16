@@ -482,7 +482,8 @@ div#crosshair {
 }
 
 .input
-{
+{   
+   
     border: 1px solid gray;
     border-radius: 3px;
     text-align: left;

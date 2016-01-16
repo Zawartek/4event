@@ -2,6 +2,45 @@
 
 require ("configSQL.php");
 
+function ajouteventBD($db,$question, $reponse, $idAdmin)
+{
+    $reponse = $db->query("insert into faq (faq_id, faq_question, faq_reponse, faq_utilisateur_id) values ('', '$question', '$reponse', '$idAdmin')");
+    return $reponse->fetchAll();
+}
+
+function modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif) 
+{   
+    $reponse = $db->query("update evenement set evenement_titre ='$evenement_titre', evenement_description='$evenement_description', evenement_utilisateur_id='$evenement_utilisateur_id', evenement_theme_id='$evenement_theme_id' evenement_date_debut='$evenement_date_debut', evenement_heure_debut='$evenement_heure_debut', evenement_date_fin='$evenement_date_fin', evenement_heure_fin='$evenement_heure_fin', evenement_max_participants='$evenement_max_participants' evenement_type_public='$evenement_type_public', evenement_site_web='$evenement_site_web', evenement_tarif='$evenement_tarif'  where evenement_id='$evenement_id'");
+    return $reponse->fetchAll(); 
+}
+
+function modificationadresseBD($db, $adresse_id, $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays)
+{
+    $reponse = $db->query("update adresse set adresse_numero_voie='$adresse_numero_voie', adresse_ville='$adresse_ville', adresse_code_postal='$adresse_code_postal', adresse_pays='$adresse_pays' where adresse_id='$adresse_id'");
+    return $reponse->fetchAll();
+}
+
+function adresseByEventBD($db, $evenement_id)
+{
+    $reponse = $db->query("$db, select evenement_adresse_id from evenement where evenement_id='$evenement_id' ");
+    return $reponse->fetchAll();           
+}
+
+function suppressioneventBD($db,$evenement_id)
+{   
+    $reponse = $db->query("delete from evenement where evenement_id = '$evenement_id'");
+    return $reponse->fetchAll();
+}
+
+function events($db)
+{   
+    $reponse = $db->query("select * from evenement, adresse where evenement_adresse_id=adresse_id");
+    return $reponse->fetchAll();
+      
+}
+
+
+
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
 function infosEvent($db, $idEvent) {
 
