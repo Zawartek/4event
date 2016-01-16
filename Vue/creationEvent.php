@@ -25,17 +25,15 @@
     </head>
 
     <body>
-
-
         <div id="popupEvent">
             <form id="creationEvent" method="post" action="index.php?controle=evenement&action=creationEvent" style="margin: auto;">
-                <h2 style="margin-top: 10px;" class="text-orange bold">Création Evénement</h2><br>
+                <h2 class="text-orange bold">Création Evénement</h2><br>
 
                 <label for="titre">Titre :</label>
                 <input type="text" name="titre" id="titre" class="input"><br>
 
                 <label for="description">Description :</label><br>
-                <textarea name="description" id="description" cols="120" rows="10" class="text-area"></textarea><br><br>
+                <textarea name="description" id="description" style="width: 100%; height: 200px;" class="text-area"></textarea><br><br>
 
                 <table id="tabCreationEvent">
                     <tr>
@@ -44,54 +42,50 @@
                         <td></td>
                         <td></td>
                     </tr>
-
                     <tr>
-                        <td><label for="voie">Voie :</label></td>
+                        <td><label for="voie">Voie* :</label></td>
                         <td><input type="text" name="voie" id="voie" class="input"></td>
-                        <td><label for="codepostal">Code postal :</label></td>
+                        <td><label for="codepostal">Code postal* :</label></td>
                         <td><input type="text" name="codepostal" id="codepostal" class="input"></td>
                     <br>
                     </tr>
-
-
                     <tr>
-                        <td><label for="ville">Ville :</label></td>
+                        <td><label for="ville">Ville* :</label></td>
                         <td><input type="text" name="ville" id="ville" class="input"></td>
-                        <td><label for="pays">Pays :</label></td>
+                        <td><label for="pays">Pays* :</label></td>
                         <td><input type="text" name="pays" id="pays" class="input"><br></td>
                     </tr>
                     <tr>
-                        <td><label for="theme">Thème :</label></td>
+                        <td><label for="theme">Thème* :</label></td>
                         <td>
                             <select id="theme" name="theme" class="input">
                                 <?php
                                 foreach($themes as $theme)
                                 {
                                     echo '<option value="'.$theme["theme_id"].'">'.$theme["theme_nom"].'</option>';
-                                }
-                                ?>
+                                } ?>
                             </select>
                         </td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="dateDebut">Date début :</label></td>
+                        <td><label for="dateDebut">Date début* :</label></td>
                         <td><input type="text" id="dateDebut" name="dateDebut" class="input" onload="this.value(Date());" readonly="readonly"></td>
-                        <td><label for="heureDebut">Heure début :</label></td>
+                        <td><label for="heureDebut">Heure début* :</label></td>
                         <td><input type="time" name="heureDebut" id="heureDebut" class="input"></td>
 
                     </tr>
                     <tr>
-                        <td><label for="dateFin">Date fin :</label></td>
+                        <td><label for="dateFin">Date fin* :</label></td>
                         <td><input type="text" id="dateFin" name="dateFin" class="input" onload="this.value(Date());" readonly="readonly"></td>
-                        <td><label for="heureFin">Heure fin :</label></td>
+                        <td><label for="heureFin">Heure fin* :</label></td>
                         <td><input type="time" name="heureFin" id="heureFin" class="input"></td>
                     </tr>
                     <tr>
-                        <td><label for="maxParticipants">Max participants :</label></td>
+                        <td><label for="maxParticipants">Max participants* :</label></td>
                         <td><input type="text" name="maxParticipants" id="maxParticipants" class="input"></td>
-                        <td><label for="typePublic">Type public :</label></td>
+                        <td><label for="typePublic">Type public* :</label></td>
                         <td>
                             <select id="typePublic" name="typePublic" class="input">
                                 <?php
@@ -114,9 +108,5 @@
                 <input class="btn btn-orange bold" style="display: block; margin: 10px auto 0px auto;" type="submit" value="Créer">
             </form>
         </div>
-
-
-
-
     </body>
 </html>

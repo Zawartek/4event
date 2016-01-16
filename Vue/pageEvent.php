@@ -78,7 +78,12 @@ and open the template in the editor.
                     <p>
                         Lieu : <span id="adresse"><?php echo $event["adresse"]; ?></span>
                     </p>
-                    Horaires : <span><?php echo substr($event["evenement_heure_debut"],0 ,5)." - ".substr($event["evenement_heure_fin"],0 ,5); ?></span>
+                    <p>
+                        <?php echo "du ".formattageDate($event["evenement_date_debut"],"aff")." au ".formattageDate($event["evenement_date_fin"],"aff"); ?>
+                    </p>
+                    <p>
+                        Horaires : <span><?php echo substr($event["evenement_heure_debut"],0 ,5)." - ".substr($event["evenement_heure_fin"],0 ,5); ?></span>
+                    </p>
                 </div>
                 <div id="participationEvent">
                     <?php

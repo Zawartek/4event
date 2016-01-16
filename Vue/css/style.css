@@ -97,7 +97,7 @@ body {
 #creationEvent select
 {
     width: 180px;
-    margin-right: 20px;
+    margin: 0px 10px;
 }
 
 #creationEvent label
@@ -107,7 +107,7 @@ body {
 
 #tabCreationEvent tr
 {
-    padding: 10px;
+    padding: 0px;
 }
 
 fieldset
@@ -628,4 +628,16 @@ h2
 select
 {
     font-size: 14px;
+}
+
+#popupEvent
+{
+    margin: 0% 5%;
+    width: 90%;
+}
+
+#tabCreationEvent
+{
+    margin: 0% 3%;
+    width: 94%;
 }

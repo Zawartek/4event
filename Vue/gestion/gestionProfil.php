@@ -8,10 +8,10 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>gestion utilisateur</title>
-        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css"> 
+        <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script>
             $(function () {
                 $("#tabs").tabs();
@@ -25,7 +25,6 @@ and open the template in the editor.
                 <ul>
                     <li><a href="#tabProfil">Profil</a></li>
                     <li><a href="#tabFavoris">Mes favoris</a></li>
-                    <li><a href="#tabAlerte">Mes alertes</a></li>
                 </ul>
                 <div id="tabProfil">
                     <form method="POST" action="index.php?controle=admin&action=gestionUti">
@@ -85,8 +84,8 @@ and open the template in the editor.
                             </tr>
                         </table>
 
-                        <fieldset style="border : 1px solid black">
-                            <legend style="width:15%; margin-bottom: 0px;">Adresse</legend>
+                        <fieldset id="fieldset">
+                            <legend class="legende">Adresse</legend>
                             <table>
                                 <th classe="tableLabel"></th>
                                 <th classe="tableValeur"></th>
@@ -128,19 +127,12 @@ and open the template in the editor.
                 </div>
                 <div id="tabFavoris">
                     <?php
-                    foreach ($themes as $theme){
+                    foreach ($themes as $theme) {
                         $selected = "";
-                        if (strpos($uti["utilisateur_favoris"],$theme["theme_id"])>-1){
-                            $selected="checked";
+                        if (strpos($uti["utilisateur_favoris"], $theme["theme_id"]) > -1) {
+                            $selected = "checked";
                         }
-                        echo "<input name='favori' type='checkbox' value='". $theme["theme_id"] . "' " . $selected . "/>" . $theme["theme_nom"] . "<br>";
-                    }
-                    ?>
-                </div>
-                <div id="tabAlerte">
-                    <?php
-                    foreach ($uti["utilisateur_alertes"] as $alerte){
-                        echo "<input name='favori' type='checkbox' value='". $alerte["alerte_id"] . "' checked/>" . $alerte["evenement_titre"] . "<br>";
+                        echo "<input name='favori' type='checkbox' value='" . $theme["theme_id"] . "' " . $selected . "/>" . $theme["theme_nom"] . "<br>";
                     }
                     ?>
                 </div>
@@ -151,10 +143,10 @@ and open the template in the editor.
                 </div>
             </div>
             <br>
-            </div>    
+        </div>
 
-            <div id="footer">
-                <?php include "./Vue/footer.php"; ?>
-            </div>
+        <div id="footer">
+            <?php include "./Vue/footer.php"; ?>
+        </div>
     </body>
 </html>

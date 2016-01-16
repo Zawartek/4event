@@ -50,7 +50,7 @@
         {  ?>
             dialogCreerEvent = $("#dialog-creerEvent").dialog({
                 autoOpen: false,
-                height: 800,
+                height: 780,
                 width: 850,
                 modal: true,
                 position: {my: "center", at: "top", of: window},
