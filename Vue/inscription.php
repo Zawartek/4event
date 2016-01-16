@@ -67,7 +67,7 @@
                 var desactivationInscription = 0;
 
                 // On créé un tableau contenant tous nos inputs
-                var inputs = [nom, prenom, email, voie, codepostal, ville, pays, mdp];
+                var inputs = [nom, prenom, email, voie, codepostal, ville, pays];
 
                 // On parcours notre tableau
                 for (var i = 0, c = inputs.length; i < c; i++)
@@ -75,6 +75,14 @@
                     if (inputs[i].value == "") ( desactivationInscription = 1 )
                     inputs[i].style.borderColor = (inputs[i].value == "") ? "red" : "black";
                 }
+                
+                if (!mdp.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/))
+                {
+                   desactivationInscription = 1;
+                   mdp.style.borderColor = "red";
+                }
+                else
+                    mdp.style.borderColor = "black";
 
                 var cguText = document.getElementById("cguText");
                 var cguLink = document.getElementById("cguLink");
@@ -157,8 +165,7 @@
                 </div>
 
                 <label for="mdp">Mot de passe* :</label>
-                <input type="password" name="mdp" id="mdp" class="input"><br>
-
+                <input type="password" name="mdp" id="mdp" class="input" title="Doit contenir au moins : un nombre, une majuscule et une minuscule et au moins 8 caractères"><br>
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
                 <label for="femme" style="width: auto">Femme</label>
                 <input type="radio" name="sexe" value="1" id="homme">

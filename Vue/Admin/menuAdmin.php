@@ -13,9 +13,9 @@ and open the template in the editor.
     </head>
     <body>
         <div id="menuAdmin" class="cadre">
-        <a href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des utilisateurs</a>
-        <a href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des événements</a>
-        <a href="index.php?controle=admin&action=afficherPageAdminGF">Gestion des forums</a>
+        <a href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des Utilisateurs</a>
+        <a href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des Événements</a>
+        <a href="index.php?controle=admin&action=afficherPageAdminGF">Gestion de la FAQ</a>
         
         </div>
     </body>
