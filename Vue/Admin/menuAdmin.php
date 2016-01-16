@@ -9,14 +9,12 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="../css/style.css">
-        
     </head>
     <body>
         <div id="menuAdmin" class="cadre">
-        <a href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des Utilisateurs</a>
-        <a href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des Événements</a>
-        <a href="index.php?controle=admin&action=afficherPageAdminGF">Gestion de la FAQ</a>
-        
+            <a href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des Utilisateurs</a>
+            <a href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des Événements</a>
+            <a href="index.php?controle=admin&action=afficherPageAdminGF">Gestion de la FAQ</a>
         </div>
     </body>
 </html>

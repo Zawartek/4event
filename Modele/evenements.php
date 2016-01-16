@@ -8,35 +8,38 @@ function ajouteventBD($db,$question, $reponse, $idAdmin)
     return $reponse->fetchAll();
 }
 
-function modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif) 
-{   
-    $reponse = $db->query("update evenement set evenement_titre ='$evenement_titre', evenement_description='$evenement_description', evenement_utilisateur_id='$evenement_utilisateur_id', evenement_theme_id='$evenement_theme_id' evenement_date_debut='$evenement_date_debut', evenement_heure_debut='$evenement_heure_debut', evenement_date_fin='$evenement_date_fin', evenement_heure_fin='$evenement_heure_fin', evenement_max_participants='$evenement_max_participants' evenement_type_public='$evenement_type_public', evenement_site_web='$evenement_site_web', evenement_tarif='$evenement_tarif'  where evenement_id='$evenement_id'");
-    return $reponse->fetchAll(); 
+function modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $evenement_utilisateur_id, $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif)
+{
+    $sql = "update evenement set evenement_titre ='$evenement_titre', evenement_description='$evenement_description', evenement_utilisateur_id='$evenement_utilisateur_id', evenement_theme_id='$evenement_theme_id', evenement_date_debut='$evenement_date_debut', evenement_heure_debut='$evenement_heure_debut', evenement_date_fin='$evenement_date_fin', evenement_heure_fin='$evenement_heure_fin', evenement_max_participants='$evenement_max_participants', evenement_type_public='$evenement_type_public', evenement_site_web='$evenement_site_web', evenement_tarif='$evenement_tarif'  where evenement_id='$evenement_id'";
+    $reponse = $db->query($sql);
+    return $reponse->fetchAll();
 }
 
 function modificationadresseBD($db, $adresse_id, $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays)
 {
-    $reponse = $db->query("update adresse set adresse_numero_voie='$adresse_numero_voie', adresse_ville='$adresse_ville', adresse_code_postal='$adresse_code_postal', adresse_pays='$adresse_pays' where adresse_id='$adresse_id'");
+    $sql = "update adresse set adresse_numero_voie='$adresse_numero_voie', adresse_ville='$adresse_ville', adresse_code_postal='$adresse_code_postal', adresse_pays='$adresse_pays' where adresse_id='$adresse_id'";
+    $reponse = $db->query($sql);
     return $reponse->fetchAll();
 }
 
 function adresseByEventBD($db, $evenement_id)
 {
-    $reponse = $db->query("$db, select evenement_adresse_id from evenement where evenement_id='$evenement_id' ");
-    return $reponse->fetchAll();           
+    $reponse = $db->query("select evenement_adresse_id from evenement where evenement_id='$evenement_id'");
+    $data = $reponse->fetch();
+    return $data["evenement_adresse_id"];
 }
 
 function suppressioneventBD($db,$evenement_id)
-{   
+{
     $reponse = $db->query("delete from evenement where evenement_id = '$evenement_id'");
     return $reponse->fetchAll();
 }
 
 function events($db)
-{   
+{
     $reponse = $db->query("select * from evenement, adresse where evenement_adresse_id=adresse_id");
     return $reponse->fetchAll();
-      
+
 }
 
 
@@ -52,7 +55,7 @@ function infosEvent($db, $idEvent) {
     $reponse = $db->query($request);
     if ($reponse != null) {
         $data = $reponse->fetch();
-        
+
         $request = 'SELECT count(e.evenement_id) as nbEvent '
                 . 'FROM utilisateur u, evenement e '
                 . 'WHERE u.utilisateur_id = '. $data['evenement_utilisateur_id']
@@ -60,7 +63,7 @@ function infosEvent($db, $idEvent) {
                 . 'u.utilisateur_id = e.evenement_utilisateur_id ' .';';
         $reponse = $db->query($request);
         $data['nbEvent'] = $reponse->fetch()['nbEvent'];
-        
+
         // ajout des commentaires
         $data['adresse'] = $data['adresse_numero_voie'] . ", "
                 . $data['adresse_code_postal'] . " "
@@ -74,7 +77,7 @@ function infosEvent($db, $idEvent) {
         while ($com = $reponse->fetch() and isset($com)) {
             $data['commentaires'][] = $com;
         }
-        
+
         $sql2 = "SELECT media_url FROM `media` WHERE media_evenement_id = $idEvent AND media_type = 0 AND media_miniature = 1";
         $reponse2 = $db->query($sql2);
         $data2 = $reponse2->fetch();
@@ -98,7 +101,7 @@ function annulerParticipationBD($db, $idEvent, $idUti)
 {
     // Recuperation de l'evenement
     $request = 'DELETE FROM participation '
-            . 'WHERE participation_utilisateur_id=' . $idUti . 
+            . 'WHERE participation_utilisateur_id=' . $idUti .
             ' and participation_evenement_id=' . $idEvent . ';';
     $reussite = $db->exec($request);
     echo $reussite;
@@ -115,7 +118,7 @@ function participerBD($db, $idEvent, $idUti,$nb)
 function participe($db, $idUti, $idEvent)
 {
     $request = 'SELECT count(*) as nb FROM participation '
-            . 'WHERE participation_utilisateur_id=' . $idUti . 
+            . 'WHERE participation_utilisateur_id=' . $idUti .
             ' and participation_evenement_id=' . $idEvent . ';';
     $reponse = $db->query($request);
     return $reponse->fetch()['nb'];
@@ -134,7 +137,7 @@ function rechercheBD($db, $date, $theme){
     }
     $sql->execute();
     $data = $sql->fetchAll();
-    
+
     return $data;
 }
 
@@ -169,7 +172,7 @@ function rechercheEvent($condition, $db)
 
         $i ++;
     }
-    
+
     if (!isset($events[0]["evenement_id"])) { return NULL; }
     else { return $events; }
 }
@@ -178,6 +181,6 @@ function ajoutAvisBD($db, $note, $avis,$idUser, $idEvent){
     $request = 'INSERT INTO avis (avis_utilisateur_id, avis_evenement_id, avis_contenu, avis_note) '
             . 'VALUES (' . $idUser . ',' . $idEvent . ', "'. $avis . '",' . $note . ');';
     $reussite = $db->exec($request) or die (utf8_encode("erreur de requête : ") . $request);
-    
+
 }
 ?>

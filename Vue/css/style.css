@@ -550,3 +550,11 @@ h2
     float: right;
     margin-top: 25px;
 }
+
+.legende
+{
+    width:auto;
+    margin-bottom: 0px;
+    border: none;
+    padding: 4px;
+}

@@ -11,22 +11,27 @@ and open the template in the editor.
         <link rel="stylesheet" href="./Vue/css/style.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function ()
+            {
                 var utilisateurs = <?php echo json_encode($utilisateurs); ?>;
                 $('#ADD').show();
                 $('#MOD').hide();
                 $('#SUPPR').hide();
 
-                $('#ddlUtilisateur').on('change', function () {
+                $('#ddlUtilisateur').on('change', function ()
+                {
                     var text;
                     text = this.options[this.selectedIndex].value;
-                    if (this.selectedIndex == "0") {
+                    if (this.selectedIndex == "0")
+                    {
                         $('#id').val("");
                         $('#email').val("");
                         $('#nom').val("");
                         $('#prenom').val("");
-                        $('#sexe').val("");
-                        $('#datenaissance').val("");
+                        $('#sexe').val("0");
+                        $('#jour').val("0");
+                        $('#mois').val("0");
+                        $('#annee').val("0");
                         $('#etat').val("0");
                         $('#type').val("0");
                         $('#mdp').val("");
@@ -40,7 +45,8 @@ and open the template in the editor.
                         $('#MOD').hide();
                         $('#SUPPR').hide();
                     }
-                    else {
+                    else 
+                    {
                         $('#id').val(utilisateurs[text]['utilisateur_id']);
                         $('#email').val(utilisateurs[text]['utilisateur_email']);
                         $('#nom').val(utilisateurs[text]['utilisateur_nom']);
@@ -84,173 +90,172 @@ and open the template in the editor.
         <div id="content" >
             <?php require './Vue/header.php'; ?>
             <div classe="container_event">
-            <?php
-            require './Vue/Admin/menuAdmin.php';
-            ?>
-            <div id='listeUtilisateur'>
-                <label>Liste des utilisateurs : </label>
-                <select id="ddlUtilisateur">
-                    <option value="0">Création d'un nouvel utilisateur</option>
-                    <?php
-                    $cpt=0;
-                    foreach ($utilisateurs as $uti) {
-                        echo '<option value="' . $cpt++ . '">' . $uti['utilisateur_email'] . '</option>';
-                    }
-                    ?>
-                </select>
-            </div>
-            <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionUti">
-                <table id="tableUtilisateur">
-                    <tr>
-                        <th classe="tableLabel"></th>
-                        <th classe="tableValeur"></th>
-                        <th classe="tableLabel"></th>
-                        <th classe="tableValeur"></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Mail :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="email" type="text" name="email" value=""/>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <label>Nom :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="nom" type="text" name="nom" value=""/>
-                        </td>
-                        <td>
-                            <label>Date de naissance :</label>
-                        </td>
-                        <td>
-                            <select class="champDateNaissance" name="jour" id="jour" onchange="">
-                                <option value="0">Jour</option>
-                                <?php
-                                for ($j = 1; $j <= 31; $j ++)
-                                {
-                                    echo "<option value='$j'>$j</option>";
-                                } ?>
-                            </select>
-                            <select class="champDateNaissance" name="mois" id="mois" onchange="">
-                                <option value="0">Mois</option>
-                                <?php
-                                $mois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
-                                for ($m = 1; $m <= 12; $m ++)
-                                {
-                                    $indice = $m - 1;
-                                    echo "<option value='$m'>$mois[$indice]</option>";
-                                } ?>
-                            </select>
-                            <select class="champDateNaissance" name="annee" id="annee" onchange="">
-                                <option value="0">Année</option>
-                                <?php
-                                for ($a = date("Y"); $a >= 1900; $a --)
-                                {
-                                    echo "<option value='$a'>$a</option>";
-                                } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Prenom :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="prenom" type="text" name="prenom" value=""/>
-                        </td>
-                        <td>
-                            <label>Etat :</label>
-                        </td>
-                        <td>
-                            
-                            <select style="width:80%;" id="etat" type="text" name="etat" >
-                                <option value="0">Actif</option>
-                                <option value="1">Supprimé</option>
-                                <option value="2">Bani</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Sexe :</label>
-                        </td>
-                        <td>
-                            <select style="width:80%;" id="sexe" type="text" name="sexe">
-                                <option value="0">Femme</option>
-                                <option value="1">Homme</option>
-                            </select>
-                        </td>
-                        <td>
-                            <label>Type :</label>
-                        </td>
-                        <td>
-                            
-                            <select style="width:80%;" id="type" type="text" name="type">
-                                <option value="0">Normal</option>
-                                <option value="1">Modérateur</option>
-                                <option value="2">Administrateur</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Mot de passe :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="mdp" type="password" name="mdp" value=""/>
-                        </td>
-                    </tr>
-                </table>
-                
-                <fieldset style="border : 1px solid black">
-                    <legend style="width:15%; margin-bottom: 0px;">Addresse</legend>
-                    <table>
-                        <th classe="tableLabel"></th>
-                        <th classe="tableValeur"></th>
-                        <th classe="tableLabel"></th>
-                        <th classe="tableValeur"></th>
-                    <tr>
-                        <td>
-                            <label>Voie :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="voie" type="text" name="voie" value=""/>
-                        </td>
-                        <td>
-                            <label>Code postal :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="codepostal" type="text" name="codepostal" value=""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Ville :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="ville" type="text" name="ville" value=""/>
-                        </td>
-                        <td>
-                            <label>Pays :</label>
-                        </td>
-                        <td>
-                            <input style="width:80%;" id="pays" type="text" name="pays" value=""/>
-                        </td>
-                    </tr>
-                    </table>
-                </fieldset>
-                <input id="id" type="hidden" name="id"/>
-                <div id="boutons">
-                    <br>
-                    <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
-                    <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
-                    <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                <?php
+                require './Vue/Admin/menuAdmin.php';
+                ?>
+                <div id='listeUtilisateur'>
+                    <label>Liste des utilisateurs : </label>
+                    <select id="ddlUtilisateur">
+                        <option value="0">Création d'un nouvel utilisateur</option>
+                        <?php
+                        $cpt = 0;
+                        foreach ($utilisateurs as $uti) {
+                            echo '<option value="' . $cpt++ . '">' . $uti['utilisateur_email'] . '</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
-            </form>
+                <form class="cadre" method="POST" action="index.php?controle=admin&action=gestionUti">
+                    <table id="tableUtilisateur">
+                        <tr>
+                            <th classe="tableLabel"></th>
+                            <th classe="tableValeur"></th>
+                            <th classe="tableLabel"></th>
+                            <th classe="tableValeur"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Mail :</label>
+                            </td>
+                            <td>
+                                <input style="width:80%;" id="email" type="text" name="email" value="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>Nom :</label>
+                            </td>
+                            <td>
+                                <input style="width:80%;" id="nom" type="text" name="nom" value="">
+                            </td>
+                            <td>
+                                <label>Date de naissance :</label>
+                            </td>
+                            <td>
+                                <select class="champDateNaissance" name="jour" id="jour">
+                                    <option value="0">Jour</option>
+                                    <?php
+                                    for ($j = 1; $j <= 31; $j ++) {
+                                        echo "<option value='$j'>$j</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <select class="champDateNaissance" name="mois" id="mois">
+                                    <option value="0">Mois</option>
+                                    <?php
+                                    $mois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
+                                    for ($m = 1; $m <= 12; $m ++) {
+                                        $indice = $m - 1;
+                                        echo "<option value='$m'>$mois[$indice]</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <select class="champDateNaissance" name="annee" id="annee">
+                                    <option value="0">Année</option>
+                                    <?php
+                                    for ($a = date("Y"); $a >= 1900; $a --) {
+                                        echo "<option value='$a'>$a</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Prenom :</label>
+                            </td>
+                            <td>
+                                <input style="width:80%;" id="prenom" type="text" name="prenom" value="">
+                            </td>
+                            <td>
+                                <label>Etat :</label>
+                            </td>
+                            <td>
+                                <select style="width:80%;" id="etat" type="text" name="etat">
+                                    <option value="0">Actif</option>
+                                    <option value="1">Supprimé</option>
+                                    <option value="2">Bani</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Sexe :</label>
+                            </td>
+                            <td>
+                                <select style="width:80%;" id="sexe" type="text" name="sexe">
+                                    <option value="0">Femme</option>
+                                    <option value="1">Homme</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label>Type :</label>
+                            </td>
+                            <td>
+
+                                <select style="width:80%;" id="type" type="text" name="type">
+                                    <option value="0">Normal</option>
+                                    <option value="1">Modérateur</option>
+                                    <option value="2">Administrateur</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Mot de passe :</label>
+                            </td>
+                            <td>
+                                <input style="width:80%;" id="mdp" type="password" name="mdp" value="">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <fieldset style="border : 1px solid black">
+                        <legend class="legende">Adresse</legend>
+                        <table>
+                            <th classe="tableLabel"></th>
+                            <th classe="tableValeur"></th>
+                            <th classe="tableLabel"></th>
+                            <th classe="tableValeur"></th>
+                            <tr>
+                                <td>
+                                    <label>Voie :</label>
+                                </td>
+                                <td>
+                                    <input style="width:80%;" id="voie" type="text" name="voie" value="">
+                                </td>
+                                <td>
+                                    <label>Code postal :</label>
+                                </td>
+                                <td>
+                                    <input style="width:80%;" id="codepostal" type="text" name="codepostal" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Ville :</label>
+                                </td>
+                                <td>
+                                    <input style="width:80%;" id="ville" type="text" name="ville" value="">
+                                </td>
+                                <td>
+                                    <label>Pays :</label>
+                                </td>
+                                <td>
+                                    <input style="width:80%;" id="pays" type="text" name="pays" value="">
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <input id="id" type="hidden" name="id">
+                    <div id="boutons">
+                        <br>
+                        <button id="MOD" type="submit" name="MOD" class="btn-orange">Modifier</button>
+                        <button id="SUPPR" type="submit" name="SUPPR" class="btn-orange">Supprimer</button>
+                        <button id="ADD" type="submit" name="ADD" class="btn-orange">Ajouter</button>
+                    </div>
+                </form>
             </div>
             <?php require './Vue/footer.php'; ?>
         </div>

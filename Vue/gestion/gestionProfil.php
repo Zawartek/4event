@@ -86,7 +86,7 @@ and open the template in the editor.
                         </table>
 
                         <fieldset style="border : 1px solid black">
-                            <legend style="width:15%; margin-bottom: 0px;">Addresse</legend>
+                            <legend style="width:15%; margin-bottom: 0px;">Adresse</legend>
                             <table>
                                 <th classe="tableLabel"></th>
                                 <th classe="tableValeur"></th>
