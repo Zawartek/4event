@@ -224,4 +224,5 @@ and open the template in the editor.
             </form>
         </div>
     </body>
+    <div><?php include('./Vue/footer.php'); ?></div>
 </html>

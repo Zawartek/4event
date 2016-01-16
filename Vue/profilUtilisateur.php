@@ -118,4 +118,5 @@ and open the template in the editor.
 
         </div>
     </body>
+    <div><?php include('./Vue/footer.php'); ?></div>
 </html>
