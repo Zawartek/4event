@@ -16,21 +16,21 @@ function afficherPageAdminGE() {
     require './Modele/evenements.php';
     $events = events($db);
     include ("./Vue/Admin/gestionEvent.php");
-    
+
 }
 
 function afficherPageAdminGF() {
     require './Modele/admins.php';
     $faq=FAQ($db);
-    include ("./Vue/Admin/gestionForum.php");
+    include ("./Vue/Admin/gestionFaq.php");
 }
 
-function gestionEvent() 
+function gestionEvent()
 {
-    
+
     require './Modele/evenements.php';
     $evenement_id = $_POST['id'];
-    if (isset($_POST['SUPPR'])) 
+    if (isset($_POST['SUPPR']))
    {
      suppressioneventBD($db,$evenement_id);
    }
@@ -55,52 +55,48 @@ function gestionEvent()
         $adresse_ville = htmlspecialchars($_POST['codepostal']);
         $adresse_code_postal = htmlspecialchars($_POST['ville']);
         $adresse_pays = htmlspecialchars($_POST['pays']);
-       
-        if (isset($_POST['MOD'])) 
+
+        if (isset($_POST['MOD']))
         {
-            modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $_SESSION["userID"], $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin, 
-            $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif);        
+            modificationeventBD($db,$evenement_id, $evenement_titre, $evenement_description, $_SESSION["userID"], $evenement_theme_id, $evenement_date_debut, $evenement_heure_debut, $evenement_date_fin,
+            $evenement_heure_fin, $evenement_max_participants, $evenement_type_public, $evenement_site_web, $evenement_tarif);
 
             modificationadrsseBD($db, adresseByEventBD($db, $evenement_id), $adresse_numero_voie, $adresse_ville, $adresse_code_postal, $adresse_pays);
-        }    
+        }
     }
 }
 function gestionFaq()
 {
     require './Modele/admins.php';
     $idfaq = $_POST['id'];
+    
     if (isset($_POST['SUPPR']))
     {
-        suppressionFAQBD($db,$idfaq);
-    } 
-    
-    else 
-    
+        suppressionFAQBD($db, $idfaq);
+    }
+    else
     {
         $question = htmlspecialchars($_POST['titre']);
         $reponse = htmlspecialchars($_POST['description']);
- 
+
         if (isset($_POST['ADD']))
         {
-    echo "test2";
-            ajoutFAQBD($db,$question, $reponse, $_SESSION["userID"]);
-        } 
-        
+            ajoutFAQBD($db, $question, $reponse, $_SESSION["userID"]);
+        }
         else if (isset($_POST['MOD']))
         {
-    echo "test2";
-            modificationFAQBD($db,$idfaq, $question, $reponse, $_SESSION["userID"]);   
+            modificationFAQBD($db, $idfaq, $question, $reponse, $_SESSION["userID"]);
         }
     }
-   header('Location: index.php?controle=admin&action=afficherPageAdminGF');
+    header('Location: index.php?controle=admin&action=afficherPageAdminGF');
 }
 
-function gestionUti() 
+function gestionUti()
 {
-    
+
     require './Modele/utilisateurs.php';
     $idUti = $_POST['id'];
-    if (isset($_POST['SUPPR'])) 
+    if (isset($_POST['SUPPR']))
    {
      suppressionutil($db,$idUti);
    }
@@ -125,16 +121,16 @@ function gestionUti()
         {
             ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
             , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
-        } 
-        else if (isset($_POST['MOD'])) 
+        }
+        else if (isset($_POST['MOD']))
         {
             modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
             , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
-        }    
+        }
     }
     header('Location: index.php?controle=admin&action=afficherPageAdminGU');
 }
 
-        
 
-        
+
+

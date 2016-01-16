@@ -3,25 +3,37 @@ require ("configSQL.php");
 
 function ajoutFAQBD($db,$question, $reponse, $idAdmin)
 {
-    $reponse = $db->query("insert into faq (faq_id, faq_question, faq_reponse, faq_utilisateur_id) values ('', '$question', '$reponse', '$idAdmin')");
-    return $reponse->fetchAll();
+    $sql = $db->prepare('INSERT INTO faq SET faq_question = :question, faq_reponse = :reponse, faq_utilisateur_id = :idAdmin, faq_id = :id');
+
+    $sql->bindValue(':question', $question, PDO::PARAM_STR);
+    $sql->bindValue(':reponse', $reponse, PDO::PARAM_STR);
+    $sql->bindValue(':idAdmin', $idAdmin);
+    $sql->bindValue(':id', $id);
+
+    $sql->execute();
 }
 
 function modificationFAQBD($db,$id, $question, $reponse, $idAdmin)
 {
-    $reponse = $db->query("update faq set faq_question ='$question', faq_reponse='$reponse', faq_utilisateur_id='$idAdmin' where faq_id=$id");
-    return $reponse->fetchAll();
+    $sql = $db->prepare('UPDATE faq SET faq_question = :question, faq_reponse = :reponse, faq_utilisateur_id = :idAdmin WHERE faq_id = :id');
+
+    $sql->bindValue(':question', $question, PDO::PARAM_STR);
+    $sql->bindValue(':reponse', $reponse, PDO::PARAM_STR);
+    $sql->bindValue(':idAdmin', $idAdmin);
+    $sql->bindValue(':id', $id);
+
+    $sql->execute();
 }
 
 function suppressionFAQBD($db,$idFaq)
 {
-    $reponse = $db->query("delete from faq where faq_id = '$idFaq'");
+    $reponse = $db->query("DELETE FROM faq WHERE faq_id = '$idFaq'");
     return $reponse->fetchAll();
 }
 
 function FAQ($db)
 {
-    $reponse = $db->query("select * from faq");
+    $reponse = $db->query("SELECT * FROM faq");
     return $reponse->fetchAll();
 
 }
