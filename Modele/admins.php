@@ -2,7 +2,7 @@
 require ("configSQL.php");
 
 function verifAdminBD($db, $idUti){
-    return $db->query("SELECT utilisateur_type FROM utilisateur where utilisateur_id=$idUti")=='2';
+    return $db->query("SELECT utilisateur_type FROM utilisateur where utilisateur_id=$idUti")->fetch()['utilisateur_type']=='2';
 }
 
 function ajoutFAQBD($db,$question, $reponse, $idAdmin)
