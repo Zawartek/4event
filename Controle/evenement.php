@@ -136,11 +136,18 @@ function recherche()
     $events = array(array());
     $eventsFavoris = NULL;
 
-    if (isset($_POST["date"]) && isset($_POST["choixTheme"]))
+    if (isset($_POST["dateRecherche"]) && isset($_POST["themeRecherche"]))
     {
-        $date = formattageDate($_POST["date"], "bdd");
-        $theme = $_POST["choixTheme"];
-        $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id = $theme";
+        $date = formattageDate($_POST["dateRecherche"], "bdd");
+        $motCle = htmlspecialchars($_POST["motCleRecherche"]);
+        $ville = htmlspecialchars($_POST["villeRecherche"]);
+        $theme = $_POST["themeRecherche"];
+        
+        $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
+        
+        $condition .= ($motCle != "") ? " AND (UPPER(evenement_titre) LIKE UPPER('%$motCle%') OR UPPER(evenement_description) LIKE UPPER('%$motCle%'))" : "";
+        $condition .= ($ville != "") ? " AND evenement_adresse_id IN (SELECT adresse_id FROM adresse WHERE UPPER(adresse_ville) LIKE UPPER('%$ville%'))" : "";
+        $condition .= ($theme != "0") ? " AND evenement_theme_id = $theme" : "";
 
         $events = rechercheEvent($condition, $db);
     }

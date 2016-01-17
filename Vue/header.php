@@ -7,7 +7,11 @@
 <script src="./Vue/js/datepicker.js"></script>   
 
 <?php
-$date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("Y-m-d");
+$dateDefault = date("Y-m-d");
+$dateRecherche = (isset($_POST["dateRecherche"])) ? formattageDate($_POST["dateRecherche"],"bdd") : $dateDefault;
+$motCleRecherche = (isset($_POST["motCleRecherche"])) ? htmlspecialchars($_POST["motCleRecherche"]) : "";
+$villeRecherche = (isset($_POST["villeRecherche"])) ? htmlspecialchars($_POST["villeRecherche"]) : "";
+$themeRecherche = (isset($_POST["themeRecherche"])) ? $_POST["themeRecherche"] : "0";
 ?>
 
 <script type="text/javascript">
@@ -75,9 +79,16 @@ $date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("
 <script type="text/javascript">
     $(function ()
     {
-        $("#date").datepicker($.datepicker.regional["fr"]);
-        $("#date").datepicker('setDate', new Date(<?php echo json_encode($date); ?>));
+        $("#dateRecherche").datepicker($.datepicker.regional["fr"]);
+        $("#dateRecherche").datepicker('setDate', new Date(<?php echo json_encode($dateRecherche); ?>));
     });
+    function resetFromRecherche()
+    {
+        $("#motCleRecherche").val("");
+        $("#villeRecherche").val(""); 
+        $("#themeRecherche").val("0"); 
+        $("#dateRecherche").datepicker('setDate', new Date(<?php echo json_encode($dateDefault); ?>));
+    }
 </script>
 
 <div id="header">
@@ -153,16 +164,20 @@ $date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("
 </div>
 
 <form id="barreRecherche" method="post" action="./index.php?controle=utilisateur&action=accueil">
-    <input type="text" id="date" name="date" class="date" readonly="readonly">                    
-    <input type="text" id="motCle" name="motCle" placeholder="Mot Clé">
-    <input type="text" id="ville" name="ville" placeholder="Ville">
-    <select id="choixTheme" name="choixTheme" class="input">
+    <input type="text" id="dateRecherche" name="dateRecherche" class="date" readonly="readonly">                    
+    <input type="text" id="motCleRecherche" name="motCleRecherche" placeholder="Mot Clé" value="<?php echo $motCleRecherche; ?>">
+    <input type="text" id="villeRecherche" name="villeRecherche" placeholder="Ville" value="<?php echo $villeRecherche; ?>">
+    <select id="themeRecherche" name="themeRecherche" class="input">
         <option value="0">Tous</option>
         <?php
-        foreach ($themes as $theme) {
-            echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
+        foreach ($themes as $theme)
+        {
+            $selection = "";
+            if ($theme["theme_id"] == $themeRecherche) { $selection = "selected"; }
+            echo '<option value="'.$theme["theme_id"].'"'.$selection.'>' . $theme["theme_nom"] . '</option>';
         }
         ?>
     </select>
     <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
+    <input type="button" onclick="resetFromRecherche();" class="bold btn btn-orange" value="Reset">
 </form>

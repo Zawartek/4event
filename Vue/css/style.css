@@ -18,13 +18,6 @@ body
     margin: 0px 40px;
 }
 
-
-#content
-{
-    width : 900px;
-    margin: 0px auto;
-}
-
 #header
 {
     margin: 0px 0px 5px 0px;
@@ -652,19 +645,20 @@ select
 
 #content
 {
+    width : 900px;
+    margin: 0px auto -85px auto;/* the bottom margin is the negative value of the footer's height */
     min-height: 100%;
-    margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
 }
 footer
 {
-    height: 100px; /* '.push' must be the same height as 'footer' */
+    height: 85px; /* '.push' must be the same height as 'footer' */
     color: white;
     background-color: #C0C0C0;
 }
 
 footer, .push
 {
-    height: 100px; /* '.push' must be the same height as 'footer' */
+    height: 85px; /* '.push' must be the same height as 'footer' */
     margin: 0px;
 }
 
