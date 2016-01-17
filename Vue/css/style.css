@@ -677,3 +677,8 @@ footer, .push
     text-align: center;
     margin: 20px 0px;
 }
+
+.btn-backOffice
+{
+    margin: 0px 15px !important;
+}

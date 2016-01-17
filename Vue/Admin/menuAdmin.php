@@ -12,9 +12,10 @@ and open the template in the editor.
     </head>
     <body>
         <div id="menuAdmin" class="cadre">
-            <a class="bold btn btn-orange" href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des Utilisateurs</a>
-            <a class="bold btn btn-orange" href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des Événements</a>
-            <a class="bold btn btn-orange" href="index.php?controle=admin&action=afficherPageAdminGF">Gestion de la FAQ</a>
+            <a class="bold btn btn-orange btn-backOffice" href="index.php?controle=admin&action=afficherPageAdminGU">Gestion des Utilisateurs</a>
+            <a class="bold btn btn-orange btn-backOffice" href="index.php?controle=admin&action=afficherPageAdminGE">Gestion des Événements</a>
+            <a class="bold btn btn-orange btn-backOffice" href="index.php?controle=admin&action=afficherPageAdminGF">Gestion de la FAQ</a>
+            <a class="bold btn btn-orange btn-backOffice" href="index.php?controle=admin&action=afficherPageAdminGF">Gestion des Thèmes</a>
         </div>
     </body>
 </html>
