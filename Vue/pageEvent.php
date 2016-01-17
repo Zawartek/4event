@@ -59,6 +59,17 @@ and open the template in the editor.
                 });
             });
         </script>
+        <div id="fb-root"></div>
+        <script>
+                (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=963250360436128";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+        
+        </script>
     </head>
     <body>
         <div class="container_event">
@@ -118,6 +129,12 @@ and open the template in the editor.
                     <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
                         Site Web
                     </a>
+                </div>
+                <hr size="1" color="black">
+                <div class="fb-share-button" 
+                     data-href="http://www.isep.fr/" 
+                     data-layout="button_count">
+                    
                 </div>
             </div>
             <div id="infosComplementairesEvent">
