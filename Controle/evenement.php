@@ -25,9 +25,13 @@ function afficherPageEvent($idEvent) {
 function participer() {
     $idEvent = $_POST['idEvent'];
     $nb = $_POST['nb'];
+    $res="";
     require_once './Modele/evenements.php';
     if (isset($_SESSION['userID'])) {
-        participerBD($db, $idEvent, $_SESSION['userID'], $nb);
+        $res = participerBD($db, $idEvent, $_SESSION['userID'], $nb);
+    }
+    if ($res==""){
+        $erreur="nombre de participant trop élevé";
     }
     $nexturl = "index.php?controle=evenement&action=afficherPageEvent&param=" . $idEvent;
     header("Location:" . $nexturl);

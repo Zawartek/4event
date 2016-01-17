@@ -128,18 +128,28 @@ function gestionTheme() {
     } else {
         $nom = htmlspecialchars($_POST['nom']);
         print_r($_FILES);
-        uploadFile("./Vue/img/logoTheme/", 'miniature');
-
+        if (isset($_FILES['miniature']['name']) && $_FILES['miniature']['name']<>"") {
+            uploadFile("./Vue/img/logoTheme/", 'miniature');
+        }
         if (isset($_POST['ADD'])) {
-            ajoutThemeBD($db, $nom, $_FILES['miniature']['name']);
+            if (isset($_POST['nom']) && isset($_FILES['miniature']['name'])) {
+                ajoutThemeBD($db, $nom, $_FILES['miniature']['name']);
+            }
         } else if (isset($_POST['MOD'])) {
-            modificationThemeBD($db, $idTheme, $nom, $_FILES['icone']['name']);
+            if (isset($_POST['nom'])) {
+                if (isset($_FILES['miniature']['name']) && $_FILES['miniature']['name']<>"") {
+                    $miniature = $_FILES['miniature']['name'];
+                } else {
+                    $miniature = getMiniature($db, $idTheme);
+                }
+                modificationThemeBD($db, $idTheme, $nom, $miniature);
+            }
         }
     }
     header('Location: index.php?controle=admin&action=afficherPageAdminGT');
 }
 
-function uploadFile($target_dir,$file_to_upload) {
+function uploadFile($target_dir, $file_to_upload) {
     $target_file = $target_dir . basename($_FILES[$file_to_upload]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);

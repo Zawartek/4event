@@ -42,10 +42,24 @@ function ThemesBD($db){
     $reponse = $db->query("SELECT * FROM theme");
     return $reponse->fetchAll();
 }
+
 function ajoutThemeBD($db,$nom,$miniature){
     $request ="INSERT INTO theme (theme_nom,theme_miniature) VALUES('$nom','$miniature')";
     $reponse = $db->query($request);
 }
+
+function modificationThemeBD($db,$id,$nom,$miniature){
+    $request ="UPDATE theme SET theme_nom='$nom',theme_miniature='$miniature' WHERE theme_id = '$id'";
+    echo $request;
+    $reponse = $db->query($request);
+}
+
+function getMiniature($db,$idTheme){
+    $sql=" Select theme_miniature FROM theme where theme_id=$idTheme";
+    $reponse=$db->query($sql);
+    return $reponse->fetch()['theme_miniature'];
+}
+
 function suppressionThemeBD($db,$idTheme)
 {
     $reponse = $db->query("DELETE FROM theme WHERE theme_id = '$idTheme'");
