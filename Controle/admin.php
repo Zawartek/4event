@@ -5,26 +5,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+function verifAdmin(){
+    
+    if (!isset($_SESSION['userID']) || !verifAdminBD($db, $_SESSION['userID'])){
+        header("Location:./");
+    }
+}
 function afficherPageAdminGU() {
+    verifAdmin();
     require './Modele/utilisateurs.php';
     $utilisateurs = utilisateurs($db);
     include ("./Vue/Admin/gestionUtilisateur.php");
 }
 
 function afficherPageAdminGE() {
+    verifAdmin();
     require './Modele/evenements.php';
     $events = events($db);
     include ("./Vue/Admin/gestionEvent.php");
 }
 
 function afficherPageAdminGF() {
+    verifAdmin();
     require './Modele/admins.php';
     $faq = FAQ($db);
     include ("./Vue/Admin/gestionFaq.php");
 }
 
 function afficherPageAdminGT() {
+    verifAdmin();
     require './Modele/admins.php';
     $themes = ThemesBD($db);
     include ("./Vue/Admin/gestionTheme.php");

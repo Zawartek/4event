@@ -1,6 +1,10 @@
 <?php
 require ("configSQL.php");
 
+function verifAdminBD($db, $idUti){
+    return $db->query("SELECT utilisateur_type FROM utilisateur where utilisateur_id=$idUti")['utilisateur_type']=='2';
+}
+
 function ajoutFAQBD($db,$question, $reponse, $idAdmin)
 {
     $sql = $db->prepare('INSERT INTO faq SET faq_question = :question, faq_reponse = :reponse, faq_utilisateur_id = :idAdmin, faq_id = :id');
