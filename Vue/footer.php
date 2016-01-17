@@ -23,7 +23,7 @@
             </li>
             <li id="ElmtID" class="ElmtBFooter"><a  class="ElmtBFinterne" target="_blank">Suivez nous :  </a>
                 <a class="lien-reseau" href="https://www.facebook.com/ISEP4event/" target="_blank"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
+                <a class="lien-reseau" href="https://twitter.com/Zawartek/lists/4event" target="_blank"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a>
             </li>
         </ul>
 
