@@ -75,7 +75,7 @@
                     if (inputs[i].value == "") ( desactivationInscription = 1 )
                     inputs[i].style.borderColor = (inputs[i].value == "") ? "red" : "black";
                 }
-                
+
                 if (!mdp.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/))
                 {
                    desactivationInscription = 1;
@@ -111,28 +111,28 @@
             <form id="formInscription" method="post" action="index.php?controle=utilisateur&action=inscription">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
                 <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br>
+                <br>
 
                 <label for="nom">Nom* :</label>
-                <input type="text" name="nom" id="nom" class="input"><br>
+                <input type="text" name="nom" id="nom" class="input" placeholder="ex : Sop"><br>
 
                 <label for="prenom">Prénom* :</label>
-                <input type="text" name="prenom" id="prenom" class="input"><br>
+                <input type="text" name="prenom" id="prenom" class="input" placeholder="ex : Alain"><br>
 
                 <label for="email">Email* :</label>
-                <input type="text" name="email" id="email" class="input"><br>
+                <input type="text" name="email" id="email" class="input" placeholder="ex : sop.alain@isep.fr"><br>
 
                 <label for="voie">Voie* :</label>
-                <input type="text" name="voie" id="voie" class="input"><br>
+                <input type="text" name="voie" id="voie" class="input" placeholder="ex : 1 rue du lotus"><br>
 
                 <label for="codepostal">Code postal* :</label>
-                <input type="text" name="codepostal" id="codepostal" class="input"><br>
+                <input type="text" name="codepostal" id="codepostal" class="input" placeholder="ex : 75006"><br>
 
                 <label for="ville">Ville* :</label>
-                <input type="text" name="ville" id="ville" class="input"><br>
+                <input type="text" name="ville" id="ville" class="input" placeholder="ex : Paris"><br>
 
                 <label for="pays">Pays* :</label>
-                <input type="text" name="pays" id="pays" class="input"><br>
+                <input type="text" name="pays" id="pays" class="input" placeholder="ex : France"><br>
 
                 <label style="width: auto;">Date de<br>naissance* :</label>
                 <div class="formDateNaissance">
@@ -165,7 +165,7 @@
                 </div>
 
                 <label for="mdp">Mot de passe* :</label>
-                <input type="password" name="mdp" id="mdp" class="input" title="Doit contenir au moins : un nombre, une majuscule et une minuscule et au moins 8 caractères"><br>
+                <input type="password" name="mdp" id="mdp" class="input" title="Doit contenir au moins : un nombre, une majuscule et une minuscule et au moins 8 caractères" placeholder="ex : Azerty12"><br>
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
                 <label for="femme" style="width: auto">Femme</label>
                 <input type="radio" name="sexe" value="1" id="homme">
