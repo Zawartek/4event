@@ -38,4 +38,17 @@ function FAQ($db)
 
 }
 
+function ThemesBD($db){
+    $reponse = $db->query("SELECT * FROM theme");
+    return $reponse->fetchAll();
+}
+function ajoutThemeBD($db,$nom,$miniature){
+    $request ="INSERT INTO theme (theme_nom,theme_miniature) VALUES('$nom','$miniature')";
+    $reponse = $db->query($request);
+}
+function suppressionThemeBD($db,$idTheme)
+{
+    $reponse = $db->query("DELETE FROM theme WHERE theme_id = '$idTheme'");
+    return $reponse->fetchAll();
+}
 ?>

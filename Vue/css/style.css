@@ -458,6 +458,10 @@ div#crosshair {
     text-align: center;
 }
 
+.listeBackOffice {
+    text-align: center;
+}
+
 #tableUtilisateur
 {
     width : 80%;
@@ -472,6 +476,10 @@ div#crosshair {
 
 #tableEvent
 {
+    width : 80%;
+    margin-left: 10%;
+}
+.tableBackOffice {
     width : 80%;
     margin-left: 10%;
 }
