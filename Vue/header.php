@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="./Vue/js/datepicker.js"></script>   
 
-<!-- Google sign in api
-<meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="129178937096-9qmmouu4uov21rk8l8l3p05hch25lgj5.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script> -->
+<?php
+$date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("Y-m-d");
+?>
 
 <script type="text/javascript">
     $(function ()
@@ -70,6 +70,13 @@
             $("#btnBackOffice").button();
         <?php
         } ?>
+    });
+</script>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#date").datepicker($.datepicker.regional["fr"]);
+        $("#date").datepicker('setDate', new Date(<?php echo json_encode($date); ?>));
     });
 </script>
 
@@ -144,3 +151,18 @@
     <?php
     } ?>
 </div>
+
+<form id="barreRecherche" method="post" action="./index.php?controle=utilisateur&action=accueil">
+    <input type="text" id="date" name="date" class="date" readonly="readonly">                    
+    <input type="text" id="motCle" name="motCle" placeholder="Mot Clé">
+    <input type="text" id="ville" name="ville" placeholder="Ville">
+    <select id="choixTheme" name="choixTheme" class="input">
+        <option value="0">Tous</option>
+        <?php
+        foreach ($themes as $theme) {
+            echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
+        }
+        ?>
+    </select>
+    <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
+</form>
