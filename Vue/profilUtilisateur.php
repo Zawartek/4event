@@ -33,11 +33,11 @@ and open the template in the editor.
             <div id="infosComplementaires">
                 <div id="agenda">
                     <p class="titre">Agenda</p>
-
                     <?php
-                    if (sizeof($uti['evenements']) > 0) {
-                        foreach ($uti['evenements'] as $event) {
-                            ?>
+                    if (sizeof($uti['evenements']) > 0)
+                    {
+                        foreach ($uti['evenements'] as $event)
+                        { ?>
                             <a class="eventProfil"
                                href="<?php
                                echo "index.php?controle=evenement"
@@ -49,9 +49,8 @@ and open the template in the editor.
                             <br>
                             <?php
                         }
-                    } else {
-                        echo "<p class='eventProfil'>aucun événément de prévu dans l'agenda</p>";
                     }
+                    else { echo "<p class='eventProfil'>aucun événément de prévu dans l'agenda</p>"; }
                     ?>
                 </div>
                 <div id="orga">

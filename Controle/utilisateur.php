@@ -36,6 +36,13 @@ function afficherPageGestionUti(){
     include './Vue/gestion/gestionProfil.php';
 }
 
+function afficherPageFAQ(){
+    require_once './Modele/admins.php';
+    $faqs = FAQ($db);
+    include './Vue/faq.php';
+}
+
+
 // Controleur pour gérer le formulaire de connexion des utilisateurs
 function connexion() {
     if (!empty($_POST['email']) && !empty($_POST['mdp'])) {

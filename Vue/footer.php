@@ -12,7 +12,7 @@
             <section>
                 <ul class="BodyFooter">
                     <li id="ElmtID" class="ElmtBFooter">
-                        <a class="ElmtBFinterne" href="#">
+                        <a class="ElmtBFinterne" href="index.php?controle=utilisateur&action=afficherPageFAQ">
                             FAQ
                         </a>
                     </li>
