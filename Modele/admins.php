@@ -8,7 +8,7 @@ function ajoutFAQBD($db,$question, $reponse, $idAdmin)
     $sql->bindValue(':question', $question, PDO::PARAM_STR);
     $sql->bindValue(':reponse', $reponse, PDO::PARAM_STR);
     $sql->bindValue(':idAdmin', $idAdmin);
-    $sql->bindValue(':id', $id);
+    $sql->bindValue(':id', '');
 
     $sql->execute();
 }

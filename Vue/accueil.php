@@ -7,56 +7,31 @@ $date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("
         <meta charset="UTF-8">
         <title>Accueil</title>
         <link rel="icon" type="image/png" href="favicon.png">
-
-        <!-- appels pour datepicker -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="./Vue/js/datepicker.js"></script>
-
-        <script type="text/javascript">
-            $(function ()
-            {
-                $("#date").datepicker($.datepicker.regional["fr"]);
-                $("#date").datepicker('setDate', new Date(<?php echo json_encode($date); ?>));
-            });
-        </script>
     </head>
     <body>
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div>
-                <h2 class="text-orange" style=" text-align: center; margin-top: 7px; ">Le site de partage d'événements</h2>
+                <h2 class="text-orange" style=" text-align: center; margin: 15px 0px;">Le site de partage d'événements</h2>
             </div>
 
             <div id="slider">
                 <?php include('./Vue/slider/slider.html'); ?>
-
-                <form id="barreRecherche" method="post" action="index.php?controle=utilisateur&action=accueil">
-                    <select id="choixTheme" name="choixTheme" class="input">
-                        <option value="0">Tous</option>
-                        <?php
-                        foreach ($themes as $theme)
-                        {
-                            echo '<option value="' . $theme["theme_id"] . '">' . $theme["theme_nom"] . '</option>';
-                        } ?>
-                    </select>
-                    <input type="text" id="date" name="date" class="date" readonly="readonly">
-                    <input type="submit" id="valider" class="bold btn btn-orange" value="Rechercher">
-                </form>
             </div>
             <div id="clear"></div>
             <div id="listeRecherche">
                 <div id="favoris">
                 <?php
                 $affichageTitre = 0;
+                $affichageTitre2 = 0;
                 $id = 1;
                 if (isset($_SESSION["prenom_nom"]))
                 {
                     $class = array ("couleurEvent1", "couleurEvent2");
                     if ($events[0] == 1)
                     {
-                        echo "<p align='center'>Aucun événement ne correspond a vos favoris.</p>";
+                        echo "<h3>Aucun événement ne correspond a vos favoris.</h3>";
+                        $affichageTitre2 = 1;
                     }
                     elseif ($events[0] !== NULL)
                     {
@@ -91,16 +66,13 @@ $date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("
                 </div>
                 <?php
                 $class = array ("couleurEvent1", "couleurEvent2");
-                if (sizeof($events[1]) == 0) {
-                    echo "<p align='center'>Aucun événement trouvé.</p>";
-                }
+                if (sizeof($events[1]) == 0) { echo "<h3>Aucun événement trouvé.</h3>"; }
                 else
                 {
-                    if ($affichageTitre == 1)
-                    {
-                        echo "<h3>Autres Événements à venir :</h3>";
-                    }
-                    
+                    if ($affichageTitre == 1) { echo "<h3>Autres Événements à venir :</h3>"; }
+                    elseif ($affichageTitre2 == 1) { echo "<h3>Voici d'autres Événements à venir :</h3>"; }
+                    elseif(isset($_POST["date"])) { echo "<h3>Voici les résultats de votre recherche :</h3>"; }
+                    else { echo "<h3>Voici les Événements à venir :</h3>"; }
                     
                     foreach ($events[1] as $event)
                     { ?>

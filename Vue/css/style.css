@@ -416,18 +416,19 @@ div#crosshair {
     color: #FA6400;
 }
 
-/* Accueil */
-#slider
-{
-
-}
-
 #barreRecherche
 {
     text-align: center;
-    padding-top : 5px;
-    padding-bottom : 5px;
-    background-color: #C0C0C0;
+    margin: 10px 0px;
+}
+
+#barreRecherche input[type=text],
+#barreRecherche select
+{
+    border: 1px solid gray;
+    border-radius: 4px;
+    width: 140px;
+    padding: 6px 6px;;
 }
 
 #trierPar
@@ -538,12 +539,6 @@ div#crosshair {
 #boutons
 {
     text-align: center;
-}
-
-#choixTheme
-{
-    width: 140px;
-    padding: 6px 3px;;
 }
 
 .input
@@ -690,9 +685,9 @@ footer, .push
 
 h3
 {
+    font-size: 18px;
     text-align: center;
     color: #FF7E00;
-    text-decoration: underline;
     margin: 15px 0px;
 }
 
