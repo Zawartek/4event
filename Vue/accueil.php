@@ -1,9 +1,6 @@
 <?php
 require('./Modele/configSQL.php');
-if (isset($_POST["date"]))
-    $date = formattageDate ($_POST["date"],"bdd");
-else
-    $date = date("Y-m-d");
+$date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("Y-m-d");
 ?>
 <html>
     <head>

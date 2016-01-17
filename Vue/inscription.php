@@ -87,7 +87,7 @@
                 var cguText = document.getElementById("cguText");
                 var cguLink = document.getElementById("cguLink");
 
-                if (!$("#cgu").is(":checked")) ( desactivationInscription = 1 )
+                if (!$("#cgu").is(":checked")) { desactivationInscription = 1 }
                 cguText.style.color = (!$("#cgu").is(":checked")) ? "red" : "black";
                 cguLink.style.color = (!$("#cgu").is(":checked")) ? "orange" : "blue";
 
@@ -165,7 +165,7 @@
                 </div>
 
                 <label for="mdp">Mot de passe* :</label>
-                <input type="password" name="mdp" id="mdp" class="input" title="Doit contenir au moins : un nombre, une majuscule et une minuscule et au moins 8 caractères"><br>
+                <input type="password" name="mdp" id="mdp" class="input" title="Doit contenir au moins : un nombre, une majuscule et une minuscule et au moins 8 caractères alphanumériques."><br>
                 <input type="radio" checked="checked" name="sexe" Value="0" id="femme">
                 <label for="femme" style="width: auto">Femme</label>
                 <input type="radio" name="sexe" value="1" id="homme">
