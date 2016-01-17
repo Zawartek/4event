@@ -50,15 +50,62 @@ else
             </div>
             <div id="clear"></div>
             <div id="listeRecherche">
+                <div id="favoris">
                 <?php
+                $affichageTitre = 0;
                 $id = 1;
+                if (isset($_SESSION["prenom_nom"]))
+                {
+                    $class = array ("couleurEvent1", "couleurEvent2");
+                    if ($events[0] == 1)
+                    {
+                        echo "<p align='center'>Aucun événement ne correspond a vos favoris.</p>";
+                    }
+                    elseif ($events[0] !== NULL)
+                    {
+                        $affichageTitre = 1;
+                        echo "<h3>Événements liés à vos Favoris :</h3>";
+                        
+                        foreach ($events[0] as $event)
+                        { ?>
+                            <div class="cadre <?php echo $class[$id]; ?>">
+                                <form style="float: right;">
+                                    <input type='hidden' name='controle' value='evenement'/>
+                                    <input type='hidden' name='action' value='afficherPageEvent'/>
+                                    <input type='hidden' name='param' value='<?php echo $event["evenement_id"]; ?>'/>
+                                    <input type="submit" class="btn bold btn-orange" value="Afficher"/>
+                                </form>
+                                <p><?php echo formattageDate($event["evenement_date_debut"], "aff"); ?></p>
+                                <div class="bold"><?php echo $event["evenement_titre"]; ?></div>
+
+                                <div style="float: left; margin: 10px;">
+                                    <img src="./Vue/img/<?php echo $event["miniature"]; ?>" height="100" width="100">
+                                </div>
+
+                                <textarea class="text-area description" disabled="disable"><?php echo $event["evenement_description"]; ?></textarea>
+
+                                <div id="clear"></div>
+                            </div>
+                            <?php
+                            $id = ($id == 1) ? 0 : 1;
+                        }
+                    }
+                } ?>
+                </div>
+                <?php
                 $class = array ("couleurEvent1", "couleurEvent2");
-                if (sizeof($events) == 0) {
+                if (sizeof($events[1]) == 0) {
                     echo "<p align='center'>Aucun événement trouvé.</p>";
                 }
                 else
                 {
-                    foreach ($events as $event)
+                    if ($affichageTitre == 1)
+                    {
+                        echo "<h3>Autres Événements à venir :</h3>";
+                    }
+                    
+                    
+                    foreach ($events[1] as $event)
                     { ?>
                         <div class="cadre <?php echo $class[$id]; ?>">
                             <form style="float: right;">
@@ -81,7 +128,8 @@ else
                         <?php
                         $id = ($id == 1) ? 0 : 1;
                     }
-                } ?>
+                }
+                ?>
             </div>
         </div>
     </body>

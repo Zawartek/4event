@@ -130,31 +130,54 @@ function getThemeEvent() {
     return $tableau;
 }
 
-function recherche() {
+function recherche()
+{
     require './Modele/evenements.php';
     $events = array(array());
+    $eventsFavoris = NULL;
 
-    if (isset($_POST["date"]) && isset($_POST["choixTheme"])) {
+    if (isset($_POST["date"]) && isset($_POST["choixTheme"]))
+    {
         $date = formattageDate($_POST["date"], "bdd");
         $theme = $_POST["choixTheme"];
         $condition = ($theme == "0") ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id = $theme";
 
         $events = rechercheEvent($condition, $db);
-    } else {
-        if (isset($_SESSION['userID'])) {
+    }
+    else
+    {
+        if (isset($_SESSION['userID']))
+        {
             require_once './Modele/utilisateurs.php';
             $date = date("Y-m-d");
             $favoris = rechercheFavori($db, $_SESSION['userID']);
-            $condition = ($favoris != NULL) ? "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id IN $favoris" : "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
-            $events = rechercheEvent($condition, $db);
-        } else {
+            
+            if ($favoris != NULL)
+            {
+                $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id IN $favoris";
+                $eventsFavoris = rechercheEvent($condition, $db);
+                
+                if ($eventsFavoris == NULL) { $eventsFavoris = 1; }
+                
+                $condition2 = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0 AND evenement_theme_id NOT IN $favoris";
+                $events = rechercheEvent($condition2, $db);
+            }
+            else
+            {
+                $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
+                $events = rechercheEvent($condition, $db);
+            }            
+        }
+        else
+        {
             $date = date("Y-m-d");
             $condition = "WHERE DATEDIFF(evenement_date_debut, \"$date\") >= 0";
 
             $events = rechercheEvent($condition, $db);
         }
     }
-    return $events;
+    $retour = array ($eventsFavoris, $events);
+    return $retour;
 }
 
 function ajoutAvis() {

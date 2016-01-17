@@ -608,7 +608,7 @@ h2
 
 .couleurEvent2
 {
-    background-color: #FCFCFC;
+    background-color: #FDFDFD;
     border-color: #FF7E00;
 }
 .barreMenu
@@ -681,4 +681,12 @@ footer, .push
 .btn-backOffice
 {
     margin: 0px 15px !important;
+}
+
+h3
+{
+    text-align: center;
+    color: #FF7E00;
+    text-decoration: underline;
+    margin: 15px 0px;
 }
