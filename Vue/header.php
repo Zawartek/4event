@@ -107,6 +107,7 @@
             <a id ="btnConnexion" class="bold btn btn-orange">Connexion</a>
             <a id="btnInscription" class="bold btn btn-link text-orange">Inscription</a>
         </div>
+        </div>
     <?php
     }
 

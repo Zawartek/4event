@@ -49,7 +49,7 @@ else
                 </form>
             </div>
             <div id="clear"></div>
-            <div id="listeCommentaires">
+            <div id="listeRecherche">
                 <?php
                 $id = 1;
                 $class = array ("couleurEvent1", "couleurEvent2");
@@ -84,7 +84,6 @@ else
                 } ?>
             </div>
         </div>
-        
-    </body></br>
-    <div><?php include('./Vue/footer.php'); ?></div>
+    </body>
+    <?php include('./Vue/footer.php'); ?>
 </html>

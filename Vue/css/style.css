@@ -1,11 +1,16 @@
+html, body
+{
+    height: 100%;
+}
 
-
-body {
+body
+{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857;
     color: #333;
     background-color: #F8F8F8 !important;
+    margin: 0px;
 }
 
 .cadre a
@@ -17,17 +22,12 @@ body {
 #content
 {
     width : 900px;
-    margin: auto;
+    margin: 0px auto;
 }
 
 #header
 {
     margin: 0px 0px 5px 0px;
-}
-
-#footer
-{
-    margin: 0px
 }
 
 #clear
@@ -571,7 +571,7 @@ h2
     text-align : justify;
 }
 
-.descriptionPageEvent
+.justify
 {
     text-align: justify;
 }
@@ -588,7 +588,7 @@ h2
 .blockComProfil
 {
     width: 100%;
-    padding: 10px; 
+    padding: 10px;
     margin: 0px;
 }
 
@@ -640,4 +640,40 @@ select
 {
     margin: 0% 3%;
     width: 94%;
+}
+
+#content
+{
+    min-height: 100%;
+    margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
+}
+footer
+{
+    height: 100px; /* '.push' must be the same height as 'footer' */
+    color: white;
+    background-color: #C0C0C0;
+}
+
+footer, .push
+{
+    height: 100px; /* '.push' must be the same height as 'footer' */
+    margin: 0px;
+}
+
+#listeRecherche
+{
+    margin-bottom: 120px;
+}
+
+.questionFAQ
+{
+    font-weight: bold;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+#titreFAQ
+{
+    text-align: center;
+    margin: 20px 0px;
 }

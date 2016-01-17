@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <title>page événement</title>
+        <title><?php echo $event["evenement_titre"]; ?></title>
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
         <?php include ('./Vue/map/getlatlng.php'); ?>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -106,14 +106,14 @@ and open the template in the editor.
                     }
                     else
                     {
-                        echo "<p style='margin: 8px;'>Vous devez être connecté pour<br>pouvoir participer a cet événement.</p>";
+                        echo "<p style='margin: 8px;'>Veuillez vous connecter pour<br>pouvoir participer a cet événement.</p>";
                     } ?>
                 </div>
             </div>
 
             <div id ="descriptionEvent">
                 <h1>DESCRIPTION</h1>
-                <p class="descriptionPageEvent">
+                <p class="justify">
                     <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
                 <div id="billeterie">
@@ -181,7 +181,7 @@ and open the template in the editor.
                                     <input style="margin-right:16px;" type="submit" value="envoyer"/>
                                 <?php
                                 }
-                                else { echo "<p>Veuillez vous connecter pour donner votre avis</p>"; }
+                                else { echo "<p>Veuillez vous connecter pour donner votre avis.</p>"; }
                                 ?>
                             </td>
                         </tr>
@@ -225,11 +225,6 @@ and open the template in the editor.
             </div>
             <div id="clear"></div>
         </div>
-
-        <div id="footer">
-
-        </div>
-
         <div id="dialog-participe" title="Indiquer le nombre de participants!">
             <form method="post" action="index.php?controle=evenement&action=participer">
                 <input type="hidden" name="controle" value="evenement"/>

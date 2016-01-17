@@ -93,7 +93,7 @@ and open the template in the editor.
                     <button id="ADD" type="submit" name="ADD" class="bold btn btn-orange">Ajouter</button>
                 </div>
             </form>
-            <?php require './Vue/footer.php'; ?>
         </div>
     </body>
+    <?php require './Vue/footer.php'; ?>
 </html>

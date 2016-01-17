@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Gestion des events</title>
+        <title>Gestion des Événements</title>
         <link rel="stylesheet" href="./Vue/css/style.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript">
@@ -248,7 +248,7 @@ and open the template in the editor.
                     </div>
                 </form>
             </div>
-            <?php require './Vue/footer.php'; ?>
         </div>
     </body>
+    <?php require './Vue/footer.php'; ?>
 </html>

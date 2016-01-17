@@ -256,7 +256,7 @@ and open the template in the editor.
                     </div>
                 </form>
             </div>
-            <?php require './Vue/footer.php'; ?>
         </div>
     </body>
+    <?php require './Vue/footer.php'; ?>
 </html>
