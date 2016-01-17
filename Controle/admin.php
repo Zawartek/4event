@@ -6,12 +6,13 @@
  * and open the template in the editor.
  */
 function verifAdmin(){
-    
     if (!isset($_SESSION['userID']) || !verifAdminBD($db, $_SESSION['userID'])){
         header("Location:./");
     }
 }
+
 function afficherPageAdminGU() {
+    require './Modele/admins.php';
     verifAdmin();
     require './Modele/utilisateurs.php';
     $utilisateurs = utilisateurs($db);
@@ -19,6 +20,7 @@ function afficherPageAdminGU() {
 }
 
 function afficherPageAdminGE() {
+    require './Modele/admins.php';
     verifAdmin();
     require './Modele/evenements.php';
     $events = events($db);
@@ -26,15 +28,15 @@ function afficherPageAdminGE() {
 }
 
 function afficherPageAdminGF() {
-    verifAdmin();
     require './Modele/admins.php';
+    verifAdmin();
     $faq = FAQ($db);
     include ("./Vue/Admin/gestionFaq.php");
 }
 
 function afficherPageAdminGT() {
-    verifAdmin();
     require './Modele/admins.php';
+    verifAdmin();
     $themes = ThemesBD($db);
     include ("./Vue/Admin/gestionTheme.php");
 }
