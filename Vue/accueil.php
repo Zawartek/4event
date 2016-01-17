@@ -1,6 +1,5 @@
 <?php
 require('./Modele/configSQL.php');
-$date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("Y-m-d");
 ?>
 <html>
     <head>
@@ -71,7 +70,7 @@ $date = (isset($_POST["date"])) ? formattageDate ($_POST["date"],"bdd") : date("
                 {
                     if ($affichageTitre == 1) { echo "<h3>Autres Événements à venir :</h3>"; }
                     elseif ($affichageTitre2 == 1) { echo "<h3>Voici d'autres Événements à venir :</h3>"; }
-                    elseif(isset($_POST["date"])) { echo "<h3>Voici les résultats de votre recherche :</h3>"; }
+                    elseif(isset($_POST["dateRecherche"])) { echo "<h3>Voici les résultats de votre recherche :</h3>"; }
                     else { echo "<h3>Voici les Événements à venir :</h3>"; }
                     
                     foreach ($events[1] as $event)

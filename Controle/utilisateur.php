@@ -44,31 +44,46 @@ function afficherPageFAQ(){
 
 
 // Controleur pour gérer le formulaire de connexion des utilisateurs
-function connexion() {
-    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+function connexion()
+{
+    if (!empty($_POST['email']) && !empty($_POST['mdp']))
+    {
         // L'utilisateur a rempli tous les champs du formulaire
         require ("./Modele/utilisateurs.php");
 
+        $mail = htmlspecialchars($_POST['email']);
+        $mdp = md5(htmlspecialchars($_POST['mdp']));
 
-        $reponse = mdp($db, $_POST['email']);
+        $reponse = mdp($db, $mail);
 
-        if ($reponse->rowcount() == 0) {
+        if ($reponse->rowcount() == 0)
+        {
             // L'utilisateur n'a pas été trouvé dans la base de données
             $erreur = "Utilisateur inconnu";
-        } else { // utilisateur trouvé dans la base de données
+        }
+        else
+        {
+            // utilisateur trouvé dans la base de données
             $ligne = $reponse->fetch();
-            if ($_POST['mdp'] != $ligne['utilisateur_mot_de_passe']) {
+
+            if ($mdp != $ligne['utilisateur_mot_de_passe'])
+            {
                 // Le mot de passe entré ne correspond pas
                 // à celui stocké dans la base de données
                 $erreur = "Mot de passe incorrect";
-            } else { // mot de passe correct, on affiche la page d'accueil
+            }
+            else
+            {
+                // mot de passe correct, on affiche la page d'accueil
                 $_SESSION['userID'] = $ligne['utilisateur_id'];
                 $_SESSION['prenom_nom'] = $ligne['utilisateur_prenom'] . " " . $ligne['utilisateur_nom'];
                 $_SESSION['userType'] = $ligne['utilisateur_type'];
-
             }
         }
-    } else { // L'utilisateur n'a pas rempli tous les champs du formulaire
+    }
+    else
+    {
+        // L'utilisateur n'a pas rempli tous les champs du formulaire
         $erreur = "Veuillez remplir tous les champs";
     }
     $nexturl = "index.php?controle=utilisateur&action=accueil";
@@ -96,7 +111,7 @@ function inscription() {
         $ville = htmlspecialchars($_POST['ville']);
         $pays = htmlspecialchars($_POST['pays']);
         $datenaissance = $_POST['annee']."-".$_POST['mois']."-".$_POST['jour'];
-        $mdp = htmlspecialchars($_POST['mdp']);
+        $mdp = md5(htmlspecialchars($_POST['mdp']));
         $sexe = htmlspecialchars($_POST['sexe']);
 
         $newsletter = (isset($_POST['newsletter'])) ? $_POST['newsletter'] : 0;
@@ -106,6 +121,4 @@ function inscription() {
     }
 
     echo "<script>location='index.php';</script>";
-}
-
-?>
+} ?>
