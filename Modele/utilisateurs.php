@@ -114,6 +114,10 @@ function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codeposta
                 . "";
         $reponse2 = $db->query($sql2);
     }
+    $mdpBDD = $db->query("select utilisateur_mot_de_passe from utilisateur where utilisateur_id=$idUti")->fetch()["utilisateur_mot_de_passe"];
+    if ($mdp!=$mdpBDD){
+        $mdp = md5($mdp);
+    }
     $sql3 = "UPDATE utilisateur "
             . "SET "
             . "utilisateur_nom='" . $nom . "',"

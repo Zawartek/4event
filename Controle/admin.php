@@ -120,7 +120,7 @@ function gestionUti() {
 
         if (isset($_POST['ADD'])) {
             ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
-                    , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
+                    , $datenaissance, md5($mdp), $sexe, $etat, $type, $newsletter);
         } else if (isset($_POST['MOD'])) {
             modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
                     , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
