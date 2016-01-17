@@ -22,6 +22,8 @@
                 height: 640,
                 width: 500,
                 modal: true,
+                resizable: false,
+                draggable: false,
                 position: {my: "center ", at: "top", of: window},
                 close: function () {
                 }
@@ -32,6 +34,8 @@
                 height: 475,
                 width: 500,
                 modal: true,
+                resizable: false,
+                draggable: false,
                 position: {my: "center", at: "top", of: window},
                 close: function () {
                 }
@@ -53,6 +57,8 @@
                 height: 780,
                 width: 850,
                 modal: true,
+                resizable: false,
+                draggable: false,
                 position: {my: "center", at: "top", of: window},
                 close: function () {
                 }

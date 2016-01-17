@@ -25,10 +25,10 @@ and open the template in the editor.
                     height: 100,
                     width: 300,
                     modal: true,
+                    resizable: false,
+                    draggable: false,
                     position: {my: "center", at: "center", of: window},
                     close: function () {
-                        form[ 0 ].reset();
-                        allFields.removeClass("ui-state-error");
                     }
                 });
                 $("#btnParticipation").button().on("click", function () {
@@ -92,9 +92,6 @@ and open the template in the editor.
                         if ($participation == 0)
                         { ?>
                             <a id="btnParticipation" class="bold btn">Participer</a>
-
-                            <a id="btnInteret" <?php /*href="index.php?controle=evenement&action=ajoutInteret"*/; ?>
-                               class="bold btn">Ajouter à ses intérêts</a>
                         <?php
                         }
                         else
