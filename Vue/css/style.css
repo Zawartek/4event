@@ -54,6 +54,11 @@ body
     box-shadow: 2px 2px 20px #C0C0C0;
 }
 
+.connexion
+{
+    text-align: center;
+}
+
 .inscription input[type=button], .connexion input[type=submit]
 {
     display: block;
@@ -689,4 +694,14 @@ h3
     color: #FF7E00;
     text-decoration: underline;
     margin: 15px 0px;
+}
+
+#submitConnexion
+{
+    margin-top: 16px;
+}
+
+#premiereFAQ
+{
+    margin-bottom: 15px;
 }

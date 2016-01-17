@@ -16,15 +16,6 @@
             <form id="formConnexion" method="post" action="index.php?controle=utilisateur&action=connexion">
                 <h2 style="margin-top: 10px;" class="text-orange bold">Connexion</h2>
 
-                <label for="">Se connecter avec Facebook</label>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a><br>
-                <label for="">Se connecter avec Twitter</label>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/twitter.png" alt="twitter"></a><br><br>
-
-                <div style="text-align: center;">
-                    <label>Ou</label>
-                </div><br>
-
                 <label for="emailConnexion" style="width: 150px;">Email* :</label>
                 <input type="text" name="email" id="emailConnexion" class="input" required="required"><br>
 

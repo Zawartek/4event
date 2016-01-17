@@ -109,9 +109,7 @@
             </div>
 
             <form id="formInscription" method="post" action="index.php?controle=utilisateur&action=inscription">
-                <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2>
-                <a class="lien-reseau" href="#"><img class="logo-reseau" src="./Vue/img/facebook.png" alt="facebook"></a>
-                <br>
+                <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2><br>
 
                 <label for="nom">Nom* :</label>
                 <input type="text" name="nom" id="nom" class="input" placeholder="ex : Sop"><br>

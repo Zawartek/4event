@@ -31,7 +31,7 @@
 
             dialogConnexion = $("#dialog-connexion").dialog({
                 autoOpen: false,
-                height: 475,
+                height: 390,
                 width: 500,
                 modal: true,
                 resizable: false,

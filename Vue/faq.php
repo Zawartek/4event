@@ -19,15 +19,25 @@
                 <h2 id="titreFAQ" class="text-orange">Foire Aux Questions</h2>
             </div>
             <?php
+            $premier = 1;
             $cpt = 0;
             foreach ($faqs as $faq)
-            { ?>
-            <p id="<?php echo "question".$cpt; ?>" onclick="swap('<?php echo "reponse".$cpt; ?>');" class="questionFAQ">
-                <?php echo $faq["faq_question"]; ?></p>
-                <p id="<?php echo "reponse".$cpt; ?>" class="justify" style="display: none;"><?php echo nl2br($faq["faq_reponse"]); ?></p>
-                <?php
-                $cpt ++;
-            } ?>
+            { 
+                if ($premier == 1)
+                { ?>
+                    <p id="premiereFAQ" class="justify"><?php echo nl2br($faq["faq_reponse"]); ?></p>
+                    <?php
+                    $premier = 0;
+                }
+                else
+                { ?>
+                    <p id="<?php echo "question".$cpt; ?>" onclick="swap('<?php echo "reponse".$cpt; ?>');" class="questionFAQ">
+                        <?php echo $faq["faq_question"]; ?></p>
+                    <p id="<?php echo "reponse".$cpt; ?>" class="justify" style="display: none;"><?php echo nl2br($faq["faq_reponse"]); ?></p>
+                    <?php
+                    $cpt ++;
+                } 
+            }?>
         </div>
     </body>
     <div><?php include('./Vue/footer.php'); ?></div>
