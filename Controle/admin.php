@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function verifAdmin(){
+function verifAdmin($db){
     if (!isset($_SESSION['userID']) || !verifAdminBD($db, $_SESSION['userID'])){
         header("Location:./");
     }
@@ -13,7 +13,7 @@ function verifAdmin(){
 
 function afficherPageAdminGU() {
     require './Modele/admins.php';
-    verifAdmin();
+    verifAdmin($db);
     require './Modele/utilisateurs.php';
     $utilisateurs = utilisateurs($db);
     include ("./Vue/Admin/gestionUtilisateur.php");
@@ -21,7 +21,7 @@ function afficherPageAdminGU() {
 
 function afficherPageAdminGE() {
     require './Modele/admins.php';
-    verifAdmin();
+    verifAdmin($db);
     require './Modele/evenements.php';
     $events = events($db);
     include ("./Vue/Admin/gestionEvent.php");
@@ -29,14 +29,14 @@ function afficherPageAdminGE() {
 
 function afficherPageAdminGF() {
     require './Modele/admins.php';
-    verifAdmin();
+    verifAdmin($db);
     $faq = FAQ($db);
     include ("./Vue/Admin/gestionFaq.php");
 }
 
 function afficherPageAdminGT() {
     require './Modele/admins.php';
-    verifAdmin();
+    verifAdmin($db);
     $themes = ThemesBD($db);
     include ("./Vue/Admin/gestionTheme.php");
 }
