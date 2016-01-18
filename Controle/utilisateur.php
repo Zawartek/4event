@@ -121,4 +121,53 @@ function inscription() {
     }
 
     echo "<script>location='index.php';</script>";
-} ?>
+}
+
+function modificationProfil()
+{
+    require './Modele/utilisateurs.php';
+    require './Controle/admin.php';
+    
+    $idUti = $_SESSION['userID'];
+    if (isset($_POST['SUPPR']))
+    {
+        suppressionutil($db, $idUti);
+        session_destroy();
+        header('Location: index.php');
+    }
+    else
+    {
+        $nom = htmlspecialchars($_POST['nom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $email = htmlspecialchars($_POST['email']);
+        $voie = htmlspecialchars($_POST['voie']);
+        $codepostal = htmlspecialchars($_POST['codepostal']);
+        $ville = htmlspecialchars($_POST['ville']);
+        $pays = htmlspecialchars($_POST['pays']);
+        $datenaissance = $_POST['annee'] . "-" . $_POST['mois'] . "-" . $_POST['jour'];
+        $mdp = htmlspecialchars($_POST['mdp']);
+        $sexe = htmlspecialchars($_POST['sexe']);
+        
+        if (isset($_FILES['photo']['name']) && $_FILES['photo']['name']<>"")
+        {
+            $photo = $_FILES['photo']['name'];
+            uploadFile("./Vue/img/photoProfil/", 'photo');
+        }
+        else
+        {
+            $photo = $_POST["photoActuelle"];
+        }
+        
+        $newsletter = 0;
+        
+        $infosFixes = infosFixesProfil($db, $idUti);
+        $etat = $infosFixes["utilisateur_etat"];
+        $type = $infosFixes["utilisateur_type"];
+        
+        modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
+                , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter, $photo);
+        
+        header('Location: index.php?controle=utilisateur&action=afficherPageGestionUti');
+    }
+}
+?>

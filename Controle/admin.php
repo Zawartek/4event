@@ -182,7 +182,7 @@ function uploadFile($target_dir, $file_to_upload) {
         $uploadOk = 0;
     }
 // Check file size
-    if ($_FILES[$file_to_upload]["size"] > 500000) {
+    if ($_FILES[$file_to_upload]["size"] > 10000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }

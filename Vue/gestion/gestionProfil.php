@@ -4,6 +4,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+$split = explode("-", $uti["utilisateur_date_naissance"]);
+$annee = sansZero($split[0]);
+$mois = sansZero($split[1]);
+$jour = sansZero($split[2]);
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,8 +19,7 @@ and open the template in the editor.
     <body>
         <div id="content">
             <?php require("./Vue/header.php"); ?>
-            <form class="cadre" style="width: 100%;" method="POST" action="index.php?controle=admin&action=gestionUti">
-                <button id="SUPPR" type="button" name="SUPPR" class="bold btn btn-orange">Retour</button>
+            <form class="cadre" style="width: 100%;" method="POST" action="index.php?controle=utilisateur&action=modificationProfil"  enctype="multipart/form-data">
                 <table id="tableUtilisateur">
                     <tr>
                         <th></th>
@@ -67,26 +72,35 @@ and open the template in the editor.
                             <select class="input" name="jour" id="jour">
                                 <option value="0">Jour</option>
                                 <?php
-                                for ($j = 1; $j <= 31; $j ++) {
-                                    echo "<option value='$j'>$j</option>";
+                                for ($j = 1; $j <= 31; $j ++)
+                                {
+                                    $selection = "";
+                                    if ($j == $jour) { $selection = "selected"; }
+                                    echo "<option ".$selection." value='$j'>$j</option>";
                                 }
                                 ?>
                             </select>
                             <select class="input" name="mois" id="mois">
                                 <option value="0">Mois</option>
                                 <?php
-                                $mois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
-                                for ($m = 1; $m <= 12; $m ++) {
+                                $intuleMois = array('Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc');
+                                for ($m = 1; $m <= 12; $m ++)
+                                {
                                     $indice = $m - 1;
-                                    echo "<option value='$m'>$mois[$indice]</option>";
+                                    $selection = "";
+                                    if ($m == $mois) { $selection = "selected"; }
+                                    echo "<option ".$selection." value='$m'>$intuleMois[$indice]</option>";
                                 }
                                 ?>
                             </select>
                             <select class="input" name="annee" id="annee">
                                 <option value="0">Année</option>
                                 <?php
-                                for ($a = date("Y"); $a >= 1900; $a --) {
-                                    echo "<option value='$a'>$a</option>";
+                                for ($a = date("Y"); $a >= 1900; $a --)
+                                {
+                                    $selection = "";
+                                    if ($a == $annee) { $selection = "selected"; }
+                                    echo "<option ".$selection." value='$a'>$a</option>";
                                 }
                                 ?>
                             </select>
@@ -104,6 +118,7 @@ and open the template in the editor.
                         </td>
                         <td>
                             <input type="file" id="photo" name="photo">
+                            <input type="hidden" name="photoActuelle" id="photoActuelle" value="<?php echo $uti["utilisateur_image_profil"];?>">
                         </td>
                     </tr>
                 </table>
@@ -154,17 +169,19 @@ and open the template in the editor.
                         {
                             $selected = "";
                             if (strpos($uti["utilisateur_favoris"], $theme["theme_id"]) > -1) { $selected = "checked"; }
-                            
+
                             echo "<label><input name='favori' type='checkbox' value='" . $theme["theme_id"] . "' " . $selected . ">" . $theme["theme_nom"] . "</label>";
                         }
                         ?>
                     </div>
                 </fieldset>
-                <input id="id" type="hidden" name="id">
                 <div id="boutons">
                     <br>
                     <button id="MOD" type="submit" name="MOD" class="bold btn btn-orange">Modifier</button>
                     <button id="SUPPR" type="submit" name="SUPPR" class="bold btn btn-orange">Supprimer</button>
+                    <a href="<?php echo "index.php?controle=utilisateur&action=afficherPageUti&param=".$_SESSION['userID']; ?>">
+                        <input type="button" value="Retour" id="retourProfil" class="bold btn btn-orange">
+                    </a>
                 </div>
             </form>
             <br>

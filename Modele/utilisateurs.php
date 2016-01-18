@@ -4,7 +4,7 @@ require("configSQL.php");
 
 // fonction qui cherche le mot de passe d'un utilisateur avec un identifiant dans la base de données
 function mdp($db, $email) {
-    $reponse = $db->query('SELECT * FROM utilisateur WHERE utilisateur_email="' . $email . '";');
+    $reponse = $db->query('SELECT * FROM utilisateur WHERE utilisateur_email="' . $email . '" AND utilisateur_etat = 0;');
     return $reponse;
 }
 
@@ -16,7 +16,7 @@ function utilisateurs($db) {
 }
 
 function suppressionutil($db, $idUti) {
-    $reponse = $db->query("delete from utilisateur where utilisateur_id = '$idUti'");
+    $reponse = $db->query("UPDATE utilisateur set utilisateur_etat = 1 WHERE utilisateur_id = $idUti");
     return $reponse;
 }
 
@@ -162,4 +162,10 @@ function alertesUti($db, $idUti) {
     return $data1 = $reponse1->fetchAll();
 }
 
+function infosFixesProfil($db, $idUti)
+{
+    $sql = "SELECT utilisateur_type, utilisateur_etat FROM utilisateur WHERE utilisateur_id = $idUti";
+    $reponse = $db->query($sql);
+    return $data1 = $reponse->fetch();
+}
 ?>
