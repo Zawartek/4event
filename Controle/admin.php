@@ -121,9 +121,12 @@ function gestionUti() {
         if (isset($_POST['ADD'])) {
             ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
                     , $datenaissance, md5($mdp), $sexe, $etat, $type, $newsletter);
-        } else if (isset($_POST['MOD'])) {
+        } else if (isset($_POST['MOD']))
+        {
+            $photo = (isset($_POST['supprPhoto'])) ? "default-user.png" : $_POST['valPhotoProfil'];
+            echo $photo;
             modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
-                    , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter);
+                    , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter, $photo);
         }
     }
     header('Location: index.php?controle=admin&action=afficherPageAdminGU');

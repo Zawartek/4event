@@ -20,6 +20,7 @@ and open the template in the editor.
 
                 $('#ddlUtilisateur').on('change', function ()
                 {
+                    $('#supprPhoto').attr({ checked:false});
                     var text;
                     text = this.options[this.selectedIndex].value;
                     if (this.selectedIndex == "0")
@@ -35,6 +36,8 @@ and open the template in the editor.
                         $('#etat').val("0");
                         $('#type').val("0");
                         $('#mdp').val("");
+                        $('#photoProfilBack').attr({src:'./Vue/img/photoProfil/default-user.png'});
+                        $('#valPhotoProfil').val("default-user.png");
 
                         $('#voie').val("");
                         $('#ville').val("");
@@ -72,11 +75,13 @@ and open the template in the editor.
                         $('#etat').val(utilisateurs[text]['utilisateur_etat']);
                         $('#type').val(utilisateurs[text]['utilisateur_type']);
                         $('#mdp').val(utilisateurs[text]['utilisateur_mot_de_passe']);
+                        $('#photoProfilBack').attr({src:'./Vue/img/photoProfil/' + utilisateurs[text]['utilisateur_image_profil']});
+                        $('#valPhotoProfil').val(utilisateurs[text]['utilisateur_image_profil']);
 
                         $('#voie').val(utilisateurs[text]['adresse_numero_voie']);
                         $('#ville').val(utilisateurs[text]['adresse_ville']);
                         $('#codepostal').val(utilisateurs[text]['adresse_code_postal']);
-                        $('#pays').val(utilisateurs[text]['adresse_pays']);
+                        $('#pays').val(utilisateurs[text]['adresse_pays']);                        
 
                         $('#ADD').hide();
                         $('#MOD').show();
@@ -206,6 +211,21 @@ and open the template in the editor.
                             </td>
                             <td>
                                 <input style="width:80%;" id="mdp" type="password" name="mdp" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Photo :</label>
+                            </td>
+                            <td>
+                                <img id='photoProfilBack' src="./Vue/img/photoProfil/default-user.png">
+                                <input type="hidden" name="valPhotoProfil" id="valPhotoProfil">
+                            </td>
+                            <td>
+                                <label>Supprimer la photo ?</label>
+                            </td>
+                            <td>
+                                <input name='supprPhoto' id='supprPhoto' type='checkbox' value='1'>
                             </td>
                         </tr>
                     </table>

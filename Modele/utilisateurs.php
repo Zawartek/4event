@@ -90,14 +90,14 @@ function ajoutUtiBD($db, $nom, $prenom, $email, $voie, $codepostal, $ville, $pay
     $reponse2 = $db->query($sql2);
 
     $sql3 = "INSERT INTO `utilisateur`(`utilisateur_id`, `utilisateur_nom`, `utilisateur_prenom`, `utilisateur_email`,"
-            . "`utilisateur_adresse_id`, `utilisateur_date_naissance`, `utilisateur_image_profil`, `utilisateur_mot_de_passe`,"
+            . "`utilisateur_adresse_id`, `utilisateur_date_naissance`, `utilisateur_mot_de_passe`,"
             . "`utilisateur_etat`, `utilisateur_type`, `utilisateur_sexe`, `utilisateur_newsletter`) VALUES"
-            . "('' ,'$nom' ,'$prenom' ,'$email' ,'$adresse_id', '$datenaissance','' ,'$mdp' ,$etat ,$type ,'$sexe' ,'$newsletter')";
+            . "('' ,'$nom' ,'$prenom' ,'$email' ,'$adresse_id', '$datenaissance' ,'$mdp' ,$etat ,$type ,'$sexe' ,'$newsletter')";
     $reponse3 = $db->query($sql3);
 }
 
 function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
-, $datenaissance, $mdp, $sexe, $etat, $type, $newsletter) {
+, $datenaissance, $mdp, $sexe, $etat, $type, $newsletter, $photo) {
     $uti = infosUti($db, $idUti);
     if ($uti['adresse_numero_voie'] <> $voie || $uti['adresse_code_postal'] <> $codepostal || $uti['adresse_ville'] <> $ville || $uti['adresse_pays'] <> $pays) {
         $sql = "SELECT MAX(adresse_id) AS ID FROM `adresse`";
@@ -125,7 +125,7 @@ function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codeposta
             . "utilisateur_email='" . $email . "',"
             . "utilisateur_adresse_id='" . $uti['adresse_id'] . "',"
             . "utilisateur_date_naissance='" . $datenaissance . "',"
-            . "utilisateur_image_profil='" . $nom . "',"
+            . "utilisateur_image_profil='" . $photo . "',"
             . "utilisateur_mot_de_passe='" . $mdp . "',"
             . "utilisateur_etat='" . $etat . "',"
             . "utilisateur_type='" . $type . "',"
@@ -133,7 +133,6 @@ function modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codeposta
             . "utilisateur_newsletter='" . $newsletter . "' "
             . "WHERE utilisateur_id='" . $idUti . "'";
     $reponse3 = $db->query($sql3);
-    echo $sql2 . "<br>" . $sql3;
 }
 
 function ajoutFavori($db, $idUti, $idTheme) {

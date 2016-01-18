@@ -7,14 +7,14 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>profil utilisateur</title>
+        <title><?php echo $uti['utilisateur_prenom'] . " " . $uti['utilisateur_nom'] ?></title>
         <link href="./Vue/css/style.css" rel="stylesheet" media="all" type="text/css">
     </head>
     <body>
         <div id="content">
             <?php require("./Vue/header.php"); ?>
             <div id="profil">
-                <img id="photoProfil" src="./Vue/img/default-user.png" />
+                <img id="photoProfil" src="<?php echo "./Vue/img/photoProfil/".$uti['utilisateur_image_profil']; ?>" />
                 <div id="infosProfil">
                     <p><?php echo $uti['utilisateur_prenom'] . " " . $uti['utilisateur_nom'] ?></p>
                     <p><?php echo $uti['adresse_ville'] ?></p>
