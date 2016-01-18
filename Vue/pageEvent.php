@@ -114,10 +114,31 @@ and open the template in the editor.
                     <?php echo nl2br($event["evenement_description"]); ?>
                 </p>
                 <div id="billeterie">
-                    <h1>BILLETERIE</h1>
-                    <a href= <?php echo "http://" . $event["evenement_site_web"]; ?> target="_blank">
-                        Site Web
-                    </a>
+                    <h1>LIENS</h1>
+                    <?php
+                    $rien = 1;
+                    if ($event["evenement_site_web"] != "")
+                    { 
+                        $rien = 0;
+                        ?>
+                        <a href= <?php echo $event["evenement_site_web"]; ?> target="_blank" style="margin-right: 20px;">
+                            Site de l'Événement
+                        </a>
+                        <?php
+                    }
+                    if ($event["evenement_tarif"] != "")
+                    { 
+                        $rien = 0;
+                        ?>
+                        <a href= <?php echo $event["evenement_tarif"]; ?> target="_blank">
+                            Site de la Billetterie
+                        </a>
+                    <?php
+                    }
+                    if ($rien == 1)
+                    {
+                        echo "<p>Cet Événement n'a encore pas de liens associés.</p>";
+                    } ?>
                 </div>
             </div>
             <div id="infosComplementairesEvent">

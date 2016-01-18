@@ -23,12 +23,14 @@ function afficherPageAdminGE() {
     require './Modele/admins.php';
     verifAdmin($db);
     require './Modele/evenements.php';
+    require_once './Modele/utilisateurs.php';
     $events = events($db);
     include ("./Vue/Admin/gestionEvent.php");
 }
 
 function afficherPageAdminGF() {
     require './Modele/admins.php';
+    require './Modele/utilisateurs.php';
     verifAdmin($db);
     $faq = FAQ($db);
     include ("./Vue/Admin/gestionFaq.php");
@@ -36,6 +38,7 @@ function afficherPageAdminGF() {
 
 function afficherPageAdminGT() {
     require './Modele/admins.php';
+    require_once './Modele/utilisateurs.php';
     verifAdmin($db);
     $themes = ThemesBD($db);
     include ("./Vue/Admin/gestionTheme.php");

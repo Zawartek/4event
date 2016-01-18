@@ -7,6 +7,7 @@
  */
 
 function afficherPageEvent($idEvent) {
+    require_once './Modele/utilisateurs.php';
     require_once './Modele/evenements.php';
     $event = infosEvent($db, $idEvent);
 

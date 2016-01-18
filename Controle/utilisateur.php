@@ -11,7 +11,7 @@ function ident() {
 }
 
 function accueil() {
-
+    require_once './Modele/utilisateurs.php';
     $_SESSION['page'] = 'accueil';
     $themes = getThemeEvent();
     $events = recherche();
@@ -37,6 +37,7 @@ function afficherPageGestionUti(){
 }
 
 function afficherPageFAQ(){
+    require_once './Modele/utilisateurs.php';
     require_once './Modele/admins.php';
     $faqs = FAQ($db);
     include './Vue/faq.php';

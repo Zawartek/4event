@@ -112,16 +112,16 @@
                 <h2 style="margin-top: 10px;" class="text-orange bold">Inscription</h2><br>
 
                 <label for="nom">Nom* :</label>
-                <input type="text" name="nom" id="nom" class="input" placeholder="ex : Sop"><br>
+                <input type="text" name="nom" id="nom" class="input" placeholder="ex : Dupont"><br>
 
                 <label for="prenom">Prénom* :</label>
                 <input type="text" name="prenom" id="prenom" class="input" placeholder="ex : Alain"><br>
 
                 <label for="email">Email* :</label>
-                <input type="text" name="email" id="email" class="input" placeholder="ex : sop.alain@isep.fr"><br>
+                <input type="text" name="email" id="email" class="input" placeholder="ex : dupont.alain@isep.fr"><br>
 
                 <label for="voie">Voie* :</label>
-                <input type="text" name="voie" id="voie" class="input" placeholder="ex : 1 rue du lotus"><br>
+                <input type="text" name="voie" id="voie" class="input" placeholder="ex : 1 rue du Lotus"><br>
 
                 <label for="codepostal">Code postal* :</label>
                 <input type="text" name="codepostal" id="codepostal" class="input" placeholder="ex : 75006"><br>
