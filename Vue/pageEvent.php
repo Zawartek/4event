@@ -103,7 +103,7 @@ and open the template in the editor.
                     }
                     else
                     {
-                        echo "<p style='margin: 8px;'>Veuillez vous connecter pour<br>pouvoir participer a cet événement.</p>";
+                        echo "<p style='margin: 8px;'>Veuillez vous connecter pour<br>pouvoir participer à cet événement.</p>";
                     } ?>
                 </div>
             </div>
@@ -158,53 +158,53 @@ and open the template in the editor.
             <div id="clear"></div>
             <div class="cadre">
                 <h1>DONNEZ VOTRE AVIS !</h1>
-                <form method="POST" action="index.php?controle=evenement&action=ajoutAvis">
-                    <table>
-                        <tr>
-                            <td>
-                                <ul class="notes-echelle">
-                                    <li>
-                                        <label for="note01" title="Note&nbsp;: 1 sur 5">&nbsp;</label>
-                                        <input id="note01" name="noteAvis" type="radio" value="1"/>
-                                    </li>
-                                    <li>
-                                        <label for="note02" title="Note&nbsp;: 2 sur 5">&nbsp;</label>
-                                        <input id="note02" name="noteAvis" type="radio" value="2"/>
-                                    </li>
-                                    <li>
-                                        <label for="note03" title="Note&nbsp;: 3 sur 5">&nbsp;</label>
-                                        <input id="note03" name="noteAvis" type="radio" value="3"/>
-                                    </li>
-                                    <li>
-                                        <label for="note04" title="Note&nbsp;: 4 sur 5">&nbsp;</label>
-                                        <input id="note04" name="noteAvis" type="radio" value="4"/>
-                                    </li>
-                                    <li>
-                                        <label for="note05" title="Note&nbsp;: 5 sur 5">&nbsp;</label>
-                                        <input id="note05" name="noteAvis" type="radio" value="5" checked="true"/>
-                                    </li>
-                                </ul>
-                                <div id="clear"></div>
-                            </td>
-                            <td rowspan="2">
-                                <textarea name="avis" style="width:600px; height:100px; margin-left:50px; resize: none"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                <input type="hidden" name="idEvent" value="<?php echo $event['evenement_id']; ?>"/>
-                                <?php
-                                if (isset($_SESSION['userID']))
-                                { ?>
-                                    <input style="margin-right:16px;" type="submit" value="envoyer"/>
-                                <?php
-                                }
-                                else { echo "<p>Veuillez vous connecter pour donner votre avis.</p>"; }
-                                ?>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <?php
+                if (isset($_SESSION['userID']))
+                { ?>
+                    <form method="POST" action="index.php?controle=evenement&action=ajoutAvis">
+                        <table>
+                            <tr>
+                                <td>
+                                    <ul class="notes-echelle">
+                                        <li>
+                                            <label for="note01" title="Note&nbsp;: 1 sur 5">&nbsp;</label>
+                                            <input id="note01" name="noteAvis" type="radio" value="1"/>
+                                        </li>
+                                        <li>
+                                            <label for="note02" title="Note&nbsp;: 2 sur 5">&nbsp;</label>
+                                            <input id="note02" name="noteAvis" type="radio" value="2"/>
+                                        </li>
+                                        <li>
+                                            <label for="note03" title="Note&nbsp;: 3 sur 5">&nbsp;</label>
+                                            <input id="note03" name="noteAvis" type="radio" value="3"/>
+                                        </li>
+                                        <li>
+                                            <label for="note04" title="Note&nbsp;: 4 sur 5">&nbsp;</label>
+                                            <input id="note04" name="noteAvis" type="radio" value="4"/>
+                                        </li>
+                                        <li>
+                                            <label for="note05" title="Note&nbsp;: 5 sur 5">&nbsp;</label>
+                                            <input id="note05" name="noteAvis" type="radio" value="5" checked="true"/>
+                                        </li>
+                                    </ul>
+                                    <div id="clear"></div>
+                                </td>
+                                <td rowspan="2">
+                                    <textarea name="avis" style="width:600px; height:100px; margin-left:50px; resize: none"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <input type="hidden" name="idEvent" value="<?php echo $event['evenement_id']; ?>"/>
+                                    <input style="margin-right:16px;" type="submit" class="bold btn btn-orange" value="Envoyer"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <?php
+                }
+                else { echo "<p>Veuillez vous connecter pour donner votre avis.</p>"; }
+                ?>
             </div>
             <div id="commentairesEvent" class="cadre">
                 <h1>COMMENTAIRES</h1>
