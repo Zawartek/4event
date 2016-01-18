@@ -720,3 +720,25 @@ h3
 {
     margin-left: 20px;
 }
+
+.miniatureTheme img
+{
+    width: 60px;
+    height: 60px;
+}
+
+.miniatureTheme
+{
+    float: left;
+    margin: 10px;
+}
+
+.checkbox
+{
+    margin-top: 0px;
+}
+
+.miniatureTheme label
+{
+    margin: 0px 5px;
+}

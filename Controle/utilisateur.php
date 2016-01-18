@@ -164,6 +164,20 @@ function modificationProfil()
         $etat = $infosFixes["utilisateur_etat"];
         $type = $infosFixes["utilisateur_type"];
         
+        $nbThemes = getNbTheme($db);
+        $favoris = array();
+        
+        for ($i = 1; $i <= $nbThemes; $i++)
+        {
+            $theme = "favori".$i;
+            
+            if (isset($_POST[$theme]))
+            {
+                $favoris[] = $_POST[$theme];
+            }
+        }
+        majFavoris($db, $idUti, $favoris);
+        
         modificationUtiBD($db, $idUti, $nom, $prenom, $email, $voie, $codepostal, $ville, $pays
                 , $datenaissance, $mdp, $sexe, $etat, $type, $newsletter, $photo);
         

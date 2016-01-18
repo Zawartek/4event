@@ -168,4 +168,31 @@ function infosFixesProfil($db, $idUti)
     $reponse = $db->query($sql);
     return $data1 = $reponse->fetch();
 }
+
+function majFavoris ($db, $idUti, $favoris)
+{
+    $sql = "DELETE FROM favori WHERE favori_utilisateur_id = $idUti;";
+
+    foreach($favoris as $favori)
+    {
+        $sql .= "INSERT INTO favori(favori_utilisateur_id, favori_theme_id) VALUES ($idUti, $favori);";
+    }        
+    $reponse = $db->query($sql);
+}
+
+function getNbTheme ($db)
+{
+    $sql = "SELECT count(theme_id) as NB FROM theme";
+    $response = $db->query($sql);
+    $data = $response->fetch();
+    return $data["NB"];
+}
+
+function getNomPrenom ($db, $idUti)
+{
+    $sql = "SELECT utilisateur_prenom, utilisateur_nom FROM utilisateur WHERE utilisateur_id = $idUti";
+    $response = $db->query($sql);
+    $data = $response->fetch();
+    return $data["utilisateur_prenom"]." ".$data["utilisateur_nom"];
+}
 ?>

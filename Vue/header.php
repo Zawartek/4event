@@ -103,7 +103,7 @@ $themeRecherche = (isset($_POST["themeRecherche"])) ? $_POST["themeRecherche"] :
         ?>
         <nav class="NomPrenDecon" >
             <a href="<?php echo $urlProfil; ?>" style="display:inline" class="bold btn btn-link text-orange">
-                <?php echo $_SESSION['prenom_nom']; ?>
+                <?php echo getNomPrenom($db, $_SESSION["userID"]); ?>
             </a>
             <a href="index.php?controle=utilisateur&action=deconnexion" style="display:inline" class="bold btn btn-link text-orange">
                 Déconnexion

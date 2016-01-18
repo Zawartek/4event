@@ -13,6 +13,7 @@ foreach ($languesActives as $langue)
 <html>
     <head>
         <meta charset="UTF-8">
+        <title>Gestion Langue</title>
         <style>
             h3, ul
             {

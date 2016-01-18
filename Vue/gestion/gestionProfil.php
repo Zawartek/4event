@@ -164,13 +164,17 @@ $jour = sansZero($split[2]);
                     <legend class="legende">Vos Favoris</legend>
                     <div class="checkbox">
                         <?php
-                        $compteur = 0;
+                        $compteur = 1;
                         foreach ($themes as $theme)
                         {
                             $selected = "";
                             if (strpos($uti["utilisateur_favoris"], $theme["theme_id"]) > -1) { $selected = "checked"; }
-
-                            echo "<label><input name='favori' type='checkbox' value='" . $theme["theme_id"] . "' " . $selected . ">" . $theme["theme_nom"] . "</label>";
+                            
+                            echo '<div class="miniatureTheme">';
+                            echo '<label><img src="./Vue/img/logoTheme/'.$theme["theme_miniature"].'"><br>';
+                            echo "<input name='favori$compteur' type='checkbox' value='" . $theme["theme_id"] . "' " . $selected . ">" . $theme["theme_nom"] . "</label>";
+                            echo '</div>';
+                            $compteur ++;
                         }
                         ?>
                     </div>
