@@ -59,6 +59,14 @@ and open the template in the editor.
                 });
             });
         </script>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=963250360436128";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     </head>
     <body>
         <div class="container_event">
@@ -140,6 +148,14 @@ and open the template in the editor.
                         echo "<p>Cet Événement n'a encore pas de liens associés.</p>";
                     } ?>
                 </div>
+                
+                <hr color="black">
+                <div class="fb-share-button" 
+                     data-href="https://www.facebook.com/ISEP4event/?fref=ts" 
+                     data-layout="button_count">
+                     
+                </div>
+                
             </div>
             <div id="infosComplementairesEvent">
                 <div id="infosLieu">
