@@ -145,7 +145,7 @@ and open the template in the editor.
                     }
                     if ($rien == 1)
                     {
-                        echo "<p>Cet Événement n'a encore pas de liens associés.</p>";
+                        echo "<p>Cet événement n'a pas encore de liens associés.</p>";
                     } ?>
                 </div>
                 
@@ -229,6 +229,12 @@ and open the template in the editor.
                     foreach ($event['commentaires'] as $com) {
                         ?>
                         <div class="cadre" style="width:830px;">
+                            <?php
+                            if (isset($_SESSION["userType"]) && $_SESSION["userType"] == 2)
+                            {
+                                echo '<a class="boutonSupprimer" href="index.php?controle=evenement&action=supprCom&param='.$com["avis_id"].'&redirect=event&id='.$event["evenement_id"].'"><span class="glyphicon glyphicon-remove"></span>Supprimer</a>';
+                                
+                            } ?>
                             <p style="margin-left: 0px;">
                                 <?php
                                 for ($i = 0; $i < 5; $i++) {

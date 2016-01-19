@@ -84,6 +84,12 @@ and open the template in the editor.
                         foreach ($uti['commentaires'] as $com)
                         { ?>
                             <div class="cadre blockComProfil">
+                                <?php
+                                if (isset($_SESSION["userType"]) && $_SESSION["userType"] == 2)
+                                {
+                                    echo '<a class="boutonSupprimer" href="index.php?controle=evenement&action=supprCom&param='.$com["avis_id"].'&redirect=profil&id='.$uti["utilisateur_id"].'"><span class="glyphicon glyphicon-remove"></span>Supprimer</a>';
+
+                                } ?>
                                 <p style="float: left;">
                                     <?php
                                     for ($i = 0; $i < 5; $i++) {

@@ -204,3 +204,30 @@ function ajoutAvis() {
     ajoutAvisBD($db, $note, $avis,$_SESSION['userID'], $idEvent);
     header("Location:". "index.php?controle=evenement&action=afficherPageEvent&param=".$idEvent);
 }
+
+function supprCom($idComm)
+{
+    require './Modele/evenements.php';
+    if (isset($_GET["id"]) && isset($_GET["redirect"]))
+    {
+        supprimerAvis($db,$idComm);
+        $id = $_GET["id"];
+
+        if($_GET["redirect"] == "profil")
+        {
+            header("Location:". "index.php?controle=utilisateur&action=afficherPageUti&param=".$id);
+        }
+        else if($_GET["redirect"] == "event")
+        {
+            header("Location:". "index.php?controle=evenement&action=afficherPageEvent&param=".$id);
+        }
+        else
+        {
+            header("Location:". "index.php");
+        }
+    }
+    else
+    {
+        header("Location:". "index.php");
+    }
+}

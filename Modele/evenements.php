@@ -234,4 +234,10 @@ function ajoutAvisBD($db, $note, $avis, $idUser, $idEvent) {
     $reussite = $db->exec($request) or die(utf8_encode("erreur de requête : ") . $request);
 }
 
+function supprimerAvis($db, $idAvis)
+{
+    $sql = "DELETE FROM avis WHERE avis_id = $idAvis";
+    $response = $db->query($sql);
+}
+
 ?>
