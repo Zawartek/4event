@@ -174,10 +174,10 @@ and open the template in the editor.
                         </tr>
                         <tr>
                             <td>
-                                <label>Type de public :</label>
+                                <label style="visibility: hidden;">Type de public :</label>
                             </td>
                             <td>
-                                <input style="width:80%;" id="public" type="number" min="0" name="public" value="0">
+                                <input style="width:80%;visibility: hidden;" id="public" type="number" min="0" name="public" value="0">
                             </td>
                             <td>
                                 <label>Max Participants :</label>

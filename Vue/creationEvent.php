@@ -29,10 +29,10 @@
             <form id="creationEvent" method="post" action="index.php?controle=evenement&action=creationEvent" style="margin: auto;">
                 <h2 class="text-orange bold">Création Evénement</h2><br>
 
-                <label for="titre">Titre :</label>
+                <label style="font-size: 16px;" for="titre">Titre* :</label>
                 <input type="text" name="titre" id="titre" class="input"><br>
 
-                <label for="description">Description :</label><br>
+                <label style="font-size: 16px;" for="description">Description* :</label><br>
                 <textarea name="description" id="description" style="width: 100%; height: 200px;" class="text-area"></textarea><br><br>
 
                 <table id="tabCreationEvent">
@@ -73,21 +73,21 @@
                         <td><label for="dateDebut">Date début* :</label></td>
                         <td><input type="text" id="dateDebut" name="dateDebut" class="input" onload="this.value(Date());" readonly="readonly"></td>
                         <td><label for="heureDebut">Heure début* :</label></td>
-                        <td><input type="time" name="heureDebut" id="heureDebut" class="input"></td>
+                        <td><input type="time" name="heureDebut" id="heureDebut" class="input" value="00:00"></td>
 
                     </tr>
                     <tr>
                         <td><label for="dateFin">Date fin* :</label></td>
                         <td><input type="text" id="dateFin" name="dateFin" class="input" onload="this.value(Date());" readonly="readonly"></td>
                         <td><label for="heureFin">Heure fin* :</label></td>
-                        <td><input type="time" name="heureFin" id="heureFin" class="input"></td>
+                        <td><input type="time" name="heureFin" id="heureFin" class="input" value="00:00"></td>
                     </tr>
                     <tr>
                         <td><label for="maxParticipants">Max participants* :</label></td>
                         <td><input type="text" name="maxParticipants" id="maxParticipants" class="input"></td>
-                        <td><label for="typePublic">Type public* :</label></td>
+                        <td><label for="typePublic" style="visibility: hidden;">Type public* :</label></td>
                         <td>
-                            <select id="typePublic" name="typePublic" class="input">
+                            <select id="typePublic" name="typePublic" class="input" style="visibility: hidden;">
                                 <?php
                                 foreach($themes as $theme)
                                 {
